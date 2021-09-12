@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "../pb";
+import "proto/truck.proto";
+import "proto/excavator.proto";
+import "proto/road.proto";
+import "proto/cycle.proto";
+import "proto/load.proto";
+import "proto/material.proto";
+
+
+message Operation{
+  enum Shift {
+    UNKNOWN_SHIFT = 0;
+    NIGHT = 1;
+    DAY = 2;
+  }
+  enum State {
+    UNKNOWN_STATE = 0;
+    PENDING = 1;
+    OPENED = 2;
+    CLOSED = 3;
+  }
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string start_time = 4;
+  string end_time = 5;
+  double distance = 6;
+  double duration = 7;
+  Shift shift = 8;
+  State state = 9;
+  Upload upload = 10;
+  Download download = 11;
+  repeated Road road = 12;
+  repeated Truck truck = 13;
+  repeated Excavator excavator = 14;
+  repeated Cycle cycle = 15;
+}
+
+message OperationRequest {
+  Operation operation = 1;
+}
+
+message OperationResponse {
+  Operation operation = 1;
+}
+
+message OperationsResponse {
+  repeated Operation operations = 1;
+}
+
+service OperationService {
+  rpc CreateOperation(OperationRequest) returns (OperationResponse) {};
+  rpc RetrieveOperation(OperationRequest) returns (OperationResponse) {};
+  rpc RetrieveOperations(OperationRequest) returns (OperationsResponse) {};
+  rpc UpdateOperation(OperationRequest) returns (OperationResponse) {};
+  rpc DeleteOperation(OperationRequest) returns (OperationResponse) {};
+}
+

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "../pb";
+
+
+message Contractor {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message ContractorRequest {
+  Contractor contractor = 1;
+}
+
+message ContractorResponse {
+  Contractor contractor = 1;
+}
+
+message ContractorsResponse {
+  repeated Contractor contractors = 1;
+}
+
+service ContractorService {
+  rpc CreateContractor(ContractorRequest) returns(ContractorResponse);
+  rpc RetrieveContractor(ContractorRequest) returns(ContractorResponse);
+  rpc RetrieveContractors(ContractorRequest) returns(ContractorsResponse);
+  rpc UpdateContractor(ContractorRequest) returns(ContractorResponse);
+  rpc DeleteContractor(ContractorRequest) returns(ContractorResponse);
+}
+
+
+
+
+
+

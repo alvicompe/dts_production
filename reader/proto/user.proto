@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package pb;
+// option go_package = ".;pb";
+option go_package = "../pb";
+
+message User {
+    enum Role {
+        UNKNOWN = 0;
+        ADM = 1;
+        DIS = 2;
+      }
+    string id = 1;
+    Role role = 2;
+    string username = 3;
+    string password = 4;
+}
+
+message UserRequest{
+    User user = 1;
+}
+
+message UserResponse{
+    User user = 1;
+}
+
+message UsersResponse{
+    repeated User users = 1;
+}
+
+service UserService {
+    rpc CreateUser(UserRequest) returns(UserResponse) {};
+    rpc RetrieveUser(UserRequest) returns(UserResponse) {};
+    rpc RetrieveUsers(UserRequest) returns(UsersResponse) {};
+    rpc UpdateUser(UserRequest) returns(UserResponse) {};
+    rpc DeleteUser(UserRequest) returns(UserResponse) {};
+}
+

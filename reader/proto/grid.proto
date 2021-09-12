@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "../pb";
+import "proto/point.proto";
+import "proto/geofence.proto";
+import "proto/road.proto";
+import "proto/pit.proto";
+import "proto/pad.proto";
+import "proto/stock.proto";
+import "proto/dme.proto";
+
+message Square {
+  string id = 1;
+  string name = 2;
+  double altitude = 3;
+  repeated Point segment = 4;
+  repeated Point point = 5;
+  repeated Geofence geofence = 6;
+  repeated Road road = 7;
+  repeated Pit pit = 8;
+  repeated Pad pad = 9;
+  repeated Stock stock = 10;
+  repeated Dme dme = 11;
+}
+
+message Grid {
+  repeated Square square = 1;
+  int32 color = 2;
+}
+
+message GridRequest {
+  bool read = 1;
+}
+
+message GridResponse {
+  bool done = 1;
+}
+
+service GridService {
+  rpc CreateGrid(GridRequest) returns (GridResponse) {};
+}

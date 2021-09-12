@@ -1,0 +1,57 @@
+{
+  "type": "FeatureCollection",
+  "name": "BuildingsAsu1",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "building": "roof",
+        "building:height": "4",
+        "name": "Petrobras",
+        "building:levels": "",
+        "building:roof": "",
+        "building:use": "",
+        "color": "#ffff00",
+        "height": 12,
+        "building:min_level": "",
+        "min_height": "",
+        "roof:levels": ""
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -78.20661664009094,
+                -7.620845519307297
+              ],
+              [
+                -78.20614457130432,
+                -7.620579667422819
+              ],
+              [
+                -78.20570468902588,
+                -7.620218108595072
+              ],
+              [
+                -78.2052755355835,
+                -7.619782110779164
+              ],
+              [
+                -78.20661664009094,
+                -7.620845519307297
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

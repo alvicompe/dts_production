@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "../pb";
+import "proto/truck.proto";
+import "proto/excavator.proto";
+import "proto/material.proto";
+import "proto/streaming.proto";
+import "proto/load.proto";
+
+message Cycle{
+  enum State {
+    UNKNOWN_STATE = 0;
+    OPENED = 1;
+    CLOSED = 2;
+  }
+  enum Mode {
+    UNKNOWN_MODE = 0;
+    NORMAL = 1;
+    ALTERED = 2;
+  }
+  enum Shift {
+    UNKNOWN_SHIFT = 0;
+    NIGHT = 1;
+    DAY = 2;
+  }
+  string id = 1;
+  string operation_id = 2;
+  string name = 3;
+  string description = 4;
+  string arrival_time = 5;
+  string start_time = 6;
+  string end_time = 7;
+  int64 number = 8;
+  double distance = 9;
+  double duration = 10;
+  Mode mode = 11;
+  State state = 12;
+  Shift shift = 13;
+  Upload upload = 14;
+  Download download = 15;
+  Material material = 16;
+  Truck truck = 17;
+  Excavator excavator = 18;
+  repeated TruckInfo truckInfo = 19;
+}
+
+message CycleRequest {
+  Cycle cycle = 1;
+}
+
+message CycleResponse {
+  Cycle cycle = 1;
+}
+
+message CyclesResponse {
+  repeated Cycle cycles = 1;
+}
+
+service CycleService {
+  rpc CreateCycle(CycleRequest) returns (CycleResponse) {};
+  rpc RetrieveCycle(CycleRequest) returns (CycleResponse) {};
+  rpc RetrieveCycles(CycleRequest) returns (CyclesResponse) {};
+  rpc UpdateCycle(CycleRequest) returns (CycleResponse) {};
+  rpc DeleteCycle(CycleRequest) returns (CycleResponse) {};
+}
+

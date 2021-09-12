@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package pb;
+// option go_package = ".;pb";
+option go_package = "../pb";
+import "proto/geofence.proto";
+import "proto/road.proto";
+import "proto/point.proto";
+import "proto/sensor.proto";
+import "proto/pit.proto";
+import "proto/pad.proto";
+import "proto/stock.proto";
+import "proto/dme.proto";
+
+message TruckInfo {
+    enum State {
+        UNKNOWN_STATE = 0;
+        UPLOAD = 1;
+        DOWNLOAD = 2;
+        TO_UPLOAD = 3;
+        TO_DOWNLOAD = 4;
+        WAITING = 5;
+        QUEUE = 6;
+    }
+    string device_id = 1;
+    string device_alias = 2;
+    uint32 real_interval= 3;
+    int64 cycle_number = 4;
+    Sensor sensor = 5;
+    State state = 6;
+    Geofence geofence = 7;
+    Road road = 8;
+    repeated Point segment = 9;
+    Pit pit = 10;
+    Pad pad = 11;
+    Stock stock = 12;
+    Dme dme = 13;
+}
+
+message ExcavatorInfo {
+    enum State {
+        UNKNOWN_STATE = 0;
+        UPLOAD = 1;
+    }
+    string device_id = 1;
+    string device_alias = 2;
+    uint32 real_interval= 3;
+    Sensor sensor = 4;
+    State state = 5;
+    Geofence geofence = 6;
+    Pit pit = 7;
+}
+
+message TruckInfoRequest{}
+
+message TruckInfoResponse{
+    TruckInfo info = 1;
+}
+
+message ExcavatorInfoRequest{}
+
+message ExcavatorInfoResponse{
+    ExcavatorInfo info = 1;
+}
+
+service TruckInfoService {
+    rpc ServerStream(TruckInfoRequest) returns(stream TruckInfoResponse) {};
+}
+
+service ExcavatorInfoService {
+    rpc ServerStream(ExcavatorInfoRequest) returns(stream ExcavatorInfoResponse) {};
+}
+

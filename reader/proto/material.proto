@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "../pb";
+
+message Material {
+  string id = 1;
+  string type = 2;
+  string description = 3;
+  string crs = 4;
+  string orezone = 5;
+  string law = 6;
+  string thins = 7;
+  string cf = 8;
+  string place = 9;
+}
+
+message MaterialRequest {
+  Material material = 1;
+}
+
+message MaterialResponse {
+  Material material = 1;
+}
+
+message MaterialsResponse {
+  repeated Material materials = 1;
+}
+
+service MaterialService {
+  rpc CreateMaterial(MaterialRequest) returns (MaterialResponse) {};
+  rpc RetrieveMaterial(MaterialRequest) returns (MaterialResponse) {};
+  rpc RetrieveMaterials(MaterialRequest) returns (MaterialsResponse) {};
+  rpc UpdateMaterial(MaterialRequest) returns (MaterialResponse) {};
+  rpc DeleteMaterial(MaterialRequest) returns (MaterialResponse) {};
+}
