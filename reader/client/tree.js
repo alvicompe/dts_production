@@ -12,7 +12,7 @@ const root = 'geo'
 
 const dirToJson = async filePath => {
   return new Promise((resolve, reject) => {
-    readDir(filePath,  async (err, dirObj) => {
+    readDir(filePath, async (err, dirObj) => {
       if (err) {
         console.log(err);
       } else {
@@ -36,7 +36,7 @@ function readDir(dest, cb) {
   var dirObj = {}
   var child, parts, obj
   walker(dest)
-    .on('dir', function(dir, stat) {
+    .on('dir', function (dir, stat) {
       if (dir === dest) return;
       child = dir.slice(dest.length, dir.length)
       if (child.indexOf(path.sep) === 0) {
@@ -44,7 +44,7 @@ function readDir(dest, cb) {
       }
       parts = child.split(path.sep)
       obj = dirObj
-      for(var i=0;i<parts.length;i++) {
+      for (var i = 0; i < parts.length; i++) {
         if (parts[i] !== '') {
           if (obj[parts[i]] === undefined) {
             obj[parts[i]] = {}
@@ -53,8 +53,8 @@ function readDir(dest, cb) {
         }
       }
     })
-    walker(dest)
-    .on('file', function(dir, stat) {
+  walker(dest)
+    .on('file', function (dir, stat) {
       if (dir === dest) return
       child = dir.slice(dest.length, dir.length)
       if (child.indexOf(path.sep) === 0) {
@@ -62,7 +62,7 @@ function readDir(dest, cb) {
       };
       parts = child.split(path.sep);
       obj = dirObj
-      for(var i=0;i<parts.length;i++) {
+      for (var i = 0; i < parts.length; i++) {
         if (parts[i] !== '') {
           if (obj[parts[i]] === undefined) {
             const name = parts[i].toLowerCase()
@@ -74,10 +74,10 @@ function readDir(dest, cb) {
         }
       }
     })
-    .on('error', function(err, entry, stat) {
+    .on('error', function (err, entry, stat) {
       cb(err, null)
     })
-    .on('end', function() {
+    .on('end', function () {
       cb(null, dirObj)
     })
 };
@@ -92,103 +92,104 @@ const convertToJson = async param => {
   const materials = await getMaterial()
   geo.material = materials
 
-  for  (const [k1, v1] of  Object.entries(param)) {
+  for (const [k1, v1] of Object.entries(param)) {
     const year = {}
     if (Object.keys(v1).length !== 0) {
-        const benches = []
-        for  (const [k2, v2] of  Object.entries(v1)) {
-          if (k2 === 'dme') {
-            const csv = path.join(__dirname, '..', root, k1, k2, "forma_DME_agosto.csv")
-            const dmes = await getDme(csv)
-            geo.dme = [{
-              name: "Principal",
-              cell: dmes
-            }]
-          } else if (k2 === 'pad') {
-            const csv = path.join(__dirname, '..', root, k1, k2, "Celdas Pad_Agosto_2021-V2.csv")
-            const cells = await getCell(csv)
-            geo.pad = [{
-              name: "Principal",
-              cell: cells
-            }]
-            // geo.pad = cells
-          } else if (k2 === 'rutas') {
-            const csv = path.join(__dirname, '..', root, k1, k2, "RUTAS.csv")
-            const roads = await getRoad(csv)
-            geo.road = roads
-          } else if (k2 === 'stock') {
-            const csv = path.join(__dirname, '..', root, k1, k2, "stk_2855.csv")
-            const stocks = await getStock(csv)
-            // geo.stock = stocks
-            geo.stock = [{
-              name: "Principal",
-              cell: stocks
-            }]
-          } 
-          else {
-            const bench = {}
-            if (Object.keys(v2).length !== 0) {
-              const projects = []
-              for  (const [k3, v3] of  Object.entries(v2)) {
-                const project = {}
-                if (typeof v3 === 'object') {
-                  let pathDxf
-                  let pathCsv
-                  for  (const [k4, _] of  Object.entries(v3)) {
-                    if (k4.length == 14) {
-                      pathDxf = path.join(__dirname, '..', root, k1, k2, k3, k4)
-                    }else if (k4.includes('.csv')) {
-                      pathCsv = path.join(__dirname, '..', root, k1, k2, k3, k4)
-                    }
+      const benches = []
+      for (const [k2, v2] of Object.entries(v1)) {
+        if (k2 === 'dme') {
+          const csv = path.join(__dirname, '..', root, k1, k2, "forma_DME_agosto.csv")
+          const dmes = await getDme(csv)
+          geo.dme = [{
+            name: "Principal",
+            cell: dmes
+          }]
+        } else if (k2 === 'pad') {
+          const csv = path.join(__dirname, '..', root, k1, k2, "Celdas Pad_Agosto_2021-V2.csv")
+          const cells = await getCell(csv)
+          geo.pad = [{
+            name: "Principal",
+            cell: cells
+          }]
+          // geo.pad = cells
+        } else if (k2 === 'rutas') {
+          const csv = path.join(__dirname, '..', root, k1, k2, "RUTAS.csv")
+          const roads = await getRoad(csv)
+          geo.road = roads
+        } else if (k2 === 'stock') {
+          const csv = path.join(__dirname, '..', root, k1, k2, "stk_2855.csv")
+          const stocks = await getStock(csv)
+          // geo.stock = stocks
+          geo.stock = [{
+            name: "Principal",
+            cell: stocks
+          }]
+        }
+        else {
+          const bench = {}
+          if (Object.keys(v2).length !== 0) {
+            const projects = []
+            for (const [k3, v3] of Object.entries(v2)) {
+              const project = {}
+              if (typeof v3 === 'object') {
+                let pathDxf
+                let pathCsv
+                for (const [k4, _] of Object.entries(v3)) {
+                  if (k4.length == 14) {
+                    pathDxf = path.join(__dirname, '..', root, k1, k2, k3, k4)
+                  } else if (k4.includes('.csv')) {
+                    pathCsv = path.join(__dirname, '..', root, k1, k2, k3, k4)
                   }
-                    const extras = await getPolygonExtra(pathCsv)
-                    const polygons = await getPolygon(pathDxf)
-                    polygons.map(polygon => {
-                      extras.map(extra => {
-                        if (polygon.name == extra.name) {
-                          let material = {}
-                          materials.map(value => {
-                            if (value.type == extra.material) {
-                              material = value
-                            }
-                          })
-                          polygon.material = material
-                          polygon.lito = extra.lito
-                          polygon.alte = extra.alte
-                          polygon.orezonet = extra.orezonet
-                          polygon.au = extra.au
-                          polygon.ag = extra.ag
-                          polygon.as = extra.as
-                          polygon.volume = extra.volume
-                          polygon.tonnes = extra.tonnes
-                          polygon.onzas = extra.onzas
-                          polygon.aucn = extra.aucn
-                          polygon.agcn = extra.agcn
-                          polygon.ptaucn = extra.ptaucn
-                          polygon.s = extra.s
+                }
+
+                const extras = pathCsv ? await getPolygonExtra(pathCsv) : []
+                const polygons = pathDxf ? await getPolygon(pathDxf) : []
+                polygons.map(polygon => {
+                  extras.map(extra => {
+                    if (polygon.name == extra.name) {
+                      let material = {}
+                      materials.map(value => {
+                        if (value.type == extra.material) {
+                          material = value
                         }
                       })
-                    })
-                    project.name = k3
-                    project.polygon = polygons
-                    // pit.project = projects
-                    // obj.year = year
-                }
-                projects.push(project)
-                projects2.push(project)
-
-                // geo.pit = [{
-                //   name: "Principal",
-                //   project: projects
-                // }]
-
+                      polygon.material = material
+                      polygon.lito = extra.lito
+                      polygon.alte = extra.alte
+                      polygon.orezonet = extra.orezonet
+                      polygon.au = extra.au
+                      polygon.ag = extra.ag
+                      polygon.as = extra.as
+                      polygon.volume = extra.volume
+                      polygon.tonnes = extra.tonnes
+                      polygon.onzas = extra.onzas
+                      polygon.aucn = extra.aucn
+                      polygon.agcn = extra.agcn
+                      polygon.ptaucn = extra.ptaucn
+                      polygon.s = extra.s
+                    }
+                  })
+                })
+                project.name = k3
+                project.polygon = polygons
+                // pit.project = projects
+                // obj.year = year
               }
+              projects.push(project)
+              projects2.push(project)
+
+              // geo.pit = [{
+              //   name: "Principal",
+              //   project: projects
+              // }]
+
             }
-            // benches.push(bench)
           }
-          // if (k2 == '2764') {
-          //     // break
-          // }
+          // benches.push(bench)
+        }
+        // if (k2 == '2764') {
+        //     // break
+        // }
       }
       // years.push(year)
     }
@@ -283,7 +284,7 @@ const getDme2 = async (filePath) => {
         cell = {}
         points = []
         beforeCell.name = parts[0]
-      } 
+      }
       points.push(point)
       cell.name = parts[0]
       cell.altitude = parseFloat(parts[3])
@@ -344,7 +345,7 @@ const getMaterial = async (filePath) => {
 
 const getPolygonExtra = async (filePath) => {
   // console.log('---------------->')
-  // console.log(filePath)
+  console.log('filePath getPolygonExtra', filePath)
   const polygons = []
   let csv = readFileSync(filePath).toString().split('\n')
   // csv.shift()
@@ -397,13 +398,13 @@ const getPolygonExtra = async (filePath) => {
 }
 
 const rewriteFile = async (filePath) => {
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let csvContent = readFileSync(filePath).toString().split('\n')
     csvContent.shift()
     csvContent = csvContent.join('\n')
     writeFileSync(filePath, csvContent)
     resolve(true)
-  }) 
+  })
 }
 
 const getPolygon = async (filePath) => {
@@ -434,7 +435,7 @@ const getPolygon = async (filePath) => {
           // results.push(result)
           results.push([point.longitude, point.latitude])
 
-          
+
         })
         results.push(results[0])
 
@@ -510,13 +511,13 @@ const getCell2 = async (filePath) => {
         cell = {}
         points = []
         beforeCell.name = parts[0]
-      } 
+      }
       points.push(point)
       cell.name = parts[0]
       cell.area = parseFloat(parts[4])
       cell.volume = parseFloat(parts[5])
       cell.height = parseFloat(parts[6])
-      cell.altitude = parseFloat(parts[7].substr(0,4))
+      cell.altitude = parseFloat(parts[7].substr(0, 4))
     }
 
     if (index + 1 == csv.length) {
@@ -589,13 +590,13 @@ const getStock2 = async (filePath) => {
         cell = {}
         points = []
         beforeCell.name = parts[0]
-      } 
+      }
       points.push(point)
       cell.name = parts[0]
       cell.area = parseFloat(parts[4])
       cell.volume = parseFloat(parts[5])
       cell.height = parseFloat(parts[6])
-      cell.altitude = parseFloat(parts[7].substr(0,4))
+      cell.altitude = parseFloat(parts[7].substr(0, 4))
     }
 
     if (index + 1 == csv.length) {
@@ -647,13 +648,13 @@ const getDme = async (filePath) => {
       // console.log(parts[1], ',', parts[2])
       // console.log(point.longitude, point.latitude)
 
-    beforeCell.point = point
+      beforeCell.point = point
 
-    if (beforeCell.name == parts[0]) {
-      points.push(point)
-      cell.name = parts[0]
-      cell.altitude = parseFloat(parts[3])
-    } else if (beforeCell.name != parts[0]) {
+      if (beforeCell.name == parts[0]) {
+        points.push(point)
+        cell.name = parts[0]
+        cell.altitude = parseFloat(parts[3])
+      } else if (beforeCell.name != parts[0]) {
         if (points[0].longitude != points[points.length - 1].longitude) {
           points.push(points[0])
         }
@@ -675,7 +676,7 @@ const getDme = async (filePath) => {
         points = []
         points.push(beforeCell.point)
         beforeCell.name = parts[0]
-      } 
+      }
     }
     if (index + 1 == csv.length) {
       if (points[0].longitude != points[points.length - 1].longitude) {
@@ -736,16 +737,16 @@ const getCell = async (filePath) => {
       // console.log(parts[1], ',', parts[2])
       // console.log(point.longitude, point.latitude)
 
-    beforeCell.point = point
+      beforeCell.point = point
 
-    if (beforeCell.name == parts[0]) {
-      points.push(point)
-      cell.name = parts[0]
-      cell.area = parseFloat(parts[4])
-      cell.volume = parseFloat(parts[5])
-      cell.height = parseFloat(parts[6])
-      cell.altitude = parseFloat(parts[7].substr(0,4))
-    } else if (beforeCell.name != parts[0]) {
+      if (beforeCell.name == parts[0]) {
+        points.push(point)
+        cell.name = parts[0]
+        cell.area = parseFloat(parts[4])
+        cell.volume = parseFloat(parts[5])
+        cell.height = parseFloat(parts[6])
+        cell.altitude = parseFloat(parts[7].substr(0, 4))
+      } else if (beforeCell.name != parts[0]) {
         if (points[0].longitude != points[points.length - 1].longitude) {
           points.push(points[0])
         }
@@ -767,7 +768,7 @@ const getCell = async (filePath) => {
         points = []
         points.push(beforeCell.point)
         beforeCell.name = parts[0]
-      } 
+      }
     }
     if (index + 1 == csv.length) {
       if (points[0].longitude != points[points.length - 1].longitude) {
@@ -828,16 +829,16 @@ const getStock = async (filePath) => {
       // console.log(parts[1], ',', parts[2])
       // console.log(point.longitude, point.latitude)
 
-    beforeCell.point = point
+      beforeCell.point = point
 
-    if (beforeCell.name == parts[0]) {
-      points.push(point)
-      cell.name = parts[0]
-      cell.area = parseFloat(parts[4])
-      cell.volume = parseFloat(parts[5])
-      cell.height = parseFloat(parts[6])
-      cell.altitude = parseFloat(parts[7].substr(0,4))
-    } else if (beforeCell.name != parts[0]) {
+      if (beforeCell.name == parts[0]) {
+        points.push(point)
+        cell.name = parts[0]
+        cell.area = parseFloat(parts[4])
+        cell.volume = parseFloat(parts[5])
+        cell.height = parseFloat(parts[6])
+        cell.altitude = parseFloat(parts[7].substr(0, 4))
+      } else if (beforeCell.name != parts[0]) {
         if (points[0].longitude != points[points.length - 1].longitude) {
           points.push(points[0])
         }
@@ -859,7 +860,7 @@ const getStock = async (filePath) => {
         points = []
         points.push(beforeCell.point)
         beforeCell.name = parts[0]
-      } 
+      }
     }
     if (index + 1 == csv.length) {
       if (points[0].longitude != points[points.length - 1].longitude) {
@@ -916,23 +917,23 @@ const getRoad = async (filePath) => {
         latitude: result.y,
         altitude: result.z
       }
-    beforeCell.point = point
+      beforeCell.point = point
 
-    // console.log(parts[1], ',', parts[2])
-    // console.log(point.longitude, ',', point.latitude)
+      // console.log(parts[1], ',', parts[2])
+      // console.log(point.longitude, ',', point.latitude)
 
 
-    if (beforeCell.name == parts[0]) {
-      points.push(point)
-      cell.name = parts[0]
-    } else if (beforeCell.name != parts[0]) {
+      if (beforeCell.name == parts[0]) {
+        points.push(point)
+        cell.name = parts[0]
+      } else if (beforeCell.name != parts[0]) {
         cell.point = points
         cells.push(cell)
         cell = {}
         points = []
         points.push(beforeCell.point)
         beforeCell.name = parts[0]
-      } 
+      }
     }
     if (index + 1 == csv.length) {
       cell.point = points
@@ -941,11 +942,11 @@ const getRoad = async (filePath) => {
   })
 
   console.log('ROAD')
-  cells.map(cell  => {
+  cells.map(cell => {
     console.log(cell.name)
     cell.point.map(point => {
       // console.log(point.longitude, ',', point.latitude)
-      console.log('{ "longitude": "'+point.longitude*-1+'", "latitude": "'+point.latitude*-1+'" },')
+      console.log('{ "longitude": "' + point.longitude * -1 + '", "latitude": "' + point.latitude * -1 + '" },')
     })
   })
   return cells
