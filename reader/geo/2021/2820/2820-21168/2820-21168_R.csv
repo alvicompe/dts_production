@@ -1,4 +1,5 @@
-Blast,Grade block name,material,lito,alte,orezonet,au,ag,as,volume,tonnes,onzas,aucn,ptaucn,s
-S212820168,A,M1,SD,SI2,OXI,0.035,2.842,-999,1942,4746,5,0,0,0.021
-S212820168,B,D1,SDST,SI2,OXI,0.02,0.747,-999,20571,48959,32,0,0,0.021
-S212820168,C,M2,SDST,SI2,OXI,0.045,1.234,-999,5580,13280,19,0,0,0.02
+,,Block Model
+Blast,Grade Block,Name,Grade block name,material,lito,alte,orezonet,au,ag,as,volume,tonnes,onzas,aucn,ptaucn,s
+S212820168,A,,A,M1,SD,SI2,OXI,0.035,2.842,-999.000,1942,4746,5,0.000,0.000,0.021
+S212820168,B,,B,D1,SDST,SI2,OXI,0.020,0.747,-999.000,20571,48959,32,0.000,0.000,0.021
+S212820168,C,,C,M2,SDST,SI2,OXI,0.045,1.234,-999.000,5580,13280,19,0.000,0.000,0.020
