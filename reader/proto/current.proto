@@ -36,5 +36,3 @@ message ExcavatorCurrentState {
   State state = 4;
   Operation operation = 5;
 }
-
-

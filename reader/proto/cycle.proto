@@ -29,20 +29,22 @@ message Cycle{
   string name = 3;
   string description = 4;
   string arrival_time = 5;
-  string start_time = 6;
-  string end_time = 7;
-  int64 number = 8;
-  double distance = 9;
-  double duration = 10;
-  Mode mode = 11;
-  State state = 12;
-  Shift shift = 13;
-  Upload upload = 14;
-  Download download = 15;
-  Material material = 16;
-  Truck truck = 17;
-  Excavator excavator = 18;
-  repeated TruckInfo truckInfo = 19;
+  string download_arrival_time = 6;
+  string start_time = 7;
+  string end_time = 8;
+  int64 number = 9;
+  double distance = 10;
+  double duration = 11;
+  Mode mode = 12;
+  State state = 13;
+  Shift shift = 14;
+  string shift_date = 15;
+  Upload upload = 16;
+  Download download = 17;
+  Material material = 18;
+  Truck truck = 19;
+  Excavator excavator = 20;
+  repeated TruckInfo truckInfo = 21;
 }
 
 message CycleRequest {

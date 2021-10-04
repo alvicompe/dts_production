@@ -1,5 +1,6 @@
 import { UserServiceClient } from "../proto/proto/user_grpc_pb";
 import { GeoServiceClient } from "../proto/proto/geo_grpc_pb"
+import { GridServiceClient } from "../proto/proto/grid_grpc_pb"
 import { credentials, Metadata } from "grpc";
 import { readFileSync }  from 'fs'
 
@@ -34,5 +35,13 @@ export const client = new GeoServiceClient(
   }
 );
 console.log("client", client)
+
+export const clientGrid = new GridServiceClient(
+  `dts.pe:9003`, cred, {
+    'grpc.ssl_target_name_override': 'dts.pe',
+    "grpc.default_authority": 'dts.pe'
+  }
+);
+console.log("clientGrid", clientGrid)
 
 export const noop = () => {};

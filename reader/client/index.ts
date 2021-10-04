@@ -6,23 +6,18 @@ const getTree = require("./tree")
 
 
 
-async function run() {
+export async function readFiles() {
 
   const tree = await getTree()
   // console.log("tree")
   // console.log(tree)
 
 
-  const uploaded = await UploadGeo(tree)
-  console.log("UPLOADED:", uploaded)
-
-
-
-
+  return await UploadGeo(tree)
   // console.log(JSON.stringify(tree.years[0]))
   // const dme = await getDME()
   // console.log(JSON.stringify(dme))
 
 }
 
-run();
+//run();
