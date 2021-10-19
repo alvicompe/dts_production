@@ -1,0 +1,7 @@
+Blast: S212788028, estimation by block model
+Grade_Block,material,lito,alte,orezonet,au,ag,as,volume,tonnes,onzas,aucn,agcn,ptaucn,s
+A,M1,SD,SI2,OXI,0.197,0.827,416,3820,9336,59,0.208,,105,0.04
+B,D2,STSD,AR,OXI,0.025,0.840,156,12344,28429,23,0.016,,65,0.05
+C,D1,SDST,SI2,OXI,0.076,2.686,395,10769,25631,62,0.055,,72,0.06
+D,D1,SDST,SI2,OXI,0.079,3.457,399,5396,12843,33,0.009,,11,0.06
+
