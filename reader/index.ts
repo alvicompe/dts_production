@@ -32,7 +32,7 @@ server.addService(GridServiceService, new GridServer());
 const port = 9004;
 const uri = `dts.pe:${port}`;
 console.log(`Listening on ${uri}`);
-server.bind(uri, ServerCredentials.createSsl(rootCert, keyCertPairs, false));
+server.bind(uri, ServerCredentials.createInsecure());
 /*
 server.bind(
     "0.0.0.0:50051",
