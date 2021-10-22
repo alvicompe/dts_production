@@ -7,7 +7,13 @@ import "proto/excavator.proto";
 import "proto/material.proto";
 import "proto/streaming.proto";
 import "proto/load.proto";
-
+import "google/protobuf/timestamp.proto";
+enum Shift {
+  UNKNOWN_SHIFT = 0;
+  NIGHT = 1;
+  DAY = 2;
+  BOTH = 3;
+}
 message Cycle{
   enum State {
     UNKNOWN_STATE = 0;
@@ -19,26 +25,22 @@ message Cycle{
     NORMAL = 1;
     ALTERED = 2;
   }
-  enum Shift {
-    UNKNOWN_SHIFT = 0;
-    NIGHT = 1;
-    DAY = 2;
-  }
+ 
   string id = 1;
   string operation_id = 2;
   string name = 3;
   string description = 4;
-  string arrival_time = 5;
-  string download_arrival_time = 6;
-  string start_time = 7;
-  string end_time = 8;
+  google.protobuf.Timestamp arrival_time = 5;
+  google.protobuf.Timestamp download_arrival_time = 6;
+  google.protobuf.Timestamp start_time = 7;
+  google.protobuf.Timestamp end_time = 8;
   int64 number = 9;
   double distance = 10;
   double duration = 11;
   Mode mode = 12;
   State state = 13;
   Shift shift = 14;
-  string shift_date = 15;
+  google.protobuf.Timestamp shift_date = 15;
   Upload upload = 16;
   Download download = 17;
   Material material = 18;

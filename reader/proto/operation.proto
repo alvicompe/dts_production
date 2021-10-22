@@ -6,6 +6,7 @@ import "proto/excavator.proto";
 import "proto/road.proto";
 import "proto/cycle.proto";
 import "proto/load.proto";
+import "google/protobuf/timestamp.proto";
 
 message Operation{
   enum Shift {
@@ -22,8 +23,8 @@ message Operation{
   string id = 1;
   string name = 2;
   string description = 3;
-  string start_time = 4;
-  string end_time = 5;
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Timestamp end_time = 5;
   double distance = 6;
   double duration = 7;
   Shift shift = 8;
