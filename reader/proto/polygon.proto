@@ -63,5 +63,5 @@ service PolygonService {
   rpc RetrievePolygons(PolygonRequest) returns (PolygonsResponse) {};
   rpc UpdatePolygon(PolygonRequest) returns (PolygonResponse) {};
   rpc DeletePolygon(PolygonRequest) returns (PolygonResponse) {};
-  rpc FinishListPolygon(PolygonListRequest) returns (PolygonListResponse) {};
+  rpc FinalizePolygonList(PolygonListRequest) returns (PolygonListResponse) {};
 }
