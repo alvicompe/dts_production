@@ -7,6 +7,7 @@ import "proto/excavator.proto";
 import "proto/material.proto";
 import "proto/streaming.proto";
 import "proto/load.proto";
+import "proto/audit.proto";
 import "google/protobuf/timestamp.proto";
 enum Shift {
   UNKNOWN_SHIFT = 0;
@@ -14,6 +15,7 @@ enum Shift {
   DAY = 2;
   BOTH = 3;
 }
+
 message Cycle{
   enum State {
     UNKNOWN_STATE = 0;
@@ -25,28 +27,29 @@ message Cycle{
     NORMAL = 1;
     ALTERED = 2;
   }
- 
   string id = 1;
   string operation_id = 2;
   string name = 3;
   string description = 4;
-  google.protobuf.Timestamp arrival_time = 5;
-  google.protobuf.Timestamp download_arrival_time = 6;
-  google.protobuf.Timestamp start_time = 7;
-  google.protobuf.Timestamp end_time = 8;
-  int64 number = 9;
-  double distance = 10;
-  double duration = 11;
-  Mode mode = 12;
-  State state = 13;
-  Shift shift = 14;
-  google.protobuf.Timestamp shift_date = 15;
-  Upload upload = 16;
-  Download download = 17;
-  Material material = 18;
-  Truck truck = 19;
-  Excavator excavator = 20;
-  repeated TruckInfo truckInfo = 21;
+  google.protobuf.Timestamp shift_time = 5;
+  google.protobuf.Timestamp arrival_time = 6;
+  google.protobuf.Timestamp download_arrival_time = 7;
+  google.protobuf.Timestamp start_time = 8;
+  google.protobuf.Timestamp end_time = 9;
+  int64 number = 10;
+  double distance = 11;
+  double duration = 12;
+  Mode mode = 13;
+  State state = 14;
+  Shift shift = 15;
+  google.protobuf.Timestamp shift_date = 16;
+  Upload upload = 17;
+  Download download = 18;
+  Material material = 19;
+  Truck truck = 20;
+  Excavator excavator = 21;
+  repeated TruckInfo truckInfo = 22;
+  Audit audit = 23;
 }
 
 message CycleRequest {

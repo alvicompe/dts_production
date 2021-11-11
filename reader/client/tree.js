@@ -25,7 +25,7 @@ const dirToJson = async filePath => {
 }
 
 const parseDouble = param => {
-  if (param != '') {
+  if (param != '') {fget
     return parseFloat(param)
   }
   return 0

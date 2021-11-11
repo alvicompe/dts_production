@@ -12,7 +12,7 @@ export default function CreateUser(id: number) {
     user.setPassword('1234')
     request.setUser(user)
 
-    client.createUser(request, (err, res) => {
+    client.createUser(request, (err:any, res:any) => {
 
       if (err) {
         reject(err)

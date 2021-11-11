@@ -1,7 +1,6 @@
-import { Server, ServerCredentials } from 'grpc'
+import { Server, ServerCredentials, KeyCertPair } from 'grpc'
 import { GridServer } from './service/grid'
 import { readFileSync } from 'fs'
-import { KeyCertPair } from 'grpc'
 import path from 'path'
 import { GridServiceService } from './proto/proto/grid_grpc_pb'
 

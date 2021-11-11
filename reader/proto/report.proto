@@ -39,14 +39,22 @@ message DownloadRequest {
   repeated Truck truck = 5;
 }
 
-message ReportResponse {
+message ReportPerformancePerHourResponse {
     bool status = 1;
     string message = 2;
-    repeated TruckReport truck_cycle = 3;
-    repeated ExcavatorReport excavator_cycle = 4;
-    int32 len_dme = 6;
-    int32 len_pad = 7;
-    int32 len = 8;
+    repeated string hour = 3;
+    repeated int32 dme = 4;
+    repeated int32 pad = 5;
+    repeated int32 stock = 6;
+    repeated int32 len_truck = 7; 
+    repeated TruckReport truck_cycle = 8;
+    repeated ExcavatorReport excavator_cycle = 9;
+    int32 len_dme = 10;
+    int32 len_pad = 11;
+    int32 len_stock = 12;
+    int32 len = 13;
+    int32 tonne_per_truck = 14;
+
 }
 message DownloadResponse {
   string file_name = 1;
@@ -54,6 +62,6 @@ message DownloadResponse {
   bytes file = 3;
 }
 service ReportService {
-  rpc RetrieveReport(ReportRequest) returns (ReportResponse) {};
+  rpc RetrievePerformancePerHourReport(ReportRequest) returns (ReportPerformancePerHourResponse) {};
   rpc DownloadReport(DownloadRequest) returns (DownloadResponse) {};
 }
