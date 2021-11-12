@@ -15,7 +15,8 @@ message TruckReport {
   repeated Cycle cycle =5;
   int32 len_dme = 6;
   int32 len_pad = 7;
-  int32 len = 8;
+  int32 len_stock = 8;
+  int32 len = 9;
 }
 message ExcavatorReport {
   string id = 1;
@@ -24,7 +25,8 @@ message ExcavatorReport {
   repeated Cycle cycle = 5;
   int32 len_dme = 6;
   int32 len_pad = 7;
-  int32 len = 8;
+  int32 len_stock = 8;
+  int32 len = 9;
 }
 message ReportRequest {
   google.protobuf.Timestamp date_start = 1;
@@ -49,10 +51,10 @@ message ReportPerformancePerHourResponse {
     repeated int32 len_truck = 7; 
     repeated TruckReport truck_cycle = 8;
     repeated ExcavatorReport excavator_cycle = 9;
-    int32 len_dme = 10;
-    int32 len_pad = 11;
-    int32 len_stock = 12;
-    int32 len = 13;
+    int32 len_cycle_dme = 10;
+    int32 len_cycle_pad = 11;
+    int32 len_cycle_stock = 12;
+    int32 len_cycle = 13;
     int32 tonne_per_truck = 14;
 
 }
