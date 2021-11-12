@@ -35,10 +35,14 @@ message Polygon{
   double agcn = 20;
   double ptaucn = 21;
   double s = 22;
+  State state = 23;
 }
 
 message PolygonRequest {
   Polygon polygon = 1;
+}
+message PolygonListRequest {
+  repeated Polygon polygon = 1;
 }
 
 message PolygonResponse {
@@ -48,6 +52,10 @@ message PolygonResponse {
 message PolygonsResponse {
   repeated Polygon polygons = 1;
 }
+message PolygonListResponse {
+  bool done = 1;
+  string message  = 2;
+}
 
 service PolygonService {
   rpc CreatePolygon(PolygonRequest) returns (PolygonResponse) {};
@@ -55,4 +63,5 @@ service PolygonService {
   rpc RetrievePolygons(PolygonRequest) returns (PolygonsResponse) {};
   rpc UpdatePolygon(PolygonRequest) returns (PolygonResponse) {};
   rpc DeletePolygon(PolygonRequest) returns (PolygonResponse) {};
+  rpc FinalizePolygonList(PolygonListRequest) returns (PolygonListResponse) {};
 }

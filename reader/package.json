@@ -20,7 +20,11 @@
     "grpc": "^1.24.3"
   },
   "scripts": {
-    "build": "sh proto/build.sh",
+<<<<<<< HEAD
+    "gen:pb": "sh build.sh",
+=======
+    "build": "sh build.sh",
+>>>>>>> origin/20-create-files-test
     "server": "ts-node index.ts",
     "client": "ts-node client/index.ts",
     "read": "node client/file.js"

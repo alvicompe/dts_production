@@ -1,13 +1,11 @@
-import { Server, ServerCredentials } from "grpc";
-import { GridServiceService } from "./proto/proto/grid_grpc_pb";
-import { GridServer } from "./service/grid";
-import { readFileSync } from "fs"
-import { KeyCertPair } from "grpc"
-import path from "path"
-
+import { Server, ServerCredentials, KeyCertPair } from 'grpc'
+import { GridServer } from './service/grid'
+import { readFileSync } from 'fs'
+import path from 'path'
+import { GridServiceService } from './proto/proto/grid_grpc_pb'
 
 // const p = path.join(__dirname, "cert", "server.crt")
-const rootCert = readFileSync(path.join(__dirname, "cert", "server.crt"));
+const rootCert = readFileSync(path.join(__dirname, 'cert', 'server.crt'))
 
 // const channelCreds = grpc.credentials.createSsl(rootCert);
 // const metaCallback = (_params, callback) => {
@@ -18,21 +16,20 @@ const rootCert = readFileSync(path.join(__dirname, "cert", "server.crt"));
 // const callCreds = grpc.credentials.createFromMetadataGenerator(metaCallback);
 // const combCreds = grpc.credentials.combineChannelCredentials(channelCreds, callCreds);
 // const stub = new helloworld.Greeter('myservice.example.com', combCreds);
-const keyCertPairs:Array<KeyCertPair> = [
-    {
-     private_key: readFileSync(path.join(__dirname, "cert", "server.key")),
-     cert_chain: readFileSync(path.join(__dirname, "cert", "server.crt"))
-    }
+const keyCertPairs: Array<KeyCertPair> = [
+  {
+    private_key: readFileSync(path.join(__dirname, 'cert', 'server.key')),
+    cert_chain: readFileSync(path.join(__dirname, 'cert', 'server.crt')),
+  },
 ]
 
+const server = new Server()
+server.addService(GridServiceService, new GridServer())
 
-const server = new Server();
-server.addService(GridServiceService, new GridServer());
-
-const port = 9004;
-const uri = `dts.pe:${port}`;
-console.log(`Listening on ${uri}`);
-server.bind(uri, ServerCredentials.createInsecure());
+const port = 9004
+const uri = `dts.pe:${port}`
+console.log(`Listening on ${uri}`)
+server.bind(uri, ServerCredentials.createInsecure())
 /*
 server.bind(
     "0.0.0.0:50051",
@@ -64,4 +61,4 @@ server.bind(
 */
 
 // server.bind(uri, ServerCredentials.createInsecure());
-server.start();
+server.start()

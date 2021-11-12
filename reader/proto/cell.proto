@@ -22,8 +22,21 @@ message Cell {
   double altitude = 8;
   double area = 9;
   double volume = 10;
+  State state = 11;
 }
-
+enum TypeDownload {
+  UNKNOWN = 0;
+  PIT = 1;
+  PAD = 2;
+  STOCK = 3;
+  DME = 4;
+  ROAD = 5;
+}
+message CellListRequest {
+  
+  repeated Cell cell = 1;
+  TypeDownload type = 2;
+}
 
 message CellRequest {
   Cell cell = 1;
@@ -36,13 +49,17 @@ message CellResponse {
 message CellsResponse {
   repeated Cell cells = 1;
 }
-
+message CellListResponse {
+  bool done = 1;
+  string message  = 2;
+}
 service CellService {
   rpc CreateCell(CellRequest) returns(CellResponse);
   rpc RetrieveCell(CellRequest) returns(CellResponse);
   rpc RetrieveCells(CellRequest) returns(CellsResponse);
   rpc UpdateCell(CellRequest) returns(CellResponse);
   rpc DeleteCell(CellRequest) returns(CellResponse);
+  rpc FinalizeCellList(CellListRequest) returns (CellListResponse);
 }
 
 
