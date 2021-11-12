@@ -1,0 +1,34 @@
+version: '3.8' 
+
+services:
+  # # Main api
+  # hytech:
+  #   container_name: hytech build: hytech
+  #   # ports:
+  #   #   - 80:80
+  #   network_mode: 'host' volumes:
+  #     - ./hytech:/go/src/hytech
+  # # Bridge connection to hytera db
+  # bridge:
+  #   container_name: bridge build: bridge
+  #   # ports:
+  #   #   - 80:80
+  #   network_mode: 'host' volumes:
+  #     - ./bridge:/go/src/bridge System DB
+  mongo:
+    image: mongo:4.4-bionic
+    container_name: mongo
+    ports:
+      - 27017:27017
+#    network_mode: 'host' 
+    environment:
+      - MONGO_INITDB_DATABASE=db 
+      - MONGO_INITDB_ROOT_USERNAME=super 
+      - MONGO_INITDB_ROOT_PASSWORD=passw0rd
+    volumes:
+      # # seeding scripts
+      - ./backups:/backups
+      # # named volumes
+      # - mongodb:/data/db volumes: ~/mongo/data:/data/db - mongoconfig:/data/configdb
+    # networks:
+    #   - mongo_net
