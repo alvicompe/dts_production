@@ -41,6 +41,10 @@ message CellListRequest {
 message CellRequest {
   Cell cell = 1;
 }
+message CellUpdateRequest {
+  Cell cell = 1;
+  TypeDownload type = 2;
+}
 
 message CellResponse {
   Cell cell = 1;
@@ -57,10 +61,7 @@ service CellService {
   rpc CreateCell(CellRequest) returns(CellResponse);
   rpc RetrieveCell(CellRequest) returns(CellResponse);
   rpc RetrieveCells(CellRequest) returns(CellsResponse);
-  rpc UpdateCell(CellRequest) returns(CellResponse);
+  rpc UpdateCell(CellUpdateRequest) returns(CellResponse);
   rpc DeleteCell(CellRequest) returns(CellResponse);
   rpc FinalizeCellList(CellListRequest) returns (CellListResponse);
 }
-
-
-
