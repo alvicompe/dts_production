@@ -1,0 +1,22 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3'
+# Define services
+services:
+  # App Service
+  app:
+    # Configuration for building the docker image for the service
+    build:
+      context: . # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    ports:
+      - "9001:9001" # Forward the exposed port 9003 on the container to port 9003 on the host machine
+    restart: unless-stopped
+
+    extra_hosts:
+      - "bridge.dts.pe:0.0.0.0"
+      - "dts.pe:172.26.11.105"
+    networks:
+      backend: 
+
+networks:
+  backend: 
