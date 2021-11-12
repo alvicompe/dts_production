@@ -31,7 +31,6 @@ message ExcavatorReport {
 message ReportRequest {
   google.protobuf.Timestamp date_start = 1;
   google.protobuf.Timestamp date_end = 2;
-  Shift shift = 3;
 }
 message DownloadRequest {
   google.protobuf.Timestamp date_start = 1;
@@ -40,23 +39,25 @@ message DownloadRequest {
   bool all_truck = 4;
   repeated Truck truck = 5;
 }
-
+message ReportPerformancePerHour{
+  repeated string hour = 1;
+  repeated int32 dme = 2;
+  repeated int32 pad = 3;
+  repeated int32 stock = 4;
+  repeated int32 len_truck = 5; 
+  repeated TruckReport truck_cycle = 6;
+  repeated ExcavatorReport excavator_cycle = 7;
+  int32 len_cycle_dme = 8;
+  int32 len_cycle_pad = 9;
+  int32 len_cycle_stock = 10;
+  int32 len_cycle = 11;
+  int32 tonne_per_truck = 12;
+}
 message ReportPerformancePerHourResponse {
     bool status = 1;
     string message = 2;
-    repeated string hour = 3;
-    repeated int32 dme = 4;
-    repeated int32 pad = 5;
-    repeated int32 stock = 6;
-    repeated int32 len_truck = 7; 
-    repeated TruckReport truck_cycle = 8;
-    repeated ExcavatorReport excavator_cycle = 9;
-    int32 len_cycle_dme = 10;
-    int32 len_cycle_pad = 11;
-    int32 len_cycle_stock = 12;
-    int32 len_cycle = 13;
-    int32 tonne_per_truck = 14;
-
+    ReportPerformancePerHour day = 3;
+    ReportPerformancePerHour night = 4;
 }
 message DownloadResponse {
   string file_name = 1;
