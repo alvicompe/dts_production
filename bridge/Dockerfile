@@ -6,5 +6,5 @@ WORKDIR /app
 COPY bridge .
 EXPOSE 9001
 WORKDIR /app/build
-
+RUN ["chmod", "+x", "/app/build/bridge"]
 CMD ["./bridge"]
