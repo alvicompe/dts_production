@@ -64,11 +64,4 @@ service CellService {
   rpc UpdateCell(CellUpdateRequest) returns(CellResponse);
   rpc DeleteCell(CellRequest) returns(CellResponse);
   rpc FinalizeCellList(CellListRequest) returns (CellListResponse);
-<<<<<<< HEAD
 }
-
-
-
-=======
-}
->>>>>>> main
