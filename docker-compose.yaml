@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:4.4-bionic
+    container_name: mongo_dts
+    ports:
+      - 27017:27017
+    network_mode: bridge
+    environment:
+      - MONGO_INITDB_DATABASE=db
+      - MONGO_INITDB_ROOT_USERNAME=super
+      - MONGO_INITDB_ROOT_PASSWORD=passw0rd
+    volumes:
+      - ./mongo/data:/data/db
+      - ./mongo/backups:/backups
+  bridge:
+    build:
+      context: .
+      dockerfile: bridge/Dockerfile
+    network_mode: bridge
+    container_name: bridge_dts
+    ports:
+      - "9001:9001"
+    #restart: always
+    environment:
+      - TZ=America/Lima
+    extra_hosts:
+      - "dts.pe:192.168.0.20"
+      - "bridge.dts.pe:0.0.0.0"
+  writer:
+    build:
+      context: .
+      dockerfile: writer/Dockerfile
+    network_mode: bridge
+    container_name: writer_dts
+    ports:
+      - "9003:9003"
+    #restart: always
+    depends_on:
+      - mongo
+    environment:
+      - TZ=America/Lima
+    extra_hosts:
+      - "dts.pe:0.0.0.0"
+  brain:
+    build:
+      context: .
+      dockerfile: brain/Dockerfile
+    depends_on:
+      - bridge
+      - writer
+    network_mode: bridge
+    container_name: brain_dts
+    ports:
+      - "9002:9002"
+    #restart: always
+    environment:
+      - TZ=America/Lima
+    extra_hosts:
+      - "dts.pe:192.168.0.20"
+      - "brain.dts.pe:0.0.0.0"
+  dts:
+    build:
+      context: .
+      dockerfile: dts/Dockerfile
+    depends_on:
+      - brain
+    network_mode: bridge
+    container_name: dts
+    ports:
+      - "9000:9000"
+      - "5000:5000"
+    #restart: always
+    environment:
+      - TZ=America/Lima
+    extra_hosts:
+      - "dts.pe:192.168.0.20"
+      - "web.dts.pe:0.0.0.0"
