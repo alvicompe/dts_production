@@ -3,12 +3,17 @@
 'use strict';
 var grpc = require('grpc');
 var proto_streaming_pb = require('../proto/streaming_pb.js');
-var proto_polygon_pb = require('../proto/polygon_pb.js');
-var proto_cell_pb = require('../proto/cell_pb.js');
 var proto_geofence_pb = require('../proto/geofence_pb.js');
 var proto_road_pb = require('../proto/road_pb.js');
 var proto_point_pb = require('../proto/point_pb.js');
 var proto_sensor_pb = require('../proto/sensor_pb.js');
+var proto_pit_pb = require('../proto/pit_pb.js');
+var proto_pad_pb = require('../proto/pad_pb.js');
+var proto_stock_pb = require('../proto/stock_pb.js');
+var proto_dme_pb = require('../proto/dme_pb.js');
+var proto_excavator_pb = require('../proto/excavator_pb.js');
+var proto_truck_pb = require('../proto/truck_pb.js');
+var proto_load_pb = require('../proto/load_pb.js');
 
 function serialize_pb_ExcavatorInfoRequest(arg) {
   if (!(arg instanceof proto_streaming_pb.ExcavatorInfoRequest)) {

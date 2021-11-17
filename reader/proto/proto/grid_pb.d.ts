@@ -5,11 +5,13 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
-import * as proto_polygon_pb from "../proto/polygon_pb";
-import * as proto_cell_pb from "../proto/cell_pb";
+import * as proto_point_pb from "../proto/point_pb";
 import * as proto_geofence_pb from "../proto/geofence_pb";
 import * as proto_road_pb from "../proto/road_pb";
-import * as proto_point_pb from "../proto/point_pb";
+import * as proto_pit_pb from "../proto/pit_pb";
+import * as proto_pad_pb from "../proto/pad_pb";
+import * as proto_stock_pb from "../proto/stock_pb";
+import * as proto_dme_pb from "../proto/dme_pb";
 
 export class Square extends jspb.Message { 
     getId(): string;
@@ -21,15 +23,15 @@ export class Square extends jspb.Message {
     getAltitude(): number;
     setAltitude(value: number): Square;
 
-    clearPolygonList(): void;
-    getPolygonList(): Array<proto_polygon_pb.Polygon>;
-    setPolygonList(value: Array<proto_polygon_pb.Polygon>): Square;
-    addPolygon(value?: proto_polygon_pb.Polygon, index?: number): proto_polygon_pb.Polygon;
+    clearSegmentList(): void;
+    getSegmentList(): Array<proto_point_pb.Point>;
+    setSegmentList(value: Array<proto_point_pb.Point>): Square;
+    addSegment(value?: proto_point_pb.Point, index?: number): proto_point_pb.Point;
 
-    clearCellList(): void;
-    getCellList(): Array<proto_cell_pb.Cell>;
-    setCellList(value: Array<proto_cell_pb.Cell>): Square;
-    addCell(value?: proto_cell_pb.Cell, index?: number): proto_cell_pb.Cell;
+    clearPointList(): void;
+    getPointList(): Array<proto_point_pb.Point>;
+    setPointList(value: Array<proto_point_pb.Point>): Square;
+    addPoint(value?: proto_point_pb.Point, index?: number): proto_point_pb.Point;
 
     clearGeofenceList(): void;
     getGeofenceList(): Array<proto_geofence_pb.Geofence>;
@@ -41,15 +43,25 @@ export class Square extends jspb.Message {
     setRoadList(value: Array<proto_road_pb.Road>): Square;
     addRoad(value?: proto_road_pb.Road, index?: number): proto_road_pb.Road;
 
-    clearSegmentList(): void;
-    getSegmentList(): Array<proto_point_pb.Point>;
-    setSegmentList(value: Array<proto_point_pb.Point>): Square;
-    addSegment(value?: proto_point_pb.Point, index?: number): proto_point_pb.Point;
+    clearPitList(): void;
+    getPitList(): Array<proto_pit_pb.Pit>;
+    setPitList(value: Array<proto_pit_pb.Pit>): Square;
+    addPit(value?: proto_pit_pb.Pit, index?: number): proto_pit_pb.Pit;
 
-    clearPointList(): void;
-    getPointList(): Array<proto_point_pb.Point>;
-    setPointList(value: Array<proto_point_pb.Point>): Square;
-    addPoint(value?: proto_point_pb.Point, index?: number): proto_point_pb.Point;
+    clearPadList(): void;
+    getPadList(): Array<proto_pad_pb.Pad>;
+    setPadList(value: Array<proto_pad_pb.Pad>): Square;
+    addPad(value?: proto_pad_pb.Pad, index?: number): proto_pad_pb.Pad;
+
+    clearStockList(): void;
+    getStockList(): Array<proto_stock_pb.Stock>;
+    setStockList(value: Array<proto_stock_pb.Stock>): Square;
+    addStock(value?: proto_stock_pb.Stock, index?: number): proto_stock_pb.Stock;
+
+    clearDmeList(): void;
+    getDmeList(): Array<proto_dme_pb.Dme>;
+    setDmeList(value: Array<proto_dme_pb.Dme>): Square;
+    addDme(value?: proto_dme_pb.Dme, index?: number): proto_dme_pb.Dme;
 
 
     serializeBinary(): Uint8Array;
@@ -67,12 +79,14 @@ export namespace Square {
         id: string,
         name: string,
         altitude: number,
-        polygonList: Array<proto_polygon_pb.Polygon.AsObject>,
-        cellList: Array<proto_cell_pb.Cell.AsObject>,
-        geofenceList: Array<proto_geofence_pb.Geofence.AsObject>,
-        roadList: Array<proto_road_pb.Road.AsObject>,
         segmentList: Array<proto_point_pb.Point.AsObject>,
         pointList: Array<proto_point_pb.Point.AsObject>,
+        geofenceList: Array<proto_geofence_pb.Geofence.AsObject>,
+        roadList: Array<proto_road_pb.Road.AsObject>,
+        pitList: Array<proto_pit_pb.Pit.AsObject>,
+        padList: Array<proto_pad_pb.Pad.AsObject>,
+        stockList: Array<proto_stock_pb.Stock.AsObject>,
+        dmeList: Array<proto_dme_pb.Dme.AsObject>,
     }
 }
 

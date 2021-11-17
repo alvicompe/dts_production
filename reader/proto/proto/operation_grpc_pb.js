@@ -8,7 +8,40 @@ var proto_excavator_pb = require('../proto/excavator_pb.js');
 var proto_road_pb = require('../proto/road_pb.js');
 var proto_cycle_pb = require('../proto/cycle_pb.js');
 var proto_load_pb = require('../proto/load_pb.js');
-var proto_material_pb = require('../proto/material_pb.js');
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+
+function serialize_pb_OperationFinalizeResponse(arg) {
+  if (!(arg instanceof proto_operation_pb.OperationFinalizeResponse)) {
+    throw new Error('Expected argument of type pb.OperationFinalizeResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_OperationFinalizeResponse(buffer_arg) {
+  return proto_operation_pb.OperationFinalizeResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_pb_OperationReassigmentRequest(arg) {
+  if (!(arg instanceof proto_operation_pb.OperationReassigmentRequest)) {
+    throw new Error('Expected argument of type pb.OperationReassigmentRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_OperationReassigmentRequest(buffer_arg) {
+  return proto_operation_pb.OperationReassigmentRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_pb_OperationReassigmentResponse(arg) {
+  if (!(arg instanceof proto_operation_pb.OperationReassigmentResponse)) {
+    throw new Error('Expected argument of type pb.OperationReassigmentResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_OperationReassigmentResponse(buffer_arg) {
+  return proto_operation_pb.OperationReassigmentResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
 
 function serialize_pb_OperationRequest(arg) {
   if (!(arg instanceof proto_operation_pb.OperationRequest)) {
@@ -99,6 +132,39 @@ var OperationServiceService = exports.OperationServiceService = {
     requestDeserialize: deserialize_pb_OperationRequest,
     responseSerialize: serialize_pb_OperationResponse,
     responseDeserialize: deserialize_pb_OperationResponse,
+  },
+  removeTrucksOperation: {
+    path: '/pb.OperationService/RemoveTrucksOperation',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_operation_pb.OperationRequest,
+    responseType: proto_operation_pb.OperationResponse,
+    requestSerialize: serialize_pb_OperationRequest,
+    requestDeserialize: deserialize_pb_OperationRequest,
+    responseSerialize: serialize_pb_OperationResponse,
+    responseDeserialize: deserialize_pb_OperationResponse,
+  },
+  reassigmentTrucksOperation: {
+    path: '/pb.OperationService/ReassigmentTrucksOperation',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_operation_pb.OperationReassigmentRequest,
+    responseType: proto_operation_pb.OperationReassigmentResponse,
+    requestSerialize: serialize_pb_OperationReassigmentRequest,
+    requestDeserialize: deserialize_pb_OperationReassigmentRequest,
+    responseSerialize: serialize_pb_OperationReassigmentResponse,
+    responseDeserialize: deserialize_pb_OperationReassigmentResponse,
+  },
+  finalizeOperation: {
+    path: '/pb.OperationService/FinalizeOperation',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_operation_pb.OperationRequest,
+    responseType: proto_operation_pb.OperationFinalizeResponse,
+    requestSerialize: serialize_pb_OperationRequest,
+    requestDeserialize: deserialize_pb_OperationRequest,
+    responseSerialize: serialize_pb_OperationFinalizeResponse,
+    responseDeserialize: deserialize_pb_OperationFinalizeResponse,
   },
 };
 

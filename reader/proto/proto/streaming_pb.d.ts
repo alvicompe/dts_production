@@ -5,12 +5,87 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
-import * as proto_polygon_pb from "../proto/polygon_pb";
-import * as proto_cell_pb from "../proto/cell_pb";
 import * as proto_geofence_pb from "../proto/geofence_pb";
 import * as proto_road_pb from "../proto/road_pb";
 import * as proto_point_pb from "../proto/point_pb";
 import * as proto_sensor_pb from "../proto/sensor_pb";
+import * as proto_pit_pb from "../proto/pit_pb";
+import * as proto_pad_pb from "../proto/pad_pb";
+import * as proto_stock_pb from "../proto/stock_pb";
+import * as proto_dme_pb from "../proto/dme_pb";
+import * as proto_excavator_pb from "../proto/excavator_pb";
+import * as proto_truck_pb from "../proto/truck_pb";
+import * as proto_load_pb from "../proto/load_pb";
+
+export class OperationAssignment extends jspb.Message { 
+    getId(): string;
+    setId(value: string): OperationAssignment;
+
+
+    hasExcavator(): boolean;
+    clearExcavator(): void;
+    getExcavator(): proto_excavator_pb.Excavator | undefined;
+    setExcavator(value?: proto_excavator_pb.Excavator): OperationAssignment;
+
+    clearTruckList(): void;
+    getTruckList(): Array<proto_truck_pb.Truck>;
+    setTruckList(value: Array<proto_truck_pb.Truck>): OperationAssignment;
+    addTruck(value?: proto_truck_pb.Truck, index?: number): proto_truck_pb.Truck;
+
+
+    hasUpload(): boolean;
+    clearUpload(): void;
+    getUpload(): proto_load_pb.Upload | undefined;
+    setUpload(value?: proto_load_pb.Upload): OperationAssignment;
+
+
+    hasDownload(): boolean;
+    clearDownload(): void;
+    getDownload(): proto_load_pb.Download | undefined;
+    setDownload(value?: proto_load_pb.Download): OperationAssignment;
+
+    getShift(): OperationAssignment.Shift;
+    setShift(value: OperationAssignment.Shift): OperationAssignment;
+
+    getState(): OperationAssignment.State;
+    setState(value: OperationAssignment.State): OperationAssignment;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): OperationAssignment.AsObject;
+    static toObject(includeInstance: boolean, msg: OperationAssignment): OperationAssignment.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: OperationAssignment, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): OperationAssignment;
+    static deserializeBinaryFromReader(message: OperationAssignment, reader: jspb.BinaryReader): OperationAssignment;
+}
+
+export namespace OperationAssignment {
+    export type AsObject = {
+        id: string,
+        excavator?: proto_excavator_pb.Excavator.AsObject,
+        truckList: Array<proto_truck_pb.Truck.AsObject>,
+        upload?: proto_load_pb.Upload.AsObject,
+        download?: proto_load_pb.Download.AsObject,
+        shift: OperationAssignment.Shift,
+        state: OperationAssignment.State,
+    }
+
+    export enum Shift {
+    UNKNOWN_SHIFT = 0,
+    NIGHT = 1,
+    DAY = 2,
+    }
+
+    export enum State {
+    UNKNOWN_STATE = 0,
+    PENDING = 1,
+    OPENED = 2,
+    CLOSED = 3,
+    }
+
+}
 
 export class TruckInfo extends jspb.Message { 
     getDeviceId(): string;
@@ -41,18 +116,6 @@ export class TruckInfo extends jspb.Message {
     setGeofence(value?: proto_geofence_pb.Geofence): TruckInfo;
 
 
-    hasPolygon(): boolean;
-    clearPolygon(): void;
-    getPolygon(): proto_polygon_pb.Polygon | undefined;
-    setPolygon(value?: proto_polygon_pb.Polygon): TruckInfo;
-
-
-    hasCell(): boolean;
-    clearCell(): void;
-    getCell(): proto_cell_pb.Cell | undefined;
-    setCell(value?: proto_cell_pb.Cell): TruckInfo;
-
-
     hasRoad(): boolean;
     clearRoad(): void;
     getRoad(): proto_road_pb.Road | undefined;
@@ -62,6 +125,35 @@ export class TruckInfo extends jspb.Message {
     getSegmentList(): Array<proto_point_pb.Point>;
     setSegmentList(value: Array<proto_point_pb.Point>): TruckInfo;
     addSegment(value?: proto_point_pb.Point, index?: number): proto_point_pb.Point;
+
+
+    hasPit(): boolean;
+    clearPit(): void;
+    getPit(): proto_pit_pb.Pit | undefined;
+    setPit(value?: proto_pit_pb.Pit): TruckInfo;
+
+
+    hasPad(): boolean;
+    clearPad(): void;
+    getPad(): proto_pad_pb.Pad | undefined;
+    setPad(value?: proto_pad_pb.Pad): TruckInfo;
+
+
+    hasStock(): boolean;
+    clearStock(): void;
+    getStock(): proto_stock_pb.Stock | undefined;
+    setStock(value?: proto_stock_pb.Stock): TruckInfo;
+
+
+    hasDme(): boolean;
+    clearDme(): void;
+    getDme(): proto_dme_pb.Dme | undefined;
+    setDme(value?: proto_dme_pb.Dme): TruckInfo;
+
+    clearOperationList(): void;
+    getOperationList(): Array<OperationAssignment>;
+    setOperationList(value: Array<OperationAssignment>): TruckInfo;
+    addOperation(value?: OperationAssignment, index?: number): OperationAssignment;
 
 
     serializeBinary(): Uint8Array;
@@ -83,10 +175,13 @@ export namespace TruckInfo {
         sensor?: proto_sensor_pb.Sensor.AsObject,
         state: TruckInfo.State,
         geofence?: proto_geofence_pb.Geofence.AsObject,
-        polygon?: proto_polygon_pb.Polygon.AsObject,
-        cell?: proto_cell_pb.Cell.AsObject,
         road?: proto_road_pb.Road.AsObject,
         segmentList: Array<proto_point_pb.Point.AsObject>,
+        pit?: proto_pit_pb.Pit.AsObject,
+        pad?: proto_pad_pb.Pad.AsObject,
+        stock?: proto_stock_pb.Stock.AsObject,
+        dme?: proto_dme_pb.Dme.AsObject,
+        operationList: Array<OperationAssignment.AsObject>,
     }
 
     export enum State {
@@ -127,10 +222,15 @@ export class ExcavatorInfo extends jspb.Message {
     setGeofence(value?: proto_geofence_pb.Geofence): ExcavatorInfo;
 
 
-    hasPolygon(): boolean;
-    clearPolygon(): void;
-    getPolygon(): proto_polygon_pb.Polygon | undefined;
-    setPolygon(value?: proto_polygon_pb.Polygon): ExcavatorInfo;
+    hasPit(): boolean;
+    clearPit(): void;
+    getPit(): proto_pit_pb.Pit | undefined;
+    setPit(value?: proto_pit_pb.Pit): ExcavatorInfo;
+
+    clearOperationList(): void;
+    getOperationList(): Array<OperationAssignment>;
+    setOperationList(value: Array<OperationAssignment>): ExcavatorInfo;
+    addOperation(value?: OperationAssignment, index?: number): OperationAssignment;
 
 
     serializeBinary(): Uint8Array;
@@ -151,7 +251,8 @@ export namespace ExcavatorInfo {
         sensor?: proto_sensor_pb.Sensor.AsObject,
         state: ExcavatorInfo.State,
         geofence?: proto_geofence_pb.Geofence.AsObject,
-        polygon?: proto_polygon_pb.Polygon.AsObject,
+        pit?: proto_pit_pb.Pit.AsObject,
+        operationList: Array<OperationAssignment.AsObject>,
     }
 
     export enum State {

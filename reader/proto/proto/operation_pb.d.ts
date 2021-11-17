@@ -10,7 +10,7 @@ import * as proto_excavator_pb from "../proto/excavator_pb";
 import * as proto_road_pb from "../proto/road_pb";
 import * as proto_cycle_pb from "../proto/cycle_pb";
 import * as proto_load_pb from "../proto/load_pb";
-import * as proto_material_pb from "../proto/material_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 export class Operation extends jspb.Message { 
     getId(): string;
@@ -22,11 +22,17 @@ export class Operation extends jspb.Message {
     getDescription(): string;
     setDescription(value: string): Operation;
 
-    getStartTime(): string;
-    setStartTime(value: string): Operation;
 
-    getEndTime(): string;
-    setEndTime(value: string): Operation;
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): Operation;
+
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): Operation;
 
     getDistance(): number;
     setDistance(value: number): Operation;
@@ -88,8 +94,8 @@ export namespace Operation {
         id: string,
         name: string,
         description: string,
-        startTime: string,
-        endTime: string,
+        startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         distance: number,
         duration: number,
         shift: Operation.Shift,
@@ -165,6 +171,45 @@ export namespace OperationResponse {
     }
 }
 
+export class TruckStateMessage extends jspb.Message { 
+
+    hasTruckError(): boolean;
+    clearTruckError(): void;
+    getTruckError(): proto_truck_pb.Truck | undefined;
+    setTruckError(value?: proto_truck_pb.Truck): TruckStateMessage;
+
+    getState(): TruckStateMessage.State;
+    setState(value: TruckStateMessage.State): TruckStateMessage;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TruckStateMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: TruckStateMessage): TruckStateMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TruckStateMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TruckStateMessage;
+    static deserializeBinaryFromReader(message: TruckStateMessage, reader: jspb.BinaryReader): TruckStateMessage;
+}
+
+export namespace TruckStateMessage {
+    export type AsObject = {
+        truckError?: proto_truck_pb.Truck.AsObject,
+        state: TruckStateMessage.State,
+    }
+
+    export enum State {
+    UNKNOWN_STATE = 0,
+    UPLOAD = 1,
+    DOWNLOAD = 2,
+    TO_UPLOAD = 3,
+    TO_DOWNLOAD = 4,
+    WAITING = 5,
+    QUEUE = 6,
+    }
+
+}
+
 export class OperationsResponse extends jspb.Message { 
     clearOperationsList(): void;
     getOperationsList(): Array<Operation>;
@@ -185,5 +230,95 @@ export class OperationsResponse extends jspb.Message {
 export namespace OperationsResponse {
     export type AsObject = {
         operationsList: Array<Operation.AsObject>,
+    }
+}
+
+export class OperationReassigmentRequest extends jspb.Message { 
+    clearTruckList(): void;
+    getTruckList(): Array<proto_truck_pb.Truck>;
+    setTruckList(value: Array<proto_truck_pb.Truck>): OperationReassigmentRequest;
+    addTruck(value?: proto_truck_pb.Truck, index?: number): proto_truck_pb.Truck;
+
+
+    hasOperationDestination(): boolean;
+    clearOperationDestination(): void;
+    getOperationDestination(): Operation | undefined;
+    setOperationDestination(value?: Operation): OperationReassigmentRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): OperationReassigmentRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: OperationReassigmentRequest): OperationReassigmentRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: OperationReassigmentRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): OperationReassigmentRequest;
+    static deserializeBinaryFromReader(message: OperationReassigmentRequest, reader: jspb.BinaryReader): OperationReassigmentRequest;
+}
+
+export namespace OperationReassigmentRequest {
+    export type AsObject = {
+        truckList: Array<proto_truck_pb.Truck.AsObject>,
+        operationDestination?: Operation.AsObject,
+    }
+}
+
+export class OperationReassigmentResponse extends jspb.Message { 
+
+    hasOperation(): boolean;
+    clearOperation(): void;
+    getOperation(): Operation | undefined;
+    setOperation(value?: Operation): OperationReassigmentResponse;
+
+    clearTruckErrorList(): void;
+    getTruckErrorList(): Array<TruckStateMessage>;
+    setTruckErrorList(value: Array<TruckStateMessage>): OperationReassigmentResponse;
+    addTruckError(value?: TruckStateMessage, index?: number): TruckStateMessage;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): OperationReassigmentResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: OperationReassigmentResponse): OperationReassigmentResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: OperationReassigmentResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): OperationReassigmentResponse;
+    static deserializeBinaryFromReader(message: OperationReassigmentResponse, reader: jspb.BinaryReader): OperationReassigmentResponse;
+}
+
+export namespace OperationReassigmentResponse {
+    export type AsObject = {
+        operation?: Operation.AsObject,
+        truckErrorList: Array<TruckStateMessage.AsObject>,
+    }
+}
+
+export class OperationFinalizeResponse extends jspb.Message { 
+
+    hasOperation(): boolean;
+    clearOperation(): void;
+    getOperation(): Operation | undefined;
+    setOperation(value?: Operation): OperationFinalizeResponse;
+
+    clearTruckErrorList(): void;
+    getTruckErrorList(): Array<TruckStateMessage>;
+    setTruckErrorList(value: Array<TruckStateMessage>): OperationFinalizeResponse;
+    addTruckError(value?: TruckStateMessage, index?: number): TruckStateMessage;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): OperationFinalizeResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: OperationFinalizeResponse): OperationFinalizeResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: OperationFinalizeResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): OperationFinalizeResponse;
+    static deserializeBinaryFromReader(message: OperationFinalizeResponse, reader: jspb.BinaryReader): OperationFinalizeResponse;
+}
+
+export namespace OperationFinalizeResponse {
+    export type AsObject = {
+        operation?: Operation.AsObject,
+        truckErrorList: Array<TruckStateMessage.AsObject>,
     }
 }

@@ -222,3 +222,20 @@ export namespace GeosResponse {
         geosList: Array<Geo.AsObject>,
     }
 }
+
+export class GeoEmptyRequest extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GeoEmptyRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GeoEmptyRequest): GeoEmptyRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GeoEmptyRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GeoEmptyRequest;
+    static deserializeBinaryFromReader(message: GeoEmptyRequest, reader: jspb.BinaryReader): GeoEmptyRequest;
+}
+
+export namespace GeoEmptyRequest {
+    export type AsObject = {
+    }
+}

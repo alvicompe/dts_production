@@ -15,10 +15,14 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var proto_polygon_pb = require('../proto/polygon_pb.js');
-goog.object.extend(proto, proto_polygon_pb);
-var proto_cell_pb = require('../proto/cell_pb.js');
-goog.object.extend(proto, proto_cell_pb);
+var proto_pit_pb = require('../proto/pit_pb.js');
+goog.object.extend(proto, proto_pit_pb);
+var proto_pad_pb = require('../proto/pad_pb.js');
+goog.object.extend(proto, proto_pad_pb);
+var proto_stock_pb = require('../proto/stock_pb.js');
+goog.object.extend(proto, proto_stock_pb);
+var proto_dme_pb = require('../proto/dme_pb.js');
+goog.object.extend(proto, proto_dme_pb);
 var proto_road_pb = require('../proto/road_pb.js');
 goog.object.extend(proto, proto_road_pb);
 goog.exportSymbol('proto.pb.Download', null, global);
@@ -100,8 +104,10 @@ proto.pb.Upload.prototype.toObject = function(opt_includeInstance) {
 proto.pb.Upload.toObject = function(includeInstance, msg) {
   var f, obj = {
     type: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    polygon: (f = msg.getPolygon()) && proto_polygon_pb.Polygon.toObject(includeInstance, f),
-    cell: (f = msg.getCell()) && proto_cell_pb.Cell.toObject(includeInstance, f),
+    pit: (f = msg.getPit()) && proto_pit_pb.Pit.toObject(includeInstance, f),
+    pad: (f = msg.getPad()) && proto_pad_pb.Pad.toObject(includeInstance, f),
+    stock: (f = msg.getStock()) && proto_stock_pb.Stock.toObject(includeInstance, f),
+    dme: (f = msg.getDme()) && proto_dme_pb.Dme.toObject(includeInstance, f),
     road: (f = msg.getRoad()) && proto_road_pb.Road.toObject(includeInstance, f)
   };
 
@@ -144,16 +150,26 @@ proto.pb.Upload.deserializeBinaryFromReader = function(msg, reader) {
       msg.setType(value);
       break;
     case 2:
-      var value = new proto_polygon_pb.Polygon;
-      reader.readMessage(value,proto_polygon_pb.Polygon.deserializeBinaryFromReader);
-      msg.setPolygon(value);
+      var value = new proto_pit_pb.Pit;
+      reader.readMessage(value,proto_pit_pb.Pit.deserializeBinaryFromReader);
+      msg.setPit(value);
       break;
     case 3:
-      var value = new proto_cell_pb.Cell;
-      reader.readMessage(value,proto_cell_pb.Cell.deserializeBinaryFromReader);
-      msg.setCell(value);
+      var value = new proto_pad_pb.Pad;
+      reader.readMessage(value,proto_pad_pb.Pad.deserializeBinaryFromReader);
+      msg.setPad(value);
       break;
     case 4:
+      var value = new proto_stock_pb.Stock;
+      reader.readMessage(value,proto_stock_pb.Stock.deserializeBinaryFromReader);
+      msg.setStock(value);
+      break;
+    case 5:
+      var value = new proto_dme_pb.Dme;
+      reader.readMessage(value,proto_dme_pb.Dme.deserializeBinaryFromReader);
+      msg.setDme(value);
+      break;
+    case 6:
       var value = new proto_road_pb.Road;
       reader.readMessage(value,proto_road_pb.Road.deserializeBinaryFromReader);
       msg.setRoad(value);
@@ -194,26 +210,42 @@ proto.pb.Upload.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getPolygon();
+  f = message.getPit();
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      proto_polygon_pb.Polygon.serializeBinaryToWriter
+      proto_pit_pb.Pit.serializeBinaryToWriter
     );
   }
-  f = message.getCell();
+  f = message.getPad();
   if (f != null) {
     writer.writeMessage(
       3,
       f,
-      proto_cell_pb.Cell.serializeBinaryToWriter
+      proto_pad_pb.Pad.serializeBinaryToWriter
+    );
+  }
+  f = message.getStock();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      proto_stock_pb.Stock.serializeBinaryToWriter
+    );
+  }
+  f = message.getDme();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto_dme_pb.Dme.serializeBinaryToWriter
     );
   }
   f = message.getRoad();
   if (f != null) {
     writer.writeMessage(
-      4,
+      6,
       f,
       proto_road_pb.Road.serializeBinaryToWriter
     );
@@ -226,9 +258,11 @@ proto.pb.Upload.serializeBinaryToWriter = function(message, writer) {
  */
 proto.pb.Upload.Type = {
   UNKNOWN: 0,
-  POLYGON: 1,
-  CELL: 2,
-  ROAD: 3
+  PIT: 1,
+  PAD: 2,
+  STOCK: 3,
+  DME: 4,
+  ROAD: 5
 };
 
 /**
@@ -250,20 +284,20 @@ proto.pb.Upload.prototype.setType = function(value) {
 
 
 /**
- * optional Polygon polygon = 2;
- * @return {?proto.pb.Polygon}
+ * optional Pit pit = 2;
+ * @return {?proto.pb.Pit}
  */
-proto.pb.Upload.prototype.getPolygon = function() {
-  return /** @type{?proto.pb.Polygon} */ (
-    jspb.Message.getWrapperField(this, proto_polygon_pb.Polygon, 2));
+proto.pb.Upload.prototype.getPit = function() {
+  return /** @type{?proto.pb.Pit} */ (
+    jspb.Message.getWrapperField(this, proto_pit_pb.Pit, 2));
 };
 
 
 /**
- * @param {?proto.pb.Polygon|undefined} value
+ * @param {?proto.pb.Pit|undefined} value
  * @return {!proto.pb.Upload} returns this
 */
-proto.pb.Upload.prototype.setPolygon = function(value) {
+proto.pb.Upload.prototype.setPit = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -272,8 +306,8 @@ proto.pb.Upload.prototype.setPolygon = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.pb.Upload} returns this
  */
-proto.pb.Upload.prototype.clearPolygon = function() {
-  return this.setPolygon(undefined);
+proto.pb.Upload.prototype.clearPit = function() {
+  return this.setPit(undefined);
 };
 
 
@@ -281,26 +315,26 @@ proto.pb.Upload.prototype.clearPolygon = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.pb.Upload.prototype.hasPolygon = function() {
+proto.pb.Upload.prototype.hasPit = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * optional Cell cell = 3;
- * @return {?proto.pb.Cell}
+ * optional Pad pad = 3;
+ * @return {?proto.pb.Pad}
  */
-proto.pb.Upload.prototype.getCell = function() {
-  return /** @type{?proto.pb.Cell} */ (
-    jspb.Message.getWrapperField(this, proto_cell_pb.Cell, 3));
+proto.pb.Upload.prototype.getPad = function() {
+  return /** @type{?proto.pb.Pad} */ (
+    jspb.Message.getWrapperField(this, proto_pad_pb.Pad, 3));
 };
 
 
 /**
- * @param {?proto.pb.Cell|undefined} value
+ * @param {?proto.pb.Pad|undefined} value
  * @return {!proto.pb.Upload} returns this
 */
-proto.pb.Upload.prototype.setCell = function(value) {
+proto.pb.Upload.prototype.setPad = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
@@ -309,8 +343,8 @@ proto.pb.Upload.prototype.setCell = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.pb.Upload} returns this
  */
-proto.pb.Upload.prototype.clearCell = function() {
-  return this.setCell(undefined);
+proto.pb.Upload.prototype.clearPad = function() {
+  return this.setPad(undefined);
 };
 
 
@@ -318,18 +352,92 @@ proto.pb.Upload.prototype.clearCell = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.pb.Upload.prototype.hasCell = function() {
+proto.pb.Upload.prototype.hasPad = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional Road road = 4;
+ * optional Stock stock = 4;
+ * @return {?proto.pb.Stock}
+ */
+proto.pb.Upload.prototype.getStock = function() {
+  return /** @type{?proto.pb.Stock} */ (
+    jspb.Message.getWrapperField(this, proto_stock_pb.Stock, 4));
+};
+
+
+/**
+ * @param {?proto.pb.Stock|undefined} value
+ * @return {!proto.pb.Upload} returns this
+*/
+proto.pb.Upload.prototype.setStock = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.Upload} returns this
+ */
+proto.pb.Upload.prototype.clearStock = function() {
+  return this.setStock(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.Upload.prototype.hasStock = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional Dme dme = 5;
+ * @return {?proto.pb.Dme}
+ */
+proto.pb.Upload.prototype.getDme = function() {
+  return /** @type{?proto.pb.Dme} */ (
+    jspb.Message.getWrapperField(this, proto_dme_pb.Dme, 5));
+};
+
+
+/**
+ * @param {?proto.pb.Dme|undefined} value
+ * @return {!proto.pb.Upload} returns this
+*/
+proto.pb.Upload.prototype.setDme = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.Upload} returns this
+ */
+proto.pb.Upload.prototype.clearDme = function() {
+  return this.setDme(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.Upload.prototype.hasDme = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional Road road = 6;
  * @return {?proto.pb.Road}
  */
 proto.pb.Upload.prototype.getRoad = function() {
   return /** @type{?proto.pb.Road} */ (
-    jspb.Message.getWrapperField(this, proto_road_pb.Road, 4));
+    jspb.Message.getWrapperField(this, proto_road_pb.Road, 6));
 };
 
 
@@ -338,7 +446,7 @@ proto.pb.Upload.prototype.getRoad = function() {
  * @return {!proto.pb.Upload} returns this
 */
 proto.pb.Upload.prototype.setRoad = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
@@ -356,7 +464,7 @@ proto.pb.Upload.prototype.clearRoad = function() {
  * @return {boolean}
  */
 proto.pb.Upload.prototype.hasRoad = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -393,8 +501,10 @@ proto.pb.Download.prototype.toObject = function(opt_includeInstance) {
 proto.pb.Download.toObject = function(includeInstance, msg) {
   var f, obj = {
     type: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    polygon: (f = msg.getPolygon()) && proto_polygon_pb.Polygon.toObject(includeInstance, f),
-    cell: (f = msg.getCell()) && proto_cell_pb.Cell.toObject(includeInstance, f),
+    pit: (f = msg.getPit()) && proto_pit_pb.Pit.toObject(includeInstance, f),
+    pad: (f = msg.getPad()) && proto_pad_pb.Pad.toObject(includeInstance, f),
+    stock: (f = msg.getStock()) && proto_stock_pb.Stock.toObject(includeInstance, f),
+    dme: (f = msg.getDme()) && proto_dme_pb.Dme.toObject(includeInstance, f),
     road: (f = msg.getRoad()) && proto_road_pb.Road.toObject(includeInstance, f)
   };
 
@@ -437,16 +547,26 @@ proto.pb.Download.deserializeBinaryFromReader = function(msg, reader) {
       msg.setType(value);
       break;
     case 2:
-      var value = new proto_polygon_pb.Polygon;
-      reader.readMessage(value,proto_polygon_pb.Polygon.deserializeBinaryFromReader);
-      msg.setPolygon(value);
+      var value = new proto_pit_pb.Pit;
+      reader.readMessage(value,proto_pit_pb.Pit.deserializeBinaryFromReader);
+      msg.setPit(value);
       break;
     case 3:
-      var value = new proto_cell_pb.Cell;
-      reader.readMessage(value,proto_cell_pb.Cell.deserializeBinaryFromReader);
-      msg.setCell(value);
+      var value = new proto_pad_pb.Pad;
+      reader.readMessage(value,proto_pad_pb.Pad.deserializeBinaryFromReader);
+      msg.setPad(value);
       break;
     case 4:
+      var value = new proto_stock_pb.Stock;
+      reader.readMessage(value,proto_stock_pb.Stock.deserializeBinaryFromReader);
+      msg.setStock(value);
+      break;
+    case 5:
+      var value = new proto_dme_pb.Dme;
+      reader.readMessage(value,proto_dme_pb.Dme.deserializeBinaryFromReader);
+      msg.setDme(value);
+      break;
+    case 6:
       var value = new proto_road_pb.Road;
       reader.readMessage(value,proto_road_pb.Road.deserializeBinaryFromReader);
       msg.setRoad(value);
@@ -487,26 +607,42 @@ proto.pb.Download.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getPolygon();
+  f = message.getPit();
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      proto_polygon_pb.Polygon.serializeBinaryToWriter
+      proto_pit_pb.Pit.serializeBinaryToWriter
     );
   }
-  f = message.getCell();
+  f = message.getPad();
   if (f != null) {
     writer.writeMessage(
       3,
       f,
-      proto_cell_pb.Cell.serializeBinaryToWriter
+      proto_pad_pb.Pad.serializeBinaryToWriter
+    );
+  }
+  f = message.getStock();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      proto_stock_pb.Stock.serializeBinaryToWriter
+    );
+  }
+  f = message.getDme();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto_dme_pb.Dme.serializeBinaryToWriter
     );
   }
   f = message.getRoad();
   if (f != null) {
     writer.writeMessage(
-      4,
+      6,
       f,
       proto_road_pb.Road.serializeBinaryToWriter
     );
@@ -519,9 +655,12 @@ proto.pb.Download.serializeBinaryToWriter = function(message, writer) {
  */
 proto.pb.Download.Type = {
   UNKNOWN: 0,
-  POLYGON: 1,
-  CELL: 2,
-  ROAD: 3
+  PIT: 1,
+  PAD: 2,
+  STOCK: 3,
+  DME: 4,
+  ROAD: 5,
+  PAD_DME: 6
 };
 
 /**
@@ -543,20 +682,20 @@ proto.pb.Download.prototype.setType = function(value) {
 
 
 /**
- * optional Polygon polygon = 2;
- * @return {?proto.pb.Polygon}
+ * optional Pit pit = 2;
+ * @return {?proto.pb.Pit}
  */
-proto.pb.Download.prototype.getPolygon = function() {
-  return /** @type{?proto.pb.Polygon} */ (
-    jspb.Message.getWrapperField(this, proto_polygon_pb.Polygon, 2));
+proto.pb.Download.prototype.getPit = function() {
+  return /** @type{?proto.pb.Pit} */ (
+    jspb.Message.getWrapperField(this, proto_pit_pb.Pit, 2));
 };
 
 
 /**
- * @param {?proto.pb.Polygon|undefined} value
+ * @param {?proto.pb.Pit|undefined} value
  * @return {!proto.pb.Download} returns this
 */
-proto.pb.Download.prototype.setPolygon = function(value) {
+proto.pb.Download.prototype.setPit = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -565,8 +704,8 @@ proto.pb.Download.prototype.setPolygon = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.pb.Download} returns this
  */
-proto.pb.Download.prototype.clearPolygon = function() {
-  return this.setPolygon(undefined);
+proto.pb.Download.prototype.clearPit = function() {
+  return this.setPit(undefined);
 };
 
 
@@ -574,26 +713,26 @@ proto.pb.Download.prototype.clearPolygon = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.pb.Download.prototype.hasPolygon = function() {
+proto.pb.Download.prototype.hasPit = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * optional Cell cell = 3;
- * @return {?proto.pb.Cell}
+ * optional Pad pad = 3;
+ * @return {?proto.pb.Pad}
  */
-proto.pb.Download.prototype.getCell = function() {
-  return /** @type{?proto.pb.Cell} */ (
-    jspb.Message.getWrapperField(this, proto_cell_pb.Cell, 3));
+proto.pb.Download.prototype.getPad = function() {
+  return /** @type{?proto.pb.Pad} */ (
+    jspb.Message.getWrapperField(this, proto_pad_pb.Pad, 3));
 };
 
 
 /**
- * @param {?proto.pb.Cell|undefined} value
+ * @param {?proto.pb.Pad|undefined} value
  * @return {!proto.pb.Download} returns this
 */
-proto.pb.Download.prototype.setCell = function(value) {
+proto.pb.Download.prototype.setPad = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
@@ -602,8 +741,8 @@ proto.pb.Download.prototype.setCell = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.pb.Download} returns this
  */
-proto.pb.Download.prototype.clearCell = function() {
-  return this.setCell(undefined);
+proto.pb.Download.prototype.clearPad = function() {
+  return this.setPad(undefined);
 };
 
 
@@ -611,18 +750,92 @@ proto.pb.Download.prototype.clearCell = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.pb.Download.prototype.hasCell = function() {
+proto.pb.Download.prototype.hasPad = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional Road road = 4;
+ * optional Stock stock = 4;
+ * @return {?proto.pb.Stock}
+ */
+proto.pb.Download.prototype.getStock = function() {
+  return /** @type{?proto.pb.Stock} */ (
+    jspb.Message.getWrapperField(this, proto_stock_pb.Stock, 4));
+};
+
+
+/**
+ * @param {?proto.pb.Stock|undefined} value
+ * @return {!proto.pb.Download} returns this
+*/
+proto.pb.Download.prototype.setStock = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.Download} returns this
+ */
+proto.pb.Download.prototype.clearStock = function() {
+  return this.setStock(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.Download.prototype.hasStock = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional Dme dme = 5;
+ * @return {?proto.pb.Dme}
+ */
+proto.pb.Download.prototype.getDme = function() {
+  return /** @type{?proto.pb.Dme} */ (
+    jspb.Message.getWrapperField(this, proto_dme_pb.Dme, 5));
+};
+
+
+/**
+ * @param {?proto.pb.Dme|undefined} value
+ * @return {!proto.pb.Download} returns this
+*/
+proto.pb.Download.prototype.setDme = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.Download} returns this
+ */
+proto.pb.Download.prototype.clearDme = function() {
+  return this.setDme(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.Download.prototype.hasDme = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional Road road = 6;
  * @return {?proto.pb.Road}
  */
 proto.pb.Download.prototype.getRoad = function() {
   return /** @type{?proto.pb.Road} */ (
-    jspb.Message.getWrapperField(this, proto_road_pb.Road, 4));
+    jspb.Message.getWrapperField(this, proto_road_pb.Road, 6));
 };
 
 
@@ -631,7 +844,7 @@ proto.pb.Download.prototype.getRoad = function() {
  * @return {!proto.pb.Download} returns this
 */
 proto.pb.Download.prototype.setRoad = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
@@ -649,7 +862,7 @@ proto.pb.Download.prototype.clearRoad = function() {
  * @return {boolean}
  */
 proto.pb.Download.prototype.hasRoad = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

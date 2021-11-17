@@ -33,6 +33,17 @@ function deserialize_pb_GeoChunkResponse(buffer_arg) {
   return proto_geo_pb.GeoChunkResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_pb_GeoEmptyRequest(arg) {
+  if (!(arg instanceof proto_geo_pb.GeoEmptyRequest)) {
+    throw new Error('Expected argument of type pb.GeoEmptyRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_GeoEmptyRequest(buffer_arg) {
+  return proto_geo_pb.GeoEmptyRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_pb_GeoRequest(arg) {
   if (!(arg instanceof proto_geo_pb.GeoRequest)) {
     throw new Error('Expected argument of type pb.GeoRequest');
@@ -105,10 +116,10 @@ var GeoServiceService = exports.GeoServiceService = {
     path: '/pb.GeoService/RetrieveGeos',
     requestStream: false,
     responseStream: false,
-    requestType: proto_geo_pb.GeoRequest,
+    requestType: proto_geo_pb.GeoEmptyRequest,
     responseType: proto_geo_pb.GeosResponse,
-    requestSerialize: serialize_pb_GeoRequest,
-    requestDeserialize: deserialize_pb_GeoRequest,
+    requestSerialize: serialize_pb_GeoEmptyRequest,
+    requestDeserialize: deserialize_pb_GeoEmptyRequest,
     responseSerialize: serialize_pb_GeosResponse,
     responseDeserialize: deserialize_pb_GeosResponse,
   },

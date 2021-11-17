@@ -11,6 +11,7 @@ import * as proto_excavator_pb from "../proto/excavator_pb";
 import * as proto_material_pb from "../proto/material_pb";
 import * as proto_streaming_pb from "../proto/streaming_pb";
 import * as proto_load_pb from "../proto/load_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 interface ICycleServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     createCycle: ICycleServiceService_ICreateCycle;

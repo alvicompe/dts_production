@@ -76,6 +76,9 @@ export class ExcavatorCurrentState extends jspb.Message {
     getSensor(): proto_sensor_pb.Sensor | undefined;
     setSensor(value?: proto_sensor_pb.Sensor): ExcavatorCurrentState;
 
+    getOnsite(): boolean;
+    setOnsite(value: boolean): ExcavatorCurrentState;
+
     getState(): ExcavatorCurrentState.State;
     setState(value: ExcavatorCurrentState.State): ExcavatorCurrentState;
 
@@ -100,6 +103,7 @@ export namespace ExcavatorCurrentState {
     export type AsObject = {
         deviceId: string,
         sensor?: proto_sensor_pb.Sensor.AsObject,
+        onsite: boolean,
         state: ExcavatorCurrentState.State,
         operation?: proto_operation_pb.Operation.AsObject,
     }
