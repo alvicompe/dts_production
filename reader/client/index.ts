@@ -12,8 +12,8 @@ export async function readFiles() {
   // console.log("tree")
   // console.log(tree)
 
-
-  return await UploadGeo(tree)
+  return tree
+  // return await UploadGeo(tree)
   // console.log(JSON.stringify(tree.years[0]))
   // const dme = await getDME()
   // console.log(JSON.stringify(dme))

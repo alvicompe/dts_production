@@ -23,10 +23,10 @@ export class GridServer implements IGridServiceServer {
       const ok = await readFiles()
       console.log('ResponsereadFiles', ok)
       if (ok) {
-        const r = await CreateGrid(call.request)
-        console.log('ResponseCreateGrid', r)
-        if (r)
-          response.setDone(true)
+        // const r = await CreateGrid(call.request)
+        // console.log('ResponseCreateGrid', r)
+        // if (r)
+        //   response.setDone(true)
       }
     }
     callback(null, response);

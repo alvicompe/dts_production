@@ -10,22 +10,8 @@ const { formatDiagnostic } = require('typescript');
 
 const root = 'geo'
 
-const dirToJson = async filePath => {
-  return new Promise((resolve, reject) => {
-    readDir(filePath, async (err, dirObj) => {
-      if (err) {
-        console.log(err);
-      } else {
-        // console.log('dirObj', JSON.stringify(dirObj))
-        const geo = await convertToJson(dirObj)
-        resolve(geo)
-      }
-    })
-  })
-}
-
 const parseDouble = param => {
-  if (param != '') {fget
+  if (param != '') {
     return parseFloat(param)
   }
   return 0
@@ -1018,6 +1004,20 @@ const getTree = async () => {
   return JSON.stringify(geo)
   // return geo
 
+}
+
+const dirToJson = async filePath => {
+  return new Promise((resolve, reject) => {
+    readDir(filePath, async (err, dirObj) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // console.log('dirObj', JSON.stringify(dirObj))
+        const geo = await convertToJson(dirObj)
+        resolve(geo)
+      }
+    })
+  })
 }
 
 module.exports = getTree

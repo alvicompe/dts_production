@@ -48,11 +48,13 @@ message GeosResponse {
   repeated Geo geos = 1;
 }
 
+message GeoEmptyRequest{}
+
 service GeoService {
   rpc UploadGeo(GeoChunkRequest) returns (GeoChunkResponse) {};
   rpc CreateGeo(GeoRequest) returns (GeoResponse) {};
   rpc RetrieveGeo(GeoRequest) returns (GeoResponse) {};
-  rpc RetrieveGeos(GeoRequest) returns (GeosResponse) {};
+  rpc RetrieveGeos(GeoEmptyRequest) returns (GeosResponse) {};
   rpc UpdateGeo(GeoRequest) returns (GeoResponse) {};
   rpc DeleteGeo(GeoRequest) returns (GeoResponse) {};
 }

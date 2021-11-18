@@ -33,6 +33,7 @@ message Download {
     STOCK = 3;
     DME = 4;
     ROAD = 5;
+    PAD_DME = 6;
   }
   Type type = 1;
   Pit pit = 2;
