@@ -3,16 +3,27 @@ syntax = "proto3";
 package pb;
 
 option go_package = "../pb";
-import "proto/geo.proto";
-
-message GeoTreeRequest {}
+import "google/protobuf/empty.proto";
 
 message GeoTreeResponse {
-  repeated Geo geo = 1;
-  bool status = 2;
-  string message = 3;
+  bool status = 1;
+  string message = 2;
+  string geo = 3;
+  repeated string errors = 4;
+}
+
+message CreateTreeGeoResponse {
+  bool status = 1;
+  string message = 2;
+  repeated MessageError errors = 3;
+}
+
+message MessageError{
+  string path = 1;
+  string message = 2;
 }
 
 service GeoReaderService{
-  rpc RetrieveTreeGeo(GeoTreeRequest) returns (GeoTreeResponse) {};
+  rpc RetrieveTreeGeo(google.protobuf.Empty) returns (GeoTreeResponse) {};
+  rpc CreateTreeGeo(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
 }

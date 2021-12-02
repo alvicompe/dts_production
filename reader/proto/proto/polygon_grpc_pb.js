@@ -6,6 +6,28 @@ var proto_polygon_pb = require('../proto/polygon_pb.js');
 var proto_point_pb = require('../proto/point_pb.js');
 var proto_material_pb = require('../proto/material_pb.js');
 
+function serialize_pb_PolygonListRequest(arg) {
+  if (!(arg instanceof proto_polygon_pb.PolygonListRequest)) {
+    throw new Error('Expected argument of type pb.PolygonListRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_PolygonListRequest(buffer_arg) {
+  return proto_polygon_pb.PolygonListRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_pb_PolygonListResponse(arg) {
+  if (!(arg instanceof proto_polygon_pb.PolygonListResponse)) {
+    throw new Error('Expected argument of type pb.PolygonListResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_PolygonListResponse(buffer_arg) {
+  return proto_polygon_pb.PolygonListResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_pb_PolygonRequest(arg) {
   if (!(arg instanceof proto_polygon_pb.PolygonRequest)) {
     throw new Error('Expected argument of type pb.PolygonRequest');
@@ -37,6 +59,17 @@ function serialize_pb_PolygonsResponse(arg) {
 
 function deserialize_pb_PolygonsResponse(buffer_arg) {
   return proto_polygon_pb.PolygonsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_pb_RetrievePolygonByProjectNameRequest(arg) {
+  if (!(arg instanceof proto_polygon_pb.RetrievePolygonByProjectNameRequest)) {
+    throw new Error('Expected argument of type pb.RetrievePolygonByProjectNameRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_RetrievePolygonByProjectNameRequest(buffer_arg) {
+  return proto_polygon_pb.RetrievePolygonByProjectNameRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -74,6 +107,17 @@ var PolygonServiceService = exports.PolygonServiceService = {
     responseSerialize: serialize_pb_PolygonsResponse,
     responseDeserialize: deserialize_pb_PolygonsResponse,
   },
+  retrievePolygonByProjectName: {
+    path: '/pb.PolygonService/RetrievePolygonByProjectName',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_polygon_pb.RetrievePolygonByProjectNameRequest,
+    responseType: proto_polygon_pb.PolygonResponse,
+    requestSerialize: serialize_pb_RetrievePolygonByProjectNameRequest,
+    requestDeserialize: deserialize_pb_RetrievePolygonByProjectNameRequest,
+    responseSerialize: serialize_pb_PolygonResponse,
+    responseDeserialize: deserialize_pb_PolygonResponse,
+  },
   updatePolygon: {
     path: '/pb.PolygonService/UpdatePolygon',
     requestStream: false,
@@ -95,6 +139,17 @@ var PolygonServiceService = exports.PolygonServiceService = {
     requestDeserialize: deserialize_pb_PolygonRequest,
     responseSerialize: serialize_pb_PolygonResponse,
     responseDeserialize: deserialize_pb_PolygonResponse,
+  },
+  finalizePolygonList: {
+    path: '/pb.PolygonService/FinalizePolygonList',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_polygon_pb.PolygonListRequest,
+    responseType: proto_polygon_pb.PolygonListResponse,
+    requestSerialize: serialize_pb_PolygonListRequest,
+    requestDeserialize: deserialize_pb_PolygonListRequest,
+    responseSerialize: serialize_pb_PolygonListResponse,
+    responseDeserialize: deserialize_pb_PolygonListResponse,
   },
 };
 

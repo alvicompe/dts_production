@@ -5,8 +5,10 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
-import * as proto_polygon_pb from "../proto/polygon_pb";
-import * as proto_cell_pb from "../proto/cell_pb";
+import * as proto_pit_pb from "../proto/pit_pb";
+import * as proto_pad_pb from "../proto/pad_pb";
+import * as proto_stock_pb from "../proto/stock_pb";
+import * as proto_dme_pb from "../proto/dme_pb";
 import * as proto_road_pb from "../proto/road_pb";
 
 export class Upload extends jspb.Message { 
@@ -14,16 +16,28 @@ export class Upload extends jspb.Message {
     setType(value: Upload.Type): Upload;
 
 
-    hasPolygon(): boolean;
-    clearPolygon(): void;
-    getPolygon(): proto_polygon_pb.Polygon | undefined;
-    setPolygon(value?: proto_polygon_pb.Polygon): Upload;
+    hasPit(): boolean;
+    clearPit(): void;
+    getPit(): proto_pit_pb.Pit | undefined;
+    setPit(value?: proto_pit_pb.Pit): Upload;
 
 
-    hasCell(): boolean;
-    clearCell(): void;
-    getCell(): proto_cell_pb.Cell | undefined;
-    setCell(value?: proto_cell_pb.Cell): Upload;
+    hasPad(): boolean;
+    clearPad(): void;
+    getPad(): proto_pad_pb.Pad | undefined;
+    setPad(value?: proto_pad_pb.Pad): Upload;
+
+
+    hasStock(): boolean;
+    clearStock(): void;
+    getStock(): proto_stock_pb.Stock | undefined;
+    setStock(value?: proto_stock_pb.Stock): Upload;
+
+
+    hasDme(): boolean;
+    clearDme(): void;
+    getDme(): proto_dme_pb.Dme | undefined;
+    setDme(value?: proto_dme_pb.Dme): Upload;
 
 
     hasRoad(): boolean;
@@ -45,16 +59,20 @@ export class Upload extends jspb.Message {
 export namespace Upload {
     export type AsObject = {
         type: Upload.Type,
-        polygon?: proto_polygon_pb.Polygon.AsObject,
-        cell?: proto_cell_pb.Cell.AsObject,
+        pit?: proto_pit_pb.Pit.AsObject,
+        pad?: proto_pad_pb.Pad.AsObject,
+        stock?: proto_stock_pb.Stock.AsObject,
+        dme?: proto_dme_pb.Dme.AsObject,
         road?: proto_road_pb.Road.AsObject,
     }
 
     export enum Type {
     UNKNOWN = 0,
-    POLYGON = 1,
-    CELL = 2,
-    ROAD = 3,
+    PIT = 1,
+    PAD = 2,
+    STOCK = 3,
+    DME = 4,
+    ROAD = 5,
     }
 
 }
@@ -64,16 +82,28 @@ export class Download extends jspb.Message {
     setType(value: Download.Type): Download;
 
 
-    hasPolygon(): boolean;
-    clearPolygon(): void;
-    getPolygon(): proto_polygon_pb.Polygon | undefined;
-    setPolygon(value?: proto_polygon_pb.Polygon): Download;
+    hasPit(): boolean;
+    clearPit(): void;
+    getPit(): proto_pit_pb.Pit | undefined;
+    setPit(value?: proto_pit_pb.Pit): Download;
 
 
-    hasCell(): boolean;
-    clearCell(): void;
-    getCell(): proto_cell_pb.Cell | undefined;
-    setCell(value?: proto_cell_pb.Cell): Download;
+    hasPad(): boolean;
+    clearPad(): void;
+    getPad(): proto_pad_pb.Pad | undefined;
+    setPad(value?: proto_pad_pb.Pad): Download;
+
+
+    hasStock(): boolean;
+    clearStock(): void;
+    getStock(): proto_stock_pb.Stock | undefined;
+    setStock(value?: proto_stock_pb.Stock): Download;
+
+
+    hasDme(): boolean;
+    clearDme(): void;
+    getDme(): proto_dme_pb.Dme | undefined;
+    setDme(value?: proto_dme_pb.Dme): Download;
 
 
     hasRoad(): boolean;
@@ -95,16 +125,21 @@ export class Download extends jspb.Message {
 export namespace Download {
     export type AsObject = {
         type: Download.Type,
-        polygon?: proto_polygon_pb.Polygon.AsObject,
-        cell?: proto_cell_pb.Cell.AsObject,
+        pit?: proto_pit_pb.Pit.AsObject,
+        pad?: proto_pad_pb.Pad.AsObject,
+        stock?: proto_stock_pb.Stock.AsObject,
+        dme?: proto_dme_pb.Dme.AsObject,
         road?: proto_road_pb.Road.AsObject,
     }
 
     export enum Type {
     UNKNOWN = 0,
-    POLYGON = 1,
-    CELL = 2,
-    ROAD = 3,
+    PIT = 1,
+    PAD = 2,
+    STOCK = 3,
+    DME = 4,
+    ROAD = 5,
+    PAD_DME = 6,
     }
 
 }

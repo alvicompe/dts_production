@@ -13,7 +13,7 @@ const rootCert = readFileSync(path.join(__dirname, 'cert', 'server.crt'))
 // const metaCallback = (_params, callback) => {
 //     const meta = new grpc.Metadata();
 //     meta.add('custom-auth-header', 'token');
-//     callback(null, meta);
+//     callback(null, meta);grpc
 // }
 // const callCreds = grpc.credentials.createFromMetadataGenerator(metaCallback);
 // const combCreds = grpc.credentials.combineChannelCredentials(channelCreds, callCreds);

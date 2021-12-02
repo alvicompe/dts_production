@@ -13,8 +13,10 @@ interface IPolygonServiceService extends grpc.ServiceDefinition<grpc.UntypedServ
     createPolygon: IPolygonServiceService_ICreatePolygon;
     retrievePolygon: IPolygonServiceService_IRetrievePolygon;
     retrievePolygons: IPolygonServiceService_IRetrievePolygons;
+    retrievePolygonByProjectName: IPolygonServiceService_IRetrievePolygonByProjectName;
     updatePolygon: IPolygonServiceService_IUpdatePolygon;
     deletePolygon: IPolygonServiceService_IDeletePolygon;
+    finalizePolygonList: IPolygonServiceService_IFinalizePolygonList;
 }
 
 interface IPolygonServiceService_ICreatePolygon extends grpc.MethodDefinition<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse> {
@@ -44,6 +46,15 @@ interface IPolygonServiceService_IRetrievePolygons extends grpc.MethodDefinition
     responseSerialize: grpc.serialize<proto_polygon_pb.PolygonsResponse>;
     responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonsResponse>;
 }
+interface IPolygonServiceService_IRetrievePolygonByProjectName extends grpc.MethodDefinition<proto_polygon_pb.RetrievePolygonByProjectNameRequest, proto_polygon_pb.PolygonResponse> {
+    path: "/pb.PolygonService/RetrievePolygonByProjectName";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_polygon_pb.RetrievePolygonByProjectNameRequest>;
+    requestDeserialize: grpc.deserialize<proto_polygon_pb.RetrievePolygonByProjectNameRequest>;
+    responseSerialize: grpc.serialize<proto_polygon_pb.PolygonResponse>;
+    responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonResponse>;
+}
 interface IPolygonServiceService_IUpdatePolygon extends grpc.MethodDefinition<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse> {
     path: "/pb.PolygonService/UpdatePolygon";
     requestStream: false;
@@ -62,6 +73,15 @@ interface IPolygonServiceService_IDeletePolygon extends grpc.MethodDefinition<pr
     responseSerialize: grpc.serialize<proto_polygon_pb.PolygonResponse>;
     responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonResponse>;
 }
+interface IPolygonServiceService_IFinalizePolygonList extends grpc.MethodDefinition<proto_polygon_pb.PolygonListRequest, proto_polygon_pb.PolygonListResponse> {
+    path: "/pb.PolygonService/FinalizePolygonList";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_polygon_pb.PolygonListRequest>;
+    requestDeserialize: grpc.deserialize<proto_polygon_pb.PolygonListRequest>;
+    responseSerialize: grpc.serialize<proto_polygon_pb.PolygonListResponse>;
+    responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonListResponse>;
+}
 
 export const PolygonServiceService: IPolygonServiceService;
 
@@ -69,8 +89,10 @@ export interface IPolygonServiceServer {
     createPolygon: grpc.handleUnaryCall<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse>;
     retrievePolygon: grpc.handleUnaryCall<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse>;
     retrievePolygons: grpc.handleUnaryCall<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonsResponse>;
+    retrievePolygonByProjectName: grpc.handleUnaryCall<proto_polygon_pb.RetrievePolygonByProjectNameRequest, proto_polygon_pb.PolygonResponse>;
     updatePolygon: grpc.handleUnaryCall<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse>;
     deletePolygon: grpc.handleUnaryCall<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse>;
+    finalizePolygonList: grpc.handleUnaryCall<proto_polygon_pb.PolygonListRequest, proto_polygon_pb.PolygonListResponse>;
 }
 
 export interface IPolygonServiceClient {
@@ -83,12 +105,18 @@ export interface IPolygonServiceClient {
     retrievePolygons(request: proto_polygon_pb.PolygonRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonsResponse) => void): grpc.ClientUnaryCall;
     retrievePolygons(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonsResponse) => void): grpc.ClientUnaryCall;
     retrievePolygons(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonsResponse) => void): grpc.ClientUnaryCall;
+    retrievePolygonByProjectName(request: proto_polygon_pb.RetrievePolygonByProjectNameRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
+    retrievePolygonByProjectName(request: proto_polygon_pb.RetrievePolygonByProjectNameRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
+    retrievePolygonByProjectName(request: proto_polygon_pb.RetrievePolygonByProjectNameRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     updatePolygon(request: proto_polygon_pb.PolygonRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     updatePolygon(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     updatePolygon(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     deletePolygon(request: proto_polygon_pb.PolygonRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     deletePolygon(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     deletePolygon(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
+    finalizePolygonList(request: proto_polygon_pb.PolygonListRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonListResponse) => void): grpc.ClientUnaryCall;
+    finalizePolygonList(request: proto_polygon_pb.PolygonListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonListResponse) => void): grpc.ClientUnaryCall;
+    finalizePolygonList(request: proto_polygon_pb.PolygonListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonListResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class PolygonServiceClient extends grpc.Client implements IPolygonServiceClient {
@@ -102,10 +130,16 @@ export class PolygonServiceClient extends grpc.Client implements IPolygonService
     public retrievePolygons(request: proto_polygon_pb.PolygonRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonsResponse) => void): grpc.ClientUnaryCall;
     public retrievePolygons(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonsResponse) => void): grpc.ClientUnaryCall;
     public retrievePolygons(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonsResponse) => void): grpc.ClientUnaryCall;
+    public retrievePolygonByProjectName(request: proto_polygon_pb.RetrievePolygonByProjectNameRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
+    public retrievePolygonByProjectName(request: proto_polygon_pb.RetrievePolygonByProjectNameRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
+    public retrievePolygonByProjectName(request: proto_polygon_pb.RetrievePolygonByProjectNameRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     public updatePolygon(request: proto_polygon_pb.PolygonRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     public updatePolygon(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     public updatePolygon(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     public deletePolygon(request: proto_polygon_pb.PolygonRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     public deletePolygon(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
     public deletePolygon(request: proto_polygon_pb.PolygonRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonResponse) => void): grpc.ClientUnaryCall;
+    public finalizePolygonList(request: proto_polygon_pb.PolygonListRequest, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonListResponse) => void): grpc.ClientUnaryCall;
+    public finalizePolygonList(request: proto_polygon_pb.PolygonListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonListResponse) => void): grpc.ClientUnaryCall;
+    public finalizePolygonList(request: proto_polygon_pb.PolygonListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_polygon_pb.PolygonListResponse) => void): grpc.ClientUnaryCall;
 }

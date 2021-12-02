@@ -50,12 +50,12 @@ interface IGeoServiceService_IRetrieveGeo extends grpc.MethodDefinition<proto_ge
     responseSerialize: grpc.serialize<proto_geo_pb.GeoResponse>;
     responseDeserialize: grpc.deserialize<proto_geo_pb.GeoResponse>;
 }
-interface IGeoServiceService_IRetrieveGeos extends grpc.MethodDefinition<proto_geo_pb.GeoRequest, proto_geo_pb.GeosResponse> {
+interface IGeoServiceService_IRetrieveGeos extends grpc.MethodDefinition<proto_geo_pb.GeoEmptyRequest, proto_geo_pb.GeosResponse> {
     path: "/pb.GeoService/RetrieveGeos";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<proto_geo_pb.GeoRequest>;
-    requestDeserialize: grpc.deserialize<proto_geo_pb.GeoRequest>;
+    requestSerialize: grpc.serialize<proto_geo_pb.GeoEmptyRequest>;
+    requestDeserialize: grpc.deserialize<proto_geo_pb.GeoEmptyRequest>;
     responseSerialize: grpc.serialize<proto_geo_pb.GeosResponse>;
     responseDeserialize: grpc.deserialize<proto_geo_pb.GeosResponse>;
 }
@@ -84,7 +84,7 @@ export interface IGeoServiceServer {
     uploadGeo: grpc.handleUnaryCall<proto_geo_pb.GeoChunkRequest, proto_geo_pb.GeoChunkResponse>;
     createGeo: grpc.handleUnaryCall<proto_geo_pb.GeoRequest, proto_geo_pb.GeoResponse>;
     retrieveGeo: grpc.handleUnaryCall<proto_geo_pb.GeoRequest, proto_geo_pb.GeoResponse>;
-    retrieveGeos: grpc.handleUnaryCall<proto_geo_pb.GeoRequest, proto_geo_pb.GeosResponse>;
+    retrieveGeos: grpc.handleUnaryCall<proto_geo_pb.GeoEmptyRequest, proto_geo_pb.GeosResponse>;
     updateGeo: grpc.handleUnaryCall<proto_geo_pb.GeoRequest, proto_geo_pb.GeoResponse>;
     deleteGeo: grpc.handleUnaryCall<proto_geo_pb.GeoRequest, proto_geo_pb.GeoResponse>;
 }
@@ -99,9 +99,9 @@ export interface IGeoServiceClient {
     retrieveGeo(request: proto_geo_pb.GeoRequest, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
     retrieveGeo(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
     retrieveGeo(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
-    retrieveGeos(request: proto_geo_pb.GeoRequest, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
-    retrieveGeos(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
-    retrieveGeos(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
+    retrieveGeos(request: proto_geo_pb.GeoEmptyRequest, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
+    retrieveGeos(request: proto_geo_pb.GeoEmptyRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
+    retrieveGeos(request: proto_geo_pb.GeoEmptyRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
     updateGeo(request: proto_geo_pb.GeoRequest, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
     updateGeo(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
     updateGeo(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
@@ -121,9 +121,9 @@ export class GeoServiceClient extends grpc.Client implements IGeoServiceClient {
     public retrieveGeo(request: proto_geo_pb.GeoRequest, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
     public retrieveGeo(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
     public retrieveGeo(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
-    public retrieveGeos(request: proto_geo_pb.GeoRequest, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
-    public retrieveGeos(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
-    public retrieveGeos(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
+    public retrieveGeos(request: proto_geo_pb.GeoEmptyRequest, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
+    public retrieveGeos(request: proto_geo_pb.GeoEmptyRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
+    public retrieveGeos(request: proto_geo_pb.GeoEmptyRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeosResponse) => void): grpc.ClientUnaryCall;
     public updateGeo(request: proto_geo_pb.GeoRequest, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
     public updateGeo(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;
     public updateGeo(request: proto_geo_pb.GeoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_pb.GeoResponse) => void): grpc.ClientUnaryCall;

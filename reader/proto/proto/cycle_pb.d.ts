@@ -10,6 +10,8 @@ import * as proto_excavator_pb from "../proto/excavator_pb";
 import * as proto_material_pb from "../proto/material_pb";
 import * as proto_streaming_pb from "../proto/streaming_pb";
 import * as proto_load_pb from "../proto/load_pb";
+import * as proto_audit_pb from "../proto/audit_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 export class Cycle extends jspb.Message { 
     getId(): string;
@@ -24,14 +26,35 @@ export class Cycle extends jspb.Message {
     getDescription(): string;
     setDescription(value: string): Cycle;
 
-    getArrivalTime(): string;
-    setArrivalTime(value: string): Cycle;
 
-    getStartTime(): string;
-    setStartTime(value: string): Cycle;
+    hasShiftTime(): boolean;
+    clearShiftTime(): void;
+    getShiftTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setShiftTime(value?: google_protobuf_timestamp_pb.Timestamp): Cycle;
 
-    getEndTime(): string;
-    setEndTime(value: string): Cycle;
+
+    hasArrivalTime(): boolean;
+    clearArrivalTime(): void;
+    getArrivalTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setArrivalTime(value?: google_protobuf_timestamp_pb.Timestamp): Cycle;
+
+
+    hasDownloadArrivalTime(): boolean;
+    clearDownloadArrivalTime(): void;
+    getDownloadArrivalTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setDownloadArrivalTime(value?: google_protobuf_timestamp_pb.Timestamp): Cycle;
+
+
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): Cycle;
+
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): Cycle;
 
     getNumber(): number;
     setNumber(value: number): Cycle;
@@ -48,8 +71,14 @@ export class Cycle extends jspb.Message {
     getState(): Cycle.State;
     setState(value: Cycle.State): Cycle;
 
-    getShift(): Cycle.Shift;
-    setShift(value: Cycle.Shift): Cycle;
+    getShift(): Shift;
+    setShift(value: Shift): Cycle;
+
+
+    hasShiftDate(): boolean;
+    clearShiftDate(): void;
+    getShiftDate(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setShiftDate(value?: google_protobuf_timestamp_pb.Timestamp): Cycle;
 
 
     hasUpload(): boolean;
@@ -87,6 +116,12 @@ export class Cycle extends jspb.Message {
     addTruckinfo(value?: proto_streaming_pb.TruckInfo, index?: number): proto_streaming_pb.TruckInfo;
 
 
+    hasAudit(): boolean;
+    clearAudit(): void;
+    getAudit(): proto_audit_pb.Audit | undefined;
+    setAudit(value?: proto_audit_pb.Audit): Cycle;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Cycle.AsObject;
     static toObject(includeInstance: boolean, msg: Cycle): Cycle.AsObject;
@@ -103,21 +138,25 @@ export namespace Cycle {
         operationId: string,
         name: string,
         description: string,
-        arrivalTime: string,
-        startTime: string,
-        endTime: string,
+        shiftTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        arrivalTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        downloadArrivalTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         number: number,
         distance: number,
         duration: number,
         mode: Cycle.Mode,
         state: Cycle.State,
-        shift: Cycle.Shift,
+        shift: Shift,
+        shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         upload?: proto_load_pb.Upload.AsObject,
         download?: proto_load_pb.Download.AsObject,
         material?: proto_material_pb.Material.AsObject,
         truck?: proto_truck_pb.Truck.AsObject,
         excavator?: proto_excavator_pb.Excavator.AsObject,
         truckinfoList: Array<proto_streaming_pb.TruckInfo.AsObject>,
+        audit?: proto_audit_pb.Audit.AsObject,
     }
 
     export enum State {
@@ -130,12 +169,6 @@ export namespace Cycle {
     UNKNOWN_MODE = 0,
     NORMAL = 1,
     ALTERED = 2,
-    }
-
-    export enum Shift {
-    UNKNOWN_SHIFT = 0,
-    NIGHT = 1,
-    DAY = 2,
     }
 
 }
@@ -209,4 +242,11 @@ export namespace CyclesResponse {
     export type AsObject = {
         cyclesList: Array<Cycle.AsObject>,
     }
+}
+
+export enum Shift {
+    UNKNOWN_SHIFT = 0,
+    NIGHT = 1,
+    DAY = 2,
+    BOTH = 3,
 }

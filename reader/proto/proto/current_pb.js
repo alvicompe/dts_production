@@ -434,7 +434,8 @@ proto.pb.ExcavatorCurrentState.toObject = function(includeInstance, msg) {
   var f, obj = {
     deviceId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     sensor: (f = msg.getSensor()) && proto_sensor_pb.Sensor.toObject(includeInstance, f),
-    state: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    onsite: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    state: jspb.Message.getFieldWithDefault(msg, 4, 0),
     operation: (f = msg.getOperation()) && proto_operation_pb.Operation.toObject(includeInstance, f)
   };
 
@@ -482,10 +483,14 @@ proto.pb.ExcavatorCurrentState.deserializeBinaryFromReader = function(msg, reade
       msg.setSensor(value);
       break;
     case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setOnsite(value);
+      break;
+    case 4:
       var value = /** @type {!proto.pb.ExcavatorCurrentState.State} */ (reader.readEnum());
       msg.setState(value);
       break;
-    case 4:
+    case 5:
       var value = new proto_operation_pb.Operation;
       reader.readMessage(value,proto_operation_pb.Operation.deserializeBinaryFromReader);
       msg.setOperation(value);
@@ -534,17 +539,24 @@ proto.pb.ExcavatorCurrentState.serializeBinaryToWriter = function(message, write
       proto_sensor_pb.Sensor.serializeBinaryToWriter
     );
   }
+  f = message.getOnsite();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
   f = message.getState();
   if (f !== 0.0) {
     writer.writeEnum(
-      3,
+      4,
       f
     );
   }
   f = message.getOperation();
   if (f != null) {
     writer.writeMessage(
-      4,
+      5,
       f,
       proto_operation_pb.Operation.serializeBinaryToWriter
     );
@@ -616,11 +628,29 @@ proto.pb.ExcavatorCurrentState.prototype.hasSensor = function() {
 
 
 /**
- * optional State state = 3;
+ * optional bool onSite = 3;
+ * @return {boolean}
+ */
+proto.pb.ExcavatorCurrentState.prototype.getOnsite = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.pb.ExcavatorCurrentState} returns this
+ */
+proto.pb.ExcavatorCurrentState.prototype.setOnsite = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 3, value);
+};
+
+
+/**
+ * optional State state = 4;
  * @return {!proto.pb.ExcavatorCurrentState.State}
  */
 proto.pb.ExcavatorCurrentState.prototype.getState = function() {
-  return /** @type {!proto.pb.ExcavatorCurrentState.State} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {!proto.pb.ExcavatorCurrentState.State} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
@@ -629,17 +659,17 @@ proto.pb.ExcavatorCurrentState.prototype.getState = function() {
  * @return {!proto.pb.ExcavatorCurrentState} returns this
  */
 proto.pb.ExcavatorCurrentState.prototype.setState = function(value) {
-  return jspb.Message.setProto3EnumField(this, 3, value);
+  return jspb.Message.setProto3EnumField(this, 4, value);
 };
 
 
 /**
- * optional Operation operation = 4;
+ * optional Operation operation = 5;
  * @return {?proto.pb.Operation}
  */
 proto.pb.ExcavatorCurrentState.prototype.getOperation = function() {
   return /** @type{?proto.pb.Operation} */ (
-    jspb.Message.getWrapperField(this, proto_operation_pb.Operation, 4));
+    jspb.Message.getWrapperField(this, proto_operation_pb.Operation, 5));
 };
 
 
@@ -648,7 +678,7 @@ proto.pb.ExcavatorCurrentState.prototype.getOperation = function() {
  * @return {!proto.pb.ExcavatorCurrentState} returns this
 */
 proto.pb.ExcavatorCurrentState.prototype.setOperation = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 5, value);
 };
 
 
@@ -666,7 +696,7 @@ proto.pb.ExcavatorCurrentState.prototype.clearOperation = function() {
  * @return {boolean}
  */
 proto.pb.ExcavatorCurrentState.prototype.hasOperation = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.getField(this, 5) != null;
 };
 
 

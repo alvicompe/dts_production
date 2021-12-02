@@ -15,16 +15,20 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var proto_polygon_pb = require('../proto/polygon_pb.js');
-goog.object.extend(proto, proto_polygon_pb);
-var proto_cell_pb = require('../proto/cell_pb.js');
-goog.object.extend(proto, proto_cell_pb);
+var proto_point_pb = require('../proto/point_pb.js');
+goog.object.extend(proto, proto_point_pb);
 var proto_geofence_pb = require('../proto/geofence_pb.js');
 goog.object.extend(proto, proto_geofence_pb);
 var proto_road_pb = require('../proto/road_pb.js');
 goog.object.extend(proto, proto_road_pb);
-var proto_point_pb = require('../proto/point_pb.js');
-goog.object.extend(proto, proto_point_pb);
+var proto_pit_pb = require('../proto/pit_pb.js');
+goog.object.extend(proto, proto_pit_pb);
+var proto_pad_pb = require('../proto/pad_pb.js');
+goog.object.extend(proto, proto_pad_pb);
+var proto_stock_pb = require('../proto/stock_pb.js');
+goog.object.extend(proto, proto_stock_pb);
+var proto_dme_pb = require('../proto/dme_pb.js');
+goog.object.extend(proto, proto_dme_pb);
 goog.exportSymbol('proto.pb.Grid', null, global);
 goog.exportSymbol('proto.pb.GridRequest', null, global);
 goog.exportSymbol('proto.pb.GridResponse', null, global);
@@ -119,7 +123,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.pb.Square.repeatedFields_ = [4,5,6,7,8,9];
+proto.pb.Square.repeatedFields_ = [4,5,6,7,8,9,10,11];
 
 
 
@@ -155,18 +159,22 @@ proto.pb.Square.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     altitude: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    polygonList: jspb.Message.toObjectList(msg.getPolygonList(),
-    proto_polygon_pb.Polygon.toObject, includeInstance),
-    cellList: jspb.Message.toObjectList(msg.getCellList(),
-    proto_cell_pb.Cell.toObject, includeInstance),
+    segmentList: jspb.Message.toObjectList(msg.getSegmentList(),
+    proto_point_pb.Point.toObject, includeInstance),
+    pointList: jspb.Message.toObjectList(msg.getPointList(),
+    proto_point_pb.Point.toObject, includeInstance),
     geofenceList: jspb.Message.toObjectList(msg.getGeofenceList(),
     proto_geofence_pb.Geofence.toObject, includeInstance),
     roadList: jspb.Message.toObjectList(msg.getRoadList(),
     proto_road_pb.Road.toObject, includeInstance),
-    segmentList: jspb.Message.toObjectList(msg.getSegmentList(),
-    proto_point_pb.Point.toObject, includeInstance),
-    pointList: jspb.Message.toObjectList(msg.getPointList(),
-    proto_point_pb.Point.toObject, includeInstance)
+    pitList: jspb.Message.toObjectList(msg.getPitList(),
+    proto_pit_pb.Pit.toObject, includeInstance),
+    padList: jspb.Message.toObjectList(msg.getPadList(),
+    proto_pad_pb.Pad.toObject, includeInstance),
+    stockList: jspb.Message.toObjectList(msg.getStockList(),
+    proto_stock_pb.Stock.toObject, includeInstance),
+    dmeList: jspb.Message.toObjectList(msg.getDmeList(),
+    proto_dme_pb.Dme.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -216,14 +224,14 @@ proto.pb.Square.deserializeBinaryFromReader = function(msg, reader) {
       msg.setAltitude(value);
       break;
     case 4:
-      var value = new proto_polygon_pb.Polygon;
-      reader.readMessage(value,proto_polygon_pb.Polygon.deserializeBinaryFromReader);
-      msg.addPolygon(value);
+      var value = new proto_point_pb.Point;
+      reader.readMessage(value,proto_point_pb.Point.deserializeBinaryFromReader);
+      msg.addSegment(value);
       break;
     case 5:
-      var value = new proto_cell_pb.Cell;
-      reader.readMessage(value,proto_cell_pb.Cell.deserializeBinaryFromReader);
-      msg.addCell(value);
+      var value = new proto_point_pb.Point;
+      reader.readMessage(value,proto_point_pb.Point.deserializeBinaryFromReader);
+      msg.addPoint(value);
       break;
     case 6:
       var value = new proto_geofence_pb.Geofence;
@@ -236,14 +244,24 @@ proto.pb.Square.deserializeBinaryFromReader = function(msg, reader) {
       msg.addRoad(value);
       break;
     case 8:
-      var value = new proto_point_pb.Point;
-      reader.readMessage(value,proto_point_pb.Point.deserializeBinaryFromReader);
-      msg.addSegment(value);
+      var value = new proto_pit_pb.Pit;
+      reader.readMessage(value,proto_pit_pb.Pit.deserializeBinaryFromReader);
+      msg.addPit(value);
       break;
     case 9:
-      var value = new proto_point_pb.Point;
-      reader.readMessage(value,proto_point_pb.Point.deserializeBinaryFromReader);
-      msg.addPoint(value);
+      var value = new proto_pad_pb.Pad;
+      reader.readMessage(value,proto_pad_pb.Pad.deserializeBinaryFromReader);
+      msg.addPad(value);
+      break;
+    case 10:
+      var value = new proto_stock_pb.Stock;
+      reader.readMessage(value,proto_stock_pb.Stock.deserializeBinaryFromReader);
+      msg.addStock(value);
+      break;
+    case 11:
+      var value = new proto_dme_pb.Dme;
+      reader.readMessage(value,proto_dme_pb.Dme.deserializeBinaryFromReader);
+      msg.addDme(value);
       break;
     default:
       reader.skipField();
@@ -295,20 +313,20 @@ proto.pb.Square.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getPolygonList();
+  f = message.getSegmentList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       4,
       f,
-      proto_polygon_pb.Polygon.serializeBinaryToWriter
+      proto_point_pb.Point.serializeBinaryToWriter
     );
   }
-  f = message.getCellList();
+  f = message.getPointList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       5,
       f,
-      proto_cell_pb.Cell.serializeBinaryToWriter
+      proto_point_pb.Point.serializeBinaryToWriter
     );
   }
   f = message.getGeofenceList();
@@ -327,20 +345,36 @@ proto.pb.Square.serializeBinaryToWriter = function(message, writer) {
       proto_road_pb.Road.serializeBinaryToWriter
     );
   }
-  f = message.getSegmentList();
+  f = message.getPitList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       8,
       f,
-      proto_point_pb.Point.serializeBinaryToWriter
+      proto_pit_pb.Pit.serializeBinaryToWriter
     );
   }
-  f = message.getPointList();
+  f = message.getPadList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       9,
       f,
-      proto_point_pb.Point.serializeBinaryToWriter
+      proto_pad_pb.Pad.serializeBinaryToWriter
+    );
+  }
+  f = message.getStockList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      10,
+      f,
+      proto_stock_pb.Stock.serializeBinaryToWriter
+    );
+  }
+  f = message.getDmeList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      11,
+      f,
+      proto_dme_pb.Dme.serializeBinaryToWriter
     );
   }
 };
@@ -401,31 +435,31 @@ proto.pb.Square.prototype.setAltitude = function(value) {
 
 
 /**
- * repeated Polygon polygon = 4;
- * @return {!Array<!proto.pb.Polygon>}
+ * repeated Point segment = 4;
+ * @return {!Array<!proto.pb.Point>}
  */
-proto.pb.Square.prototype.getPolygonList = function() {
-  return /** @type{!Array<!proto.pb.Polygon>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto_polygon_pb.Polygon, 4));
+proto.pb.Square.prototype.getSegmentList = function() {
+  return /** @type{!Array<!proto.pb.Point>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto_point_pb.Point, 4));
 };
 
 
 /**
- * @param {!Array<!proto.pb.Polygon>} value
+ * @param {!Array<!proto.pb.Point>} value
  * @return {!proto.pb.Square} returns this
 */
-proto.pb.Square.prototype.setPolygonList = function(value) {
+proto.pb.Square.prototype.setSegmentList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
 /**
- * @param {!proto.pb.Polygon=} opt_value
+ * @param {!proto.pb.Point=} opt_value
  * @param {number=} opt_index
- * @return {!proto.pb.Polygon}
+ * @return {!proto.pb.Point}
  */
-proto.pb.Square.prototype.addPolygon = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.pb.Polygon, opt_index);
+proto.pb.Square.prototype.addSegment = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.pb.Point, opt_index);
 };
 
 
@@ -433,37 +467,37 @@ proto.pb.Square.prototype.addPolygon = function(opt_value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.pb.Square} returns this
  */
-proto.pb.Square.prototype.clearPolygonList = function() {
-  return this.setPolygonList([]);
+proto.pb.Square.prototype.clearSegmentList = function() {
+  return this.setSegmentList([]);
 };
 
 
 /**
- * repeated Cell cell = 5;
- * @return {!Array<!proto.pb.Cell>}
+ * repeated Point point = 5;
+ * @return {!Array<!proto.pb.Point>}
  */
-proto.pb.Square.prototype.getCellList = function() {
-  return /** @type{!Array<!proto.pb.Cell>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto_cell_pb.Cell, 5));
+proto.pb.Square.prototype.getPointList = function() {
+  return /** @type{!Array<!proto.pb.Point>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto_point_pb.Point, 5));
 };
 
 
 /**
- * @param {!Array<!proto.pb.Cell>} value
+ * @param {!Array<!proto.pb.Point>} value
  * @return {!proto.pb.Square} returns this
 */
-proto.pb.Square.prototype.setCellList = function(value) {
+proto.pb.Square.prototype.setPointList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
 
 
 /**
- * @param {!proto.pb.Cell=} opt_value
+ * @param {!proto.pb.Point=} opt_value
  * @param {number=} opt_index
- * @return {!proto.pb.Cell}
+ * @return {!proto.pb.Point}
  */
-proto.pb.Square.prototype.addCell = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.pb.Cell, opt_index);
+proto.pb.Square.prototype.addPoint = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.pb.Point, opt_index);
 };
 
 
@@ -471,8 +505,8 @@ proto.pb.Square.prototype.addCell = function(opt_value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.pb.Square} returns this
  */
-proto.pb.Square.prototype.clearCellList = function() {
-  return this.setCellList([]);
+proto.pb.Square.prototype.clearPointList = function() {
+  return this.setPointList([]);
 };
 
 
@@ -553,31 +587,31 @@ proto.pb.Square.prototype.clearRoadList = function() {
 
 
 /**
- * repeated Point segment = 8;
- * @return {!Array<!proto.pb.Point>}
+ * repeated Pit pit = 8;
+ * @return {!Array<!proto.pb.Pit>}
  */
-proto.pb.Square.prototype.getSegmentList = function() {
-  return /** @type{!Array<!proto.pb.Point>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto_point_pb.Point, 8));
+proto.pb.Square.prototype.getPitList = function() {
+  return /** @type{!Array<!proto.pb.Pit>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto_pit_pb.Pit, 8));
 };
 
 
 /**
- * @param {!Array<!proto.pb.Point>} value
+ * @param {!Array<!proto.pb.Pit>} value
  * @return {!proto.pb.Square} returns this
 */
-proto.pb.Square.prototype.setSegmentList = function(value) {
+proto.pb.Square.prototype.setPitList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 8, value);
 };
 
 
 /**
- * @param {!proto.pb.Point=} opt_value
+ * @param {!proto.pb.Pit=} opt_value
  * @param {number=} opt_index
- * @return {!proto.pb.Point}
+ * @return {!proto.pb.Pit}
  */
-proto.pb.Square.prototype.addSegment = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 8, opt_value, proto.pb.Point, opt_index);
+proto.pb.Square.prototype.addPit = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 8, opt_value, proto.pb.Pit, opt_index);
 };
 
 
@@ -585,37 +619,37 @@ proto.pb.Square.prototype.addSegment = function(opt_value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.pb.Square} returns this
  */
-proto.pb.Square.prototype.clearSegmentList = function() {
-  return this.setSegmentList([]);
+proto.pb.Square.prototype.clearPitList = function() {
+  return this.setPitList([]);
 };
 
 
 /**
- * repeated Point point = 9;
- * @return {!Array<!proto.pb.Point>}
+ * repeated Pad pad = 9;
+ * @return {!Array<!proto.pb.Pad>}
  */
-proto.pb.Square.prototype.getPointList = function() {
-  return /** @type{!Array<!proto.pb.Point>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto_point_pb.Point, 9));
+proto.pb.Square.prototype.getPadList = function() {
+  return /** @type{!Array<!proto.pb.Pad>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto_pad_pb.Pad, 9));
 };
 
 
 /**
- * @param {!Array<!proto.pb.Point>} value
+ * @param {!Array<!proto.pb.Pad>} value
  * @return {!proto.pb.Square} returns this
 */
-proto.pb.Square.prototype.setPointList = function(value) {
+proto.pb.Square.prototype.setPadList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 9, value);
 };
 
 
 /**
- * @param {!proto.pb.Point=} opt_value
+ * @param {!proto.pb.Pad=} opt_value
  * @param {number=} opt_index
- * @return {!proto.pb.Point}
+ * @return {!proto.pb.Pad}
  */
-proto.pb.Square.prototype.addPoint = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 9, opt_value, proto.pb.Point, opt_index);
+proto.pb.Square.prototype.addPad = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 9, opt_value, proto.pb.Pad, opt_index);
 };
 
 
@@ -623,8 +657,84 @@ proto.pb.Square.prototype.addPoint = function(opt_value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.pb.Square} returns this
  */
-proto.pb.Square.prototype.clearPointList = function() {
-  return this.setPointList([]);
+proto.pb.Square.prototype.clearPadList = function() {
+  return this.setPadList([]);
+};
+
+
+/**
+ * repeated Stock stock = 10;
+ * @return {!Array<!proto.pb.Stock>}
+ */
+proto.pb.Square.prototype.getStockList = function() {
+  return /** @type{!Array<!proto.pb.Stock>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto_stock_pb.Stock, 10));
+};
+
+
+/**
+ * @param {!Array<!proto.pb.Stock>} value
+ * @return {!proto.pb.Square} returns this
+*/
+proto.pb.Square.prototype.setStockList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 10, value);
+};
+
+
+/**
+ * @param {!proto.pb.Stock=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.pb.Stock}
+ */
+proto.pb.Square.prototype.addStock = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 10, opt_value, proto.pb.Stock, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.pb.Square} returns this
+ */
+proto.pb.Square.prototype.clearStockList = function() {
+  return this.setStockList([]);
+};
+
+
+/**
+ * repeated Dme dme = 11;
+ * @return {!Array<!proto.pb.Dme>}
+ */
+proto.pb.Square.prototype.getDmeList = function() {
+  return /** @type{!Array<!proto.pb.Dme>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto_dme_pb.Dme, 11));
+};
+
+
+/**
+ * @param {!Array<!proto.pb.Dme>} value
+ * @return {!proto.pb.Square} returns this
+*/
+proto.pb.Square.prototype.setDmeList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 11, value);
+};
+
+
+/**
+ * @param {!proto.pb.Dme=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.pb.Dme}
+ */
+proto.pb.Square.prototype.addDme = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 11, opt_value, proto.pb.Dme, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.pb.Square} returns this
+ */
+proto.pb.Square.prototype.clearDmeList = function() {
+  return this.setDmeList([]);
 };
 
 

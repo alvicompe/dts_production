@@ -11,7 +11,7 @@ import * as proto_excavator_pb from "../proto/excavator_pb";
 import * as proto_road_pb from "../proto/road_pb";
 import * as proto_cycle_pb from "../proto/cycle_pb";
 import * as proto_load_pb from "../proto/load_pb";
-import * as proto_material_pb from "../proto/material_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 interface IOperationServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     createOperation: IOperationServiceService_ICreateOperation;
@@ -19,6 +19,9 @@ interface IOperationServiceService extends grpc.ServiceDefinition<grpc.UntypedSe
     retrieveOperations: IOperationServiceService_IRetrieveOperations;
     updateOperation: IOperationServiceService_IUpdateOperation;
     deleteOperation: IOperationServiceService_IDeleteOperation;
+    removeTrucksOperation: IOperationServiceService_IRemoveTrucksOperation;
+    reassigmentTrucksOperation: IOperationServiceService_IReassigmentTrucksOperation;
+    finalizeOperation: IOperationServiceService_IFinalizeOperation;
 }
 
 interface IOperationServiceService_ICreateOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse> {
@@ -66,6 +69,33 @@ interface IOperationServiceService_IDeleteOperation extends grpc.MethodDefinitio
     responseSerialize: grpc.serialize<proto_operation_pb.OperationResponse>;
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationResponse>;
 }
+interface IOperationServiceService_IRemoveTrucksOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse> {
+    path: "/pb.OperationService/RemoveTrucksOperation";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;
+    requestDeserialize: grpc.deserialize<proto_operation_pb.OperationRequest>;
+    responseSerialize: grpc.serialize<proto_operation_pb.OperationResponse>;
+    responseDeserialize: grpc.deserialize<proto_operation_pb.OperationResponse>;
+}
+interface IOperationServiceService_IReassigmentTrucksOperation extends grpc.MethodDefinition<proto_operation_pb.OperationReassigmentRequest, proto_operation_pb.OperationReassigmentResponse> {
+    path: "/pb.OperationService/ReassigmentTrucksOperation";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_operation_pb.OperationReassigmentRequest>;
+    requestDeserialize: grpc.deserialize<proto_operation_pb.OperationReassigmentRequest>;
+    responseSerialize: grpc.serialize<proto_operation_pb.OperationReassigmentResponse>;
+    responseDeserialize: grpc.deserialize<proto_operation_pb.OperationReassigmentResponse>;
+}
+interface IOperationServiceService_IFinalizeOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationFinalizeResponse> {
+    path: "/pb.OperationService/FinalizeOperation";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;
+    requestDeserialize: grpc.deserialize<proto_operation_pb.OperationRequest>;
+    responseSerialize: grpc.serialize<proto_operation_pb.OperationFinalizeResponse>;
+    responseDeserialize: grpc.deserialize<proto_operation_pb.OperationFinalizeResponse>;
+}
 
 export const OperationServiceService: IOperationServiceService;
 
@@ -75,6 +105,9 @@ export interface IOperationServiceServer {
     retrieveOperations: grpc.handleUnaryCall<proto_operation_pb.OperationRequest, proto_operation_pb.OperationsResponse>;
     updateOperation: grpc.handleUnaryCall<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse>;
     deleteOperation: grpc.handleUnaryCall<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse>;
+    removeTrucksOperation: grpc.handleUnaryCall<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse>;
+    reassigmentTrucksOperation: grpc.handleUnaryCall<proto_operation_pb.OperationReassigmentRequest, proto_operation_pb.OperationReassigmentResponse>;
+    finalizeOperation: grpc.handleUnaryCall<proto_operation_pb.OperationRequest, proto_operation_pb.OperationFinalizeResponse>;
 }
 
 export interface IOperationServiceClient {
@@ -93,6 +126,15 @@ export interface IOperationServiceClient {
     deleteOperation(request: proto_operation_pb.OperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
     deleteOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
     deleteOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    removeTrucksOperation(request: proto_operation_pb.OperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    removeTrucksOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    removeTrucksOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    reassigmentTrucksOperation(request: proto_operation_pb.OperationReassigmentRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationReassigmentResponse) => void): grpc.ClientUnaryCall;
+    reassigmentTrucksOperation(request: proto_operation_pb.OperationReassigmentRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationReassigmentResponse) => void): grpc.ClientUnaryCall;
+    reassigmentTrucksOperation(request: proto_operation_pb.OperationReassigmentRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationReassigmentResponse) => void): grpc.ClientUnaryCall;
+    finalizeOperation(request: proto_operation_pb.OperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
+    finalizeOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
+    finalizeOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class OperationServiceClient extends grpc.Client implements IOperationServiceClient {
@@ -112,4 +154,13 @@ export class OperationServiceClient extends grpc.Client implements IOperationSer
     public deleteOperation(request: proto_operation_pb.OperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
     public deleteOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
     public deleteOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    public removeTrucksOperation(request: proto_operation_pb.OperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    public removeTrucksOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    public removeTrucksOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    public reassigmentTrucksOperation(request: proto_operation_pb.OperationReassigmentRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationReassigmentResponse) => void): grpc.ClientUnaryCall;
+    public reassigmentTrucksOperation(request: proto_operation_pb.OperationReassigmentRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationReassigmentResponse) => void): grpc.ClientUnaryCall;
+    public reassigmentTrucksOperation(request: proto_operation_pb.OperationReassigmentRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationReassigmentResponse) => void): grpc.ClientUnaryCall;
+    public finalizeOperation(request: proto_operation_pb.OperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
+    public finalizeOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
+    public finalizeOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
 }

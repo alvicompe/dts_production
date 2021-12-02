@@ -1,33 +1,41 @@
 import {sendUnaryData, ServerUnaryCall} from "grpc";
-import {readFiles} from "../client";
-import {GeoTreeRequest, GeoTreeResponse} from "../proto/proto/geo-reader_pb";
+import {CreateTreeGeoResponse, GeoTreeResponse} from "../proto/proto/geo-reader_pb";
 import {IGeoReaderServiceServer} from "../proto/proto/geo-reader_grpc_pb";
-import {Geo} from "../proto/proto/geo_pb";
-import {BuildTree} from "../business/buildTree";
+import {GeoReader} from "../business/GeoReader";
+import UploadGeo from "../client/geo";
+import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
+import {MessageError} from "../../dts/pb_js/proto/geo-reader_pb";
 
 
 export class GeoReaderServer implements IGeoReaderServiceServer {
-    async retrieveTreeGeo(call: ServerUnaryCall<GeoTreeRequest>, callback: sendUnaryData<GeoTreeResponse>) {
-        // console.log("call", call)
-        // const request = call.request.toObject();
-        // console.log("request", request)
-        const response = new GeoTreeResponse()
-        //   if (call.request.()) {
-        // const ok = await readFiles()
-        // response.setGeoList(ok)
-        // console.log('ResponsereadFiles', ok)
-        // if (ok) {
-        //     // const r = await CreateGrid(call.request)
-        //     // console.log('ResponseCreateGrid', r)
-        //     // if (r)
-        //     response.setStatus(true)
-        //     response.setMessage("Hola")
-        // }
-        //   }
-        const item = new BuildTree()
-        item.getTree()
-        // console.log(JSON.stringify(item.getTree()))
+    retrieveTreeGeo(call: ServerUnaryCall<google_protobuf_empty_pb.Empty>, callback: sendUnaryData<GeoTreeResponse>) {
+        const response = new GeoTreeResponse();
+        const ok = new GeoReader();
+        const result = ok.readFiles();
+        response.setGeo(result.tree);
+        if (result.response) {
+            response.setStatus(true);
+            response.setMessage("Success");
+        } else {
+            response.setStatus(false);
+            response.setMessage("Incorrect tree, check files.");
+            response.setErrorsList(result.errors);
+        }
+
+        callback(null, response);
+    }
+
+    async createTreeGeo(call: ServerUnaryCall<google_protobuf_empty_pb.Empty>, callback: sendUnaryData<CreateTreeGeoResponse>) {
+        const geoReaderBusiness = new GeoReader();
+        const {status, message, errors} = await geoReaderBusiness.createGeo();
+
+        const response = new CreateTreeGeoResponse();
+        response.setStatus(status);
+        response.setMessage(message);
+        response.setErrorsList(errors);
+
         callback(null, response);
     }
 }
-  
+
+

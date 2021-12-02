@@ -6,11 +6,13 @@
 
 import * as grpc from "grpc";
 import * as proto_grid_pb from "../proto/grid_pb";
-import * as proto_polygon_pb from "../proto/polygon_pb";
-import * as proto_cell_pb from "../proto/cell_pb";
+import * as proto_point_pb from "../proto/point_pb";
 import * as proto_geofence_pb from "../proto/geofence_pb";
 import * as proto_road_pb from "../proto/road_pb";
-import * as proto_point_pb from "../proto/point_pb";
+import * as proto_pit_pb from "../proto/pit_pb";
+import * as proto_pad_pb from "../proto/pad_pb";
+import * as proto_stock_pb from "../proto/stock_pb";
+import * as proto_dme_pb from "../proto/dme_pb";
 
 interface IGridServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     createGrid: IGridServiceService_ICreateGrid;
