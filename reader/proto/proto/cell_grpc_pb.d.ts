@@ -14,6 +14,7 @@ interface ICellServiceService extends grpc.ServiceDefinition<grpc.UntypedService
     retrieveCells: ICellServiceService_IRetrieveCells;
     updateCell: ICellServiceService_IUpdateCell;
     deleteCell: ICellServiceService_IDeleteCell;
+    finalizeCellList: ICellServiceService_IFinalizeCellList;
 }
 
 interface ICellServiceService_ICreateCell extends grpc.MethodDefinition<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse> {
@@ -43,12 +44,12 @@ interface ICellServiceService_IRetrieveCells extends grpc.MethodDefinition<proto
     responseSerialize: grpc.serialize<proto_cell_pb.CellsResponse>;
     responseDeserialize: grpc.deserialize<proto_cell_pb.CellsResponse>;
 }
-interface ICellServiceService_IUpdateCell extends grpc.MethodDefinition<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse> {
+interface ICellServiceService_IUpdateCell extends grpc.MethodDefinition<proto_cell_pb.CellUpdateRequest, proto_cell_pb.CellResponse> {
     path: "/pb.CellService/UpdateCell";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<proto_cell_pb.CellRequest>;
-    requestDeserialize: grpc.deserialize<proto_cell_pb.CellRequest>;
+    requestSerialize: grpc.serialize<proto_cell_pb.CellUpdateRequest>;
+    requestDeserialize: grpc.deserialize<proto_cell_pb.CellUpdateRequest>;
     responseSerialize: grpc.serialize<proto_cell_pb.CellResponse>;
     responseDeserialize: grpc.deserialize<proto_cell_pb.CellResponse>;
 }
@@ -61,6 +62,15 @@ interface ICellServiceService_IDeleteCell extends grpc.MethodDefinition<proto_ce
     responseSerialize: grpc.serialize<proto_cell_pb.CellResponse>;
     responseDeserialize: grpc.deserialize<proto_cell_pb.CellResponse>;
 }
+interface ICellServiceService_IFinalizeCellList extends grpc.MethodDefinition<proto_cell_pb.CellListRequest, proto_cell_pb.CellListResponse> {
+    path: "/pb.CellService/FinalizeCellList";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_cell_pb.CellListRequest>;
+    requestDeserialize: grpc.deserialize<proto_cell_pb.CellListRequest>;
+    responseSerialize: grpc.serialize<proto_cell_pb.CellListResponse>;
+    responseDeserialize: grpc.deserialize<proto_cell_pb.CellListResponse>;
+}
 
 export const CellServiceService: ICellServiceService;
 
@@ -68,8 +78,9 @@ export interface ICellServiceServer {
     createCell: grpc.handleUnaryCall<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse>;
     retrieveCell: grpc.handleUnaryCall<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse>;
     retrieveCells: grpc.handleUnaryCall<proto_cell_pb.CellRequest, proto_cell_pb.CellsResponse>;
-    updateCell: grpc.handleUnaryCall<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse>;
+    updateCell: grpc.handleUnaryCall<proto_cell_pb.CellUpdateRequest, proto_cell_pb.CellResponse>;
     deleteCell: grpc.handleUnaryCall<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse>;
+    finalizeCellList: grpc.handleUnaryCall<proto_cell_pb.CellListRequest, proto_cell_pb.CellListResponse>;
 }
 
 export interface ICellServiceClient {
@@ -82,12 +93,15 @@ export interface ICellServiceClient {
     retrieveCells(request: proto_cell_pb.CellRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellsResponse) => void): grpc.ClientUnaryCall;
     retrieveCells(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellsResponse) => void): grpc.ClientUnaryCall;
     retrieveCells(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellsResponse) => void): grpc.ClientUnaryCall;
-    updateCell(request: proto_cell_pb.CellRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
-    updateCell(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
-    updateCell(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
+    updateCell(request: proto_cell_pb.CellUpdateRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
+    updateCell(request: proto_cell_pb.CellUpdateRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
+    updateCell(request: proto_cell_pb.CellUpdateRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
     deleteCell(request: proto_cell_pb.CellRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
     deleteCell(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
     deleteCell(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
+    finalizeCellList(request: proto_cell_pb.CellListRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellListResponse) => void): grpc.ClientUnaryCall;
+    finalizeCellList(request: proto_cell_pb.CellListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellListResponse) => void): grpc.ClientUnaryCall;
+    finalizeCellList(request: proto_cell_pb.CellListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellListResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class CellServiceClient extends grpc.Client implements ICellServiceClient {
@@ -101,10 +115,13 @@ export class CellServiceClient extends grpc.Client implements ICellServiceClient
     public retrieveCells(request: proto_cell_pb.CellRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellsResponse) => void): grpc.ClientUnaryCall;
     public retrieveCells(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellsResponse) => void): grpc.ClientUnaryCall;
     public retrieveCells(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellsResponse) => void): grpc.ClientUnaryCall;
-    public updateCell(request: proto_cell_pb.CellRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
-    public updateCell(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
-    public updateCell(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
+    public updateCell(request: proto_cell_pb.CellUpdateRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
+    public updateCell(request: proto_cell_pb.CellUpdateRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
+    public updateCell(request: proto_cell_pb.CellUpdateRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
     public deleteCell(request: proto_cell_pb.CellRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
     public deleteCell(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
     public deleteCell(request: proto_cell_pb.CellRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellResponse) => void): grpc.ClientUnaryCall;
+    public finalizeCellList(request: proto_cell_pb.CellListRequest, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellListResponse) => void): grpc.ClientUnaryCall;
+    public finalizeCellList(request: proto_cell_pb.CellListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellListResponse) => void): grpc.ClientUnaryCall;
+    public finalizeCellList(request: proto_cell_pb.CellListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_cell_pb.CellListResponse) => void): grpc.ClientUnaryCall;
 }

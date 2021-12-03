@@ -8,6 +8,7 @@ var proto_excavator_pb = require('../proto/excavator_pb.js');
 var proto_material_pb = require('../proto/material_pb.js');
 var proto_streaming_pb = require('../proto/streaming_pb.js');
 var proto_load_pb = require('../proto/load_pb.js');
+var proto_audit_pb = require('../proto/audit_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
 function serialize_pb_CycleRequest(arg) {

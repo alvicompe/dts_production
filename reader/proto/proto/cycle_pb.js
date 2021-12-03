@@ -25,6 +25,8 @@ var proto_streaming_pb = require('../proto/streaming_pb.js');
 goog.object.extend(proto, proto_streaming_pb);
 var proto_load_pb = require('../proto/load_pb.js');
 goog.object.extend(proto, proto_load_pb);
+var proto_audit_pb = require('../proto/audit_pb.js');
+goog.object.extend(proto, proto_audit_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 goog.exportSymbol('proto.pb.Cycle', null, global);
@@ -124,7 +126,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.pb.Cycle.repeatedFields_ = [21];
+proto.pb.Cycle.repeatedFields_ = [22];
 
 
 
@@ -161,16 +163,17 @@ proto.pb.Cycle.toObject = function(includeInstance, msg) {
     operationId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     name: jspb.Message.getFieldWithDefault(msg, 3, ""),
     description: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    shiftTime: (f = msg.getShiftTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     arrivalTime: (f = msg.getArrivalTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     downloadArrivalTime: (f = msg.getDownloadArrivalTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    number: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    distance: jspb.Message.getFloatingPointFieldWithDefault(msg, 10, 0.0),
-    duration: jspb.Message.getFloatingPointFieldWithDefault(msg, 11, 0.0),
-    mode: jspb.Message.getFieldWithDefault(msg, 12, 0),
-    state: jspb.Message.getFieldWithDefault(msg, 13, 0),
-    shift: jspb.Message.getFieldWithDefault(msg, 14, 0),
+    number: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    distance: jspb.Message.getFloatingPointFieldWithDefault(msg, 11, 0.0),
+    duration: jspb.Message.getFloatingPointFieldWithDefault(msg, 12, 0.0),
+    mode: jspb.Message.getFieldWithDefault(msg, 13, 0),
+    state: jspb.Message.getFieldWithDefault(msg, 14, 0),
+    shift: jspb.Message.getFieldWithDefault(msg, 15, 0),
     shiftDate: (f = msg.getShiftDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     upload: (f = msg.getUpload()) && proto_load_pb.Upload.toObject(includeInstance, f),
     download: (f = msg.getDownload()) && proto_load_pb.Download.toObject(includeInstance, f),
@@ -178,7 +181,8 @@ proto.pb.Cycle.toObject = function(includeInstance, msg) {
     truck: (f = msg.getTruck()) && proto_truck_pb.Truck.toObject(includeInstance, f),
     excavator: (f = msg.getExcavator()) && proto_excavator_pb.Excavator.toObject(includeInstance, f),
     truckinfoList: jspb.Message.toObjectList(msg.getTruckinfoList(),
-    proto_streaming_pb.TruckInfo.toObject, includeInstance)
+    proto_streaming_pb.TruckInfo.toObject, includeInstance),
+    audit: (f = msg.getAudit()) && proto_audit_pb.Audit.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -234,81 +238,91 @@ proto.pb.Cycle.deserializeBinaryFromReader = function(msg, reader) {
     case 5:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setArrivalTime(value);
+      msg.setShiftTime(value);
       break;
     case 6:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setDownloadArrivalTime(value);
+      msg.setArrivalTime(value);
       break;
     case 7:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setStartTime(value);
+      msg.setDownloadArrivalTime(value);
       break;
     case 8:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setEndTime(value);
+      msg.setStartTime(value);
       break;
     case 9:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setEndTime(value);
+      break;
+    case 10:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setNumber(value);
       break;
-    case 10:
+    case 11:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setDistance(value);
       break;
-    case 11:
+    case 12:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setDuration(value);
       break;
-    case 12:
+    case 13:
       var value = /** @type {!proto.pb.Cycle.Mode} */ (reader.readEnum());
       msg.setMode(value);
       break;
-    case 13:
+    case 14:
       var value = /** @type {!proto.pb.Cycle.State} */ (reader.readEnum());
       msg.setState(value);
       break;
-    case 14:
+    case 15:
       var value = /** @type {!proto.pb.Shift} */ (reader.readEnum());
       msg.setShift(value);
       break;
-    case 15:
+    case 16:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setShiftDate(value);
       break;
-    case 16:
+    case 17:
       var value = new proto_load_pb.Upload;
       reader.readMessage(value,proto_load_pb.Upload.deserializeBinaryFromReader);
       msg.setUpload(value);
       break;
-    case 17:
+    case 18:
       var value = new proto_load_pb.Download;
       reader.readMessage(value,proto_load_pb.Download.deserializeBinaryFromReader);
       msg.setDownload(value);
       break;
-    case 18:
+    case 19:
       var value = new proto_material_pb.Material;
       reader.readMessage(value,proto_material_pb.Material.deserializeBinaryFromReader);
       msg.setMaterial(value);
       break;
-    case 19:
+    case 20:
       var value = new proto_truck_pb.Truck;
       reader.readMessage(value,proto_truck_pb.Truck.deserializeBinaryFromReader);
       msg.setTruck(value);
       break;
-    case 20:
+    case 21:
       var value = new proto_excavator_pb.Excavator;
       reader.readMessage(value,proto_excavator_pb.Excavator.deserializeBinaryFromReader);
       msg.setExcavator(value);
       break;
-    case 21:
+    case 22:
       var value = new proto_streaming_pb.TruckInfo;
       reader.readMessage(value,proto_streaming_pb.TruckInfo.deserializeBinaryFromReader);
       msg.addTruckinfo(value);
+      break;
+    case 23:
+      var value = new proto_audit_pb.Audit;
+      reader.readMessage(value,proto_audit_pb.Audit.deserializeBinaryFromReader);
+      msg.setAudit(value);
       break;
     default:
       reader.skipField();
@@ -367,7 +381,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getArrivalTime();
+  f = message.getShiftTime();
   if (f != null) {
     writer.writeMessage(
       5,
@@ -375,7 +389,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
-  f = message.getDownloadArrivalTime();
+  f = message.getArrivalTime();
   if (f != null) {
     writer.writeMessage(
       6,
@@ -383,7 +397,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
-  f = message.getStartTime();
+  f = message.getDownloadArrivalTime();
   if (f != null) {
     writer.writeMessage(
       7,
@@ -391,7 +405,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
-  f = message.getEndTime();
+  f = message.getStartTime();
   if (f != null) {
     writer.writeMessage(
       8,
@@ -399,52 +413,60 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
+  f = message.getEndTime();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
   f = message.getNumber();
   if (f !== 0) {
     writer.writeInt64(
-      9,
+      10,
       f
     );
   }
   f = message.getDistance();
   if (f !== 0.0) {
     writer.writeDouble(
-      10,
+      11,
       f
     );
   }
   f = message.getDuration();
   if (f !== 0.0) {
     writer.writeDouble(
-      11,
+      12,
       f
     );
   }
   f = message.getMode();
   if (f !== 0.0) {
     writer.writeEnum(
-      12,
+      13,
       f
     );
   }
   f = message.getState();
   if (f !== 0.0) {
     writer.writeEnum(
-      13,
+      14,
       f
     );
   }
   f = message.getShift();
   if (f !== 0.0) {
     writer.writeEnum(
-      14,
+      15,
       f
     );
   }
   f = message.getShiftDate();
   if (f != null) {
     writer.writeMessage(
-      15,
+      16,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -452,7 +474,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
   f = message.getUpload();
   if (f != null) {
     writer.writeMessage(
-      16,
+      17,
       f,
       proto_load_pb.Upload.serializeBinaryToWriter
     );
@@ -460,7 +482,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
   f = message.getDownload();
   if (f != null) {
     writer.writeMessage(
-      17,
+      18,
       f,
       proto_load_pb.Download.serializeBinaryToWriter
     );
@@ -468,7 +490,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
   f = message.getMaterial();
   if (f != null) {
     writer.writeMessage(
-      18,
+      19,
       f,
       proto_material_pb.Material.serializeBinaryToWriter
     );
@@ -476,7 +498,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
   f = message.getTruck();
   if (f != null) {
     writer.writeMessage(
-      19,
+      20,
       f,
       proto_truck_pb.Truck.serializeBinaryToWriter
     );
@@ -484,7 +506,7 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
   f = message.getExcavator();
   if (f != null) {
     writer.writeMessage(
-      20,
+      21,
       f,
       proto_excavator_pb.Excavator.serializeBinaryToWriter
     );
@@ -492,9 +514,17 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
   f = message.getTruckinfoList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      21,
+      22,
       f,
       proto_streaming_pb.TruckInfo.serializeBinaryToWriter
+    );
+  }
+  f = message.getAudit();
+  if (f != null) {
+    writer.writeMessage(
+      23,
+      f,
+      proto_audit_pb.Audit.serializeBinaryToWriter
     );
   }
 };
@@ -591,10 +621,10 @@ proto.pb.Cycle.prototype.setDescription = function(value) {
 
 
 /**
- * optional google.protobuf.Timestamp arrival_time = 5;
+ * optional google.protobuf.Timestamp shift_time = 5;
  * @return {?proto.google.protobuf.Timestamp}
  */
-proto.pb.Cycle.prototype.getArrivalTime = function() {
+proto.pb.Cycle.prototype.getShiftTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
 };
@@ -604,8 +634,45 @@ proto.pb.Cycle.prototype.getArrivalTime = function() {
  * @param {?proto.google.protobuf.Timestamp|undefined} value
  * @return {!proto.pb.Cycle} returns this
 */
-proto.pb.Cycle.prototype.setArrivalTime = function(value) {
+proto.pb.Cycle.prototype.setShiftTime = function(value) {
   return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.Cycle} returns this
+ */
+proto.pb.Cycle.prototype.clearShiftTime = function() {
+  return this.setShiftTime(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.Cycle.prototype.hasShiftTime = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp arrival_time = 6;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.pb.Cycle.prototype.getArrivalTime = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.pb.Cycle} returns this
+*/
+proto.pb.Cycle.prototype.setArrivalTime = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
@@ -623,17 +690,17 @@ proto.pb.Cycle.prototype.clearArrivalTime = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasArrivalTime = function() {
-  return jspb.Message.getField(this, 5) != null;
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
 /**
- * optional google.protobuf.Timestamp download_arrival_time = 6;
+ * optional google.protobuf.Timestamp download_arrival_time = 7;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.pb.Cycle.prototype.getDownloadArrivalTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
 };
 
 
@@ -642,7 +709,7 @@ proto.pb.Cycle.prototype.getDownloadArrivalTime = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setDownloadArrivalTime = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setWrapperField(this, 7, value);
 };
 
 
@@ -660,17 +727,17 @@ proto.pb.Cycle.prototype.clearDownloadArrivalTime = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasDownloadArrivalTime = function() {
-  return jspb.Message.getField(this, 6) != null;
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
 /**
- * optional google.protobuf.Timestamp start_time = 7;
+ * optional google.protobuf.Timestamp start_time = 8;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.pb.Cycle.prototype.getStartTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 8));
 };
 
 
@@ -679,7 +746,7 @@ proto.pb.Cycle.prototype.getStartTime = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setStartTime = function(value) {
-  return jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
@@ -697,17 +764,17 @@ proto.pb.Cycle.prototype.clearStartTime = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasStartTime = function() {
-  return jspb.Message.getField(this, 7) != null;
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
 /**
- * optional google.protobuf.Timestamp end_time = 8;
+ * optional google.protobuf.Timestamp end_time = 9;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.pb.Cycle.prototype.getEndTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 8));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 9));
 };
 
 
@@ -716,7 +783,7 @@ proto.pb.Cycle.prototype.getEndTime = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setEndTime = function(value) {
-  return jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 9, value);
 };
 
 
@@ -734,16 +801,16 @@ proto.pb.Cycle.prototype.clearEndTime = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasEndTime = function() {
-  return jspb.Message.getField(this, 8) != null;
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
 /**
- * optional int64 number = 9;
+ * optional int64 number = 10;
  * @return {number}
  */
 proto.pb.Cycle.prototype.getNumber = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
 
 
@@ -752,33 +819,15 @@ proto.pb.Cycle.prototype.getNumber = function() {
  * @return {!proto.pb.Cycle} returns this
  */
 proto.pb.Cycle.prototype.setNumber = function(value) {
-  return jspb.Message.setProto3IntField(this, 9, value);
+  return jspb.Message.setProto3IntField(this, 10, value);
 };
 
 
 /**
- * optional double distance = 10;
+ * optional double distance = 11;
  * @return {number}
  */
 proto.pb.Cycle.prototype.getDistance = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 10, 0.0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.pb.Cycle} returns this
- */
-proto.pb.Cycle.prototype.setDistance = function(value) {
-  return jspb.Message.setProto3FloatField(this, 10, value);
-};
-
-
-/**
- * optional double duration = 11;
- * @return {number}
- */
-proto.pb.Cycle.prototype.getDuration = function() {
   return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 11, 0.0));
 };
 
@@ -787,17 +836,35 @@ proto.pb.Cycle.prototype.getDuration = function() {
  * @param {number} value
  * @return {!proto.pb.Cycle} returns this
  */
-proto.pb.Cycle.prototype.setDuration = function(value) {
+proto.pb.Cycle.prototype.setDistance = function(value) {
   return jspb.Message.setProto3FloatField(this, 11, value);
 };
 
 
 /**
- * optional Mode mode = 12;
+ * optional double duration = 12;
+ * @return {number}
+ */
+proto.pb.Cycle.prototype.getDuration = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 12, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.pb.Cycle} returns this
+ */
+proto.pb.Cycle.prototype.setDuration = function(value) {
+  return jspb.Message.setProto3FloatField(this, 12, value);
+};
+
+
+/**
+ * optional Mode mode = 13;
  * @return {!proto.pb.Cycle.Mode}
  */
 proto.pb.Cycle.prototype.getMode = function() {
-  return /** @type {!proto.pb.Cycle.Mode} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+  return /** @type {!proto.pb.Cycle.Mode} */ (jspb.Message.getFieldWithDefault(this, 13, 0));
 };
 
 
@@ -806,16 +873,16 @@ proto.pb.Cycle.prototype.getMode = function() {
  * @return {!proto.pb.Cycle} returns this
  */
 proto.pb.Cycle.prototype.setMode = function(value) {
-  return jspb.Message.setProto3EnumField(this, 12, value);
+  return jspb.Message.setProto3EnumField(this, 13, value);
 };
 
 
 /**
- * optional State state = 13;
+ * optional State state = 14;
  * @return {!proto.pb.Cycle.State}
  */
 proto.pb.Cycle.prototype.getState = function() {
-  return /** @type {!proto.pb.Cycle.State} */ (jspb.Message.getFieldWithDefault(this, 13, 0));
+  return /** @type {!proto.pb.Cycle.State} */ (jspb.Message.getFieldWithDefault(this, 14, 0));
 };
 
 
@@ -824,16 +891,16 @@ proto.pb.Cycle.prototype.getState = function() {
  * @return {!proto.pb.Cycle} returns this
  */
 proto.pb.Cycle.prototype.setState = function(value) {
-  return jspb.Message.setProto3EnumField(this, 13, value);
+  return jspb.Message.setProto3EnumField(this, 14, value);
 };
 
 
 /**
- * optional Shift shift = 14;
+ * optional Shift shift = 15;
  * @return {!proto.pb.Shift}
  */
 proto.pb.Cycle.prototype.getShift = function() {
-  return /** @type {!proto.pb.Shift} */ (jspb.Message.getFieldWithDefault(this, 14, 0));
+  return /** @type {!proto.pb.Shift} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
 };
 
 
@@ -842,17 +909,17 @@ proto.pb.Cycle.prototype.getShift = function() {
  * @return {!proto.pb.Cycle} returns this
  */
 proto.pb.Cycle.prototype.setShift = function(value) {
-  return jspb.Message.setProto3EnumField(this, 14, value);
+  return jspb.Message.setProto3EnumField(this, 15, value);
 };
 
 
 /**
- * optional google.protobuf.Timestamp shift_date = 15;
+ * optional google.protobuf.Timestamp shift_date = 16;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.pb.Cycle.prototype.getShiftDate = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 15));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 16));
 };
 
 
@@ -861,7 +928,7 @@ proto.pb.Cycle.prototype.getShiftDate = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setShiftDate = function(value) {
-  return jspb.Message.setWrapperField(this, 15, value);
+  return jspb.Message.setWrapperField(this, 16, value);
 };
 
 
@@ -879,17 +946,17 @@ proto.pb.Cycle.prototype.clearShiftDate = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasShiftDate = function() {
-  return jspb.Message.getField(this, 15) != null;
+  return jspb.Message.getField(this, 16) != null;
 };
 
 
 /**
- * optional Upload upload = 16;
+ * optional Upload upload = 17;
  * @return {?proto.pb.Upload}
  */
 proto.pb.Cycle.prototype.getUpload = function() {
   return /** @type{?proto.pb.Upload} */ (
-    jspb.Message.getWrapperField(this, proto_load_pb.Upload, 16));
+    jspb.Message.getWrapperField(this, proto_load_pb.Upload, 17));
 };
 
 
@@ -898,7 +965,7 @@ proto.pb.Cycle.prototype.getUpload = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setUpload = function(value) {
-  return jspb.Message.setWrapperField(this, 16, value);
+  return jspb.Message.setWrapperField(this, 17, value);
 };
 
 
@@ -916,17 +983,17 @@ proto.pb.Cycle.prototype.clearUpload = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasUpload = function() {
-  return jspb.Message.getField(this, 16) != null;
+  return jspb.Message.getField(this, 17) != null;
 };
 
 
 /**
- * optional Download download = 17;
+ * optional Download download = 18;
  * @return {?proto.pb.Download}
  */
 proto.pb.Cycle.prototype.getDownload = function() {
   return /** @type{?proto.pb.Download} */ (
-    jspb.Message.getWrapperField(this, proto_load_pb.Download, 17));
+    jspb.Message.getWrapperField(this, proto_load_pb.Download, 18));
 };
 
 
@@ -935,7 +1002,7 @@ proto.pb.Cycle.prototype.getDownload = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setDownload = function(value) {
-  return jspb.Message.setWrapperField(this, 17, value);
+  return jspb.Message.setWrapperField(this, 18, value);
 };
 
 
@@ -953,17 +1020,17 @@ proto.pb.Cycle.prototype.clearDownload = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasDownload = function() {
-  return jspb.Message.getField(this, 17) != null;
+  return jspb.Message.getField(this, 18) != null;
 };
 
 
 /**
- * optional Material material = 18;
+ * optional Material material = 19;
  * @return {?proto.pb.Material}
  */
 proto.pb.Cycle.prototype.getMaterial = function() {
   return /** @type{?proto.pb.Material} */ (
-    jspb.Message.getWrapperField(this, proto_material_pb.Material, 18));
+    jspb.Message.getWrapperField(this, proto_material_pb.Material, 19));
 };
 
 
@@ -972,7 +1039,7 @@ proto.pb.Cycle.prototype.getMaterial = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setMaterial = function(value) {
-  return jspb.Message.setWrapperField(this, 18, value);
+  return jspb.Message.setWrapperField(this, 19, value);
 };
 
 
@@ -990,17 +1057,17 @@ proto.pb.Cycle.prototype.clearMaterial = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasMaterial = function() {
-  return jspb.Message.getField(this, 18) != null;
+  return jspb.Message.getField(this, 19) != null;
 };
 
 
 /**
- * optional Truck truck = 19;
+ * optional Truck truck = 20;
  * @return {?proto.pb.Truck}
  */
 proto.pb.Cycle.prototype.getTruck = function() {
   return /** @type{?proto.pb.Truck} */ (
-    jspb.Message.getWrapperField(this, proto_truck_pb.Truck, 19));
+    jspb.Message.getWrapperField(this, proto_truck_pb.Truck, 20));
 };
 
 
@@ -1009,7 +1076,7 @@ proto.pb.Cycle.prototype.getTruck = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setTruck = function(value) {
-  return jspb.Message.setWrapperField(this, 19, value);
+  return jspb.Message.setWrapperField(this, 20, value);
 };
 
 
@@ -1027,17 +1094,17 @@ proto.pb.Cycle.prototype.clearTruck = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasTruck = function() {
-  return jspb.Message.getField(this, 19) != null;
+  return jspb.Message.getField(this, 20) != null;
 };
 
 
 /**
- * optional Excavator excavator = 20;
+ * optional Excavator excavator = 21;
  * @return {?proto.pb.Excavator}
  */
 proto.pb.Cycle.prototype.getExcavator = function() {
   return /** @type{?proto.pb.Excavator} */ (
-    jspb.Message.getWrapperField(this, proto_excavator_pb.Excavator, 20));
+    jspb.Message.getWrapperField(this, proto_excavator_pb.Excavator, 21));
 };
 
 
@@ -1046,7 +1113,7 @@ proto.pb.Cycle.prototype.getExcavator = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setExcavator = function(value) {
-  return jspb.Message.setWrapperField(this, 20, value);
+  return jspb.Message.setWrapperField(this, 21, value);
 };
 
 
@@ -1064,17 +1131,17 @@ proto.pb.Cycle.prototype.clearExcavator = function() {
  * @return {boolean}
  */
 proto.pb.Cycle.prototype.hasExcavator = function() {
-  return jspb.Message.getField(this, 20) != null;
+  return jspb.Message.getField(this, 21) != null;
 };
 
 
 /**
- * repeated TruckInfo truckInfo = 21;
+ * repeated TruckInfo truckInfo = 22;
  * @return {!Array<!proto.pb.TruckInfo>}
  */
 proto.pb.Cycle.prototype.getTruckinfoList = function() {
   return /** @type{!Array<!proto.pb.TruckInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto_streaming_pb.TruckInfo, 21));
+    jspb.Message.getRepeatedWrapperField(this, proto_streaming_pb.TruckInfo, 22));
 };
 
 
@@ -1083,7 +1150,7 @@ proto.pb.Cycle.prototype.getTruckinfoList = function() {
  * @return {!proto.pb.Cycle} returns this
 */
 proto.pb.Cycle.prototype.setTruckinfoList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 21, value);
+  return jspb.Message.setRepeatedWrapperField(this, 22, value);
 };
 
 
@@ -1093,7 +1160,7 @@ proto.pb.Cycle.prototype.setTruckinfoList = function(value) {
  * @return {!proto.pb.TruckInfo}
  */
 proto.pb.Cycle.prototype.addTruckinfo = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 21, opt_value, proto.pb.TruckInfo, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 22, opt_value, proto.pb.TruckInfo, opt_index);
 };
 
 
@@ -1103,6 +1170,43 @@ proto.pb.Cycle.prototype.addTruckinfo = function(opt_value, opt_index) {
  */
 proto.pb.Cycle.prototype.clearTruckinfoList = function() {
   return this.setTruckinfoList([]);
+};
+
+
+/**
+ * optional Audit audit = 23;
+ * @return {?proto.pb.Audit}
+ */
+proto.pb.Cycle.prototype.getAudit = function() {
+  return /** @type{?proto.pb.Audit} */ (
+    jspb.Message.getWrapperField(this, proto_audit_pb.Audit, 23));
+};
+
+
+/**
+ * @param {?proto.pb.Audit|undefined} value
+ * @return {!proto.pb.Cycle} returns this
+*/
+proto.pb.Cycle.prototype.setAudit = function(value) {
+  return jspb.Message.setWrapperField(this, 23, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.Cycle} returns this
+ */
+proto.pb.Cycle.prototype.clearAudit = function() {
+  return this.setAudit(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.Cycle.prototype.hasAudit = function() {
+  return jspb.Message.getField(this, 23) != null;
 };
 
 

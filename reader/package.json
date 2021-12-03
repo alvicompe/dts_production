@@ -22,7 +22,7 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "gen:pb": "sh build.sh",
+    "build": "sh build.sh",
     "server": "ts-node index.ts",
     "client": "ts-node client/index.ts",
     "read": "node client/file.js"

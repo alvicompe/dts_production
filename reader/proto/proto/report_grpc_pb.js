@@ -30,6 +30,17 @@ function deserialize_pb_DownloadResponse(buffer_arg) {
   return proto_report_pb.DownloadResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_pb_ReportPerformancePerHourResponse(arg) {
+  if (!(arg instanceof proto_report_pb.ReportPerformancePerHourResponse)) {
+    throw new Error('Expected argument of type pb.ReportPerformancePerHourResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_ReportPerformancePerHourResponse(buffer_arg) {
+  return proto_report_pb.ReportPerformancePerHourResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_pb_ReportRequest(arg) {
   if (!(arg instanceof proto_report_pb.ReportRequest)) {
     throw new Error('Expected argument of type pb.ReportRequest');
@@ -41,29 +52,18 @@ function deserialize_pb_ReportRequest(buffer_arg) {
   return proto_report_pb.ReportRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_pb_ReportResponse(arg) {
-  if (!(arg instanceof proto_report_pb.ReportResponse)) {
-    throw new Error('Expected argument of type pb.ReportResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_pb_ReportResponse(buffer_arg) {
-  return proto_report_pb.ReportResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var ReportServiceService = exports.ReportServiceService = {
-  retrieveReport: {
-    path: '/pb.ReportService/RetrieveReport',
+  retrievePerformancePerHourReport: {
+    path: '/pb.ReportService/RetrievePerformancePerHourReport',
     requestStream: false,
     responseStream: false,
     requestType: proto_report_pb.ReportRequest,
-    responseType: proto_report_pb.ReportResponse,
+    responseType: proto_report_pb.ReportPerformancePerHourResponse,
     requestSerialize: serialize_pb_ReportRequest,
     requestDeserialize: deserialize_pb_ReportRequest,
-    responseSerialize: serialize_pb_ReportResponse,
-    responseDeserialize: deserialize_pb_ReportResponse,
+    responseSerialize: serialize_pb_ReportPerformancePerHourResponse,
+    responseDeserialize: deserialize_pb_ReportPerformancePerHourResponse,
   },
   downloadReport: {
     path: '/pb.ReportService/DownloadReport',

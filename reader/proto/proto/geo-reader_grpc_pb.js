@@ -3,17 +3,28 @@
 'use strict';
 var grpc = require('grpc');
 var proto_geo$reader_pb = require('../proto/geo-reader_pb.js');
-var proto_geo_pb = require('../proto/geo_pb.js');
+var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 
-function serialize_pb_GeoTreeRequest(arg) {
-  if (!(arg instanceof proto_geo$reader_pb.GeoTreeRequest)) {
-    throw new Error('Expected argument of type pb.GeoTreeRequest');
+function serialize_google_protobuf_Empty(arg) {
+  if (!(arg instanceof google_protobuf_empty_pb.Empty)) {
+    throw new Error('Expected argument of type google.protobuf.Empty');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_pb_GeoTreeRequest(buffer_arg) {
-  return proto_geo$reader_pb.GeoTreeRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_google_protobuf_Empty(buffer_arg) {
+  return google_protobuf_empty_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_pb_CreateTreeGeoResponse(arg) {
+  if (!(arg instanceof proto_geo$reader_pb.CreateTreeGeoResponse)) {
+    throw new Error('Expected argument of type pb.CreateTreeGeoResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_CreateTreeGeoResponse(buffer_arg) {
+  return proto_geo$reader_pb.CreateTreeGeoResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_pb_GeoTreeResponse(arg) {
@@ -33,12 +44,23 @@ var GeoReaderServiceService = exports.GeoReaderServiceService = {
     path: '/pb.GeoReaderService/RetrieveTreeGeo',
     requestStream: false,
     responseStream: false,
-    requestType: proto_geo$reader_pb.GeoTreeRequest,
+    requestType: google_protobuf_empty_pb.Empty,
     responseType: proto_geo$reader_pb.GeoTreeResponse,
-    requestSerialize: serialize_pb_GeoTreeRequest,
-    requestDeserialize: deserialize_pb_GeoTreeRequest,
+    requestSerialize: serialize_google_protobuf_Empty,
+    requestDeserialize: deserialize_google_protobuf_Empty,
     responseSerialize: serialize_pb_GeoTreeResponse,
     responseDeserialize: deserialize_pb_GeoTreeResponse,
+  },
+  createTreeGeo: {
+    path: '/pb.GeoReaderService/CreateTreeGeo',
+    requestStream: false,
+    responseStream: false,
+    requestType: google_protobuf_empty_pb.Empty,
+    responseType: proto_geo$reader_pb.CreateTreeGeoResponse,
+    requestSerialize: serialize_google_protobuf_Empty,
+    requestDeserialize: deserialize_google_protobuf_Empty,
+    responseSerialize: serialize_pb_CreateTreeGeoResponse,
+    responseDeserialize: deserialize_pb_CreateTreeGeoResponse,
   },
 };
 

@@ -12,18 +12,18 @@ import * as proto_excavator_pb from "../proto/excavator_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 interface IReportServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-    retrieveReport: IReportServiceService_IRetrieveReport;
+    retrievePerformancePerHourReport: IReportServiceService_IRetrievePerformancePerHourReport;
     downloadReport: IReportServiceService_IDownloadReport;
 }
 
-interface IReportServiceService_IRetrieveReport extends grpc.MethodDefinition<proto_report_pb.ReportRequest, proto_report_pb.ReportResponse> {
-    path: "/pb.ReportService/RetrieveReport";
+interface IReportServiceService_IRetrievePerformancePerHourReport extends grpc.MethodDefinition<proto_report_pb.ReportRequest, proto_report_pb.ReportPerformancePerHourResponse> {
+    path: "/pb.ReportService/RetrievePerformancePerHourReport";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_report_pb.ReportRequest>;
     requestDeserialize: grpc.deserialize<proto_report_pb.ReportRequest>;
-    responseSerialize: grpc.serialize<proto_report_pb.ReportResponse>;
-    responseDeserialize: grpc.deserialize<proto_report_pb.ReportResponse>;
+    responseSerialize: grpc.serialize<proto_report_pb.ReportPerformancePerHourResponse>;
+    responseDeserialize: grpc.deserialize<proto_report_pb.ReportPerformancePerHourResponse>;
 }
 interface IReportServiceService_IDownloadReport extends grpc.MethodDefinition<proto_report_pb.DownloadRequest, proto_report_pb.DownloadResponse> {
     path: "/pb.ReportService/DownloadReport";
@@ -38,14 +38,14 @@ interface IReportServiceService_IDownloadReport extends grpc.MethodDefinition<pr
 export const ReportServiceService: IReportServiceService;
 
 export interface IReportServiceServer {
-    retrieveReport: grpc.handleUnaryCall<proto_report_pb.ReportRequest, proto_report_pb.ReportResponse>;
+    retrievePerformancePerHourReport: grpc.handleUnaryCall<proto_report_pb.ReportRequest, proto_report_pb.ReportPerformancePerHourResponse>;
     downloadReport: grpc.handleUnaryCall<proto_report_pb.DownloadRequest, proto_report_pb.DownloadResponse>;
 }
 
 export interface IReportServiceClient {
-    retrieveReport(request: proto_report_pb.ReportRequest, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportResponse) => void): grpc.ClientUnaryCall;
-    retrieveReport(request: proto_report_pb.ReportRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportResponse) => void): grpc.ClientUnaryCall;
-    retrieveReport(request: proto_report_pb.ReportRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportResponse) => void): grpc.ClientUnaryCall;
+    retrievePerformancePerHourReport(request: proto_report_pb.ReportRequest, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportPerformancePerHourResponse) => void): grpc.ClientUnaryCall;
+    retrievePerformancePerHourReport(request: proto_report_pb.ReportRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportPerformancePerHourResponse) => void): grpc.ClientUnaryCall;
+    retrievePerformancePerHourReport(request: proto_report_pb.ReportRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportPerformancePerHourResponse) => void): grpc.ClientUnaryCall;
     downloadReport(request: proto_report_pb.DownloadRequest, callback: (error: grpc.ServiceError | null, response: proto_report_pb.DownloadResponse) => void): grpc.ClientUnaryCall;
     downloadReport(request: proto_report_pb.DownloadRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_report_pb.DownloadResponse) => void): grpc.ClientUnaryCall;
     downloadReport(request: proto_report_pb.DownloadRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_report_pb.DownloadResponse) => void): grpc.ClientUnaryCall;
@@ -53,9 +53,9 @@ export interface IReportServiceClient {
 
 export class ReportServiceClient extends grpc.Client implements IReportServiceClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public retrieveReport(request: proto_report_pb.ReportRequest, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportResponse) => void): grpc.ClientUnaryCall;
-    public retrieveReport(request: proto_report_pb.ReportRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportResponse) => void): grpc.ClientUnaryCall;
-    public retrieveReport(request: proto_report_pb.ReportRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportResponse) => void): grpc.ClientUnaryCall;
+    public retrievePerformancePerHourReport(request: proto_report_pb.ReportRequest, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportPerformancePerHourResponse) => void): grpc.ClientUnaryCall;
+    public retrievePerformancePerHourReport(request: proto_report_pb.ReportRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportPerformancePerHourResponse) => void): grpc.ClientUnaryCall;
+    public retrievePerformancePerHourReport(request: proto_report_pb.ReportRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_report_pb.ReportPerformancePerHourResponse) => void): grpc.ClientUnaryCall;
     public downloadReport(request: proto_report_pb.DownloadRequest, callback: (error: grpc.ServiceError | null, response: proto_report_pb.DownloadResponse) => void): grpc.ClientUnaryCall;
     public downloadReport(request: proto_report_pb.DownloadRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_report_pb.DownloadResponse) => void): grpc.ClientUnaryCall;
     public downloadReport(request: proto_report_pb.DownloadRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_report_pb.DownloadResponse) => void): grpc.ClientUnaryCall;

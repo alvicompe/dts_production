@@ -43,6 +43,9 @@ export class Cell extends jspb.Message {
     getVolume(): number;
     setVolume(value: number): Cell;
 
+    getState(): Cell.State;
+    setState(value: Cell.State): Cell;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Cell.AsObject;
@@ -66,6 +69,7 @@ export namespace Cell {
         altitude: number,
         area: number,
         volume: number,
+        state: Cell.State,
     }
 
     export enum State {
@@ -75,6 +79,33 @@ export namespace Cell {
     FINISHED = 3,
     }
 
+}
+
+export class CellListRequest extends jspb.Message { 
+    clearCellList(): void;
+    getCellList(): Array<Cell>;
+    setCellList(value: Array<Cell>): CellListRequest;
+    addCell(value?: Cell, index?: number): Cell;
+
+    getType(): TypeDownload;
+    setType(value: TypeDownload): CellListRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CellListRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CellListRequest): CellListRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CellListRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CellListRequest;
+    static deserializeBinaryFromReader(message: CellListRequest, reader: jspb.BinaryReader): CellListRequest;
+}
+
+export namespace CellListRequest {
+    export type AsObject = {
+        cellList: Array<Cell.AsObject>,
+        type: TypeDownload,
+    }
 }
 
 export class CellRequest extends jspb.Message { 
@@ -98,6 +129,34 @@ export class CellRequest extends jspb.Message {
 export namespace CellRequest {
     export type AsObject = {
         cell?: Cell.AsObject,
+    }
+}
+
+export class CellUpdateRequest extends jspb.Message { 
+
+    hasCell(): boolean;
+    clearCell(): void;
+    getCell(): Cell | undefined;
+    setCell(value?: Cell): CellUpdateRequest;
+
+    getType(): TypeDownload;
+    setType(value: TypeDownload): CellUpdateRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CellUpdateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CellUpdateRequest): CellUpdateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CellUpdateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CellUpdateRequest;
+    static deserializeBinaryFromReader(message: CellUpdateRequest, reader: jspb.BinaryReader): CellUpdateRequest;
+}
+
+export namespace CellUpdateRequest {
+    export type AsObject = {
+        cell?: Cell.AsObject,
+        type: TypeDownload,
     }
 }
 
@@ -146,4 +205,38 @@ export namespace CellsResponse {
     export type AsObject = {
         cellsList: Array<Cell.AsObject>,
     }
+}
+
+export class CellListResponse extends jspb.Message { 
+    getDone(): boolean;
+    setDone(value: boolean): CellListResponse;
+
+    getMessage(): string;
+    setMessage(value: string): CellListResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CellListResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: CellListResponse): CellListResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CellListResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CellListResponse;
+    static deserializeBinaryFromReader(message: CellListResponse, reader: jspb.BinaryReader): CellListResponse;
+}
+
+export namespace CellListResponse {
+    export type AsObject = {
+        done: boolean,
+        message: string,
+    }
+}
+
+export enum TypeDownload {
+    UNKNOWN = 0,
+    PIT = 1,
+    PAD = 2,
+    STOCK = 3,
+    DME = 4,
+    ROAD = 5,
 }

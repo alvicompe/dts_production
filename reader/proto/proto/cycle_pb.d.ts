@@ -10,6 +10,7 @@ import * as proto_excavator_pb from "../proto/excavator_pb";
 import * as proto_material_pb from "../proto/material_pb";
 import * as proto_streaming_pb from "../proto/streaming_pb";
 import * as proto_load_pb from "../proto/load_pb";
+import * as proto_audit_pb from "../proto/audit_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 export class Cycle extends jspb.Message { 
@@ -24,6 +25,12 @@ export class Cycle extends jspb.Message {
 
     getDescription(): string;
     setDescription(value: string): Cycle;
+
+
+    hasShiftTime(): boolean;
+    clearShiftTime(): void;
+    getShiftTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setShiftTime(value?: google_protobuf_timestamp_pb.Timestamp): Cycle;
 
 
     hasArrivalTime(): boolean;
@@ -109,6 +116,12 @@ export class Cycle extends jspb.Message {
     addTruckinfo(value?: proto_streaming_pb.TruckInfo, index?: number): proto_streaming_pb.TruckInfo;
 
 
+    hasAudit(): boolean;
+    clearAudit(): void;
+    getAudit(): proto_audit_pb.Audit | undefined;
+    setAudit(value?: proto_audit_pb.Audit): Cycle;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Cycle.AsObject;
     static toObject(includeInstance: boolean, msg: Cycle): Cycle.AsObject;
@@ -125,6 +138,7 @@ export namespace Cycle {
         operationId: string,
         name: string,
         description: string,
+        shiftTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         arrivalTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         downloadArrivalTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
@@ -142,6 +156,7 @@ export namespace Cycle {
         truck?: proto_truck_pb.Truck.AsObject,
         excavator?: proto_excavator_pb.Excavator.AsObject,
         truckinfoList: Array<proto_streaming_pb.TruckInfo.AsObject>,
+        audit?: proto_audit_pb.Audit.AsObject,
     }
 
     export enum State {

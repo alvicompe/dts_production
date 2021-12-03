@@ -34,6 +34,9 @@ export class TruckReport extends jspb.Message {
     getLenPad(): number;
     setLenPad(value: number): TruckReport;
 
+    getLenStock(): number;
+    setLenStock(value: number): TruckReport;
+
     getLen(): number;
     setLen(value: number): TruckReport;
 
@@ -56,6 +59,7 @@ export namespace TruckReport {
         cycleList: Array<proto_cycle_pb.Cycle.AsObject>,
         lenDme: number,
         lenPad: number,
+        lenStock: number,
         len: number,
     }
 }
@@ -84,6 +88,9 @@ export class ExcavatorReport extends jspb.Message {
     getLenPad(): number;
     setLenPad(value: number): ExcavatorReport;
 
+    getLenStock(): number;
+    setLenStock(value: number): ExcavatorReport;
+
     getLen(): number;
     setLen(value: number): ExcavatorReport;
 
@@ -106,6 +113,7 @@ export namespace ExcavatorReport {
         cycleList: Array<proto_cycle_pb.Cycle.AsObject>,
         lenDme: number,
         lenPad: number,
+        lenStock: number,
         len: number,
     }
 }
@@ -123,9 +131,6 @@ export class ReportRequest extends jspb.Message {
     getDateEnd(): google_protobuf_timestamp_pb.Timestamp | undefined;
     setDateEnd(value?: google_protobuf_timestamp_pb.Timestamp): ReportRequest;
 
-    getShift(): proto_cycle_pb.Shift;
-    setShift(value: proto_cycle_pb.Shift): ReportRequest;
-
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ReportRequest.AsObject;
@@ -141,7 +146,6 @@ export namespace ReportRequest {
     export type AsObject = {
         dateStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         dateEnd?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-        shift: proto_cycle_pb.Shift,
     }
 }
 
@@ -190,52 +194,164 @@ export namespace DownloadRequest {
     }
 }
 
-export class ReportResponse extends jspb.Message { 
-    getStatus(): boolean;
-    setStatus(value: boolean): ReportResponse;
+export class ExcavatorTonneHour extends jspb.Message { 
+    clearValueList(): void;
+    getValueList(): Array<number>;
+    setValueList(value: Array<number>): ExcavatorTonneHour;
+    addValue(value: number, index?: number): number;
 
-    getMessage(): string;
-    setMessage(value: string): ReportResponse;
+    getDeviceId(): string;
+    setDeviceId(value: string): ExcavatorTonneHour;
 
-    clearTruckCycleList(): void;
-    getTruckCycleList(): Array<TruckReport>;
-    setTruckCycleList(value: Array<TruckReport>): ReportResponse;
-    addTruckCycle(value?: TruckReport, index?: number): TruckReport;
-
-    clearExcavatorCycleList(): void;
-    getExcavatorCycleList(): Array<ExcavatorReport>;
-    setExcavatorCycleList(value: Array<ExcavatorReport>): ReportResponse;
-    addExcavatorCycle(value?: ExcavatorReport, index?: number): ExcavatorReport;
-
-    getLenDme(): number;
-    setLenDme(value: number): ReportResponse;
-
-    getLenPad(): number;
-    setLenPad(value: number): ReportResponse;
-
-    getLen(): number;
-    setLen(value: number): ReportResponse;
+    getDeviceAlias(): string;
+    setDeviceAlias(value: string): ExcavatorTonneHour;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): ReportResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: ReportResponse): ReportResponse.AsObject;
+    toObject(includeInstance?: boolean): ExcavatorTonneHour.AsObject;
+    static toObject(includeInstance: boolean, msg: ExcavatorTonneHour): ExcavatorTonneHour.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: ReportResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): ReportResponse;
-    static deserializeBinaryFromReader(message: ReportResponse, reader: jspb.BinaryReader): ReportResponse;
+    static serializeBinaryToWriter(message: ExcavatorTonneHour, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ExcavatorTonneHour;
+    static deserializeBinaryFromReader(message: ExcavatorTonneHour, reader: jspb.BinaryReader): ExcavatorTonneHour;
 }
 
-export namespace ReportResponse {
+export namespace ExcavatorTonneHour {
+    export type AsObject = {
+        valueList: Array<number>,
+        deviceId: string,
+        deviceAlias: string,
+    }
+}
+
+export class ReportPerformancePerHour extends jspb.Message { 
+    clearHourList(): void;
+    getHourList(): Array<string>;
+    setHourList(value: Array<string>): ReportPerformancePerHour;
+    addHour(value: string, index?: number): string;
+
+    clearDmeList(): void;
+    getDmeList(): Array<number>;
+    setDmeList(value: Array<number>): ReportPerformancePerHour;
+    addDme(value: number, index?: number): number;
+
+    clearPadList(): void;
+    getPadList(): Array<number>;
+    setPadList(value: Array<number>): ReportPerformancePerHour;
+    addPad(value: number, index?: number): number;
+
+    clearStockList(): void;
+    getStockList(): Array<number>;
+    setStockList(value: Array<number>): ReportPerformancePerHour;
+    addStock(value: number, index?: number): number;
+
+    clearLenTruckList(): void;
+    getLenTruckList(): Array<number>;
+    setLenTruckList(value: Array<number>): ReportPerformancePerHour;
+    addLenTruck(value: number, index?: number): number;
+
+    clearTruckCycleList(): void;
+    getTruckCycleList(): Array<TruckReport>;
+    setTruckCycleList(value: Array<TruckReport>): ReportPerformancePerHour;
+    addTruckCycle(value?: TruckReport, index?: number): TruckReport;
+
+    clearExcavatorLabelCycleList(): void;
+    getExcavatorLabelCycleList(): Array<string>;
+    setExcavatorLabelCycleList(value: Array<string>): ReportPerformancePerHour;
+    addExcavatorLabelCycle(value: string, index?: number): string;
+
+    clearExcavatorValueCycleList(): void;
+    getExcavatorValueCycleList(): Array<ExcavatorTonneHour>;
+    setExcavatorValueCycleList(value: Array<ExcavatorTonneHour>): ReportPerformancePerHour;
+    addExcavatorValueCycle(value?: ExcavatorTonneHour, index?: number): ExcavatorTonneHour;
+
+    clearExcavatorCycleList(): void;
+    getExcavatorCycleList(): Array<ExcavatorReport>;
+    setExcavatorCycleList(value: Array<ExcavatorReport>): ReportPerformancePerHour;
+    addExcavatorCycle(value?: ExcavatorReport, index?: number): ExcavatorReport;
+
+    getLenCycleDme(): number;
+    setLenCycleDme(value: number): ReportPerformancePerHour;
+
+    getLenCyclePad(): number;
+    setLenCyclePad(value: number): ReportPerformancePerHour;
+
+    getLenCycleStock(): number;
+    setLenCycleStock(value: number): ReportPerformancePerHour;
+
+    getLenCycle(): number;
+    setLenCycle(value: number): ReportPerformancePerHour;
+
+    getTonnePerTruck(): number;
+    setTonnePerTruck(value: number): ReportPerformancePerHour;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ReportPerformancePerHour.AsObject;
+    static toObject(includeInstance: boolean, msg: ReportPerformancePerHour): ReportPerformancePerHour.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ReportPerformancePerHour, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ReportPerformancePerHour;
+    static deserializeBinaryFromReader(message: ReportPerformancePerHour, reader: jspb.BinaryReader): ReportPerformancePerHour;
+}
+
+export namespace ReportPerformancePerHour {
+    export type AsObject = {
+        hourList: Array<string>,
+        dmeList: Array<number>,
+        padList: Array<number>,
+        stockList: Array<number>,
+        lenTruckList: Array<number>,
+        truckCycleList: Array<TruckReport.AsObject>,
+        excavatorLabelCycleList: Array<string>,
+        excavatorValueCycleList: Array<ExcavatorTonneHour.AsObject>,
+        excavatorCycleList: Array<ExcavatorReport.AsObject>,
+        lenCycleDme: number,
+        lenCyclePad: number,
+        lenCycleStock: number,
+        lenCycle: number,
+        tonnePerTruck: number,
+    }
+}
+
+export class ReportPerformancePerHourResponse extends jspb.Message { 
+    getStatus(): boolean;
+    setStatus(value: boolean): ReportPerformancePerHourResponse;
+
+    getMessage(): string;
+    setMessage(value: string): ReportPerformancePerHourResponse;
+
+
+    hasDay(): boolean;
+    clearDay(): void;
+    getDay(): ReportPerformancePerHour | undefined;
+    setDay(value?: ReportPerformancePerHour): ReportPerformancePerHourResponse;
+
+
+    hasNight(): boolean;
+    clearNight(): void;
+    getNight(): ReportPerformancePerHour | undefined;
+    setNight(value?: ReportPerformancePerHour): ReportPerformancePerHourResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ReportPerformancePerHourResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ReportPerformancePerHourResponse): ReportPerformancePerHourResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ReportPerformancePerHourResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ReportPerformancePerHourResponse;
+    static deserializeBinaryFromReader(message: ReportPerformancePerHourResponse, reader: jspb.BinaryReader): ReportPerformancePerHourResponse;
+}
+
+export namespace ReportPerformancePerHourResponse {
     export type AsObject = {
         status: boolean,
         message: string,
-        truckCycleList: Array<TruckReport.AsObject>,
-        excavatorCycleList: Array<ExcavatorReport.AsObject>,
-        lenDme: number,
-        lenPad: number,
-        len: number,
+        day?: ReportPerformancePerHour.AsObject,
+        night?: ReportPerformancePerHour.AsObject,
     }
 }
 

@@ -83,6 +83,12 @@ export class Polygon extends jspb.Message {
     getS(): number;
     setS(value: number): Polygon;
 
+    getState(): Polygon.State;
+    setState(value: Polygon.State): Polygon;
+
+    getProjectName(): string;
+    setProjectName(value: string): Polygon;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Polygon.AsObject;
@@ -118,6 +124,8 @@ export namespace Polygon {
         agcn: number,
         ptaucn: number,
         s: number,
+        state: Polygon.State,
+        projectName: string,
     }
 
     export enum State {
@@ -150,6 +158,29 @@ export class PolygonRequest extends jspb.Message {
 export namespace PolygonRequest {
     export type AsObject = {
         polygon?: Polygon.AsObject,
+    }
+}
+
+export class PolygonListRequest extends jspb.Message { 
+    clearPolygonList(): void;
+    getPolygonList(): Array<Polygon>;
+    setPolygonList(value: Array<Polygon>): PolygonListRequest;
+    addPolygon(value?: Polygon, index?: number): Polygon;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): PolygonListRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: PolygonListRequest): PolygonListRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: PolygonListRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): PolygonListRequest;
+    static deserializeBinaryFromReader(message: PolygonListRequest, reader: jspb.BinaryReader): PolygonListRequest;
+}
+
+export namespace PolygonListRequest {
+    export type AsObject = {
+        polygonList: Array<Polygon.AsObject>,
     }
 }
 
@@ -197,5 +228,55 @@ export class PolygonsResponse extends jspb.Message {
 export namespace PolygonsResponse {
     export type AsObject = {
         polygonsList: Array<Polygon.AsObject>,
+    }
+}
+
+export class PolygonListResponse extends jspb.Message { 
+    getDone(): boolean;
+    setDone(value: boolean): PolygonListResponse;
+
+    getMessage(): string;
+    setMessage(value: string): PolygonListResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): PolygonListResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: PolygonListResponse): PolygonListResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: PolygonListResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): PolygonListResponse;
+    static deserializeBinaryFromReader(message: PolygonListResponse, reader: jspb.BinaryReader): PolygonListResponse;
+}
+
+export namespace PolygonListResponse {
+    export type AsObject = {
+        done: boolean,
+        message: string,
+    }
+}
+
+export class RetrievePolygonByProjectNameRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): RetrievePolygonByProjectNameRequest;
+
+    getProjectName(): string;
+    setProjectName(value: string): RetrievePolygonByProjectNameRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RetrievePolygonByProjectNameRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: RetrievePolygonByProjectNameRequest): RetrievePolygonByProjectNameRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RetrievePolygonByProjectNameRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RetrievePolygonByProjectNameRequest;
+    static deserializeBinaryFromReader(message: RetrievePolygonByProjectNameRequest, reader: jspb.BinaryReader): RetrievePolygonByProjectNameRequest;
+}
+
+export namespace RetrievePolygonByProjectNameRequest {
+    export type AsObject = {
+        name: string,
+        projectName: string,
     }
 }
