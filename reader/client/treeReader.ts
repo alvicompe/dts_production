@@ -1,18 +1,18 @@
-import path from 'path'
-import { createReadStream, readFile, readFileSync, writeFileSync } from 'fs'
-import { envVariables } from '../common/environmentsVariables'
-import { ValidationTree } from './validationTree'
-import { MessageError } from '../proto/proto/geo-reader_pb'
+import path from "path"
+import { createReadStream, readFile, readFileSync, writeFileSync } from "fs"
+import { envVariables } from "../common/environmentsVariables"
+import { ValidationTree } from "./validationTree"
+import { MessageError } from "../proto/proto/geo-reader_pb"
 
-const DxfParser = require('dxf-parser')
-const proj4 = require('proj4')
-const turf = require('@turf/turf')
+const DxfParser = require("dxf-parser")
+const proj4 = require("proj4")
+const turf = require("@turf/turf")
 
 export class TreeReader {
   private response = {
     geo: {},
     status: true,
-    message: 'Error reading files.',
+    message: "Error reading files.",
     errors: [] as any,
   } as any
 
@@ -29,7 +29,7 @@ export class TreeReader {
     const { tree, response } = treeBusiness.getValidatedTreeToCreate()
     if (!response) {
       this.response.status = false
-      this.response.message = 'Incorrect tree, check files.'
+      this.response.message = "Incorrect tree, check files."
       return this.response
     }
     const geo = await this.formatStructGeo(tree)
@@ -43,14 +43,14 @@ export class TreeReader {
     const projects = [] as any
     const projectsFiles = {} as any
     for (const file of files) {
-      const pathRead = path.join(__dirname, '..', file.path)
+      const pathRead = path.join(__dirname, "..", file.path)
       const folderName = this.getFolderName(pathRead)
 
       if (this.fileFunctions[`${folderName}`]) {
         // this <fileFunctions["dme"](pathRead)> is equivalent to <getDme(pathRead)>
         const fileContent =
           (await this.fileFunctions[`${folderName}`](pathRead)) || []
-        this.addPropertyGeo(geo, folderName, fileContent)
+        TreeReader.addPropertyGeo(geo, folderName, fileContent)
       } else {
         const projectName = file.project
         const extensionName = file.extension
@@ -62,30 +62,30 @@ export class TreeReader {
         projectsFiles[projectName][extensionName] = pathRead
 
         if (
-          projectsFiles[projectName]['.csv'] &&
-          projectsFiles[projectName]['.dxf']
+          projectsFiles[projectName][".csv"] &&
+          projectsFiles[projectName][".dxf"]
         ) {
           let polygons = await this.buildPolygons(
             projectsFiles,
             projectName,
-            geo,
+            geo
           )
           projects.push({ name: projectName, polygon: polygons })
         }
       }
     }
-    this.cleanRepeated(geo)
-    this.addPropertyGeo(geo, 'pit', projects)
+    TreeReader.cleanRepeated(geo)
+    TreeReader.addPropertyGeo(geo, "pit", projects)
     geo.name = envVariables.ROOT_PATH
     return geo
   }
 
-  private cleanRepeated(geo: any) {
+  private static cleanRepeated(geo: any) {
     for (const folder of Object.keys(envVariables.FOLDER_NAME)) {
-      if (folder === 'dme' || folder === 'pad' || folder === 'stock') {
-        this.cleanRepeatedCell(geo, folder)
-      } else if (folder === 'road') {
-        this.cleanRepeatedPoint(geo, folder)
+      if (folder === "dme" || folder === "pad" || folder === "stock") {
+        TreeReader.cleanRepeatedCell(geo, folder)
+      } else if (folder === "road") {
+        TreeReader.cleanRepeatedPoint(geo, folder)
       }
     }
   }
@@ -98,7 +98,7 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === '') {
+      if (files[i] === "") {
         continue
       }
       const [name, x, y, z] = files[i].split(/[;,]/)
@@ -111,16 +111,20 @@ export class TreeReader {
         groups.push({ name, point: [] })
         currentIndexGroup = groups.length - 1
       }
-      if (groups[currentIndexGroup]['name'] === name) {
-        const { longitude, latitude, altitude } = this.transformUTM(x, y, z)
+      if (groups[currentIndexGroup]["name"] === name) {
+        const { longitude, latitude, altitude } = TreeReader.transformUTM(
+          x,
+          y,
+          z
+        )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
         polygonPoints.push([longitude, latitude])
       }
-      if (groups[currentIndexGroup]['name'] !== name) {
+      if (groups[currentIndexGroup]["name"] !== name) {
         const okBuildCentroid = this.buildCentroid(
           groups[currentIndexGroup],
           polygonPoints,
-          path,
+          path
         )
         if (!okBuildCentroid) {
           break
@@ -142,12 +146,11 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === '') {
+      if (files[i] === "") {
         continue
       }
-      const [name, x, y, z, area, volume, height, level] = files[i].split(
-        /[;,]/,
-      )
+      const [name, x, y, z, area, volume, height, level] =
+        files[i].split(/[;,]/)
       if (!name || !x || !y || !z || !volume || !height) {
         this.setErrResponse(path)
         break
@@ -164,16 +167,20 @@ export class TreeReader {
         })
         currentIndexGroup = groups.length - 1
       }
-      if (groups[currentIndexGroup]['name'] === name) {
-        const { longitude, latitude, altitude } = this.transformUTM(x, y, z)
+      if (groups[currentIndexGroup]["name"] === name) {
+        const { longitude, latitude, altitude } = TreeReader.transformUTM(
+          x,
+          y,
+          z
+        )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
         polygonPoints.push([longitude, latitude])
       }
-      if (groups[currentIndexGroup]['name'] !== name) {
+      if (groups[currentIndexGroup]["name"] !== name) {
         const okBuildCentroid = this.buildCentroid(
           groups[currentIndexGroup],
           polygonPoints,
-          path,
+          path
         )
         if (!okBuildCentroid) {
           break
@@ -202,7 +209,7 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === '') {
+      if (files[i] === "") {
         continue
       }
       let [name, x, y, z, area, volume, height, level] = files[i].split(/[;,]/)
@@ -226,17 +233,21 @@ export class TreeReader {
         })
         currentIndexGroup = groups.length - 1
       }
-      if (groups[currentIndexGroup]['name'] === name) {
-        const { longitude, latitude, altitude } = this.transformUTM(x, y, z)
+      if (groups[currentIndexGroup]["name"] === name) {
+        const { longitude, latitude, altitude } = TreeReader.transformUTM(
+          x,
+          y,
+          z
+        )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
         polygonPoints.push([longitude, latitude])
       }
 
-      if (groups[currentIndexGroup]['name'] !== name) {
+      if (groups[currentIndexGroup]["name"] !== name) {
         const okBuildCentroid = this.buildCentroid(
           groups[currentIndexGroup],
           polygonPoints,
-          path,
+          path
         )
         if (!okBuildCentroid) {
           break
@@ -264,7 +275,7 @@ export class TreeReader {
     let currentIndexGroup = 0
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === '') {
+      if (files[i] === "") {
         continue
       }
       const [name, x, y, z] = files[i].split(/[;,]/)
@@ -278,12 +289,16 @@ export class TreeReader {
         currentIndexGroup = groups.length - 1
       }
 
-      if (groups[currentIndexGroup]['name'] === name) {
-        const { longitude, latitude, altitude } = this.transformUTM(x, y, z)
+      if (groups[currentIndexGroup]["name"] === name) {
+        const { longitude, latitude, altitude } = TreeReader.transformUTM(
+          x,
+          y,
+          z
+        )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
       }
 
-      if (groups[currentIndexGroup]['name'] !== name) {
+      if (groups[currentIndexGroup]["name"] !== name) {
         groups.push({ name, point: [] })
         currentIndexGroup = groups.length - 1
       }
@@ -296,12 +311,11 @@ export class TreeReader {
     const materials = [] as any
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === '') {
+      if (files[i] === "") {
         continue
       }
-      const [type, description, crs, orezone, law, thins, cf, place] = files[
-        i
-      ].split(';')
+      const [type, description, crs, orezone, law, thins, cf, place] =
+        files[i].split(";")
       if (!type || !place) {
         this.setErrResponse(path)
         break
@@ -313,11 +327,11 @@ export class TreeReader {
 
   private getDxfPid(path: string, projectName: string): Promise<any> {
     const parser = new DxfParser()
-    const fileStream = createReadStream(path, { encoding: 'utf8' })
+    const fileStream = createReadStream(path, { encoding: "utf8" })
     return new Promise((resolve, reject) => {
       parser.parseStream(fileStream, (err: any, dxf: any) => {
         if (err || !dxf) {
-          this.setErrResponse(path, 'dxf corrupt')
+          this.setErrResponse(path, "dxf corrupt")
           return reject(err.stack)
         }
         const polygons = [] as any
@@ -326,16 +340,16 @@ export class TreeReader {
         for (let i = 0; i < entities.length; i++) {
           const polygon = {} as any
 
-          polygon.name = entities[i].extendedData.customStrings[0].split('=')[1]
+          polygon.name = entities[i].extendedData.customStrings[0].split("=")[1]
           polygon.project_name = projectName
           polygon.color = entities[i].colorIndex
           polygon.point = []
 
           entities[i].vertices.forEach((v: any) => {
-            const { longitude, latitude, altitude } = this.transformUTM(
+            const { longitude, latitude, altitude } = TreeReader.transformUTM(
               v.x,
               v.y,
-              v.z,
+              v.z
             )
             polygon.point.push({ longitude, latitude, altitude })
             polygonPoints.push([longitude, latitude])
@@ -345,7 +359,7 @@ export class TreeReader {
           const okBuildCentroid = this.buildCentroid(
             polygon,
             polygonPoints,
-            path,
+            path
           )
           if (!okBuildCentroid) {
             polygons.push(polygon)
@@ -362,31 +376,31 @@ export class TreeReader {
 
   private async getCsvPidExtra(path: string) {
     const OUTPUT_LABELS = [
-      'name',
-      'material',
-      'lito',
-      'alte',
-      'orezonet',
-      'au',
-      'ag',
-      'as',
-      'volume',
-      'tonnes',
-      'onzas',
-      'aucn',
-      'agcn',
-      'ptaucn',
-      's',
+      "name",
+      "material",
+      "lito",
+      "alte",
+      "orezonet",
+      "au",
+      "ag",
+      "as",
+      "volume",
+      "tonnes",
+      "onzas",
+      "aucn",
+      "agcn",
+      "ptaucn",
+      "s",
     ]
     let files = await this.formattedFile(path, 2)
     const polygons = [] as any
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === '') {
+      if (files[i] === "") {
         continue
       }
       const colSplit = files[i].split(/[;,]/)
       const group = {} as any
-      if (colSplit[2] !== '') {
+      if (colSplit[2] !== "") {
         if (
           !colSplit[0] ||
           !colSplit[1] ||
@@ -398,7 +412,7 @@ export class TreeReader {
           break
         }
         for (let i = 0; i < OUTPUT_LABELS.length; i++) {
-          group[OUTPUT_LABELS[i]] = this.isNum(colSplit[i])
+          group[OUTPUT_LABELS[i]] = TreeReader.isNum(colSplit[i])
             ? parseFloat(colSplit[i])
             : colSplit[i]
         }
@@ -414,7 +428,7 @@ export class TreeReader {
           break
         }
         for (let i = 3; i < OUTPUT_LABELS.length + 3; i++) {
-          group[OUTPUT_LABELS[i - 3]] = this.isNum(colSplit[i])
+          group[OUTPUT_LABELS[i - 3]] = TreeReader.isNum(colSplit[i])
             ? parseFloat(colSplit[i])
             : colSplit[i]
         }
@@ -427,26 +441,25 @@ export class TreeReader {
   private async buildPolygons(
     projectsFiles: any,
     projectName: string,
-    geo: any,
+    geo: any
   ) {
     let csvPidContent: any, dxfPidContent: any
     try {
       csvPidContent = await this.getCsvPidExtra(
-        projectsFiles[projectName]['.csv'],
+        projectsFiles[projectName][".csv"]
       )
       dxfPidContent = await this.getDxfPid(
-        projectsFiles[projectName]['.dxf'],
-        projectName,
+        projectsFiles[projectName][".dxf"],
+        projectName
       )
     } catch (e) {
-      console.log(e)
       csvPidContent = []
       dxfPidContent = []
     }
 
     for (let i = 0; i < dxfPidContent.length; i++) {
       const extra = csvPidContent.find(
-        (item: { name: any }) => dxfPidContent[i].name === item.name,
+        (item: { name: any }) => dxfPidContent[i].name === item.name
       )
 
       dxfPidContent[i].lito = extra ? extra.lito : null
@@ -463,9 +476,9 @@ export class TreeReader {
       dxfPidContent[i].ptaucn = extra ? extra.ptaucn : null
       dxfPidContent[i].s = extra ? extra.s : null
       let material = {}
-      for (let j = 0; j < geo['material'].length; j++) {
-        if (extra && geo['material'][j].type == extra.material) {
-          material = geo['material'][j]
+      for (let j = 0; j < geo["material"].length; j++) {
+        if (extra && geo["material"][j].type == extra.material) {
+          material = geo["material"][j]
         }
       }
       dxfPidContent[i].material = material
@@ -474,47 +487,51 @@ export class TreeReader {
   }
 
   private getFolderName(path: string): string {
-    const pathFormatted = path.toLowerCase().split('/')
+    const pathFormatted = path.toLowerCase().split("/")
     const valuesFolderName = Object.entries(envVariables.FOLDER_NAME)
     const entryMatch = valuesFolderName.find(([, value]: any) =>
-      pathFormatted.includes(value),
+      pathFormatted.includes(value)
     )
-    return entryMatch ? entryMatch[0] : ''
+    return entryMatch ? entryMatch[0] : ""
   }
 
-  private addPropertyGeo(geo: any, folderName: string, fileContent: any) {
+  private static addPropertyGeo(
+    geo: any,
+    folderName: string,
+    fileContent: any
+  ) {
     // geo [<name_proto>] : <properties_proto>
-    if (folderName === 'dme') {
-      if (!geo['dme'] || geo['dme'].length === 0) {
-        geo['dme'] = [{ name: folderName, cell: [] }]
+    if (folderName === "dme") {
+      if (!geo["dme"] || geo["dme"].length === 0) {
+        geo["dme"] = [{ name: folderName, cell: [] }]
       }
-      geo['dme'][0].cell = [...geo['dme'][0].cell, ...fileContent]
-    } else if (folderName === 'material') {
-      if (!geo['material'] || geo['material'].length === 0) {
-        geo['material'] = []
+      geo["dme"][0].cell = [...geo["dme"][0].cell, ...fileContent]
+    } else if (folderName === "material") {
+      if (!geo["material"] || geo["material"].length === 0) {
+        geo["material"] = []
       }
-      geo['material'] = [...geo['material'], ...fileContent]
-    } else if (folderName === 'pad') {
-      if (!geo['pad'] || geo['pad'].length === 0) {
-        geo['pad'] = [{ name: folderName, cell: [] }]
+      geo["material"] = [...geo["material"], ...fileContent]
+    } else if (folderName === "pad") {
+      if (!geo["pad"] || geo["pad"].length === 0) {
+        geo["pad"] = [{ name: folderName, cell: [] }]
       }
-      geo['pad'][0].cell = [...geo['pad'][0].cell, ...fileContent]
-    } else if (folderName === 'road') {
-      if (!geo['road'] || geo['road'].length === 0) {
-        geo['road'] = []
+      geo["pad"][0].cell = [...geo["pad"][0].cell, ...fileContent]
+    } else if (folderName === "road") {
+      if (!geo["road"] || geo["road"].length === 0) {
+        geo["road"] = []
       }
-      geo['road'] = [...geo['road'], ...fileContent]
-    } else if (folderName === 'stock') {
-      if (!geo['stock'] || geo['stock'].length === 0) {
-        geo['stock'] = [{ name: folderName, cell: [] }]
+      geo["road"] = [...geo["road"], ...fileContent]
+    } else if (folderName === "stock") {
+      if (!geo["stock"] || geo["stock"].length === 0) {
+        geo["stock"] = [{ name: folderName, cell: [] }]
       }
-      geo['stock'][0].cell = [...geo['stock'][0].cell, ...fileContent]
-    } else if (folderName === 'pit') {
-      geo['pit'] = [{ name: folderName, project: fileContent }]
+      geo["stock"][0].cell = [...geo["stock"][0].cell, ...fileContent]
+    } else if (folderName === "pit") {
+      geo["pit"] = [{ name: folderName, project: fileContent }]
     }
   }
 
-  private setErrResponse(path: string, summary: string = 'missing values') {
+  private setErrResponse(path: string, summary: string = "missing values") {
     this.response.status = false
     const indexPathError = path.indexOf(envVariables.ROOT_PATH)
     const messageError = new MessageError()
@@ -523,11 +540,11 @@ export class TreeReader {
     this.response.errors.push(messageError)
   }
 
-  private async rewriteFile(filePath: import('fs').PathOrFileDescriptor) {
+  private async rewriteFile(filePath: import("fs").PathOrFileDescriptor) {
     return new Promise((resolve, reject) => {
-      let csvContent: any = readFileSync(filePath).toString().split('\n')
+      let csvContent: any = readFileSync(filePath).toString().split("\n")
       csvContent.shift()
-      csvContent = csvContent.join('\n')
+      csvContent = csvContent.join("\n")
       writeFileSync(filePath, csvContent)
       resolve(true)
     })
@@ -539,7 +556,7 @@ export class TreeReader {
         if (err) {
           reject(err)
         }
-        let csvRead = csv.toString().split('\n')
+        let csvRead = csv.toString().split("\n")
         csvRead = csvRead.splice(headersToRemove, csv.length)
         resolve(csvRead)
       })
@@ -554,13 +571,13 @@ export class TreeReader {
       }
     } else if (polygonPoints.length === 3) {
       if (polygonPoints[0] !== polygonPoints[polygonPoints.length - 1]) {
-        this.setErrResponse(path, 'build centroid')
+        this.setErrResponse(path, "build centroid")
         return false
       } else {
         polygonPoints.push(polygonPoints[0])
       }
     } else {
-      this.setErrResponse(path, 'build centroid')
+      this.setErrResponse(path, "build centroid")
       return false
     }
 
@@ -575,21 +592,21 @@ export class TreeReader {
     return true
   }
 
-  private cleanRepeatedCell(geo: any, type: string) {
+  private static cleanRepeatedCell(geo: any, type: string) {
     let newArray: any = []
     let lookupObject: any = {} //{name, obj}
 
     for (let i in geo[`${type}`][0].cell) {
-      if (lookupObject[geo[`${type}`][0].cell[i]['name']]) {
+      if (lookupObject[geo[`${type}`][0].cell[i]["name"]]) {
         if (
-          lookupObject[geo[`${type}`][0].cell[i]['name']]['point'].length <
-          geo[`${type}`][0].cell[i]['point'].length
+          lookupObject[geo[`${type}`][0].cell[i]["name"]]["point"].length <
+          geo[`${type}`][0].cell[i]["point"].length
         ) {
-          lookupObject[geo[`${type}`][0].cell[i]['name']] =
+          lookupObject[geo[`${type}`][0].cell[i]["name"]] =
             geo[`${type}`][0].cell[i]
         }
       } else {
-        lookupObject[geo[`${type}`][0].cell[i]['name']] =
+        lookupObject[geo[`${type}`][0].cell[i]["name"]] =
           geo[`${type}`][0].cell[i]
       }
     }
@@ -601,20 +618,20 @@ export class TreeReader {
     geo[`${type}`][0].cell = newArray
   }
 
-  private cleanRepeatedPoint(geo: any, type: string) {
+  private static cleanRepeatedPoint(geo: any, type: string) {
     let newArray: any = []
     let lookupObject: any = {} //{name, obj}
 
     for (let i in geo[`${type}`]) {
-      if (lookupObject[geo[`${type}`][i]['name']]) {
+      if (lookupObject[geo[`${type}`][i]["name"]]) {
         if (
-          lookupObject[geo[`${type}`][i]['name']]['point'].length <
-          geo[`${type}`][i]['point'].length
+          lookupObject[geo[`${type}`][i]["name"]]["point"].length <
+          geo[`${type}`][i]["point"].length
         ) {
-          lookupObject[geo[`${type}`][i]['name']] = geo[`${type}`][i]
+          lookupObject[geo[`${type}`][i]["name"]] = geo[`${type}`][i]
         }
       } else {
-        lookupObject[geo[`${type}`][i]['name']] = geo[`${type}`][i]
+        lookupObject[geo[`${type}`][i]["name"]] = geo[`${type}`][i]
       }
     }
 
@@ -625,13 +642,13 @@ export class TreeReader {
     geo[`${type}`] = newArray
   }
 
-  private transformUTM(x: any, y: any, z: any) {
+  private static transformUTM(x: any, y: any, z: any) {
     x = parseFloat(x)
     y = parseFloat(y)
     z = parseFloat(z)
 
-    const FROM = '+proj=utm +zone=17 +units=m +ellps=WGS84 +south +no_defs'
-    const TO = '+proj=longlat +ellps=WGS84 +units=m +no_defs'
+    const FROM = "+proj=utm +zone=17 +units=m +ellps=WGS84 +south +no_defs"
+    const TO = "+proj=longlat +ellps=WGS84 +units=m +no_defs"
 
     const proj = proj4(FROM, TO)
     const point = proj4.toPoint([x, y, z])
@@ -639,7 +656,7 @@ export class TreeReader {
     return { longitude: results.x, latitude: results.y, altitude: results.z }
   }
 
-  private isNum(str: any) {
+  private static isNum(str: any) {
     return !isNaN(str)
   }
 }

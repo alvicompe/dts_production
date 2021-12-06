@@ -9,7 +9,7 @@ message GeoTreeResponse {
   bool status = 1;
   string message = 2;
   string geo = 3;
-  repeated string errors = 4;
+  repeated MessageError errors = 4;
 }
 
 message CreateTreeGeoResponse {
@@ -25,5 +25,7 @@ message MessageError{
 
 service GeoReaderService{
   rpc RetrieveTreeGeo(google.protobuf.Empty) returns (GeoTreeResponse) {};
+  rpc CreateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
+  rpc UpdateTreeDirectory(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
   rpc CreateTreeGeo(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
 }

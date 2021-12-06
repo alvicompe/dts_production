@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "../pb";
+import "google/protobuf/empty.proto";
+
+message TreeResponse {
+  bool status = 1;
+  string message = 2;
+  string geo = 3;
+}
+
+message CreateTreeRequest{
+  string tree = 1;
+}
+
+service TreeService{
+  rpc RetrieveTree(google.protobuf.Empty) returns (TreeResponse) {};
+  rpc CreateTree(CreateTreeRequest) returns (TreeResponse) {};
+  rpc UpdateTree(CreateTreeRequest) returns (TreeResponse) {};
+}
