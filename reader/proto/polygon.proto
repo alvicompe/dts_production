@@ -36,7 +36,6 @@ message Polygon{
   double ptaucn = 21;
   double s = 22;
   State state = 23;
-  string project_name = 24;
 }
 
 message PolygonRequest {
@@ -53,22 +52,15 @@ message PolygonResponse {
 message PolygonsResponse {
   repeated Polygon polygons = 1;
 }
-
 message PolygonListResponse {
   bool done = 1;
-  string message = 2;
-}
-
-message RetrievePolygonByProjectNameRequest{
-  string name = 1;
-  string project_name = 2;
+  string message  = 2;
 }
 
 service PolygonService {
   rpc CreatePolygon(PolygonRequest) returns (PolygonResponse) {};
   rpc RetrievePolygon(PolygonRequest) returns (PolygonResponse) {};
   rpc RetrievePolygons(PolygonRequest) returns (PolygonsResponse) {};
-  rpc RetrievePolygonByProjectName(RetrievePolygonByProjectNameRequest) returns (PolygonResponse) {};
   rpc UpdatePolygon(PolygonRequest) returns (PolygonResponse) {};
   rpc DeletePolygon(PolygonRequest) returns (PolygonResponse) {};
   rpc FinalizePolygonList(PolygonListRequest) returns (PolygonListResponse) {};

@@ -1,5 +1,9 @@
-import { GridRequest } from "../proto/proto/grid_pb"
-import { clientGrid } from "./utils"
+import { GridRequest } from "../proto/proto/grid_pb";
+import { clientGrid } from "./utils";
+
+
+// chunk.setContent(btoa(e))
+// uploadRequest.setChunk(chunk)
 
 export default function CreateGrid(param: GridRequest) {
   return new Promise<Boolean>((resolve, reject) => {
@@ -9,10 +13,13 @@ export default function CreateGrid(param: GridRequest) {
     clientGrid.createGrid(request, (err, res) => {
       if (err) {
         reject(err)
-      } else {
+      }else {
         console.log("res.getDone()", res.getDone())
         resolve(res.getDone())
       }
-    })
-  })
+
+    });
+
+  });
+
 }

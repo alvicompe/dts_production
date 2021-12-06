@@ -1,0 +1,5 @@
+;;Block Model;;;;;;;;;;;;;;
+Blast;Grade Block;Name;Grade block name;material;lito;alte;orezonet;au;ag;as;volume;tonnes;onzas;aucn;ptaucn;s
+S212828175;A;;A;D4;STSD;AR;OXI;0.127;0.531;361.51;16371;37703;154;0.07;55.262;0.123
+S212828175;B;;B;M5;STSD;AR;OXI;0.466;1.327;655.989;12389;28533;428;0.246;52.722;0.135
+S212828175;C;;C;M1;SD;SI2;OXI;0.316;7.469;747.806;6295;15385;156;0.248;78.675;0.144
