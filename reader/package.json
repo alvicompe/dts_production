@@ -8,6 +8,7 @@
     "dxf-parser": "^1.0.0-alpha.2",
     "grpc_tools_node_protoc_ts": "^4.1.2",
     "grpc-tools": "^1.9.1",
+    "prettier": "2.5.0",
     "proj4": "^2.7.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7",
