@@ -1,16 +1,16 @@
-import { UserServiceClient } from '../proto/proto/user_grpc_pb'
-import { GeoServiceClient } from '../proto/proto/geo_grpc_pb'
-import { GridServiceClient } from '../proto/proto/grid_grpc_pb'
-import { credentials, Metadata } from 'grpc'
-import { readFileSync } from 'fs'
+import { UserServiceClient } from "../proto/proto/user_grpc_pb"
+import { GeoServiceClient } from "../proto/proto/geo_grpc_pb"
+import { GridServiceClient } from "../proto/proto/grid_grpc_pb"
+import { credentials, Metadata } from "grpc"
+import { readFileSync } from "fs"
 
 // const port = 3000;
-var cacert = readFileSync('./cert/server.crt')
-var cert_chain = readFileSync('./cert/server.crt')
-var private_key = readFileSync('./cert/server.key')
+const cacert = readFileSync("./cert/server.crt")
+const cert_chain = readFileSync("./cert/server.crt")
+const private_key = readFileSync("./cert/server.key")
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzQzOTA1MjQsInVzZXJuYW1lIjoiZGlzcGF0Y2hlciIsInJvbGUiOiJESVMifQ.b_qDF3c_MD9AJNAM8GcVB57hrQD3TvMtzRbP9DqYgbg'
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzQzOTA1MjQsInVzZXJuYW1lIjoiZGlzcGF0Y2hlciIsInJvbGUiOiJESVMifQ.b_qDF3c_MD9AJNAM8GcVB57hrQD3TvMtzRbP9DqYgbg"
 
 function newChannelCredentials() {
   return credentials.combineChannelCredentials(
@@ -20,19 +20,19 @@ function newChannelCredentials() {
     //   metadata.add('authorization', token)
     //   callback(null, metadata)
     // }),
-      credentials.createInsecure()
+    credentials.createInsecure()
   )
 }
 
 const cred = newChannelCredentials()
 
 export const client = new GeoServiceClient(`dts.pe:9003`, cred, {
-  'grpc.ssl_target_name_override': 'dts.pe',
-  'grpc.default_authority': 'dts.pe',
+  "grpc.ssl_target_name_override": "dts.pe",
+  "grpc.default_authority": "dts.pe",
 })
-console.log('client', client)
+console.log("client", client)
 
 export const clientGrid = new GridServiceClient(`dts.pe:9003`, cred)
-console.log('clientGrid', clientGrid)
+console.log("clientGrid", clientGrid)
 
 export const noop = () => {}

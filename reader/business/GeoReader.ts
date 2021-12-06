@@ -1,6 +1,6 @@
-import { TreeReader } from '../client/treeReader'
-import UploadGeo from '../client/geo'
-import { ValidationTree } from '../client/validationTree'
+import { TreeReader } from "../client/treeReader"
+import UploadGeo from "../client/geo"
+import { ValidationTree } from "../client/validationTree"
 
 export class GeoReader {
   readFiles() {
@@ -14,8 +14,8 @@ export class GeoReader {
     if (status) {
       const okUploadGeo = await UploadGeo(JSON.stringify(geo))
       message = okUploadGeo
-        ? 'Successful creation'
-        : 'Something went wrong in the creation'
+        ? "Successful creation"
+        : "Something went wrong in the creation"
     }
     return { status, message, errors }
   }

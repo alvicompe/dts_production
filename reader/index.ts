@@ -1,13 +1,13 @@
-import {KeyCertPair, Server, ServerCredentials} from 'grpc'
-import {GridServer} from './service/Grid'
-import {readFileSync} from 'fs'
-import path from 'path'
-import { GridServiceService } from './proto/proto/grid_grpc_pb'
-import { GeoReaderServer } from './service/GeoReader'
-import { GeoReaderServiceService } from './proto/proto/geo-reader_grpc_pb'
+import { KeyCertPair, Server, ServerCredentials } from "grpc"
+import { GridServer } from "./service/Grid"
+import { readFileSync } from "fs"
+import path from "path"
+import { GridServiceService } from "./proto/proto/grid_grpc_pb"
+import { GeoReaderServer } from "./service/GeoReader"
+import { GeoReaderServiceService } from "./proto/proto/geo-reader_grpc_pb"
 
 // const p = path.join(__dirname, "cert", "server.crt")
-const rootCert = readFileSync(path.join(__dirname, 'cert', 'server.crt'))
+const rootCert = readFileSync(path.join(__dirname, "cert", "server.crt"))
 
 // const channelCreds = grpc.credentials.createSsl(rootCert);
 // const metaCallback = (_params, callback) => {
@@ -19,10 +19,10 @@ const rootCert = readFileSync(path.join(__dirname, 'cert', 'server.crt'))
 // const combCreds = grpc.credentials.combineChannelCredentials(channelCreds, callCreds);
 // const stub = new helloworld.Greeter('myservice.example.com', combCreds);
 const keyCertPairs: Array<KeyCertPair> = [
-    {
-        private_key: readFileSync(path.join(__dirname, 'cert', 'server.key')),
-        cert_chain: readFileSync(path.join(__dirname, 'cert', 'server.crt')),
-    },
+  {
+    private_key: readFileSync(path.join(__dirname, "cert", "server.key")),
+    cert_chain: readFileSync(path.join(__dirname, "cert", "server.crt")),
+  },
 ]
 
 const server = new Server()

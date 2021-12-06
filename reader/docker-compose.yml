@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # # Main api
@@ -30,12 +30,12 @@ services:
 #      - MONGO_INITDB_DATABASE=hytech
 #      - MONGO_INITDB_ROOT_USERNAME=admin
 #      - MONGO_INITDB_ROOT_PASSWORD=admin
-    # volumes:
-      # # seeding scripts
-      # - ./mongo-entrypoint:/docker-entrypoint-initdb.d
-      # # named volumes
-      # - mongodb:/data/db
-      # volumes: ~/mongo/data:/data/db
-      # - mongoconfig:/data/configdb
-    # networks:
-    #   - mongo_net
+# volumes:
+# # seeding scripts
+# - ./mongo-entrypoint:/docker-entrypoint-initdb.d
+# # named volumes
+# - mongodb:/data/db
+# volumes: ~/mongo/data:/data/db
+# - mongoconfig:/data/configdb
+# networks:
+#   - mongo_net

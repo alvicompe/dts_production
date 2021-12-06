@@ -3,4 +3,4 @@ gen:
 
 
 run:
-	npm run server
+	nodemon
