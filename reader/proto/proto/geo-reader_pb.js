@@ -125,7 +125,8 @@ proto.pb.GeoTreeResponse.toObject = function(includeInstance, msg) {
     status: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
     message: jspb.Message.getFieldWithDefault(msg, 2, ""),
     geo: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    errorsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
+    errorsList: jspb.Message.toObjectList(msg.getErrorsList(),
+    proto.pb.MessageError.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -175,7 +176,8 @@ proto.pb.GeoTreeResponse.deserializeBinaryFromReader = function(msg, reader) {
       msg.setGeo(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new proto.pb.MessageError;
+      reader.readMessage(value,proto.pb.MessageError.deserializeBinaryFromReader);
       msg.addErrors(value);
       break;
     default:
@@ -230,9 +232,10 @@ proto.pb.GeoTreeResponse.serializeBinaryToWriter = function(message, writer) {
   }
   f = message.getErrorsList();
   if (f.length > 0) {
-    writer.writeRepeatedString(
+    writer.writeRepeatedMessage(
       4,
-      f
+      f,
+      proto.pb.MessageError.serializeBinaryToWriter
     );
   }
 };
@@ -293,30 +296,31 @@ proto.pb.GeoTreeResponse.prototype.setGeo = function(value) {
 
 
 /**
- * repeated string errors = 4;
- * @return {!Array<string>}
+ * repeated MessageError errors = 4;
+ * @return {!Array<!proto.pb.MessageError>}
  */
 proto.pb.GeoTreeResponse.prototype.getErrorsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 4));
+  return /** @type{!Array<!proto.pb.MessageError>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.pb.MessageError, 4));
 };
 
 
 /**
- * @param {!Array<string>} value
+ * @param {!Array<!proto.pb.MessageError>} value
  * @return {!proto.pb.GeoTreeResponse} returns this
- */
+*/
 proto.pb.GeoTreeResponse.prototype.setErrorsList = function(value) {
-  return jspb.Message.setField(this, 4, value || []);
+  return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.pb.MessageError=} opt_value
  * @param {number=} opt_index
- * @return {!proto.pb.GeoTreeResponse} returns this
+ * @return {!proto.pb.MessageError}
  */
-proto.pb.GeoTreeResponse.prototype.addErrors = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+proto.pb.GeoTreeResponse.prototype.addErrors = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.pb.MessageError, opt_index);
 };
 
 

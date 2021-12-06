@@ -18,9 +18,9 @@ export class GeoTreeResponse extends jspb.Message {
     setGeo(value: string): GeoTreeResponse;
 
     clearErrorsList(): void;
-    getErrorsList(): Array<string>;
-    setErrorsList(value: Array<string>): GeoTreeResponse;
-    addErrors(value: string, index?: number): string;
+    getErrorsList(): Array<MessageError>;
+    setErrorsList(value: Array<MessageError>): GeoTreeResponse;
+    addErrors(value?: MessageError, index?: number): MessageError;
 
 
     serializeBinary(): Uint8Array;
@@ -38,7 +38,7 @@ export namespace GeoTreeResponse {
         status: boolean,
         message: string,
         geo: string,
-        errorsList: Array<string>,
+        errorsList: Array<MessageError.AsObject>,
     }
 }
 
