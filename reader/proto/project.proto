@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "../pb";
+import "proto/polygon.proto";
+
+message Project {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  repeated Polygon polygon = 4;
+}
+
+message ProjectRequest {
+  Project project = 1;
+}
+
+message ProjectResponse {
+  Project project = 1;
+}
+
+message ProjectsResponse {
+  repeated Project projects = 1;
+}
+
+service ProjectService {
+  rpc CreateProject(ProjectRequest) returns (ProjectResponse) {};
+  rpc RetrieveProject(ProjectRequest) returns (ProjectResponse) {};
+  rpc RetrieveProjects(ProjectRequest) returns (ProjectsResponse) {};
+  rpc UpdateProject(ProjectRequest) returns (ProjectResponse) {};
+  rpc DeleteProject(ProjectRequest) returns (ProjectResponse) {};
+}
+
+
+

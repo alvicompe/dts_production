@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "../pb";
+import "proto/cell.proto";
+
+message Stock {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  repeated Cell cell = 4;
+}
+
+message StockRequest {
+  Stock stock = 1;
+}
+
+message StockResponse {
+  Stock stock = 1;
+}
+
+message StocksResponse {
+  repeated Stock stocks = 1;
+}
+
+service StockService {
+  rpc CreateStock(StockRequest) returns(StockResponse);
+  rpc RetrieveStock(StockRequest) returns(StockResponse);
+  rpc RetrieveStocks(StockRequest) returns(StocksResponse);
+  rpc UpdateStock(StockRequest) returns(StockResponse);
+  rpc DeleteStock(StockRequest) returns(StockResponse);
+}
+
+

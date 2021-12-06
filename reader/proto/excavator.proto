@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "../pb";
+import "proto/contractor.proto";
+
+
+message Excavator {
+  string id = 1;
+  string device_id = 2;
+  string device_alias = 3;
+  uint32 device_interval = 4;
+  string description = 5;
+  string plate = 6;
+  Contractor contractor = 7;
+}
+
+message ExcavatorRequest {
+  Excavator excavator = 1;
+}
+
+message ExcavatorResponse {
+  Excavator excavator = 1;
+}
+
+message ExcavatorsResponse {
+  repeated Excavator excavators = 1;
+}
+
+service ExcavatorService {
+  rpc CreateExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc RetrieveExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc RetrieveExcavators(ExcavatorRequest) returns(ExcavatorsResponse) {};
+  rpc UpdateExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc DeleteExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+}
+

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "../pb";
+import "google/protobuf/empty.proto";
+
+message GeoTreeResponse {
+  bool status = 1;
+  string message = 2;
+  string geo = 3;
+  repeated MessageError errors = 4;
+}
+
+message CreateTreeGeoResponse {
+  bool status = 1;
+  string message = 2;
+  repeated MessageError errors = 3;
+}
+
+message MessageError{
+  string path = 1;
+  string message = 2;
+}
+
+service GeoReaderService{
+  rpc RetrieveTreeGeo(google.protobuf.Empty) returns (GeoTreeResponse) {};
+  rpc CreateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
+  rpc UpdateTreeDirectory(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
+  rpc CreateTreeGeo(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
+}

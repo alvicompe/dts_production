@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "../pb";
+import "proto/contractor.proto";
+
+
+message Truck {
+  string id = 1;
+  string device_id = 2;
+  string device_alias = 3;
+  uint32 device_interval = 4;
+  string description = 5;
+  string plate = 6;
+  Contractor contractor = 7;
+}
+
+message TruckRequest {
+  Truck truck = 1;
+}
+
+message TruckResponse {
+  Truck truck = 1;
+}
+
+message TrucksResponse {
+  repeated Truck trucks = 1;
+}
+
+service TruckService {
+  rpc CreateTruck(TruckRequest) returns(TruckResponse) {};
+  rpc RetrieveTruck(TruckRequest) returns(TruckResponse) {};
+  rpc RetrieveTrucks(TruckRequest) returns(TrucksResponse) {};
+  rpc UpdateTruck(TruckRequest) returns(TruckResponse) {};
+  rpc DeleteTruck(TruckRequest) returns(TruckResponse) {};
+}
+

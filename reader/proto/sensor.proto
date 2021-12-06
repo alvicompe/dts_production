@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package pb;
+// option go_package = ".;pb";
+option go_package = "../pb";
+
+
+message BasicSensor {
+    string device_id = 1;
+    string device_alias = 2;
+    string datetime = 3;
+    string longitude = 4;
+    string latitude = 5;
+    string speed = 6;
+    string direction = 7;
+}
+
+message Sensor {
+    double longitude = 1;
+    double latitude = 2;
+    double altitude = 3;
+    double direction = 4;
+    double speed = 5;
+    string datetime = 6;
+}
+
+message ServerSensorRequest{}
+
+message ServerSensorResponse{
+    BasicSensor sensor = 1;
+}
+
+service SensorService {
+    rpc ServerStream(ServerSensorRequest) returns(stream ServerSensorResponse) {};
+}
