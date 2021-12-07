@@ -9,7 +9,7 @@ export class GridServer implements IGridServiceServer {
     call: ServerUnaryCall<GridRequest>,
     callback: sendUnaryData<GridResponse>
   ) {
-    console.log("call", call)
+    console.log("calling", call)
 
     const request = call.request.toObject()
     console.log("request", request)
