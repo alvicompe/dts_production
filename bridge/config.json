@@ -30,7 +30,7 @@
       "ssl": "disable"
     },
     "psql": {
-      "host": "192.168.0.40",
+      "host": "itecperu.com",
       "port": "5432",
       "user": "postgres",
       "password": "123456",
