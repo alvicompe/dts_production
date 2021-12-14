@@ -27,7 +27,7 @@ export class ValidationTree {
 
     // Convert json to string
     string_tree = JSON.stringify(tree)
-
+    
     return { tree: string_tree, response: this.response, errors: this.errors }
   }
 
@@ -184,8 +184,8 @@ export class ValidationTree {
   ) {
     let message: string
     isDuplicated
-      ? message = `Duplicated files with extension`
-      : message = `Missing file with extension`
+      ? (message = `Duplicated files with extension`)
+      : (message = `Missing file with extension`)
 
     this.response = false
     directory.status = false

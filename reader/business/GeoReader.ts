@@ -2,10 +2,19 @@ import { TreeReader } from "../client/treeReader"
 import UploadGeo from "../client/geo"
 import { ValidationTree } from "../client/validationTree"
 
+// import { TreeBusiness } from "./TreeBusiness"
+
 export class GeoReader {
-  readFiles() {
-    const tree = new ValidationTree()
-    return tree.getValidatedTree()
+  async readFiles() {
+    const validationTree = new ValidationTree()
+    let { tree, response, errors } = validationTree.getValidatedTree()
+    // let treeFile = validationTree.getValidatedTreeToCreate()
+    // const treeBusiness = new TreeBusiness()
+    // if (treeFile.response) {
+    //   await treeBusiness.uploadTree(tree, treeFile.tree)
+    // }
+
+    return { tree, response, errors }
   }
 
   async createGeo() {

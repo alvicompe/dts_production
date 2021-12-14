@@ -5,18 +5,28 @@ package pb;
 option go_package = "../pb";
 import "google/protobuf/empty.proto";
 
+message Tree {
+  string id = 1;
+  string tree = 2;
+  string files = 3;
+}
+
 message TreeResponse {
   bool status = 1;
   string message = 2;
-  string geo = 3;
+  Tree tree = 3;
 }
 
 message CreateTreeRequest{
-  string tree = 1;
+  Tree tree = 1;
+}
+
+message RetrieveTreeByIdRequest{
+  string id = 1;
 }
 
 service TreeService{
   rpc RetrieveTree(google.protobuf.Empty) returns (TreeResponse) {};
+  rpc RetrieveTreeByID(RetrieveTreeByIdRequest) returns (TreeResponse) {};
   rpc CreateTree(CreateTreeRequest) returns (TreeResponse) {};
-  rpc UpdateTree(CreateTreeRequest) returns (TreeResponse) {};
 }

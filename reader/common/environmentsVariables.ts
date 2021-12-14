@@ -8,4 +8,9 @@ export const envVariables = {
     stock: "stock",
     pit: "tajo",
   },
+  STATE_FILE: {
+    created: "CREATED",
+    modified: "MODIFIED",
+    deleted: "DELETED",
+  },
 }

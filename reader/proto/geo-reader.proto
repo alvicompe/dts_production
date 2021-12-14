@@ -26,6 +26,6 @@ message MessageError{
 service GeoReaderService{
   rpc RetrieveTreeGeo(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc CreateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
-  rpc UpdateTreeDirectory(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
+  rpc UpdateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc CreateTreeGeo(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
 }

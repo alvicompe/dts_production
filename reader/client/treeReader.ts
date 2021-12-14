@@ -98,7 +98,7 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const [name, x, y, z] = files[i].split(/[;,]/)
@@ -135,6 +135,7 @@ export class TreeReader {
         }
       }
     }
+    this.buildCentroid(groups[groups.length - 1], polygonPoints, path)
     return groups
   }
 
@@ -146,7 +147,7 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const [name, x, y, z, area, volume, height, level] =
@@ -198,6 +199,7 @@ export class TreeReader {
         }
       }
     }
+    this.buildCentroid(groups[groups.length - 1], polygonPoints, path)
     return groups
   }
 
@@ -209,7 +211,7 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       let [name, x, y, z, area, volume, height, level] = files[i].split(/[;,]/)
@@ -265,6 +267,7 @@ export class TreeReader {
         }
       }
     }
+    this.buildCentroid(groups[groups.length - 1], polygonPoints, path)
     return groups
   }
 
@@ -275,7 +278,7 @@ export class TreeReader {
     let currentIndexGroup = 0
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const [name, x, y, z] = files[i].split(/[;,]/)
@@ -311,7 +314,7 @@ export class TreeReader {
     const materials = [] as any
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const [type, description, crs, orezone, law, thins, cf, place] =
@@ -395,7 +398,7 @@ export class TreeReader {
     let files = await this.formattedFile(path, 2)
     const polygons = [] as any
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const colSplit = files[i].split(/[;,]/)
