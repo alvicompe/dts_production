@@ -238,7 +238,7 @@ export class TreeReader {
         currentIndexGroup = groups.length - 1
       }
       if (groups[currentIndexGroup]["name"] === name) {
-        console.log("name", name)
+        console.log("name", name, path)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
