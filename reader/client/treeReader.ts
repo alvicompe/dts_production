@@ -112,6 +112,7 @@ export class TreeReader {
         currentIndexGroup = groups.length - 1
       }
       if (groups[currentIndexGroup]["name"] === name) {
+        console.log("other",name)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
@@ -169,6 +170,7 @@ export class TreeReader {
         currentIndexGroup = groups.length - 1
       }
       if (groups[currentIndexGroup]["name"] === name) {
+        console.log("todo", name)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
@@ -236,6 +238,7 @@ export class TreeReader {
         currentIndexGroup = groups.length - 1
       }
       if (groups[currentIndexGroup]["name"] === name) {
+        console.log("name", name, path)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
@@ -293,6 +296,7 @@ export class TreeReader {
       }
 
       if (groups[currentIndexGroup]["name"] === name) {
+        console.log("lo", name)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
@@ -349,6 +353,7 @@ export class TreeReader {
           polygon.point = []
 
           entities[i].vertices.forEach((v: any) => {
+            console.log("path", path)
             const { longitude, latitude, altitude } = TreeReader.transformUTM(
               v.x,
               v.y,
