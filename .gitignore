@@ -1,4 +1,5 @@
 reader/node_modules/**
+reader/geo/**
 data/**
 .DS_Store
 logger.log

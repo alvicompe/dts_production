@@ -112,7 +112,6 @@ export class TreeReader {
         currentIndexGroup = groups.length - 1
       }
       if (groups[currentIndexGroup]["name"] === name) {
-        console.log("other",name)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
@@ -170,7 +169,6 @@ export class TreeReader {
         currentIndexGroup = groups.length - 1
       }
       if (groups[currentIndexGroup]["name"] === name) {
-        console.log("todo", name)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
@@ -238,7 +236,6 @@ export class TreeReader {
         currentIndexGroup = groups.length - 1
       }
       if (groups[currentIndexGroup]["name"] === name) {
-        console.log("name", name, path)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
@@ -296,7 +293,6 @@ export class TreeReader {
       }
 
       if (groups[currentIndexGroup]["name"] === name) {
-        console.log("lo", name)
         const { longitude, latitude, altitude } = TreeReader.transformUTM(
           x,
           y,
@@ -344,8 +340,16 @@ export class TreeReader {
         const polygons = [] as any
         let polygonPoints = [] as any
         const entities = dxf.entities
+
         for (let i = 0; i < entities.length; i++) {
           const polygon = {} as any
+
+          const hasLine = JSON.stringify(
+            entities[i].extendedData.customStrings
+          ).indexOf("LINE digitising")
+          if (hasLine !== -1) {
+            continue
+          }
 
           polygon.name = entities[i].extendedData.customStrings[0].split("=")[1]
           polygon.project_name = projectName
@@ -353,7 +357,6 @@ export class TreeReader {
           polygon.point = []
 
           entities[i].vertices.forEach((v: any) => {
-            console.log("path", path)
             const { longitude, latitude, altitude } = TreeReader.transformUTM(
               v.x,
               v.y,

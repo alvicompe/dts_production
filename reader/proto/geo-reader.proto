@@ -5,6 +5,19 @@ package pb;
 option go_package = "../pb";
 import "google/protobuf/empty.proto";
 
+
+message ChangeFile {
+  string path = 1;
+  string file = 2;
+  string directory = 3;
+  string state = 4;
+}
+
+message MessageError {
+  string path = 1;
+  string message = 2;
+}
+
 message GeoTreeResponse {
   bool status = 1;
   string message = 2;
@@ -18,14 +31,17 @@ message CreateTreeGeoResponse {
   repeated MessageError errors = 3;
 }
 
-message MessageError{
-  string path = 1;
-  string message = 2;
+message CheckChangesTreeGeoResponse {
+  bool status = 1;
+  bool firstLoad = 2;
+  string message = 3;
+  repeated ChangeFile changeFiles = 4;
 }
 
-service GeoReaderService{
+service GeoReaderService {
   rpc RetrieveTreeGeo(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc CreateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc UpdateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc CreateTreeGeo(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
+  rpc CheckChangesTreeGeo(google.protobuf.Empty) returns (CheckChangesTreeGeoResponse) {};
 }
