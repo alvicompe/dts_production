@@ -91,6 +91,17 @@ var GridServiceService = exports.GridServiceService = {
     responseSerialize: serialize_pb_UpdateGridResponse,
     responseDeserialize: deserialize_pb_UpdateGridResponse,
   },
+  updateGridWeb: {
+    path: '/pb.GridService/UpdateGridWeb',
+    requestStream: false,
+    responseStream: false,
+    requestType: google_protobuf_empty_pb.Empty,
+    responseType: proto_grid_pb.UpdateGridResponse,
+    requestSerialize: serialize_google_protobuf_Empty,
+    requestDeserialize: deserialize_google_protobuf_Empty,
+    responseSerialize: serialize_pb_UpdateGridResponse,
+    responseDeserialize: deserialize_pb_UpdateGridResponse,
+  },
   deleteGridByName: {
     path: '/pb.GridService/DeleteGridByName',
     requestStream: false,

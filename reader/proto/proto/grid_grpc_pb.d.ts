@@ -18,6 +18,7 @@ import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty
 interface IGridServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     createGrid: IGridServiceService_ICreateGrid;
     updateGrid: IGridServiceService_IUpdateGrid;
+    updateGridWeb: IGridServiceService_IUpdateGridWeb;
     deleteGridByName: IGridServiceService_IDeleteGridByName;
 }
 
@@ -39,6 +40,15 @@ interface IGridServiceService_IUpdateGrid extends grpc.MethodDefinition<proto_gr
     responseSerialize: grpc.serialize<proto_grid_pb.UpdateGridResponse>;
     responseDeserialize: grpc.deserialize<proto_grid_pb.UpdateGridResponse>;
 }
+interface IGridServiceService_IUpdateGridWeb extends grpc.MethodDefinition<google_protobuf_empty_pb.Empty, proto_grid_pb.UpdateGridResponse> {
+    path: string; // "/pb.GridService/UpdateGridWeb"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
+    requestDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
+    responseSerialize: grpc.serialize<proto_grid_pb.UpdateGridResponse>;
+    responseDeserialize: grpc.deserialize<proto_grid_pb.UpdateGridResponse>;
+}
 interface IGridServiceService_IDeleteGridByName extends grpc.MethodDefinition<proto_grid_pb.DeleteGridByNameRequest, proto_grid_pb.GridResponse> {
     path: string; // "/pb.GridService/DeleteGridByName"
     requestStream: false;
@@ -54,6 +64,7 @@ export const GridServiceService: IGridServiceService;
 export interface IGridServiceServer {
     createGrid: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, proto_grid_pb.GridResponse>;
     updateGrid: grpc.handleUnaryCall<proto_grid_pb.UpdateGridRequest, proto_grid_pb.UpdateGridResponse>;
+    updateGridWeb: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, proto_grid_pb.UpdateGridResponse>;
     deleteGridByName: grpc.handleUnaryCall<proto_grid_pb.DeleteGridByNameRequest, proto_grid_pb.GridResponse>;
 }
 
@@ -64,6 +75,9 @@ export interface IGridServiceClient {
     updateGrid(request: proto_grid_pb.UpdateGridRequest, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
     updateGrid(request: proto_grid_pb.UpdateGridRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
     updateGrid(request: proto_grid_pb.UpdateGridRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
+    updateGridWeb(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
+    updateGridWeb(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
+    updateGridWeb(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
     deleteGridByName(request: proto_grid_pb.DeleteGridByNameRequest, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.GridResponse) => void): grpc.ClientUnaryCall;
     deleteGridByName(request: proto_grid_pb.DeleteGridByNameRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.GridResponse) => void): grpc.ClientUnaryCall;
     deleteGridByName(request: proto_grid_pb.DeleteGridByNameRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.GridResponse) => void): grpc.ClientUnaryCall;
@@ -77,6 +91,9 @@ export class GridServiceClient extends grpc.Client implements IGridServiceClient
     public updateGrid(request: proto_grid_pb.UpdateGridRequest, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
     public updateGrid(request: proto_grid_pb.UpdateGridRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
     public updateGrid(request: proto_grid_pb.UpdateGridRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
+    public updateGridWeb(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
+    public updateGridWeb(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
+    public updateGridWeb(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.UpdateGridResponse) => void): grpc.ClientUnaryCall;
     public deleteGridByName(request: proto_grid_pb.DeleteGridByNameRequest, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.GridResponse) => void): grpc.ClientUnaryCall;
     public deleteGridByName(request: proto_grid_pb.DeleteGridByNameRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.GridResponse) => void): grpc.ClientUnaryCall;
     public deleteGridByName(request: proto_grid_pb.DeleteGridByNameRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_grid_pb.GridResponse) => void): grpc.ClientUnaryCall;

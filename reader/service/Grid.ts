@@ -36,4 +36,17 @@ export class GridServer implements IGridServiceServer {
     call: ServerUnaryCall<DeleteGridByNameRequest>,
     callback: sendUnaryData<GridResponse>
   ): void {}
+
+  async updateGridWeb(
+    call: ServerUnaryCall<Empty>,
+    callback: sendUnaryData<UpdateGridResponse>
+  ) {
+    const gridBusiness = new GridBusiness()
+    const result = await gridBusiness.updateGrid()
+
+    const response = new UpdateGridResponse()
+    response.setStatus(result.getStatus())
+    response.setMessage(result.getMessage())
+    callback(null, response)
+  }
 }

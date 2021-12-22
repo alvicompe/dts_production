@@ -163,6 +163,40 @@ export namespace TimelineRequest {
     }
 }
 
+export class TimelineListRequest extends jspb.Message { 
+    clearTruckList(): void;
+    getTruckList(): Array<string>;
+    setTruckList(value: Array<string>): TimelineListRequest;
+    addTruck(value: string, index?: number): string;
+
+    getInitialState(): StateUnitGeneral;
+    setInitialState(value: StateUnitGeneral): TimelineListRequest;
+
+
+    hasInitialTime(): boolean;
+    clearInitialTime(): void;
+    getInitialTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setInitialTime(value?: google_protobuf_timestamp_pb.Timestamp): TimelineListRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TimelineListRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: TimelineListRequest): TimelineListRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TimelineListRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TimelineListRequest;
+    static deserializeBinaryFromReader(message: TimelineListRequest, reader: jspb.BinaryReader): TimelineListRequest;
+}
+
+export namespace TimelineListRequest {
+    export type AsObject = {
+        truckList: Array<string>,
+        initialState: StateUnitGeneral,
+        initialTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+}
+
 export class TimelinesShiftRequest extends jspb.Message { 
 
     hasShiftDate(): boolean;
@@ -215,6 +249,31 @@ export namespace TimelineResponse {
     }
 }
 
+export class TimelineListResponse extends jspb.Message { 
+    getSuccess(): boolean;
+    setSuccess(value: boolean): TimelineListResponse;
+
+    getMessage(): string;
+    setMessage(value: string): TimelineListResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TimelineListResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: TimelineListResponse): TimelineListResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TimelineListResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TimelineListResponse;
+    static deserializeBinaryFromReader(message: TimelineListResponse, reader: jspb.BinaryReader): TimelineListResponse;
+}
+
+export namespace TimelineListResponse {
+    export type AsObject = {
+        success: boolean,
+        message: string,
+    }
+}
+
 export class TimelinesShiftResponse extends jspb.Message { 
 
     hasShiftDate(): boolean;
@@ -258,5 +317,6 @@ export enum StateUnitGeneral {
     INSPECTION = 9,
     LOAD_FUEL = 10,
     LOAD_WATER = 11,
-    OPERATIVE = 12,
+    OPERATIONAL = 12,
+    DELAY_OPERATIONAL = 13,
 }

@@ -17,8 +17,9 @@ enum StateUnitGeneral {
     STANDBY = 8;
     INSPECTION = 9;
     LOAD_FUEL = 10;
-    LOAD_WATER= 11;
-    OPERATIVE= 12;
+    LOAD_WATER = 11;
+    OPERATIONAL = 12;
+    DELAY_OPERATIONAL = 13;
 }
 
 message Timeline{
@@ -52,15 +53,26 @@ message UnitCurrentTimeline{
 }
 
 message TimelineRequest{
-    Timeline timeline =1;
+    Timeline timeline = 1;
+}
+message TimelineListRequest{
+    repeated string truck = 1;
+    StateUnitGeneral initial_state = 2;
+    google.protobuf.Timestamp initial_time = 3;
+
 }
 message TimelinesShiftRequest{
     google.protobuf.Timestamp shift_date = 1;
     Shift shift = 2;
 }
 message TimelineResponse{
-    Timeline timeline =1;
+    Timeline timeline = 1;
 }
+message TimelineListResponse{
+    bool success = 1;
+    string message = 2;
+}
+
 message TimelinesShiftResponse{
     google.protobuf.Timestamp shift_date = 1;
     repeated  UnitCurrentTimeline current_timeline =2;
@@ -71,6 +83,7 @@ service TimelineService {
     rpc UpdateTimeline(TimelineRequest) returns (TimelineResponse) {};
     rpc DeleteTimeline(TimelineRequest) returns (TimelineResponse) {};
     rpc RetrieveTimelinesShift(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
+    rpc UpdateTimelineTruckList(TimelineListRequest) returns (TimelineListResponse) {};
   }
   
   

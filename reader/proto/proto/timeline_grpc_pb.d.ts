@@ -15,6 +15,7 @@ interface ITimelineServiceService extends grpc.ServiceDefinition<grpc.UntypedSer
     updateTimeline: ITimelineServiceService_IUpdateTimeline;
     deleteTimeline: ITimelineServiceService_IDeleteTimeline;
     retrieveTimelinesShift: ITimelineServiceService_IRetrieveTimelinesShift;
+    updateTimelineTruckList: ITimelineServiceService_IUpdateTimelineTruckList;
 }
 
 interface ITimelineServiceService_ICreateTimeline extends grpc.MethodDefinition<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse> {
@@ -62,6 +63,15 @@ interface ITimelineServiceService_IRetrieveTimelinesShift extends grpc.MethodDef
     responseSerialize: grpc.serialize<proto_timeline_pb.TimelinesShiftResponse>;
     responseDeserialize: grpc.deserialize<proto_timeline_pb.TimelinesShiftResponse>;
 }
+interface ITimelineServiceService_IUpdateTimelineTruckList extends grpc.MethodDefinition<proto_timeline_pb.TimelineListRequest, proto_timeline_pb.TimelineListResponse> {
+    path: string; // "/pb.TimelineService/UpdateTimelineTruckList"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_timeline_pb.TimelineListRequest>;
+    requestDeserialize: grpc.deserialize<proto_timeline_pb.TimelineListRequest>;
+    responseSerialize: grpc.serialize<proto_timeline_pb.TimelineListResponse>;
+    responseDeserialize: grpc.deserialize<proto_timeline_pb.TimelineListResponse>;
+}
 
 export const TimelineServiceService: ITimelineServiceService;
 
@@ -71,6 +81,7 @@ export interface ITimelineServiceServer {
     updateTimeline: grpc.handleUnaryCall<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse>;
     deleteTimeline: grpc.handleUnaryCall<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse>;
     retrieveTimelinesShift: grpc.handleUnaryCall<proto_timeline_pb.TimelinesShiftRequest, proto_timeline_pb.TimelinesShiftResponse>;
+    updateTimelineTruckList: grpc.handleUnaryCall<proto_timeline_pb.TimelineListRequest, proto_timeline_pb.TimelineListResponse>;
 }
 
 export interface ITimelineServiceClient {
@@ -89,6 +100,9 @@ export interface ITimelineServiceClient {
     retrieveTimelinesShift(request: proto_timeline_pb.TimelinesShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelinesShiftResponse) => void): grpc.ClientUnaryCall;
     retrieveTimelinesShift(request: proto_timeline_pb.TimelinesShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelinesShiftResponse) => void): grpc.ClientUnaryCall;
     retrieveTimelinesShift(request: proto_timeline_pb.TimelinesShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelinesShiftResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckList(request: proto_timeline_pb.TimelineListRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckList(request: proto_timeline_pb.TimelineListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckList(request: proto_timeline_pb.TimelineListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class TimelineServiceClient extends grpc.Client implements ITimelineServiceClient {
@@ -108,4 +122,7 @@ export class TimelineServiceClient extends grpc.Client implements ITimelineServi
     public retrieveTimelinesShift(request: proto_timeline_pb.TimelinesShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelinesShiftResponse) => void): grpc.ClientUnaryCall;
     public retrieveTimelinesShift(request: proto_timeline_pb.TimelinesShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelinesShiftResponse) => void): grpc.ClientUnaryCall;
     public retrieveTimelinesShift(request: proto_timeline_pb.TimelinesShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelinesShiftResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckList(request: proto_timeline_pb.TimelineListRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckList(request: proto_timeline_pb.TimelineListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckList(request: proto_timeline_pb.TimelineListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
 }
