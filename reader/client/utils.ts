@@ -1,7 +1,7 @@
-import { UserServiceClient } from "../proto/proto/user_grpc_pb"
 import { GeoServiceClient } from "../proto/proto/geo_grpc_pb"
 import { GridServiceClient } from "../proto/proto/grid_grpc_pb"
-import { credentials, Metadata } from "grpc"
+import { TreeServiceClient } from "../proto/proto/tree_grpc_pb"
+import { credentials } from "grpc"
 import { readFileSync } from "fs"
 
 // const port = 3000;
@@ -34,5 +34,8 @@ console.log("client", client)
 
 export const clientGrid = new GridServiceClient(`dts.pe:9003`, cred)
 console.log("clientGrid", clientGrid)
+
+export const clienTree = new TreeServiceClient(`dts.pe:9003`, cred)
+console.log("clienTree", clienTree)
 
 export const noop = () => {}

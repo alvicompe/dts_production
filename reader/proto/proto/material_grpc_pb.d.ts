@@ -16,7 +16,7 @@ interface IMaterialServiceService extends grpc.ServiceDefinition<grpc.UntypedSer
 }
 
 interface IMaterialServiceService_ICreateMaterial extends grpc.MethodDefinition<proto_material_pb.MaterialRequest, proto_material_pb.MaterialResponse> {
-    path: "/pb.MaterialService/CreateMaterial";
+    path: string; // "/pb.MaterialService/CreateMaterial"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_material_pb.MaterialRequest>;
@@ -25,7 +25,7 @@ interface IMaterialServiceService_ICreateMaterial extends grpc.MethodDefinition<
     responseDeserialize: grpc.deserialize<proto_material_pb.MaterialResponse>;
 }
 interface IMaterialServiceService_IRetrieveMaterial extends grpc.MethodDefinition<proto_material_pb.MaterialRequest, proto_material_pb.MaterialResponse> {
-    path: "/pb.MaterialService/RetrieveMaterial";
+    path: string; // "/pb.MaterialService/RetrieveMaterial"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_material_pb.MaterialRequest>;
@@ -34,7 +34,7 @@ interface IMaterialServiceService_IRetrieveMaterial extends grpc.MethodDefinitio
     responseDeserialize: grpc.deserialize<proto_material_pb.MaterialResponse>;
 }
 interface IMaterialServiceService_IRetrieveMaterials extends grpc.MethodDefinition<proto_material_pb.MaterialRequest, proto_material_pb.MaterialsResponse> {
-    path: "/pb.MaterialService/RetrieveMaterials";
+    path: string; // "/pb.MaterialService/RetrieveMaterials"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_material_pb.MaterialRequest>;
@@ -43,7 +43,7 @@ interface IMaterialServiceService_IRetrieveMaterials extends grpc.MethodDefiniti
     responseDeserialize: grpc.deserialize<proto_material_pb.MaterialsResponse>;
 }
 interface IMaterialServiceService_IUpdateMaterial extends grpc.MethodDefinition<proto_material_pb.MaterialRequest, proto_material_pb.MaterialResponse> {
-    path: "/pb.MaterialService/UpdateMaterial";
+    path: string; // "/pb.MaterialService/UpdateMaterial"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_material_pb.MaterialRequest>;
@@ -52,7 +52,7 @@ interface IMaterialServiceService_IUpdateMaterial extends grpc.MethodDefinition<
     responseDeserialize: grpc.deserialize<proto_material_pb.MaterialResponse>;
 }
 interface IMaterialServiceService_IDeleteMaterial extends grpc.MethodDefinition<proto_material_pb.MaterialRequest, proto_material_pb.MaterialResponse> {
-    path: "/pb.MaterialService/DeleteMaterial";
+    path: string; // "/pb.MaterialService/DeleteMaterial"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_material_pb.MaterialRequest>;

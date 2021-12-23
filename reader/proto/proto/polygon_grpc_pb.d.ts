@@ -20,7 +20,7 @@ interface IPolygonServiceService extends grpc.ServiceDefinition<grpc.UntypedServ
 }
 
 interface IPolygonServiceService_ICreatePolygon extends grpc.MethodDefinition<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse> {
-    path: "/pb.PolygonService/CreatePolygon";
+    path: string; // "/pb.PolygonService/CreatePolygon"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_polygon_pb.PolygonRequest>;
@@ -29,7 +29,7 @@ interface IPolygonServiceService_ICreatePolygon extends grpc.MethodDefinition<pr
     responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonResponse>;
 }
 interface IPolygonServiceService_IRetrievePolygon extends grpc.MethodDefinition<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse> {
-    path: "/pb.PolygonService/RetrievePolygon";
+    path: string; // "/pb.PolygonService/RetrievePolygon"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_polygon_pb.PolygonRequest>;
@@ -38,7 +38,7 @@ interface IPolygonServiceService_IRetrievePolygon extends grpc.MethodDefinition<
     responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonResponse>;
 }
 interface IPolygonServiceService_IRetrievePolygons extends grpc.MethodDefinition<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonsResponse> {
-    path: "/pb.PolygonService/RetrievePolygons";
+    path: string; // "/pb.PolygonService/RetrievePolygons"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_polygon_pb.PolygonRequest>;
@@ -47,7 +47,7 @@ interface IPolygonServiceService_IRetrievePolygons extends grpc.MethodDefinition
     responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonsResponse>;
 }
 interface IPolygonServiceService_IRetrievePolygonByProjectName extends grpc.MethodDefinition<proto_polygon_pb.RetrievePolygonByProjectNameRequest, proto_polygon_pb.PolygonResponse> {
-    path: "/pb.PolygonService/RetrievePolygonByProjectName";
+    path: string; // "/pb.PolygonService/RetrievePolygonByProjectName"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_polygon_pb.RetrievePolygonByProjectNameRequest>;
@@ -56,7 +56,7 @@ interface IPolygonServiceService_IRetrievePolygonByProjectName extends grpc.Meth
     responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonResponse>;
 }
 interface IPolygonServiceService_IUpdatePolygon extends grpc.MethodDefinition<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse> {
-    path: "/pb.PolygonService/UpdatePolygon";
+    path: string; // "/pb.PolygonService/UpdatePolygon"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_polygon_pb.PolygonRequest>;
@@ -65,7 +65,7 @@ interface IPolygonServiceService_IUpdatePolygon extends grpc.MethodDefinition<pr
     responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonResponse>;
 }
 interface IPolygonServiceService_IDeletePolygon extends grpc.MethodDefinition<proto_polygon_pb.PolygonRequest, proto_polygon_pb.PolygonResponse> {
-    path: "/pb.PolygonService/DeletePolygon";
+    path: string; // "/pb.PolygonService/DeletePolygon"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_polygon_pb.PolygonRequest>;
@@ -74,7 +74,7 @@ interface IPolygonServiceService_IDeletePolygon extends grpc.MethodDefinition<pr
     responseDeserialize: grpc.deserialize<proto_polygon_pb.PolygonResponse>;
 }
 interface IPolygonServiceService_IFinalizePolygonList extends grpc.MethodDefinition<proto_polygon_pb.PolygonListRequest, proto_polygon_pb.PolygonListResponse> {
-    path: "/pb.PolygonService/FinalizePolygonList";
+    path: string; // "/pb.PolygonService/FinalizePolygonList"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_polygon_pb.PolygonListRequest>;

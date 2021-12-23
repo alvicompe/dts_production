@@ -17,7 +17,7 @@ interface IBenchServiceService extends grpc.ServiceDefinition<grpc.UntypedServic
 }
 
 interface IBenchServiceService_ICreateBench extends grpc.MethodDefinition<proto_bench_pb.BenchRequest, proto_bench_pb.BenchResponse> {
-    path: "/pb.BenchService/CreateBench";
+    path: string; // "/pb.BenchService/CreateBench"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_bench_pb.BenchRequest>;
@@ -26,7 +26,7 @@ interface IBenchServiceService_ICreateBench extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_bench_pb.BenchResponse>;
 }
 interface IBenchServiceService_IRetrieveBench extends grpc.MethodDefinition<proto_bench_pb.BenchRequest, proto_bench_pb.BenchResponse> {
-    path: "/pb.BenchService/RetrieveBench";
+    path: string; // "/pb.BenchService/RetrieveBench"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_bench_pb.BenchRequest>;
@@ -35,7 +35,7 @@ interface IBenchServiceService_IRetrieveBench extends grpc.MethodDefinition<prot
     responseDeserialize: grpc.deserialize<proto_bench_pb.BenchResponse>;
 }
 interface IBenchServiceService_IRetrieveBenches extends grpc.MethodDefinition<proto_bench_pb.BenchRequest, proto_bench_pb.BenchesResponse> {
-    path: "/pb.BenchService/RetrieveBenches";
+    path: string; // "/pb.BenchService/RetrieveBenches"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_bench_pb.BenchRequest>;
@@ -44,7 +44,7 @@ interface IBenchServiceService_IRetrieveBenches extends grpc.MethodDefinition<pr
     responseDeserialize: grpc.deserialize<proto_bench_pb.BenchesResponse>;
 }
 interface IBenchServiceService_IUpdateBench extends grpc.MethodDefinition<proto_bench_pb.BenchRequest, proto_bench_pb.BenchResponse> {
-    path: "/pb.BenchService/UpdateBench";
+    path: string; // "/pb.BenchService/UpdateBench"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_bench_pb.BenchRequest>;
@@ -53,7 +53,7 @@ interface IBenchServiceService_IUpdateBench extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_bench_pb.BenchResponse>;
 }
 interface IBenchServiceService_IDeleteBench extends grpc.MethodDefinition<proto_bench_pb.BenchRequest, proto_bench_pb.BenchResponse> {
-    path: "/pb.BenchService/DeleteBench";
+    path: string; // "/pb.BenchService/DeleteBench"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_bench_pb.BenchRequest>;

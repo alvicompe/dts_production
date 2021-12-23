@@ -16,7 +16,7 @@ interface IContractorServiceService extends grpc.ServiceDefinition<grpc.UntypedS
 }
 
 interface IContractorServiceService_ICreateContractor extends grpc.MethodDefinition<proto_contractor_pb.ContractorRequest, proto_contractor_pb.ContractorResponse> {
-    path: "/pb.ContractorService/CreateContractor";
+    path: string; // "/pb.ContractorService/CreateContractor"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_contractor_pb.ContractorRequest>;
@@ -25,7 +25,7 @@ interface IContractorServiceService_ICreateContractor extends grpc.MethodDefinit
     responseDeserialize: grpc.deserialize<proto_contractor_pb.ContractorResponse>;
 }
 interface IContractorServiceService_IRetrieveContractor extends grpc.MethodDefinition<proto_contractor_pb.ContractorRequest, proto_contractor_pb.ContractorResponse> {
-    path: "/pb.ContractorService/RetrieveContractor";
+    path: string; // "/pb.ContractorService/RetrieveContractor"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_contractor_pb.ContractorRequest>;
@@ -34,7 +34,7 @@ interface IContractorServiceService_IRetrieveContractor extends grpc.MethodDefin
     responseDeserialize: grpc.deserialize<proto_contractor_pb.ContractorResponse>;
 }
 interface IContractorServiceService_IRetrieveContractors extends grpc.MethodDefinition<proto_contractor_pb.ContractorRequest, proto_contractor_pb.ContractorsResponse> {
-    path: "/pb.ContractorService/RetrieveContractors";
+    path: string; // "/pb.ContractorService/RetrieveContractors"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_contractor_pb.ContractorRequest>;
@@ -43,7 +43,7 @@ interface IContractorServiceService_IRetrieveContractors extends grpc.MethodDefi
     responseDeserialize: grpc.deserialize<proto_contractor_pb.ContractorsResponse>;
 }
 interface IContractorServiceService_IUpdateContractor extends grpc.MethodDefinition<proto_contractor_pb.ContractorRequest, proto_contractor_pb.ContractorResponse> {
-    path: "/pb.ContractorService/UpdateContractor";
+    path: string; // "/pb.ContractorService/UpdateContractor"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_contractor_pb.ContractorRequest>;
@@ -52,7 +52,7 @@ interface IContractorServiceService_IUpdateContractor extends grpc.MethodDefinit
     responseDeserialize: grpc.deserialize<proto_contractor_pb.ContractorResponse>;
 }
 interface IContractorServiceService_IDeleteContractor extends grpc.MethodDefinition<proto_contractor_pb.ContractorRequest, proto_contractor_pb.ContractorResponse> {
-    path: "/pb.ContractorService/DeleteContractor";
+    path: string; // "/pb.ContractorService/DeleteContractor"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_contractor_pb.ContractorRequest>;

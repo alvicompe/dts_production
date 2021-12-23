@@ -17,7 +17,7 @@ interface IReportServiceService extends grpc.ServiceDefinition<grpc.UntypedServi
 }
 
 interface IReportServiceService_IRetrievePerformancePerHourReport extends grpc.MethodDefinition<proto_report_pb.ReportRequest, proto_report_pb.ReportPerformancePerHourResponse> {
-    path: "/pb.ReportService/RetrievePerformancePerHourReport";
+    path: string; // "/pb.ReportService/RetrievePerformancePerHourReport"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_report_pb.ReportRequest>;
@@ -26,7 +26,7 @@ interface IReportServiceService_IRetrievePerformancePerHourReport extends grpc.M
     responseDeserialize: grpc.deserialize<proto_report_pb.ReportPerformancePerHourResponse>;
 }
 interface IReportServiceService_IDownloadReport extends grpc.MethodDefinition<proto_report_pb.DownloadRequest, proto_report_pb.DownloadResponse> {
-    path: "/pb.ReportService/DownloadReport";
+    path: string; // "/pb.ReportService/DownloadReport"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_report_pb.DownloadRequest>;

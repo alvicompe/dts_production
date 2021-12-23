@@ -18,7 +18,7 @@ interface ICellServiceService extends grpc.ServiceDefinition<grpc.UntypedService
 }
 
 interface ICellServiceService_ICreateCell extends grpc.MethodDefinition<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse> {
-    path: "/pb.CellService/CreateCell";
+    path: string; // "/pb.CellService/CreateCell"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cell_pb.CellRequest>;
@@ -27,7 +27,7 @@ interface ICellServiceService_ICreateCell extends grpc.MethodDefinition<proto_ce
     responseDeserialize: grpc.deserialize<proto_cell_pb.CellResponse>;
 }
 interface ICellServiceService_IRetrieveCell extends grpc.MethodDefinition<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse> {
-    path: "/pb.CellService/RetrieveCell";
+    path: string; // "/pb.CellService/RetrieveCell"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cell_pb.CellRequest>;
@@ -36,7 +36,7 @@ interface ICellServiceService_IRetrieveCell extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_cell_pb.CellResponse>;
 }
 interface ICellServiceService_IRetrieveCells extends grpc.MethodDefinition<proto_cell_pb.CellRequest, proto_cell_pb.CellsResponse> {
-    path: "/pb.CellService/RetrieveCells";
+    path: string; // "/pb.CellService/RetrieveCells"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cell_pb.CellRequest>;
@@ -45,7 +45,7 @@ interface ICellServiceService_IRetrieveCells extends grpc.MethodDefinition<proto
     responseDeserialize: grpc.deserialize<proto_cell_pb.CellsResponse>;
 }
 interface ICellServiceService_IUpdateCell extends grpc.MethodDefinition<proto_cell_pb.CellUpdateRequest, proto_cell_pb.CellResponse> {
-    path: "/pb.CellService/UpdateCell";
+    path: string; // "/pb.CellService/UpdateCell"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cell_pb.CellUpdateRequest>;
@@ -54,7 +54,7 @@ interface ICellServiceService_IUpdateCell extends grpc.MethodDefinition<proto_ce
     responseDeserialize: grpc.deserialize<proto_cell_pb.CellResponse>;
 }
 interface ICellServiceService_IDeleteCell extends grpc.MethodDefinition<proto_cell_pb.CellRequest, proto_cell_pb.CellResponse> {
-    path: "/pb.CellService/DeleteCell";
+    path: string; // "/pb.CellService/DeleteCell"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cell_pb.CellRequest>;
@@ -63,7 +63,7 @@ interface ICellServiceService_IDeleteCell extends grpc.MethodDefinition<proto_ce
     responseDeserialize: grpc.deserialize<proto_cell_pb.CellResponse>;
 }
 interface ICellServiceService_IFinalizeCellList extends grpc.MethodDefinition<proto_cell_pb.CellListRequest, proto_cell_pb.CellListResponse> {
-    path: "/pb.CellService/FinalizeCellList";
+    path: string; // "/pb.CellService/FinalizeCellList"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cell_pb.CellListRequest>;

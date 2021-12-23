@@ -7,6 +7,64 @@
 import * as jspb from "google-protobuf";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 
+export class ChangeFile extends jspb.Message { 
+    getPath(): string;
+    setPath(value: string): ChangeFile;
+
+    getFile(): string;
+    setFile(value: string): ChangeFile;
+
+    getDirectory(): string;
+    setDirectory(value: string): ChangeFile;
+
+    getState(): string;
+    setState(value: string): ChangeFile;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ChangeFile.AsObject;
+    static toObject(includeInstance: boolean, msg: ChangeFile): ChangeFile.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ChangeFile, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ChangeFile;
+    static deserializeBinaryFromReader(message: ChangeFile, reader: jspb.BinaryReader): ChangeFile;
+}
+
+export namespace ChangeFile {
+    export type AsObject = {
+        path: string,
+        file: string,
+        directory: string,
+        state: string,
+    }
+}
+
+export class MessageError extends jspb.Message { 
+    getPath(): string;
+    setPath(value: string): MessageError;
+
+    getMessage(): string;
+    setMessage(value: string): MessageError;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MessageError.AsObject;
+    static toObject(includeInstance: boolean, msg: MessageError): MessageError.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: MessageError, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MessageError;
+    static deserializeBinaryFromReader(message: MessageError, reader: jspb.BinaryReader): MessageError;
+}
+
+export namespace MessageError {
+    export type AsObject = {
+        path: string,
+        message: string,
+    }
+}
+
 export class GeoTreeResponse extends jspb.Message { 
     getStatus(): boolean;
     setStatus(value: boolean): GeoTreeResponse;
@@ -73,27 +131,37 @@ export namespace CreateTreeGeoResponse {
     }
 }
 
-export class MessageError extends jspb.Message { 
-    getPath(): string;
-    setPath(value: string): MessageError;
+export class CheckChangesTreeGeoResponse extends jspb.Message { 
+    getStatus(): boolean;
+    setStatus(value: boolean): CheckChangesTreeGeoResponse;
+
+    getFirstload(): boolean;
+    setFirstload(value: boolean): CheckChangesTreeGeoResponse;
 
     getMessage(): string;
-    setMessage(value: string): MessageError;
+    setMessage(value: string): CheckChangesTreeGeoResponse;
+
+    clearChangefilesList(): void;
+    getChangefilesList(): Array<ChangeFile>;
+    setChangefilesList(value: Array<ChangeFile>): CheckChangesTreeGeoResponse;
+    addChangefiles(value?: ChangeFile, index?: number): ChangeFile;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): MessageError.AsObject;
-    static toObject(includeInstance: boolean, msg: MessageError): MessageError.AsObject;
+    toObject(includeInstance?: boolean): CheckChangesTreeGeoResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: CheckChangesTreeGeoResponse): CheckChangesTreeGeoResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: MessageError, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): MessageError;
-    static deserializeBinaryFromReader(message: MessageError, reader: jspb.BinaryReader): MessageError;
+    static serializeBinaryToWriter(message: CheckChangesTreeGeoResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CheckChangesTreeGeoResponse;
+    static deserializeBinaryFromReader(message: CheckChangesTreeGeoResponse, reader: jspb.BinaryReader): CheckChangesTreeGeoResponse;
 }
 
-export namespace MessageError {
+export namespace CheckChangesTreeGeoResponse {
     export type AsObject = {
-        path: string,
+        status: boolean,
+        firstload: boolean,
         message: string,
+        changefilesList: Array<ChangeFile.AsObject>,
     }
 }

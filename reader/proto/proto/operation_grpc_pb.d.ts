@@ -25,7 +25,7 @@ interface IOperationServiceService extends grpc.ServiceDefinition<grpc.UntypedSe
 }
 
 interface IOperationServiceService_ICreateOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse> {
-    path: "/pb.OperationService/CreateOperation";
+    path: string; // "/pb.OperationService/CreateOperation"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;
@@ -34,7 +34,7 @@ interface IOperationServiceService_ICreateOperation extends grpc.MethodDefinitio
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationResponse>;
 }
 interface IOperationServiceService_IRetrieveOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse> {
-    path: "/pb.OperationService/RetrieveOperation";
+    path: string; // "/pb.OperationService/RetrieveOperation"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;
@@ -43,7 +43,7 @@ interface IOperationServiceService_IRetrieveOperation extends grpc.MethodDefinit
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationResponse>;
 }
 interface IOperationServiceService_IRetrieveOperations extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationsResponse> {
-    path: "/pb.OperationService/RetrieveOperations";
+    path: string; // "/pb.OperationService/RetrieveOperations"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;
@@ -52,7 +52,7 @@ interface IOperationServiceService_IRetrieveOperations extends grpc.MethodDefini
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationsResponse>;
 }
 interface IOperationServiceService_IUpdateOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse> {
-    path: "/pb.OperationService/UpdateOperation";
+    path: string; // "/pb.OperationService/UpdateOperation"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;
@@ -61,7 +61,7 @@ interface IOperationServiceService_IUpdateOperation extends grpc.MethodDefinitio
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationResponse>;
 }
 interface IOperationServiceService_IDeleteOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse> {
-    path: "/pb.OperationService/DeleteOperation";
+    path: string; // "/pb.OperationService/DeleteOperation"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;
@@ -70,7 +70,7 @@ interface IOperationServiceService_IDeleteOperation extends grpc.MethodDefinitio
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationResponse>;
 }
 interface IOperationServiceService_IRemoveTrucksOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse> {
-    path: "/pb.OperationService/RemoveTrucksOperation";
+    path: string; // "/pb.OperationService/RemoveTrucksOperation"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;
@@ -79,7 +79,7 @@ interface IOperationServiceService_IRemoveTrucksOperation extends grpc.MethodDef
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationResponse>;
 }
 interface IOperationServiceService_IReassigmentTrucksOperation extends grpc.MethodDefinition<proto_operation_pb.OperationReassigmentRequest, proto_operation_pb.OperationReassigmentResponse> {
-    path: "/pb.OperationService/ReassigmentTrucksOperation";
+    path: string; // "/pb.OperationService/ReassigmentTrucksOperation"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_operation_pb.OperationReassigmentRequest>;
@@ -88,7 +88,7 @@ interface IOperationServiceService_IReassigmentTrucksOperation extends grpc.Meth
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationReassigmentResponse>;
 }
 interface IOperationServiceService_IFinalizeOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationFinalizeResponse> {
-    path: "/pb.OperationService/FinalizeOperation";
+    path: string; // "/pb.OperationService/FinalizeOperation"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_operation_pb.OperationRequest>;

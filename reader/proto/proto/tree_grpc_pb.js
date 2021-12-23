@@ -27,6 +27,17 @@ function deserialize_pb_CreateTreeRequest(buffer_arg) {
   return proto_tree_pb.CreateTreeRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_pb_RetrieveTreeByIdRequest(arg) {
+  if (!(arg instanceof proto_tree_pb.RetrieveTreeByIdRequest)) {
+    throw new Error('Expected argument of type pb.RetrieveTreeByIdRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_RetrieveTreeByIdRequest(buffer_arg) {
+  return proto_tree_pb.RetrieveTreeByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_pb_TreeResponse(arg) {
   if (!(arg instanceof proto_tree_pb.TreeResponse)) {
     throw new Error('Expected argument of type pb.TreeResponse');
@@ -51,19 +62,19 @@ var TreeServiceService = exports.TreeServiceService = {
     responseSerialize: serialize_pb_TreeResponse,
     responseDeserialize: deserialize_pb_TreeResponse,
   },
-  createTree: {
-    path: '/pb.TreeService/CreateTree',
+  retrieveTreeByID: {
+    path: '/pb.TreeService/RetrieveTreeByID',
     requestStream: false,
     responseStream: false,
-    requestType: proto_tree_pb.CreateTreeRequest,
+    requestType: proto_tree_pb.RetrieveTreeByIdRequest,
     responseType: proto_tree_pb.TreeResponse,
-    requestSerialize: serialize_pb_CreateTreeRequest,
-    requestDeserialize: deserialize_pb_CreateTreeRequest,
+    requestSerialize: serialize_pb_RetrieveTreeByIdRequest,
+    requestDeserialize: deserialize_pb_RetrieveTreeByIdRequest,
     responseSerialize: serialize_pb_TreeResponse,
     responseDeserialize: deserialize_pb_TreeResponse,
   },
-  updateTree: {
-    path: '/pb.TreeService/UpdateTree',
+  createTree: {
+    path: '/pb.TreeService/CreateTree',
     requestStream: false,
     responseStream: false,
     requestType: proto_tree_pb.CreateTreeRequest,

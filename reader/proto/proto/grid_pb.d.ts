@@ -12,6 +12,7 @@ import * as proto_pit_pb from "../proto/pit_pb";
 import * as proto_pad_pb from "../proto/pad_pb";
 import * as proto_stock_pb from "../proto/stock_pb";
 import * as proto_dme_pb from "../proto/dme_pb";
+import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 
 export class Square extends jspb.Message { 
     getId(): string;
@@ -117,27 +118,6 @@ export namespace Grid {
     }
 }
 
-export class GridRequest extends jspb.Message { 
-    getRead(): boolean;
-    setRead(value: boolean): GridRequest;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GridRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GridRequest): GridRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GridRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GridRequest;
-    static deserializeBinaryFromReader(message: GridRequest, reader: jspb.BinaryReader): GridRequest;
-}
-
-export namespace GridRequest {
-    export type AsObject = {
-        read: boolean,
-    }
-}
-
 export class GridResponse extends jspb.Message { 
     getDone(): boolean;
     setDone(value: boolean): GridResponse;
@@ -156,5 +136,74 @@ export class GridResponse extends jspb.Message {
 export namespace GridResponse {
     export type AsObject = {
         done: boolean,
+    }
+}
+
+export class UpdateGridResponse extends jspb.Message { 
+    getStatus(): boolean;
+    setStatus(value: boolean): UpdateGridResponse;
+
+    getMessage(): string;
+    setMessage(value: string): UpdateGridResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateGridResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateGridResponse): UpdateGridResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateGridResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateGridResponse;
+    static deserializeBinaryFromReader(message: UpdateGridResponse, reader: jspb.BinaryReader): UpdateGridResponse;
+}
+
+export namespace UpdateGridResponse {
+    export type AsObject = {
+        status: boolean,
+        message: string,
+    }
+}
+
+export class DeleteGridByNameRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteGridByNameRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteGridByNameRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteGridByNameRequest): DeleteGridByNameRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteGridByNameRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteGridByNameRequest;
+    static deserializeBinaryFromReader(message: DeleteGridByNameRequest, reader: jspb.BinaryReader): DeleteGridByNameRequest;
+}
+
+export namespace DeleteGridByNameRequest {
+    export type AsObject = {
+        name: string,
+    }
+}
+
+export class UpdateGridRequest extends jspb.Message { 
+    clearPathchangeList(): void;
+    getPathchangeList(): Array<string>;
+    setPathchangeList(value: Array<string>): UpdateGridRequest;
+    addPathchange(value: string, index?: number): string;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateGridRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateGridRequest): UpdateGridRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateGridRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateGridRequest;
+    static deserializeBinaryFromReader(message: UpdateGridRequest, reader: jspb.BinaryReader): UpdateGridRequest;
+}
+
+export namespace UpdateGridRequest {
+    export type AsObject = {
+        pathchangeList: Array<string>,
     }
 }

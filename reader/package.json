@@ -4,23 +4,23 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@types/google-protobuf": "^3.7.2",
-    "dxf-parser": "^1.0.0-alpha.2",
-    "grpc_tools_node_protoc_ts": "^4.1.2",
-    "grpc-tools": "^1.9.1",
+    "@types/google-protobuf": "3.7.2",
+    "dxf-parser": "1.0.0-alpha.2",
+    "grpc_tools_node_protoc_ts": "4.1.2",
+    "grpc-tools": "1.9.1",
     "prettier": "2.5.0",
-    "proj4": "^2.7.4",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.7",
-    "walker": "^1.0.7"
+    "proj4": "2.7.4",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.7",
+    "walker": "1.0.7"
   },
   "dependencies": {
-    "@turf/center-of-mass": "^6.5.0",
-    "@turf/turf": "^6.5.0",
-    "directory-tree": "^3.0.0",
-    "fs": "^0.0.1-security",
-    "grpc": "^1.24.3",
-    "nodemon": "^2.0.15"
+    "@turf/center-of-mass": "6.5.0",
+    "@turf/turf": "6.5.0",
+    "directory-tree": "3.0.0",
+    "fs": "0.0.1-security",
+    "grpc": "1.24.3",
+    "nodemon": "2.0.15"
   },
   "scripts": {
     "build": "sh build.sh",

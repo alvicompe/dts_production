@@ -12,7 +12,7 @@ interface ISourceServiceService extends grpc.ServiceDefinition<grpc.UntypedServi
 }
 
 interface ISourceServiceService_ILoad extends grpc.MethodDefinition<proto_source_pb.SourceRequest, proto_source_pb.SourceResponse> {
-    path: "/pb.SourceService/Load";
+    path: string; // "/pb.SourceService/Load"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_source_pb.SourceRequest>;

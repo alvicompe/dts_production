@@ -35,7 +35,7 @@ export class BuildTree {
       {
         extensions: /\.csv$|\.dxf/,
         exclude: /\w.*[-_][a-qA-Qs-zS-Z][_]?[a-zA-Z]?.csv$|\w.*[rR][_].csv$/, // View course Regex
-        attributes: ["type", "status"],
+        attributes: ["type", "status", "ctime", "mtime"],
       },
       null,
       null

@@ -17,7 +17,7 @@ interface IGeofenceServiceService extends grpc.ServiceDefinition<grpc.UntypedSer
 }
 
 interface IGeofenceServiceService_ICreateGeofence extends grpc.MethodDefinition<proto_geofence_pb.GeofenceRequest, proto_geofence_pb.GeofenceResponse> {
-    path: "/pb.GeofenceService/CreateGeofence";
+    path: string; // "/pb.GeofenceService/CreateGeofence"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geofence_pb.GeofenceRequest>;
@@ -26,7 +26,7 @@ interface IGeofenceServiceService_ICreateGeofence extends grpc.MethodDefinition<
     responseDeserialize: grpc.deserialize<proto_geofence_pb.GeofenceResponse>;
 }
 interface IGeofenceServiceService_IRetrieveGeofence extends grpc.MethodDefinition<proto_geofence_pb.GeofenceRequest, proto_geofence_pb.GeofenceResponse> {
-    path: "/pb.GeofenceService/RetrieveGeofence";
+    path: string; // "/pb.GeofenceService/RetrieveGeofence"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geofence_pb.GeofenceRequest>;
@@ -35,7 +35,7 @@ interface IGeofenceServiceService_IRetrieveGeofence extends grpc.MethodDefinitio
     responseDeserialize: grpc.deserialize<proto_geofence_pb.GeofenceResponse>;
 }
 interface IGeofenceServiceService_IRetrieveGeofences extends grpc.MethodDefinition<proto_geofence_pb.GeofenceRequest, proto_geofence_pb.GeofencesResponse> {
-    path: "/pb.GeofenceService/RetrieveGeofences";
+    path: string; // "/pb.GeofenceService/RetrieveGeofences"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geofence_pb.GeofenceRequest>;
@@ -44,7 +44,7 @@ interface IGeofenceServiceService_IRetrieveGeofences extends grpc.MethodDefiniti
     responseDeserialize: grpc.deserialize<proto_geofence_pb.GeofencesResponse>;
 }
 interface IGeofenceServiceService_IUpdateGeofence extends grpc.MethodDefinition<proto_geofence_pb.GeofenceRequest, proto_geofence_pb.GeofenceResponse> {
-    path: "/pb.GeofenceService/UpdateGeofence";
+    path: string; // "/pb.GeofenceService/UpdateGeofence"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geofence_pb.GeofenceRequest>;
@@ -53,7 +53,7 @@ interface IGeofenceServiceService_IUpdateGeofence extends grpc.MethodDefinition<
     responseDeserialize: grpc.deserialize<proto_geofence_pb.GeofenceResponse>;
 }
 interface IGeofenceServiceService_IDeleteGeofence extends grpc.MethodDefinition<proto_geofence_pb.GeofenceRequest, proto_geofence_pb.GeofenceResponse> {
-    path: "/pb.GeofenceService/DeleteGeofence";
+    path: string; // "/pb.GeofenceService/DeleteGeofence"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geofence_pb.GeofenceRequest>;

@@ -17,7 +17,7 @@ interface IRoadServiceService extends grpc.ServiceDefinition<grpc.UntypedService
 }
 
 interface IRoadServiceService_ICreateRoad extends grpc.MethodDefinition<proto_road_pb.RoadRequest, proto_road_pb.RoadResponse> {
-    path: "/pb.RoadService/CreateRoad";
+    path: string; // "/pb.RoadService/CreateRoad"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_road_pb.RoadRequest>;
@@ -26,7 +26,7 @@ interface IRoadServiceService_ICreateRoad extends grpc.MethodDefinition<proto_ro
     responseDeserialize: grpc.deserialize<proto_road_pb.RoadResponse>;
 }
 interface IRoadServiceService_IRetrieveRoad extends grpc.MethodDefinition<proto_road_pb.RoadRequest, proto_road_pb.RoadResponse> {
-    path: "/pb.RoadService/RetrieveRoad";
+    path: string; // "/pb.RoadService/RetrieveRoad"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_road_pb.RoadRequest>;
@@ -35,7 +35,7 @@ interface IRoadServiceService_IRetrieveRoad extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_road_pb.RoadResponse>;
 }
 interface IRoadServiceService_IRetrieveRoads extends grpc.MethodDefinition<proto_road_pb.RoadRequest, proto_road_pb.RoadsResponse> {
-    path: "/pb.RoadService/RetrieveRoads";
+    path: string; // "/pb.RoadService/RetrieveRoads"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_road_pb.RoadRequest>;
@@ -44,7 +44,7 @@ interface IRoadServiceService_IRetrieveRoads extends grpc.MethodDefinition<proto
     responseDeserialize: grpc.deserialize<proto_road_pb.RoadsResponse>;
 }
 interface IRoadServiceService_IUpdateRoad extends grpc.MethodDefinition<proto_road_pb.RoadRequest, proto_road_pb.RoadResponse> {
-    path: "/pb.RoadService/UpdateRoad";
+    path: string; // "/pb.RoadService/UpdateRoad"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_road_pb.RoadRequest>;
@@ -53,7 +53,7 @@ interface IRoadServiceService_IUpdateRoad extends grpc.MethodDefinition<proto_ro
     responseDeserialize: grpc.deserialize<proto_road_pb.RoadResponse>;
 }
 interface IRoadServiceService_IDeleteRoad extends grpc.MethodDefinition<proto_road_pb.RoadRequest, proto_road_pb.RoadResponse> {
-    path: "/pb.RoadService/DeleteRoad";
+    path: string; // "/pb.RoadService/DeleteRoad"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_road_pb.RoadRequest>;

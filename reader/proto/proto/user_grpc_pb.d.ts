@@ -16,7 +16,7 @@ interface IUserServiceService extends grpc.ServiceDefinition<grpc.UntypedService
 }
 
 interface IUserServiceService_ICreateUser extends grpc.MethodDefinition<proto_user_pb.UserRequest, proto_user_pb.UserResponse> {
-    path: "/pb.UserService/CreateUser";
+    path: string; // "/pb.UserService/CreateUser"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_user_pb.UserRequest>;
@@ -25,7 +25,7 @@ interface IUserServiceService_ICreateUser extends grpc.MethodDefinition<proto_us
     responseDeserialize: grpc.deserialize<proto_user_pb.UserResponse>;
 }
 interface IUserServiceService_IRetrieveUser extends grpc.MethodDefinition<proto_user_pb.UserRequest, proto_user_pb.UserResponse> {
-    path: "/pb.UserService/RetrieveUser";
+    path: string; // "/pb.UserService/RetrieveUser"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_user_pb.UserRequest>;
@@ -34,7 +34,7 @@ interface IUserServiceService_IRetrieveUser extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_user_pb.UserResponse>;
 }
 interface IUserServiceService_IRetrieveUsers extends grpc.MethodDefinition<proto_user_pb.UserRequest, proto_user_pb.UsersResponse> {
-    path: "/pb.UserService/RetrieveUsers";
+    path: string; // "/pb.UserService/RetrieveUsers"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_user_pb.UserRequest>;
@@ -43,7 +43,7 @@ interface IUserServiceService_IRetrieveUsers extends grpc.MethodDefinition<proto
     responseDeserialize: grpc.deserialize<proto_user_pb.UsersResponse>;
 }
 interface IUserServiceService_IUpdateUser extends grpc.MethodDefinition<proto_user_pb.UserRequest, proto_user_pb.UserResponse> {
-    path: "/pb.UserService/UpdateUser";
+    path: string; // "/pb.UserService/UpdateUser"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_user_pb.UserRequest>;
@@ -52,7 +52,7 @@ interface IUserServiceService_IUpdateUser extends grpc.MethodDefinition<proto_us
     responseDeserialize: grpc.deserialize<proto_user_pb.UserResponse>;
 }
 interface IUserServiceService_IDeleteUser extends grpc.MethodDefinition<proto_user_pb.UserRequest, proto_user_pb.UserResponse> {
-    path: "/pb.UserService/DeleteUser";
+    path: string; // "/pb.UserService/DeleteUser"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_user_pb.UserRequest>;

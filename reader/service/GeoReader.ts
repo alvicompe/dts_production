@@ -1,5 +1,6 @@
 import { sendUnaryData, ServerUnaryCall } from "grpc"
 import {
+  CheckChangesTreeGeoResponse,
   CreateTreeGeoResponse,
   GeoTreeResponse,
 } from "../proto/proto/geo-reader_pb"
@@ -8,13 +9,13 @@ import { GeoReader } from "../business/GeoReader"
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb"
 
 export class GeoReaderServer implements IGeoReaderServiceServer {
-  retrieveTreeGeo(
+  async retrieveTreeGeo(
     call: ServerUnaryCall<google_protobuf_empty_pb.Empty>,
     callback: sendUnaryData<GeoTreeResponse>
   ) {
     const response = new GeoTreeResponse()
     const ok = new GeoReader()
-    const result = ok.readFiles()
+    const result = await ok.readFiles()
     response.setGeo(result.tree)
     if (result.response) {
       response.setStatus(true)
@@ -43,13 +44,28 @@ export class GeoReaderServer implements IGeoReaderServiceServer {
     callback(null, response)
   }
 
-  createTreeDirectory(
+  async createTreeDirectory(
     call: ServerUnaryCall<google_protobuf_empty_pb.Empty>,
     callback: sendUnaryData<GeoTreeResponse>
-  ): void {}
+  ) {
+    const response = new GeoTreeResponse()
+    callback(null, response)
+  }
 
   updateTreeDirectory(
     call: ServerUnaryCall<google_protobuf_empty_pb.Empty>,
-    callback: sendUnaryData<CreateTreeGeoResponse>
-  ): void {}
+    callback: sendUnaryData<GeoTreeResponse>
+  ) {
+    const response = new GeoTreeResponse()
+    callback(null, response)
+  }
+
+  async checkChangesTreeGeo(
+    call: ServerUnaryCall<google_protobuf_empty_pb.Empty>,
+    callback: sendUnaryData<CheckChangesTreeGeoResponse>
+  ) {
+    const geoReaderBusiness = new GeoReader()
+    const response = await geoReaderBusiness.checkChangeTreeGeo()
+    callback(null, response)
+  }
 }

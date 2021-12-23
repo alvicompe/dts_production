@@ -12,7 +12,7 @@ interface ISensorServiceService extends grpc.ServiceDefinition<grpc.UntypedServi
 }
 
 interface ISensorServiceService_IServerStream extends grpc.MethodDefinition<proto_sensor_pb.ServerSensorRequest, proto_sensor_pb.ServerSensorResponse> {
-    path: "/pb.SensorService/ServerStream";
+    path: string; // "/pb.SensorService/ServerStream"
     requestStream: false;
     responseStream: true;
     requestSerialize: grpc.serialize<proto_sensor_pb.ServerSensorRequest>;

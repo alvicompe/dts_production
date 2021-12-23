@@ -17,7 +17,7 @@ interface IPitServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceI
 }
 
 interface IPitServiceService_ICreatePit extends grpc.MethodDefinition<proto_pit_pb.PitRequest, proto_pit_pb.PitResponse> {
-    path: "/pb.PitService/CreatePit";
+    path: string; // "/pb.PitService/CreatePit"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pit_pb.PitRequest>;
@@ -26,7 +26,7 @@ interface IPitServiceService_ICreatePit extends grpc.MethodDefinition<proto_pit_
     responseDeserialize: grpc.deserialize<proto_pit_pb.PitResponse>;
 }
 interface IPitServiceService_IRetrievePit extends grpc.MethodDefinition<proto_pit_pb.PitRequest, proto_pit_pb.PitResponse> {
-    path: "/pb.PitService/RetrievePit";
+    path: string; // "/pb.PitService/RetrievePit"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pit_pb.PitRequest>;
@@ -35,7 +35,7 @@ interface IPitServiceService_IRetrievePit extends grpc.MethodDefinition<proto_pi
     responseDeserialize: grpc.deserialize<proto_pit_pb.PitResponse>;
 }
 interface IPitServiceService_IRetrievePits extends grpc.MethodDefinition<proto_pit_pb.PitRequest, proto_pit_pb.PitsResponse> {
-    path: "/pb.PitService/RetrievePits";
+    path: string; // "/pb.PitService/RetrievePits"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pit_pb.PitRequest>;
@@ -44,7 +44,7 @@ interface IPitServiceService_IRetrievePits extends grpc.MethodDefinition<proto_p
     responseDeserialize: grpc.deserialize<proto_pit_pb.PitsResponse>;
 }
 interface IPitServiceService_IUpdatePit extends grpc.MethodDefinition<proto_pit_pb.PitRequest, proto_pit_pb.PitResponse> {
-    path: "/pb.PitService/UpdatePit";
+    path: string; // "/pb.PitService/UpdatePit"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pit_pb.PitRequest>;
@@ -53,7 +53,7 @@ interface IPitServiceService_IUpdatePit extends grpc.MethodDefinition<proto_pit_
     responseDeserialize: grpc.deserialize<proto_pit_pb.PitResponse>;
 }
 interface IPitServiceService_IDeletePit extends grpc.MethodDefinition<proto_pit_pb.PitRequest, proto_pit_pb.PitResponse> {
-    path: "/pb.PitService/DeletePit";
+    path: string; // "/pb.PitService/DeletePit"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pit_pb.PitRequest>;

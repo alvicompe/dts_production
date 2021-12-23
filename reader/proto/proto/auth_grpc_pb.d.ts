@@ -13,7 +13,7 @@ interface IAuthServiceService extends grpc.ServiceDefinition<grpc.UntypedService
 }
 
 interface IAuthServiceService_ILogin extends grpc.MethodDefinition<proto_auth_pb.LoginRequest, proto_auth_pb.LoginResponse> {
-    path: "/pb.AuthService/Login";
+    path: string; // "/pb.AuthService/Login"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_auth_pb.LoginRequest>;

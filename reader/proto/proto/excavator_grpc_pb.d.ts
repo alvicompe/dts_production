@@ -17,7 +17,7 @@ interface IExcavatorServiceService extends grpc.ServiceDefinition<grpc.UntypedSe
 }
 
 interface IExcavatorServiceService_ICreateExcavator extends grpc.MethodDefinition<proto_excavator_pb.ExcavatorRequest, proto_excavator_pb.ExcavatorResponse> {
-    path: "/pb.ExcavatorService/CreateExcavator";
+    path: string; // "/pb.ExcavatorService/CreateExcavator"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_excavator_pb.ExcavatorRequest>;
@@ -26,7 +26,7 @@ interface IExcavatorServiceService_ICreateExcavator extends grpc.MethodDefinitio
     responseDeserialize: grpc.deserialize<proto_excavator_pb.ExcavatorResponse>;
 }
 interface IExcavatorServiceService_IRetrieveExcavator extends grpc.MethodDefinition<proto_excavator_pb.ExcavatorRequest, proto_excavator_pb.ExcavatorResponse> {
-    path: "/pb.ExcavatorService/RetrieveExcavator";
+    path: string; // "/pb.ExcavatorService/RetrieveExcavator"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_excavator_pb.ExcavatorRequest>;
@@ -35,7 +35,7 @@ interface IExcavatorServiceService_IRetrieveExcavator extends grpc.MethodDefinit
     responseDeserialize: grpc.deserialize<proto_excavator_pb.ExcavatorResponse>;
 }
 interface IExcavatorServiceService_IRetrieveExcavators extends grpc.MethodDefinition<proto_excavator_pb.ExcavatorRequest, proto_excavator_pb.ExcavatorsResponse> {
-    path: "/pb.ExcavatorService/RetrieveExcavators";
+    path: string; // "/pb.ExcavatorService/RetrieveExcavators"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_excavator_pb.ExcavatorRequest>;
@@ -44,7 +44,7 @@ interface IExcavatorServiceService_IRetrieveExcavators extends grpc.MethodDefini
     responseDeserialize: grpc.deserialize<proto_excavator_pb.ExcavatorsResponse>;
 }
 interface IExcavatorServiceService_IUpdateExcavator extends grpc.MethodDefinition<proto_excavator_pb.ExcavatorRequest, proto_excavator_pb.ExcavatorResponse> {
-    path: "/pb.ExcavatorService/UpdateExcavator";
+    path: string; // "/pb.ExcavatorService/UpdateExcavator"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_excavator_pb.ExcavatorRequest>;
@@ -53,7 +53,7 @@ interface IExcavatorServiceService_IUpdateExcavator extends grpc.MethodDefinitio
     responseDeserialize: grpc.deserialize<proto_excavator_pb.ExcavatorResponse>;
 }
 interface IExcavatorServiceService_IDeleteExcavator extends grpc.MethodDefinition<proto_excavator_pb.ExcavatorRequest, proto_excavator_pb.ExcavatorResponse> {
-    path: "/pb.ExcavatorService/DeleteExcavator";
+    path: string; // "/pb.ExcavatorService/DeleteExcavator"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_excavator_pb.ExcavatorRequest>;

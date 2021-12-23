@@ -17,7 +17,7 @@ interface IStockServiceService extends grpc.ServiceDefinition<grpc.UntypedServic
 }
 
 interface IStockServiceService_ICreateStock extends grpc.MethodDefinition<proto_stock_pb.StockRequest, proto_stock_pb.StockResponse> {
-    path: "/pb.StockService/CreateStock";
+    path: string; // "/pb.StockService/CreateStock"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_stock_pb.StockRequest>;
@@ -26,7 +26,7 @@ interface IStockServiceService_ICreateStock extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_stock_pb.StockResponse>;
 }
 interface IStockServiceService_IRetrieveStock extends grpc.MethodDefinition<proto_stock_pb.StockRequest, proto_stock_pb.StockResponse> {
-    path: "/pb.StockService/RetrieveStock";
+    path: string; // "/pb.StockService/RetrieveStock"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_stock_pb.StockRequest>;
@@ -35,7 +35,7 @@ interface IStockServiceService_IRetrieveStock extends grpc.MethodDefinition<prot
     responseDeserialize: grpc.deserialize<proto_stock_pb.StockResponse>;
 }
 interface IStockServiceService_IRetrieveStocks extends grpc.MethodDefinition<proto_stock_pb.StockRequest, proto_stock_pb.StocksResponse> {
-    path: "/pb.StockService/RetrieveStocks";
+    path: string; // "/pb.StockService/RetrieveStocks"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_stock_pb.StockRequest>;
@@ -44,7 +44,7 @@ interface IStockServiceService_IRetrieveStocks extends grpc.MethodDefinition<pro
     responseDeserialize: grpc.deserialize<proto_stock_pb.StocksResponse>;
 }
 interface IStockServiceService_IUpdateStock extends grpc.MethodDefinition<proto_stock_pb.StockRequest, proto_stock_pb.StockResponse> {
-    path: "/pb.StockService/UpdateStock";
+    path: string; // "/pb.StockService/UpdateStock"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_stock_pb.StockRequest>;
@@ -53,7 +53,7 @@ interface IStockServiceService_IUpdateStock extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_stock_pb.StockResponse>;
 }
 interface IStockServiceService_IDeleteStock extends grpc.MethodDefinition<proto_stock_pb.StockRequest, proto_stock_pb.StockResponse> {
-    path: "/pb.StockService/DeleteStock";
+    path: string; // "/pb.StockService/DeleteStock"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_stock_pb.StockRequest>;

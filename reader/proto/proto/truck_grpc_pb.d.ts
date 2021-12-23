@@ -17,7 +17,7 @@ interface ITruckServiceService extends grpc.ServiceDefinition<grpc.UntypedServic
 }
 
 interface ITruckServiceService_ICreateTruck extends grpc.MethodDefinition<proto_truck_pb.TruckRequest, proto_truck_pb.TruckResponse> {
-    path: "/pb.TruckService/CreateTruck";
+    path: string; // "/pb.TruckService/CreateTruck"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_truck_pb.TruckRequest>;
@@ -26,7 +26,7 @@ interface ITruckServiceService_ICreateTruck extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_truck_pb.TruckResponse>;
 }
 interface ITruckServiceService_IRetrieveTruck extends grpc.MethodDefinition<proto_truck_pb.TruckRequest, proto_truck_pb.TruckResponse> {
-    path: "/pb.TruckService/RetrieveTruck";
+    path: string; // "/pb.TruckService/RetrieveTruck"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_truck_pb.TruckRequest>;
@@ -35,7 +35,7 @@ interface ITruckServiceService_IRetrieveTruck extends grpc.MethodDefinition<prot
     responseDeserialize: grpc.deserialize<proto_truck_pb.TruckResponse>;
 }
 interface ITruckServiceService_IRetrieveTrucks extends grpc.MethodDefinition<proto_truck_pb.TruckRequest, proto_truck_pb.TrucksResponse> {
-    path: "/pb.TruckService/RetrieveTrucks";
+    path: string; // "/pb.TruckService/RetrieveTrucks"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_truck_pb.TruckRequest>;
@@ -44,7 +44,7 @@ interface ITruckServiceService_IRetrieveTrucks extends grpc.MethodDefinition<pro
     responseDeserialize: grpc.deserialize<proto_truck_pb.TrucksResponse>;
 }
 interface ITruckServiceService_IUpdateTruck extends grpc.MethodDefinition<proto_truck_pb.TruckRequest, proto_truck_pb.TruckResponse> {
-    path: "/pb.TruckService/UpdateTruck";
+    path: string; // "/pb.TruckService/UpdateTruck"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_truck_pb.TruckRequest>;
@@ -53,7 +53,7 @@ interface ITruckServiceService_IUpdateTruck extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_truck_pb.TruckResponse>;
 }
 interface ITruckServiceService_IDeleteTruck extends grpc.MethodDefinition<proto_truck_pb.TruckRequest, proto_truck_pb.TruckResponse> {
-    path: "/pb.TruckService/DeleteTruck";
+    path: string; // "/pb.TruckService/DeleteTruck"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_truck_pb.TruckRequest>;

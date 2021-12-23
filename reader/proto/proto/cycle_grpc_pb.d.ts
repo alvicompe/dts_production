@@ -23,7 +23,7 @@ interface ICycleServiceService extends grpc.ServiceDefinition<grpc.UntypedServic
 }
 
 interface ICycleServiceService_ICreateCycle extends grpc.MethodDefinition<proto_cycle_pb.CycleRequest, proto_cycle_pb.CycleResponse> {
-    path: "/pb.CycleService/CreateCycle";
+    path: string; // "/pb.CycleService/CreateCycle"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cycle_pb.CycleRequest>;
@@ -32,7 +32,7 @@ interface ICycleServiceService_ICreateCycle extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_cycle_pb.CycleResponse>;
 }
 interface ICycleServiceService_IRetrieveCycle extends grpc.MethodDefinition<proto_cycle_pb.CycleRequest, proto_cycle_pb.CycleResponse> {
-    path: "/pb.CycleService/RetrieveCycle";
+    path: string; // "/pb.CycleService/RetrieveCycle"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cycle_pb.CycleRequest>;
@@ -41,7 +41,7 @@ interface ICycleServiceService_IRetrieveCycle extends grpc.MethodDefinition<prot
     responseDeserialize: grpc.deserialize<proto_cycle_pb.CycleResponse>;
 }
 interface ICycleServiceService_IRetrieveCycles extends grpc.MethodDefinition<proto_cycle_pb.CycleRequest, proto_cycle_pb.CyclesResponse> {
-    path: "/pb.CycleService/RetrieveCycles";
+    path: string; // "/pb.CycleService/RetrieveCycles"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cycle_pb.CycleRequest>;
@@ -50,7 +50,7 @@ interface ICycleServiceService_IRetrieveCycles extends grpc.MethodDefinition<pro
     responseDeserialize: grpc.deserialize<proto_cycle_pb.CyclesResponse>;
 }
 interface ICycleServiceService_IUpdateCycle extends grpc.MethodDefinition<proto_cycle_pb.CycleRequest, proto_cycle_pb.CycleResponse> {
-    path: "/pb.CycleService/UpdateCycle";
+    path: string; // "/pb.CycleService/UpdateCycle"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cycle_pb.CycleRequest>;
@@ -59,7 +59,7 @@ interface ICycleServiceService_IUpdateCycle extends grpc.MethodDefinition<proto_
     responseDeserialize: grpc.deserialize<proto_cycle_pb.CycleResponse>;
 }
 interface ICycleServiceService_IDeleteCycle extends grpc.MethodDefinition<proto_cycle_pb.CycleRequest, proto_cycle_pb.CycleResponse> {
-    path: "/pb.CycleService/DeleteCycle";
+    path: string; // "/pb.CycleService/DeleteCycle"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_cycle_pb.CycleRequest>;

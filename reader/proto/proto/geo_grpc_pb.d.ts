@@ -24,7 +24,7 @@ interface IGeoServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceI
 }
 
 interface IGeoServiceService_IUploadGeo extends grpc.MethodDefinition<proto_geo_pb.GeoChunkRequest, proto_geo_pb.GeoChunkResponse> {
-    path: "/pb.GeoService/UploadGeo";
+    path: string; // "/pb.GeoService/UploadGeo"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geo_pb.GeoChunkRequest>;
@@ -33,7 +33,7 @@ interface IGeoServiceService_IUploadGeo extends grpc.MethodDefinition<proto_geo_
     responseDeserialize: grpc.deserialize<proto_geo_pb.GeoChunkResponse>;
 }
 interface IGeoServiceService_ICreateGeo extends grpc.MethodDefinition<proto_geo_pb.GeoRequest, proto_geo_pb.GeoResponse> {
-    path: "/pb.GeoService/CreateGeo";
+    path: string; // "/pb.GeoService/CreateGeo"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geo_pb.GeoRequest>;
@@ -42,7 +42,7 @@ interface IGeoServiceService_ICreateGeo extends grpc.MethodDefinition<proto_geo_
     responseDeserialize: grpc.deserialize<proto_geo_pb.GeoResponse>;
 }
 interface IGeoServiceService_IRetrieveGeo extends grpc.MethodDefinition<proto_geo_pb.GeoRequest, proto_geo_pb.GeoResponse> {
-    path: "/pb.GeoService/RetrieveGeo";
+    path: string; // "/pb.GeoService/RetrieveGeo"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geo_pb.GeoRequest>;
@@ -51,7 +51,7 @@ interface IGeoServiceService_IRetrieveGeo extends grpc.MethodDefinition<proto_ge
     responseDeserialize: grpc.deserialize<proto_geo_pb.GeoResponse>;
 }
 interface IGeoServiceService_IRetrieveGeos extends grpc.MethodDefinition<proto_geo_pb.GeoEmptyRequest, proto_geo_pb.GeosResponse> {
-    path: "/pb.GeoService/RetrieveGeos";
+    path: string; // "/pb.GeoService/RetrieveGeos"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geo_pb.GeoEmptyRequest>;
@@ -60,7 +60,7 @@ interface IGeoServiceService_IRetrieveGeos extends grpc.MethodDefinition<proto_g
     responseDeserialize: grpc.deserialize<proto_geo_pb.GeosResponse>;
 }
 interface IGeoServiceService_IUpdateGeo extends grpc.MethodDefinition<proto_geo_pb.GeoRequest, proto_geo_pb.GeoResponse> {
-    path: "/pb.GeoService/UpdateGeo";
+    path: string; // "/pb.GeoService/UpdateGeo"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geo_pb.GeoRequest>;
@@ -69,7 +69,7 @@ interface IGeoServiceService_IUpdateGeo extends grpc.MethodDefinition<proto_geo_
     responseDeserialize: grpc.deserialize<proto_geo_pb.GeoResponse>;
 }
 interface IGeoServiceService_IDeleteGeo extends grpc.MethodDefinition<proto_geo_pb.GeoRequest, proto_geo_pb.GeoResponse> {
-    path: "/pb.GeoService/DeleteGeo";
+    path: string; // "/pb.GeoService/DeleteGeo"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_geo_pb.GeoRequest>;

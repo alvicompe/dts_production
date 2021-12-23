@@ -17,7 +17,7 @@ interface IDmeServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceI
 }
 
 interface IDmeServiceService_ICreateDme extends grpc.MethodDefinition<proto_dme_pb.DmeRequest, proto_dme_pb.DmeResponse> {
-    path: "/pb.DmeService/CreateDme";
+    path: string; // "/pb.DmeService/CreateDme"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_dme_pb.DmeRequest>;
@@ -26,7 +26,7 @@ interface IDmeServiceService_ICreateDme extends grpc.MethodDefinition<proto_dme_
     responseDeserialize: grpc.deserialize<proto_dme_pb.DmeResponse>;
 }
 interface IDmeServiceService_IRetrieveDme extends grpc.MethodDefinition<proto_dme_pb.DmeRequest, proto_dme_pb.DmeResponse> {
-    path: "/pb.DmeService/RetrieveDme";
+    path: string; // "/pb.DmeService/RetrieveDme"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_dme_pb.DmeRequest>;
@@ -35,7 +35,7 @@ interface IDmeServiceService_IRetrieveDme extends grpc.MethodDefinition<proto_dm
     responseDeserialize: grpc.deserialize<proto_dme_pb.DmeResponse>;
 }
 interface IDmeServiceService_IRetrieveDmes extends grpc.MethodDefinition<proto_dme_pb.DmeRequest, proto_dme_pb.DmesResponse> {
-    path: "/pb.DmeService/RetrieveDmes";
+    path: string; // "/pb.DmeService/RetrieveDmes"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_dme_pb.DmeRequest>;
@@ -44,7 +44,7 @@ interface IDmeServiceService_IRetrieveDmes extends grpc.MethodDefinition<proto_d
     responseDeserialize: grpc.deserialize<proto_dme_pb.DmesResponse>;
 }
 interface IDmeServiceService_IUpdateDme extends grpc.MethodDefinition<proto_dme_pb.DmeRequest, proto_dme_pb.DmeResponse> {
-    path: "/pb.DmeService/UpdateDme";
+    path: string; // "/pb.DmeService/UpdateDme"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_dme_pb.DmeRequest>;
@@ -53,7 +53,7 @@ interface IDmeServiceService_IUpdateDme extends grpc.MethodDefinition<proto_dme_
     responseDeserialize: grpc.deserialize<proto_dme_pb.DmeResponse>;
 }
 interface IDmeServiceService_IDeleteDme extends grpc.MethodDefinition<proto_dme_pb.DmeRequest, proto_dme_pb.DmeResponse> {
-    path: "/pb.DmeService/DeleteDme";
+    path: string; // "/pb.DmeService/DeleteDme"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_dme_pb.DmeRequest>;

@@ -23,7 +23,7 @@ interface ITruckInfoServiceService extends grpc.ServiceDefinition<grpc.UntypedSe
 }
 
 interface ITruckInfoServiceService_IServerStream extends grpc.MethodDefinition<proto_streaming_pb.TruckInfoRequest, proto_streaming_pb.TruckInfoResponse> {
-    path: "/pb.TruckInfoService/ServerStream";
+    path: string; // "/pb.TruckInfoService/ServerStream"
     requestStream: false;
     responseStream: true;
     requestSerialize: grpc.serialize<proto_streaming_pb.TruckInfoRequest>;
@@ -54,7 +54,7 @@ interface IExcavatorInfoServiceService extends grpc.ServiceDefinition<grpc.Untyp
 }
 
 interface IExcavatorInfoServiceService_IServerStream extends grpc.MethodDefinition<proto_streaming_pb.ExcavatorInfoRequest, proto_streaming_pb.ExcavatorInfoResponse> {
-    path: "/pb.ExcavatorInfoService/ServerStream";
+    path: string; // "/pb.ExcavatorInfoService/ServerStream"
     requestStream: false;
     responseStream: true;
     requestSerialize: grpc.serialize<proto_streaming_pb.ExcavatorInfoRequest>;

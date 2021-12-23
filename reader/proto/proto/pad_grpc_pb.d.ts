@@ -17,7 +17,7 @@ interface IPadServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceI
 }
 
 interface IPadServiceService_ICreatePad extends grpc.MethodDefinition<proto_pad_pb.PadRequest, proto_pad_pb.PadResponse> {
-    path: "/pb.PadService/CreatePad";
+    path: string; // "/pb.PadService/CreatePad"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pad_pb.PadRequest>;
@@ -26,7 +26,7 @@ interface IPadServiceService_ICreatePad extends grpc.MethodDefinition<proto_pad_
     responseDeserialize: grpc.deserialize<proto_pad_pb.PadResponse>;
 }
 interface IPadServiceService_IRetrievePad extends grpc.MethodDefinition<proto_pad_pb.PadRequest, proto_pad_pb.PadResponse> {
-    path: "/pb.PadService/RetrievePad";
+    path: string; // "/pb.PadService/RetrievePad"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pad_pb.PadRequest>;
@@ -35,7 +35,7 @@ interface IPadServiceService_IRetrievePad extends grpc.MethodDefinition<proto_pa
     responseDeserialize: grpc.deserialize<proto_pad_pb.PadResponse>;
 }
 interface IPadServiceService_IRetrievePads extends grpc.MethodDefinition<proto_pad_pb.PadRequest, proto_pad_pb.PadsResponse> {
-    path: "/pb.PadService/RetrievePads";
+    path: string; // "/pb.PadService/RetrievePads"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pad_pb.PadRequest>;
@@ -44,7 +44,7 @@ interface IPadServiceService_IRetrievePads extends grpc.MethodDefinition<proto_p
     responseDeserialize: grpc.deserialize<proto_pad_pb.PadsResponse>;
 }
 interface IPadServiceService_IUpdatePad extends grpc.MethodDefinition<proto_pad_pb.PadRequest, proto_pad_pb.PadResponse> {
-    path: "/pb.PadService/UpdatePad";
+    path: string; // "/pb.PadService/UpdatePad"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pad_pb.PadRequest>;
@@ -53,7 +53,7 @@ interface IPadServiceService_IUpdatePad extends grpc.MethodDefinition<proto_pad_
     responseDeserialize: grpc.deserialize<proto_pad_pb.PadResponse>;
 }
 interface IPadServiceService_IDeletePad extends grpc.MethodDefinition<proto_pad_pb.PadRequest, proto_pad_pb.PadResponse> {
-    path: "/pb.PadService/DeletePad";
+    path: string; // "/pb.PadService/DeletePad"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_pad_pb.PadRequest>;

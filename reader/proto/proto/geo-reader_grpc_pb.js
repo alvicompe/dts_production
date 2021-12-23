@@ -16,6 +16,17 @@ function deserialize_google_protobuf_Empty(buffer_arg) {
   return google_protobuf_empty_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_pb_CheckChangesTreeGeoResponse(arg) {
+  if (!(arg instanceof proto_geo$reader_pb.CheckChangesTreeGeoResponse)) {
+    throw new Error('Expected argument of type pb.CheckChangesTreeGeoResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_CheckChangesTreeGeoResponse(buffer_arg) {
+  return proto_geo$reader_pb.CheckChangesTreeGeoResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_pb_CreateTreeGeoResponse(arg) {
   if (!(arg instanceof proto_geo$reader_pb.CreateTreeGeoResponse)) {
     throw new Error('Expected argument of type pb.CreateTreeGeoResponse');
@@ -67,11 +78,11 @@ var GeoReaderServiceService = exports.GeoReaderServiceService = {
     requestStream: false,
     responseStream: false,
     requestType: google_protobuf_empty_pb.Empty,
-    responseType: proto_geo$reader_pb.CreateTreeGeoResponse,
+    responseType: proto_geo$reader_pb.GeoTreeResponse,
     requestSerialize: serialize_google_protobuf_Empty,
     requestDeserialize: deserialize_google_protobuf_Empty,
-    responseSerialize: serialize_pb_CreateTreeGeoResponse,
-    responseDeserialize: deserialize_pb_CreateTreeGeoResponse,
+    responseSerialize: serialize_pb_GeoTreeResponse,
+    responseDeserialize: deserialize_pb_GeoTreeResponse,
   },
   createTreeGeo: {
     path: '/pb.GeoReaderService/CreateTreeGeo',
@@ -83,6 +94,17 @@ var GeoReaderServiceService = exports.GeoReaderServiceService = {
     requestDeserialize: deserialize_google_protobuf_Empty,
     responseSerialize: serialize_pb_CreateTreeGeoResponse,
     responseDeserialize: deserialize_pb_CreateTreeGeoResponse,
+  },
+  checkChangesTreeGeo: {
+    path: '/pb.GeoReaderService/CheckChangesTreeGeo',
+    requestStream: false,
+    responseStream: false,
+    requestType: google_protobuf_empty_pb.Empty,
+    responseType: proto_geo$reader_pb.CheckChangesTreeGeoResponse,
+    requestSerialize: serialize_google_protobuf_Empty,
+    requestDeserialize: deserialize_google_protobuf_Empty,
+    responseSerialize: serialize_pb_CheckChangesTreeGeoResponse,
+    responseDeserialize: deserialize_pb_CheckChangesTreeGeoResponse,
   },
 };
 

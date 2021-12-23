@@ -17,7 +17,7 @@ interface IProjectServiceService extends grpc.ServiceDefinition<grpc.UntypedServ
 }
 
 interface IProjectServiceService_ICreateProject extends grpc.MethodDefinition<proto_project_pb.ProjectRequest, proto_project_pb.ProjectResponse> {
-    path: "/pb.ProjectService/CreateProject";
+    path: string; // "/pb.ProjectService/CreateProject"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_project_pb.ProjectRequest>;
@@ -26,7 +26,7 @@ interface IProjectServiceService_ICreateProject extends grpc.MethodDefinition<pr
     responseDeserialize: grpc.deserialize<proto_project_pb.ProjectResponse>;
 }
 interface IProjectServiceService_IRetrieveProject extends grpc.MethodDefinition<proto_project_pb.ProjectRequest, proto_project_pb.ProjectResponse> {
-    path: "/pb.ProjectService/RetrieveProject";
+    path: string; // "/pb.ProjectService/RetrieveProject"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_project_pb.ProjectRequest>;
@@ -35,7 +35,7 @@ interface IProjectServiceService_IRetrieveProject extends grpc.MethodDefinition<
     responseDeserialize: grpc.deserialize<proto_project_pb.ProjectResponse>;
 }
 interface IProjectServiceService_IRetrieveProjects extends grpc.MethodDefinition<proto_project_pb.ProjectRequest, proto_project_pb.ProjectsResponse> {
-    path: "/pb.ProjectService/RetrieveProjects";
+    path: string; // "/pb.ProjectService/RetrieveProjects"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_project_pb.ProjectRequest>;
@@ -44,7 +44,7 @@ interface IProjectServiceService_IRetrieveProjects extends grpc.MethodDefinition
     responseDeserialize: grpc.deserialize<proto_project_pb.ProjectsResponse>;
 }
 interface IProjectServiceService_IUpdateProject extends grpc.MethodDefinition<proto_project_pb.ProjectRequest, proto_project_pb.ProjectResponse> {
-    path: "/pb.ProjectService/UpdateProject";
+    path: string; // "/pb.ProjectService/UpdateProject"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_project_pb.ProjectRequest>;
@@ -53,7 +53,7 @@ interface IProjectServiceService_IUpdateProject extends grpc.MethodDefinition<pr
     responseDeserialize: grpc.deserialize<proto_project_pb.ProjectResponse>;
 }
 interface IProjectServiceService_IDeleteProject extends grpc.MethodDefinition<proto_project_pb.ProjectRequest, proto_project_pb.ProjectResponse> {
-    path: "/pb.ProjectService/DeleteProject";
+    path: string; // "/pb.ProjectService/DeleteProject"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_project_pb.ProjectRequest>;

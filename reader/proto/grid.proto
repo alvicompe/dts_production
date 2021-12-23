@@ -10,6 +10,7 @@ import "proto/pit.proto";
 import "proto/pad.proto";
 import "proto/stock.proto";
 import "proto/dme.proto";
+import "google/protobuf/empty.proto";
 
 message Square {
   string id = 1;
@@ -30,14 +31,26 @@ message Grid {
   int32 color = 2;
 }
 
-message GridRequest {
-  bool read = 1;
-}
-
 message GridResponse {
   bool done = 1;
 }
 
+message UpdateGridResponse {
+  bool status = 1;
+  string message = 2;
+}
+
+message DeleteGridByNameRequest{
+  string name = 1;
+}
+
+message UpdateGridRequest{
+  repeated string pathChange = 3;
+}
+
 service GridService {
-  rpc CreateGrid(GridRequest) returns (GridResponse) {};
+  rpc CreateGrid(google.protobuf.Empty) returns (GridResponse) {};
+  rpc UpdateGrid(UpdateGridRequest) returns (UpdateGridResponse) {};
+  rpc UpdateGridWeb(google.protobuf.Empty) returns (UpdateGridResponse) {};
+  rpc DeleteGridByName(DeleteGridByNameRequest) returns (GridResponse) {};
 }
