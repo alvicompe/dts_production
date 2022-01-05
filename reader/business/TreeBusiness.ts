@@ -55,7 +55,7 @@ export class TreeBusiness {
     return this.response
   }
 
-  async checkTreeGeo(newTree: any, treeFiles: any) {
+  async checkChangeTreeGeo(newTree: any, treeFiles: any) {
     const lastTree = await this.retrieveTree()
     if (lastTree.tree !== undefined) {
       await this.compareLastTreeWithNewTree(

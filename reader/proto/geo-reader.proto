@@ -33,9 +33,25 @@ message CreateTreeGeoResponse {
 
 message CheckChangesTreeGeoResponse {
   bool status = 1;
-  bool firstLoad = 2;
-  string message = 3;
-  repeated ChangeFile changeFiles = 4;
+  bool change = 2;
+  bool firstLoad = 3;
+  string message = 4;
+  repeated ChangeFile changeFiles = 5;
+}
+
+message NotificationDTS {
+  string title = 1;
+  string message = 2;
+}
+
+message ChangesGeoNotificationResponse {
+  bool status = 1;
+  repeated NotificationDTS notifications = 2;
+}
+
+message AutomaticallyExecuteChangeTreeGeoResponse {
+  bool status = 1;
+  string message = 2;
 }
 
 service GeoReaderService {
@@ -43,5 +59,6 @@ service GeoReaderService {
   rpc CreateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc UpdateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc CreateTreeGeo(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
-  rpc CheckChangesTreeGeo(google.protobuf.Empty) returns (CheckChangesTreeGeoResponse) {};
+  rpc CheckChangesTreeGeo(google.protobuf.Empty) returns (ChangesGeoNotificationResponse) {};
+  rpc AutomaticallyExecuteChangeTreeGeo(google.protobuf.Empty) returns (AutomaticallyExecuteChangeTreeGeoResponse) {};
 }
