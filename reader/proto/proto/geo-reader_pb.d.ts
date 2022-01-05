@@ -135,6 +135,9 @@ export class CheckChangesTreeGeoResponse extends jspb.Message {
     getStatus(): boolean;
     setStatus(value: boolean): CheckChangesTreeGeoResponse;
 
+    getChange(): boolean;
+    setChange(value: boolean): CheckChangesTreeGeoResponse;
+
     getFirstload(): boolean;
     setFirstload(value: boolean): CheckChangesTreeGeoResponse;
 
@@ -160,8 +163,86 @@ export class CheckChangesTreeGeoResponse extends jspb.Message {
 export namespace CheckChangesTreeGeoResponse {
     export type AsObject = {
         status: boolean,
+        change: boolean,
         firstload: boolean,
         message: string,
         changefilesList: Array<ChangeFile.AsObject>,
+    }
+}
+
+export class NotificationDTS extends jspb.Message { 
+    getTitle(): string;
+    setTitle(value: string): NotificationDTS;
+
+    getMessage(): string;
+    setMessage(value: string): NotificationDTS;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): NotificationDTS.AsObject;
+    static toObject(includeInstance: boolean, msg: NotificationDTS): NotificationDTS.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: NotificationDTS, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): NotificationDTS;
+    static deserializeBinaryFromReader(message: NotificationDTS, reader: jspb.BinaryReader): NotificationDTS;
+}
+
+export namespace NotificationDTS {
+    export type AsObject = {
+        title: string,
+        message: string,
+    }
+}
+
+export class ChangesGeoNotificationResponse extends jspb.Message { 
+    getStatus(): boolean;
+    setStatus(value: boolean): ChangesGeoNotificationResponse;
+
+    clearNotificationsList(): void;
+    getNotificationsList(): Array<NotificationDTS>;
+    setNotificationsList(value: Array<NotificationDTS>): ChangesGeoNotificationResponse;
+    addNotifications(value?: NotificationDTS, index?: number): NotificationDTS;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ChangesGeoNotificationResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ChangesGeoNotificationResponse): ChangesGeoNotificationResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ChangesGeoNotificationResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ChangesGeoNotificationResponse;
+    static deserializeBinaryFromReader(message: ChangesGeoNotificationResponse, reader: jspb.BinaryReader): ChangesGeoNotificationResponse;
+}
+
+export namespace ChangesGeoNotificationResponse {
+    export type AsObject = {
+        status: boolean,
+        notificationsList: Array<NotificationDTS.AsObject>,
+    }
+}
+
+export class AutomaticallyExecuteChangeTreeGeoResponse extends jspb.Message { 
+    getStatus(): boolean;
+    setStatus(value: boolean): AutomaticallyExecuteChangeTreeGeoResponse;
+
+    getMessage(): string;
+    setMessage(value: string): AutomaticallyExecuteChangeTreeGeoResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): AutomaticallyExecuteChangeTreeGeoResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: AutomaticallyExecuteChangeTreeGeoResponse): AutomaticallyExecuteChangeTreeGeoResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: AutomaticallyExecuteChangeTreeGeoResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): AutomaticallyExecuteChangeTreeGeoResponse;
+    static deserializeBinaryFromReader(message: AutomaticallyExecuteChangeTreeGeoResponse, reader: jspb.BinaryReader): AutomaticallyExecuteChangeTreeGeoResponse;
+}
+
+export namespace AutomaticallyExecuteChangeTreeGeoResponse {
+    export type AsObject = {
+        status: boolean,
+        message: string,
     }
 }

@@ -5,6 +5,7 @@ package pb;
 option go_package = "../pb";
 import "google/protobuf/timestamp.proto";
 import "proto/cycle.proto";
+import "proto/unit.proto";
 enum StateUnitGeneral {
     UNKNOWN_STATE = 0;
     UPLOAD = 1;
@@ -51,7 +52,10 @@ message UnitCurrentTimeline{
     StateUnitGeneral state = 5;
     repeated Timeline hystory_shift = 6;
 }
-
+message UnitFinalize{
+    Unit truck = 1;
+    float hourmeter = 2;
+}
 message TimelineRequest{
     Timeline timeline = 1;
 }
@@ -63,6 +67,10 @@ message TimelineListRequest{
 }
 message TimelinesShiftRequest{
     google.protobuf.Timestamp shift_date = 1;
+    Shift shift = 2;
+}
+message TimelineFinalizeShiftRequest{
+    repeated UnitFinalize truck = 1;
     Shift shift = 2;
 }
 message TimelineResponse{
@@ -83,6 +91,7 @@ service TimelineService {
     rpc UpdateTimeline(TimelineRequest) returns (TimelineResponse) {};
     rpc DeleteTimeline(TimelineRequest) returns (TimelineResponse) {};
     rpc RetrieveTimelinesShift(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
+    rpc FinalizeShift(TimelineFinalizeShiftRequest) returns (TimelineListResponse) {};
     rpc UpdateTimelineTruckList(TimelineListRequest) returns (TimelineListResponse) {};
   }
   

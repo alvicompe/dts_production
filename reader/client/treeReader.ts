@@ -118,7 +118,7 @@ export class TreeReader {
           z
         )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
-        polygonPoints.push([longitude, latitude])
+        polygonPoints.push([longitude, latitude, altitude])
       }
       if (groups[currentIndexGroup]["name"] !== name) {
         const okBuildCentroid = this.buildCentroid(
@@ -175,7 +175,7 @@ export class TreeReader {
           z
         )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
-        polygonPoints.push([longitude, latitude])
+        polygonPoints.push([longitude, latitude, altitude])
       }
       if (groups[currentIndexGroup]["name"] !== name) {
         const okBuildCentroid = this.buildCentroid(
@@ -242,7 +242,7 @@ export class TreeReader {
           z
         )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
-        polygonPoints.push([longitude, latitude])
+        polygonPoints.push([longitude, latitude, altitude])
       }
 
       if (groups[currentIndexGroup]["name"] !== name) {
@@ -363,7 +363,7 @@ export class TreeReader {
               v.z
             )
             polygon.point.push({ longitude, latitude, altitude })
-            polygonPoints.push([longitude, latitude])
+            polygonPoints.push([longitude, latitude, altitude])
           })
           polygon.altitude = polygon.point[0].altitude
 
@@ -579,6 +579,11 @@ export class TreeReader {
     if (polygonPoints.length >= 4) {
       if (polygonPoints[0] !== polygonPoints[polygonPoints.length - 1]) {
         polygonPoints.push(polygonPoints[0])
+        group.point.push({
+          longitude: polygonPoints[0][0],
+          latitude: polygonPoints[0][1],
+          altitude: polygonPoints[0][2],
+        })
       }
     } else if (polygonPoints.length === 3) {
       if (polygonPoints[0] !== polygonPoints[polygonPoints.length - 1]) {
@@ -586,6 +591,11 @@ export class TreeReader {
         return false
       } else {
         polygonPoints.push(polygonPoints[0])
+        group.point.push({
+          longitude: polygonPoints[0][0],
+          latitude: polygonPoints[0][1],
+          altitude: polygonPoints[0][2],
+        })
       }
     } else {
       this.setErrResponse(path, "build centroid")
@@ -594,6 +604,7 @@ export class TreeReader {
 
     const turfPolygon = turf.polygon([polygonPoints])
     const centroid = turf.centerOfMass(turfPolygon)
+
     group.altitude = group.point[0].altitude
     group.centroid = {
       longitude: centroid.geometry.coordinates[0],

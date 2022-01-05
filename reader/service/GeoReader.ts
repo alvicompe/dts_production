@@ -1,6 +1,7 @@
 import { sendUnaryData, ServerUnaryCall } from "grpc"
 import {
-  CheckChangesTreeGeoResponse,
+  AutomaticallyExecuteChangeTreeGeoResponse,
+  ChangesGeoNotificationResponse,
   CreateTreeGeoResponse,
   GeoTreeResponse,
 } from "../proto/proto/geo-reader_pb"
@@ -25,7 +26,6 @@ export class GeoReaderServer implements IGeoReaderServiceServer {
       response.setMessage("Incorrect tree, check files.")
       response.setErrorsList(result.errors)
     }
-
     callback(null, response)
   }
 
@@ -62,10 +62,20 @@ export class GeoReaderServer implements IGeoReaderServiceServer {
 
   async checkChangesTreeGeo(
     call: ServerUnaryCall<google_protobuf_empty_pb.Empty>,
-    callback: sendUnaryData<CheckChangesTreeGeoResponse>
+    callback: sendUnaryData<ChangesGeoNotificationResponse>
   ) {
     const geoReaderBusiness = new GeoReader()
     const response = await geoReaderBusiness.checkChangeTreeGeo()
+    callback(null, response)
+  }
+
+  async automaticallyExecuteChangeTreeGeo(
+    call: ServerUnaryCall<google_protobuf_empty_pb.Empty>,
+    callback: sendUnaryData<AutomaticallyExecuteChangeTreeGeoResponse>
+  ) {
+    const geoReaderBusiness = new GeoReader()
+    const response =
+      await geoReaderBusiness.automaticallyExecuteChangeTreeGeoAndUpdateGrid()
     callback(null, response)
   }
 }

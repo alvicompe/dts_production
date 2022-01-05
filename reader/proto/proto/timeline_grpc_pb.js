@@ -5,6 +5,18 @@ var grpc = require('grpc');
 var proto_timeline_pb = require('../proto/timeline_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var proto_cycle_pb = require('../proto/cycle_pb.js');
+var proto_unit_pb = require('../proto/unit_pb.js');
+
+function serialize_pb_TimelineFinalizeShiftRequest(arg) {
+  if (!(arg instanceof proto_timeline_pb.TimelineFinalizeShiftRequest)) {
+    throw new Error('Expected argument of type pb.TimelineFinalizeShiftRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_TimelineFinalizeShiftRequest(buffer_arg) {
+  return proto_timeline_pb.TimelineFinalizeShiftRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
 
 function serialize_pb_TimelineListRequest(arg) {
   if (!(arg instanceof proto_timeline_pb.TimelineListRequest)) {
@@ -128,6 +140,17 @@ var TimelineServiceService = exports.TimelineServiceService = {
     requestDeserialize: deserialize_pb_TimelinesShiftRequest,
     responseSerialize: serialize_pb_TimelinesShiftResponse,
     responseDeserialize: deserialize_pb_TimelinesShiftResponse,
+  },
+  finalizeShift: {
+    path: '/pb.TimelineService/FinalizeShift',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_timeline_pb.TimelineFinalizeShiftRequest,
+    responseType: proto_timeline_pb.TimelineListResponse,
+    requestSerialize: serialize_pb_TimelineFinalizeShiftRequest,
+    requestDeserialize: deserialize_pb_TimelineFinalizeShiftRequest,
+    responseSerialize: serialize_pb_TimelineListResponse,
+    responseDeserialize: deserialize_pb_TimelineListResponse,
   },
   updateTimelineTruckList: {
     path: '/pb.TimelineService/UpdateTimelineTruckList',

@@ -3,9 +3,11 @@ import UploadGeo from "../client/geo"
 import { ValidationTree } from "../client/validationTree"
 import { TreeBusiness } from "./TreeBusiness"
 import {
-  ChangeFile,
-  CheckChangesTreeGeoResponse,
+  AutomaticallyExecuteChangeTreeGeoResponse,
+  ChangesGeoNotificationResponse,
+  NotificationDTS,
 } from "../proto/proto/geo-reader_pb"
+import { GridBusiness } from "./GridBusiness"
 
 export class GeoReader {
   async readFiles() {
@@ -49,12 +51,15 @@ export class GeoReader {
   }
 
   async checkChangeTreeGeo() {
-    const response = new CheckChangesTreeGeoResponse()
+    const response = new ChangesGeoNotificationResponse()
     const validationTree = new ValidationTree()
+
     let treeValidated = validationTree.getValidatedTree()
     if (!treeValidated.response) {
-      response.setStatus(false)
-      response.setMessage("Error when reading files")
+      GeoReader.getResponseChangeGeoNotification(
+        response,
+        "Error when reading files"
+      )
       return response
     }
 
@@ -62,31 +67,60 @@ export class GeoReader {
     const treeBusiness = new TreeBusiness()
 
     if (!treeFile.response) {
-      response.setStatus(false)
-      response.setMessage("Error when reading content from files")
+      GeoReader.getResponseChangeGeoNotification(
+        response,
+        "Error when reading content from files"
+      )
       return response
     }
 
-    const { status, firstLoad, pathChange } = await treeBusiness.checkTreeGeo(
+    const checkChange = await treeBusiness.checkChangeTreeGeo(
       treeValidated.tree,
       treeFile.tree
     )
 
-    let parserPathFile: ChangeFile[] = []
+    response.setStatus(checkChange.status)
+    if (checkChange.pathChange.length > 0) {
+      GeoReader.getResponseChangeGeoNotification(
+        response,
+        "There are changes in the files"
+      )
+    }
 
-    pathChange.forEach((element: any) => {
-      const changeFile = new ChangeFile()
-      changeFile.setDirectory(element.directory)
-      changeFile.setFile(element.file)
-      changeFile.setPath(element.path)
-      changeFile.setState(element.state)
-      parserPathFile.push(changeFile)
-    })
+    return response
+  }
 
-    response.setStatus(status)
-    response.setFirstload(firstLoad)
-    response.setMessage("Success")
-    response.setChangefilesList(parserPathFile)
+  private static getResponseChangeGeoNotification(
+    response: ChangesGeoNotificationResponse,
+    message: string
+  ) {
+    const notification = new NotificationDTS()
+    const notificationList = []
+    notification.setTitle("DTS Configuration")
+    notification.setMessage(message)
+    notificationList.push(notification)
+    response.setNotificationsList(notificationList)
+  }
+
+  async automaticallyExecuteChangeTreeGeoAndUpdateGrid() {
+    const response = new AutomaticallyExecuteChangeTreeGeoResponse()
+    let createGeo = await this.createGeo()
+    console.log(createGeo.status, "😀")
+    if (createGeo.status) {
+      const gridBusiness = new GridBusiness()
+      let updateGrid = await gridBusiness.updateGrid()
+      console.log(updateGrid.getStatus(), "😁")
+      if (updateGrid.getStatus()) {
+        response.setStatus(true)
+        response.setMessage("Success")
+      } else {
+        response.setStatus(false)
+        response.setMessage("Failed")
+      }
+    } else {
+      response.setStatus(false)
+      response.setMessage("Failed")
+    }
     return response
   }
 }

@@ -7,6 +7,7 @@
 import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as proto_cycle_pb from "../proto/cycle_pb";
+import * as proto_unit_pb from "../proto/unit_pb";
 
 export class Timeline extends jspb.Message { 
     getId(): string;
@@ -139,6 +140,34 @@ export namespace UnitCurrentTimeline {
     }
 }
 
+export class UnitFinalize extends jspb.Message { 
+
+    hasTruck(): boolean;
+    clearTruck(): void;
+    getTruck(): proto_unit_pb.Unit | undefined;
+    setTruck(value?: proto_unit_pb.Unit): UnitFinalize;
+
+    getHourmeter(): number;
+    setHourmeter(value: number): UnitFinalize;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UnitFinalize.AsObject;
+    static toObject(includeInstance: boolean, msg: UnitFinalize): UnitFinalize.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UnitFinalize, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UnitFinalize;
+    static deserializeBinaryFromReader(message: UnitFinalize, reader: jspb.BinaryReader): UnitFinalize;
+}
+
+export namespace UnitFinalize {
+    export type AsObject = {
+        truck?: proto_unit_pb.Unit.AsObject,
+        hourmeter: number,
+    }
+}
+
 export class TimelineRequest extends jspb.Message { 
 
     hasTimeline(): boolean;
@@ -221,6 +250,33 @@ export class TimelinesShiftRequest extends jspb.Message {
 export namespace TimelinesShiftRequest {
     export type AsObject = {
         shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        shift: proto_cycle_pb.Shift,
+    }
+}
+
+export class TimelineFinalizeShiftRequest extends jspb.Message { 
+    clearTruckList(): void;
+    getTruckList(): Array<UnitFinalize>;
+    setTruckList(value: Array<UnitFinalize>): TimelineFinalizeShiftRequest;
+    addTruck(value?: UnitFinalize, index?: number): UnitFinalize;
+
+    getShift(): proto_cycle_pb.Shift;
+    setShift(value: proto_cycle_pb.Shift): TimelineFinalizeShiftRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TimelineFinalizeShiftRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: TimelineFinalizeShiftRequest): TimelineFinalizeShiftRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TimelineFinalizeShiftRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TimelineFinalizeShiftRequest;
+    static deserializeBinaryFromReader(message: TimelineFinalizeShiftRequest, reader: jspb.BinaryReader): TimelineFinalizeShiftRequest;
+}
+
+export namespace TimelineFinalizeShiftRequest {
+    export type AsObject = {
+        truckList: Array<UnitFinalize.AsObject>,
         shift: proto_cycle_pb.Shift,
     }
 }
