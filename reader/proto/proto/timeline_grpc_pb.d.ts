@@ -14,6 +14,7 @@ interface ITimelineServiceService extends grpc.ServiceDefinition<grpc.UntypedSer
     createTimeline: ITimelineServiceService_ICreateTimeline;
     retrieveTimeline: ITimelineServiceService_IRetrieveTimeline;
     updateTimeline: ITimelineServiceService_IUpdateTimeline;
+    updateInitialHourmeterTimeline: ITimelineServiceService_IUpdateInitialHourmeterTimeline;
     deleteTimeline: ITimelineServiceService_IDeleteTimeline;
     retrieveTimelinesShift: ITimelineServiceService_IRetrieveTimelinesShift;
     finalizeShift: ITimelineServiceService_IFinalizeShift;
@@ -40,6 +41,15 @@ interface ITimelineServiceService_IRetrieveTimeline extends grpc.MethodDefinitio
 }
 interface ITimelineServiceService_IUpdateTimeline extends grpc.MethodDefinition<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse> {
     path: string; // "/pb.TimelineService/UpdateTimeline"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_timeline_pb.TimelineRequest>;
+    requestDeserialize: grpc.deserialize<proto_timeline_pb.TimelineRequest>;
+    responseSerialize: grpc.serialize<proto_timeline_pb.TimelineResponse>;
+    responseDeserialize: grpc.deserialize<proto_timeline_pb.TimelineResponse>;
+}
+interface ITimelineServiceService_IUpdateInitialHourmeterTimeline extends grpc.MethodDefinition<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse> {
+    path: string; // "/pb.TimelineService/UpdateInitialHourmeterTimeline"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_timeline_pb.TimelineRequest>;
@@ -90,6 +100,7 @@ export interface ITimelineServiceServer {
     createTimeline: grpc.handleUnaryCall<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse>;
     retrieveTimeline: grpc.handleUnaryCall<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse>;
     updateTimeline: grpc.handleUnaryCall<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse>;
+    updateInitialHourmeterTimeline: grpc.handleUnaryCall<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse>;
     deleteTimeline: grpc.handleUnaryCall<proto_timeline_pb.TimelineRequest, proto_timeline_pb.TimelineResponse>;
     retrieveTimelinesShift: grpc.handleUnaryCall<proto_timeline_pb.TimelinesShiftRequest, proto_timeline_pb.TimelinesShiftResponse>;
     finalizeShift: grpc.handleUnaryCall<proto_timeline_pb.TimelineFinalizeShiftRequest, proto_timeline_pb.TimelineListResponse>;
@@ -106,6 +117,9 @@ export interface ITimelineServiceClient {
     updateTimeline(request: proto_timeline_pb.TimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     updateTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     updateTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
+    updateInitialHourmeterTimeline(request: proto_timeline_pb.TimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
+    updateInitialHourmeterTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
+    updateInitialHourmeterTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     deleteTimeline(request: proto_timeline_pb.TimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     deleteTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     deleteTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
@@ -131,6 +145,9 @@ export class TimelineServiceClient extends grpc.Client implements ITimelineServi
     public updateTimeline(request: proto_timeline_pb.TimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     public updateTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     public updateTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
+    public updateInitialHourmeterTimeline(request: proto_timeline_pb.TimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
+    public updateInitialHourmeterTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
+    public updateInitialHourmeterTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     public deleteTimeline(request: proto_timeline_pb.TimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     public deleteTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     public deleteTimeline(request: proto_timeline_pb.TimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_timeline_pb.TimelineResponse) => void): grpc.ClientUnaryCall;

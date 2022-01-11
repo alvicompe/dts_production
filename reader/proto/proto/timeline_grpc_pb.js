@@ -119,6 +119,17 @@ var TimelineServiceService = exports.TimelineServiceService = {
     responseSerialize: serialize_pb_TimelineResponse,
     responseDeserialize: deserialize_pb_TimelineResponse,
   },
+  updateInitialHourmeterTimeline: {
+    path: '/pb.TimelineService/UpdateInitialHourmeterTimeline',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_timeline_pb.TimelineRequest,
+    responseType: proto_timeline_pb.TimelineResponse,
+    requestSerialize: serialize_pb_TimelineRequest,
+    requestDeserialize: deserialize_pb_TimelineRequest,
+    responseSerialize: serialize_pb_TimelineResponse,
+    responseDeserialize: deserialize_pb_TimelineResponse,
+  },
   deleteTimeline: {
     path: '/pb.TimelineService/DeleteTimeline',
     requestStream: false,

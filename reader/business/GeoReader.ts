@@ -10,6 +10,8 @@ import {
 import { GridBusiness } from "./GridBusiness"
 
 export class GeoReader {
+  private notificationList = [] as any
+
   async readFiles() {
     const validationTree = new ValidationTree()
     let { tree, response, errors } = validationTree.getValidatedTree()
@@ -56,60 +58,43 @@ export class GeoReader {
 
     let treeValidated = validationTree.getValidatedTree()
     if (!treeValidated.response) {
-      GeoReader.getResponseChangeGeoNotification(
-        response,
-        "Error when reading files"
-      )
-      return response
+      this.getResponseChangeGeoNotification("Error when reading files")
     }
 
     let treeFile = validationTree.getValidatedTreeToCreate()
-    const treeBusiness = new TreeBusiness()
-
-    if (!treeFile.response) {
-      GeoReader.getResponseChangeGeoNotification(
-        response,
+    if (treeValidated.response && !treeFile.response) {
+      this.getResponseChangeGeoNotification(
         "Error when reading content from files"
       )
-      return response
     }
 
+    const treeBusiness = new TreeBusiness()
     const checkChange = await treeBusiness.checkChangeTreeGeo(
       treeValidated.tree,
       treeFile.tree
     )
 
-    response.setStatus(checkChange.status)
+    response.setStatus(true)
     if (checkChange.pathChange.length > 0) {
-      GeoReader.getResponseChangeGeoNotification(
-        response,
-        "There are changes in the files"
-      )
+      this.getResponseChangeGeoNotification("There are changes in the files")
     }
-
+    response.setNotificationsList(this.notificationList)
     return response
   }
 
-  private static getResponseChangeGeoNotification(
-    response: ChangesGeoNotificationResponse,
-    message: string
-  ) {
+  private getResponseChangeGeoNotification(message: string) {
     const notification = new NotificationDTS()
-    const notificationList = []
     notification.setTitle("DTS Configuration")
     notification.setMessage(message)
-    notificationList.push(notification)
-    response.setNotificationsList(notificationList)
+    this.notificationList.push(notification)
   }
 
   async automaticallyExecuteChangeTreeGeoAndUpdateGrid() {
     const response = new AutomaticallyExecuteChangeTreeGeoResponse()
     let createGeo = await this.createGeo()
-    console.log(createGeo.status, "😀")
     if (createGeo.status) {
       const gridBusiness = new GridBusiness()
       let updateGrid = await gridBusiness.updateGrid()
-      console.log(updateGrid.getStatus(), "😁")
       if (updateGrid.getStatus()) {
         response.setStatus(true)
         response.setMessage("Success")

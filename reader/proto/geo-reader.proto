@@ -59,6 +59,6 @@ service GeoReaderService {
   rpc CreateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc UpdateTreeDirectory(google.protobuf.Empty) returns (GeoTreeResponse) {};
   rpc CreateTreeGeo(google.protobuf.Empty) returns (CreateTreeGeoResponse) {};
-  rpc CheckChangesTreeGeo(google.protobuf.Empty) returns (ChangesGeoNotificationResponse) {};
+  rpc CheckChangesTreeGeo(google.protobuf.Empty) returns (stream ChangesGeoNotificationResponse) {};
   rpc AutomaticallyExecuteChangeTreeGeo(google.protobuf.Empty) returns (AutomaticallyExecuteChangeTreeGeoResponse) {};
 }
