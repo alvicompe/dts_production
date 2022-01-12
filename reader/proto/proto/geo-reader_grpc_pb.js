@@ -109,7 +109,7 @@ var GeoReaderServiceService = exports.GeoReaderServiceService = {
   checkChangesTreeGeo: {
     path: '/pb.GeoReaderService/CheckChangesTreeGeo',
     requestStream: false,
-    responseStream: false,
+    responseStream: true,
     requestType: google_protobuf_empty_pb.Empty,
     responseType: proto_geo$reader_pb.ChangesGeoNotificationResponse,
     requestSerialize: serialize_google_protobuf_Empty,

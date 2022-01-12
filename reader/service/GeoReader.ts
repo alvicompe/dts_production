@@ -1,7 +1,6 @@
 import { sendUnaryData, ServerUnaryCall } from "grpc"
 import {
   AutomaticallyExecuteChangeTreeGeoResponse,
-  ChangesGeoNotificationResponse,
   CreateTreeGeoResponse,
   GeoTreeResponse,
 } from "../proto/proto/geo-reader_pb"
@@ -60,13 +59,11 @@ export class GeoReaderServer implements IGeoReaderServiceServer {
     callback(null, response)
   }
 
-  async checkChangesTreeGeo(
-    call: ServerUnaryCall<google_protobuf_empty_pb.Empty>,
-    callback: sendUnaryData<ChangesGeoNotificationResponse>
-  ) {
+  async checkChangesTreeGeo(call: any) {
     const geoReaderBusiness = new GeoReader()
     const response = await geoReaderBusiness.checkChangeTreeGeo()
-    callback(null, response)
+    call.write(response)
+    call.end()
   }
 
   async automaticallyExecuteChangeTreeGeo(

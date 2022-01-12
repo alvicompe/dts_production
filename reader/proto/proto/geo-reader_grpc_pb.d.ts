@@ -56,7 +56,7 @@ interface IGeoReaderServiceService_ICreateTreeGeo extends grpc.MethodDefinition<
 interface IGeoReaderServiceService_ICheckChangesTreeGeo extends grpc.MethodDefinition<google_protobuf_empty_pb.Empty, proto_geo_reader_pb.ChangesGeoNotificationResponse> {
     path: string; // "/pb.GeoReaderService/CheckChangesTreeGeo"
     requestStream: false;
-    responseStream: false;
+    responseStream: true;
     requestSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     requestDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
     responseSerialize: grpc.serialize<proto_geo_reader_pb.ChangesGeoNotificationResponse>;
@@ -79,7 +79,7 @@ export interface IGeoReaderServiceServer {
     createTreeDirectory: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, proto_geo_reader_pb.GeoTreeResponse>;
     updateTreeDirectory: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, proto_geo_reader_pb.GeoTreeResponse>;
     createTreeGeo: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, proto_geo_reader_pb.CreateTreeGeoResponse>;
-    checkChangesTreeGeo: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, proto_geo_reader_pb.ChangesGeoNotificationResponse>;
+    checkChangesTreeGeo: grpc.handleServerStreamingCall<google_protobuf_empty_pb.Empty, proto_geo_reader_pb.ChangesGeoNotificationResponse>;
     automaticallyExecuteChangeTreeGeo: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, proto_geo_reader_pb.AutomaticallyExecuteChangeTreeGeoResponse>;
 }
 
@@ -96,9 +96,8 @@ export interface IGeoReaderServiceClient {
     createTreeGeo(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.CreateTreeGeoResponse) => void): grpc.ClientUnaryCall;
     createTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.CreateTreeGeoResponse) => void): grpc.ClientUnaryCall;
     createTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.CreateTreeGeoResponse) => void): grpc.ClientUnaryCall;
-    checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.ChangesGeoNotificationResponse) => void): grpc.ClientUnaryCall;
-    checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.ChangesGeoNotificationResponse) => void): grpc.ClientUnaryCall;
-    checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.ChangesGeoNotificationResponse) => void): grpc.ClientUnaryCall;
+    checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_geo_reader_pb.ChangesGeoNotificationResponse>;
+    checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_geo_reader_pb.ChangesGeoNotificationResponse>;
     automaticallyExecuteChangeTreeGeo(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.AutomaticallyExecuteChangeTreeGeoResponse) => void): grpc.ClientUnaryCall;
     automaticallyExecuteChangeTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.AutomaticallyExecuteChangeTreeGeoResponse) => void): grpc.ClientUnaryCall;
     automaticallyExecuteChangeTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.AutomaticallyExecuteChangeTreeGeoResponse) => void): grpc.ClientUnaryCall;
@@ -118,9 +117,8 @@ export class GeoReaderServiceClient extends grpc.Client implements IGeoReaderSer
     public createTreeGeo(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.CreateTreeGeoResponse) => void): grpc.ClientUnaryCall;
     public createTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.CreateTreeGeoResponse) => void): grpc.ClientUnaryCall;
     public createTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.CreateTreeGeoResponse) => void): grpc.ClientUnaryCall;
-    public checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.ChangesGeoNotificationResponse) => void): grpc.ClientUnaryCall;
-    public checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.ChangesGeoNotificationResponse) => void): grpc.ClientUnaryCall;
-    public checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.ChangesGeoNotificationResponse) => void): grpc.ClientUnaryCall;
+    public checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_geo_reader_pb.ChangesGeoNotificationResponse>;
+    public checkChangesTreeGeo(request: google_protobuf_empty_pb.Empty, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_geo_reader_pb.ChangesGeoNotificationResponse>;
     public automaticallyExecuteChangeTreeGeo(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.AutomaticallyExecuteChangeTreeGeoResponse) => void): grpc.ClientUnaryCall;
     public automaticallyExecuteChangeTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.AutomaticallyExecuteChangeTreeGeoResponse) => void): grpc.ClientUnaryCall;
     public automaticallyExecuteChangeTreeGeo(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_geo_reader_pb.AutomaticallyExecuteChangeTreeGeoResponse) => void): grpc.ClientUnaryCall;
