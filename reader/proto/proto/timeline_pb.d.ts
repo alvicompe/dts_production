@@ -58,6 +58,9 @@ export class Timeline extends jspb.Message {
     getStateRegister(): Timeline.StateTimeline;
     setStateRegister(value: Timeline.StateTimeline): Timeline;
 
+    getAdjustment(): number;
+    setAdjustment(value: number): Timeline;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Timeline.AsObject;
@@ -84,6 +87,7 @@ export namespace Timeline {
         shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         shift: proto_cycle_pb.Shift,
         stateRegister: Timeline.StateTimeline,
+        adjustment: number,
     }
 
     export enum StateTimeline {
@@ -282,11 +286,19 @@ export namespace TimelineFinalizeShiftRequest {
 }
 
 export class TimelineResponse extends jspb.Message { 
+    getSuccess(): boolean;
+    setSuccess(value: boolean): TimelineResponse;
+
 
     hasTimeline(): boolean;
     clearTimeline(): void;
     getTimeline(): Timeline | undefined;
     setTimeline(value?: Timeline): TimelineResponse;
+
+    clearErrorsList(): void;
+    getErrorsList(): Array<ErrorTimeline>;
+    setErrorsList(value: Array<ErrorTimeline>): TimelineResponse;
+    addErrors(value?: ErrorTimeline, index?: number): ErrorTimeline;
 
 
     serializeBinary(): Uint8Array;
@@ -301,7 +313,38 @@ export class TimelineResponse extends jspb.Message {
 
 export namespace TimelineResponse {
     export type AsObject = {
+        success: boolean,
         timeline?: Timeline.AsObject,
+        errorsList: Array<ErrorTimeline.AsObject>,
+    }
+}
+
+export class ErrorTimeline extends jspb.Message { 
+    getDeviceId(): string;
+    setDeviceId(value: string): ErrorTimeline;
+
+    getDeviceAlias(): string;
+    setDeviceAlias(value: string): ErrorTimeline;
+
+    getMessage(): string;
+    setMessage(value: string): ErrorTimeline;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ErrorTimeline.AsObject;
+    static toObject(includeInstance: boolean, msg: ErrorTimeline): ErrorTimeline.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ErrorTimeline, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ErrorTimeline;
+    static deserializeBinaryFromReader(message: ErrorTimeline, reader: jspb.BinaryReader): ErrorTimeline;
+}
+
+export namespace ErrorTimeline {
+    export type AsObject = {
+        deviceId: string,
+        deviceAlias: string,
+        message: string,
     }
 }
 
@@ -311,6 +354,11 @@ export class TimelineListResponse extends jspb.Message {
 
     getMessage(): string;
     setMessage(value: string): TimelineListResponse;
+
+    clearErrorsList(): void;
+    getErrorsList(): Array<ErrorTimeline>;
+    setErrorsList(value: Array<ErrorTimeline>): TimelineListResponse;
+    addErrors(value?: ErrorTimeline, index?: number): ErrorTimeline;
 
 
     serializeBinary(): Uint8Array;
@@ -327,6 +375,7 @@ export namespace TimelineListResponse {
     export type AsObject = {
         success: boolean,
         message: string,
+        errorsList: Array<ErrorTimeline.AsObject>,
     }
 }
 
