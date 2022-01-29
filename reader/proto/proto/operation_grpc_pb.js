@@ -10,6 +10,28 @@ var proto_cycle_pb = require('../proto/cycle_pb.js');
 var proto_load_pb = require('../proto/load_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
+function serialize_pb_MigrateOperationRequest(arg) {
+  if (!(arg instanceof proto_operation_pb.MigrateOperationRequest)) {
+    throw new Error('Expected argument of type pb.MigrateOperationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_MigrateOperationRequest(buffer_arg) {
+  return proto_operation_pb.MigrateOperationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_pb_MigrateOperationResponse(arg) {
+  if (!(arg instanceof proto_operation_pb.MigrateOperationResponse)) {
+    throw new Error('Expected argument of type pb.MigrateOperationResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_MigrateOperationResponse(buffer_arg) {
+  return proto_operation_pb.MigrateOperationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_pb_OperationFinalizeResponse(arg) {
   if (!(arg instanceof proto_operation_pb.OperationFinalizeResponse)) {
     throw new Error('Expected argument of type pb.OperationFinalizeResponse');
@@ -165,6 +187,17 @@ var OperationServiceService = exports.OperationServiceService = {
     requestDeserialize: deserialize_pb_OperationRequest,
     responseSerialize: serialize_pb_OperationFinalizeResponse,
     responseDeserialize: deserialize_pb_OperationFinalizeResponse,
+  },
+  migrateOperation: {
+    path: '/pb.OperationService/MigrateOperation',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_operation_pb.MigrateOperationRequest,
+    responseType: proto_operation_pb.MigrateOperationResponse,
+    requestSerialize: serialize_pb_MigrateOperationRequest,
+    requestDeserialize: deserialize_pb_MigrateOperationRequest,
+    responseSerialize: serialize_pb_MigrateOperationResponse,
+    responseDeserialize: deserialize_pb_MigrateOperationResponse,
   },
 };
 

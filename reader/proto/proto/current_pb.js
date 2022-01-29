@@ -97,8 +97,10 @@ proto.pb.TruckCurrentState.toObject = function(includeInstance, msg) {
     deviceId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     sensor: (f = msg.getSensor()) && proto_sensor_pb.Sensor.toObject(includeInstance, f),
     state: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    cycleId: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    cycleNumber: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    beforeState: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    cycleId: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    cycleNumber: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    oldOperation: (f = msg.getOldOperation()) && proto_operation_pb.Operation.toObject(includeInstance, f),
     operation: (f = msg.getOperation()) && proto_operation_pb.Operation.toObject(includeInstance, f)
   };
 
@@ -150,14 +152,23 @@ proto.pb.TruckCurrentState.deserializeBinaryFromReader = function(msg, reader) {
       msg.setState(value);
       break;
     case 4:
+      var value = /** @type {!proto.pb.TruckCurrentState.State} */ (reader.readEnum());
+      msg.setBeforeState(value);
+      break;
+    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setCycleId(value);
       break;
-    case 5:
+    case 6:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setCycleNumber(value);
       break;
-    case 6:
+    case 7:
+      var value = new proto_operation_pb.Operation;
+      reader.readMessage(value,proto_operation_pb.Operation.deserializeBinaryFromReader);
+      msg.setOldOperation(value);
+      break;
+    case 8:
       var value = new proto_operation_pb.Operation;
       reader.readMessage(value,proto_operation_pb.Operation.deserializeBinaryFromReader);
       msg.setOperation(value);
@@ -213,24 +224,39 @@ proto.pb.TruckCurrentState.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getBeforeState();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      4,
+      f
+    );
+  }
   f = message.getCycleId();
   if (f.length > 0) {
     writer.writeString(
-      4,
+      5,
       f
     );
   }
   f = message.getCycleNumber();
   if (f !== 0) {
     writer.writeInt64(
-      5,
+      6,
       f
+    );
+  }
+  f = message.getOldOperation();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      proto_operation_pb.Operation.serializeBinaryToWriter
     );
   }
   f = message.getOperation();
   if (f != null) {
     writer.writeMessage(
-      6,
+      8,
       f,
       proto_operation_pb.Operation.serializeBinaryToWriter
     );
@@ -248,7 +274,8 @@ proto.pb.TruckCurrentState.State = {
   TO_UPLOAD: 3,
   TO_DOWNLOAD: 4,
   WAITING: 5,
-  QUEUE: 6
+  QUEUE: 6,
+  NIL: 7
 };
 
 /**
@@ -325,11 +352,29 @@ proto.pb.TruckCurrentState.prototype.setState = function(value) {
 
 
 /**
- * optional string cycle_id = 4;
+ * optional State before_state = 4;
+ * @return {!proto.pb.TruckCurrentState.State}
+ */
+proto.pb.TruckCurrentState.prototype.getBeforeState = function() {
+  return /** @type {!proto.pb.TruckCurrentState.State} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {!proto.pb.TruckCurrentState.State} value
+ * @return {!proto.pb.TruckCurrentState} returns this
+ */
+proto.pb.TruckCurrentState.prototype.setBeforeState = function(value) {
+  return jspb.Message.setProto3EnumField(this, 4, value);
+};
+
+
+/**
+ * optional string cycle_id = 5;
  * @return {string}
  */
 proto.pb.TruckCurrentState.prototype.getCycleId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
@@ -338,16 +383,16 @@ proto.pb.TruckCurrentState.prototype.getCycleId = function() {
  * @return {!proto.pb.TruckCurrentState} returns this
  */
 proto.pb.TruckCurrentState.prototype.setCycleId = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * optional int64 cycle_number = 5;
+ * optional int64 cycle_number = 6;
  * @return {number}
  */
 proto.pb.TruckCurrentState.prototype.getCycleNumber = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
@@ -356,17 +401,54 @@ proto.pb.TruckCurrentState.prototype.getCycleNumber = function() {
  * @return {!proto.pb.TruckCurrentState} returns this
  */
 proto.pb.TruckCurrentState.prototype.setCycleNumber = function(value) {
-  return jspb.Message.setProto3IntField(this, 5, value);
+  return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
 /**
- * optional Operation operation = 6;
+ * optional Operation old_operation = 7;
+ * @return {?proto.pb.Operation}
+ */
+proto.pb.TruckCurrentState.prototype.getOldOperation = function() {
+  return /** @type{?proto.pb.Operation} */ (
+    jspb.Message.getWrapperField(this, proto_operation_pb.Operation, 7));
+};
+
+
+/**
+ * @param {?proto.pb.Operation|undefined} value
+ * @return {!proto.pb.TruckCurrentState} returns this
+*/
+proto.pb.TruckCurrentState.prototype.setOldOperation = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.TruckCurrentState} returns this
+ */
+proto.pb.TruckCurrentState.prototype.clearOldOperation = function() {
+  return this.setOldOperation(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.TruckCurrentState.prototype.hasOldOperation = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional Operation operation = 8;
  * @return {?proto.pb.Operation}
  */
 proto.pb.TruckCurrentState.prototype.getOperation = function() {
   return /** @type{?proto.pb.Operation} */ (
-    jspb.Message.getWrapperField(this, proto_operation_pb.Operation, 6));
+    jspb.Message.getWrapperField(this, proto_operation_pb.Operation, 8));
 };
 
 
@@ -375,7 +457,7 @@ proto.pb.TruckCurrentState.prototype.getOperation = function() {
  * @return {!proto.pb.TruckCurrentState} returns this
 */
 proto.pb.TruckCurrentState.prototype.setOperation = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
@@ -393,7 +475,7 @@ proto.pb.TruckCurrentState.prototype.clearOperation = function() {
  * @return {boolean}
  */
 proto.pb.TruckCurrentState.prototype.hasOperation = function() {
-  return jspb.Message.getField(this, 6) != null;
+  return jspb.Message.getField(this, 8) != null;
 };
 
 

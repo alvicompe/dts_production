@@ -16,13 +16,16 @@ message TruckCurrentState {
     TO_DOWNLOAD = 4;
     WAITING = 5;
     QUEUE = 6;
+    NIL = 7;
   }
   string device_id = 1;
   Sensor sensor = 2;
   State state = 3;
-  string cycle_id = 4;
-  int64 cycle_number = 5;
-  Operation operation = 6;
+  State before_state = 4;
+  string cycle_id = 5;
+  int64 cycle_number = 6;
+  Operation old_operation = 7;
+  Operation operation = 8;
 }
 
 message ExcavatorCurrentState {
