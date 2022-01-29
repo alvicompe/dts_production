@@ -307,7 +307,8 @@ proto.pb.Timeline.toObject = function(includeInstance, msg) {
     shiftDate: (f = msg.getShiftDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     shift: jspb.Message.getFieldWithDefault(msg, 12, 0),
     stateRegister: jspb.Message.getFieldWithDefault(msg, 13, 0),
-    adjustment: jspb.Message.getFloatingPointFieldWithDefault(msg, 14, 0.0)
+    adjustment: jspb.Message.getFloatingPointFieldWithDefault(msg, 14, 0.0),
+    status: jspb.Message.getBooleanFieldWithDefault(msg, 15, false)
   };
 
   if (includeInstance) {
@@ -402,6 +403,10 @@ proto.pb.Timeline.deserializeBinaryFromReader = function(msg, reader) {
     case 14:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setAdjustment(value);
+      break;
+    case 15:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setStatus(value);
       break;
     default:
       reader.skipField();
@@ -530,6 +535,13 @@ proto.pb.Timeline.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0.0) {
     writer.writeFloat(
       14,
+      f
+    );
+  }
+  f = message.getStatus();
+  if (f) {
+    writer.writeBool(
+      15,
       f
     );
   }
@@ -851,6 +863,24 @@ proto.pb.Timeline.prototype.getAdjustment = function() {
  */
 proto.pb.Timeline.prototype.setAdjustment = function(value) {
   return jspb.Message.setProto3FloatField(this, 14, value);
+};
+
+
+/**
+ * optional bool status = 15;
+ * @return {boolean}
+ */
+proto.pb.Timeline.prototype.getStatus = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 15, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.pb.Timeline} returns this
+ */
+proto.pb.Timeline.prototype.setStatus = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 15, value);
 };
 
 

@@ -61,6 +61,9 @@ export class Timeline extends jspb.Message {
     getAdjustment(): number;
     setAdjustment(value: number): Timeline;
 
+    getStatus(): boolean;
+    setStatus(value: boolean): Timeline;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Timeline.AsObject;
@@ -88,6 +91,7 @@ export namespace Timeline {
         shift: proto_cycle_pb.Shift,
         stateRegister: Timeline.StateTimeline,
         adjustment: number,
+        status: boolean,
     }
 
     export enum StateTimeline {

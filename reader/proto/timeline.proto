@@ -43,6 +43,7 @@ message Timeline{
   Shift shift = 12;
   StateTimeline state_register = 13;
   float adjustment = 14;
+  bool status = 15;
 }
 
 message UnitCurrentTimeline{
