@@ -322,3 +322,56 @@ export namespace OperationFinalizeResponse {
         truckErrorList: Array<TruckStateMessage.AsObject>,
     }
 }
+
+export class MigrateOperationRequest extends jspb.Message { 
+    getOperationid(): string;
+    setOperationid(value: string): MigrateOperationRequest;
+
+
+    hasOperation(): boolean;
+    clearOperation(): void;
+    getOperation(): Operation | undefined;
+    setOperation(value?: Operation): MigrateOperationRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MigrateOperationRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: MigrateOperationRequest): MigrateOperationRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: MigrateOperationRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MigrateOperationRequest;
+    static deserializeBinaryFromReader(message: MigrateOperationRequest, reader: jspb.BinaryReader): MigrateOperationRequest;
+}
+
+export namespace MigrateOperationRequest {
+    export type AsObject = {
+        operationid: string,
+        operation?: Operation.AsObject,
+    }
+}
+
+export class MigrateOperationResponse extends jspb.Message { 
+    getStatus(): boolean;
+    setStatus(value: boolean): MigrateOperationResponse;
+
+    getMessage(): string;
+    setMessage(value: string): MigrateOperationResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MigrateOperationResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: MigrateOperationResponse): MigrateOperationResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: MigrateOperationResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MigrateOperationResponse;
+    static deserializeBinaryFromReader(message: MigrateOperationResponse, reader: jspb.BinaryReader): MigrateOperationResponse;
+}
+
+export namespace MigrateOperationResponse {
+    export type AsObject = {
+        status: boolean,
+        message: string,
+    }
+}

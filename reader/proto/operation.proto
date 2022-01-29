@@ -74,6 +74,17 @@ message OperationFinalizeResponse{
   Operation operation = 1;
   repeated TruckStateMessage truck_error = 2;
 }
+
+// MigrateOperation
+message MigrateOperationRequest{
+  string operationId = 1;
+  Operation operation = 2;
+}
+message MigrateOperationResponse{
+  bool status = 1;
+  string message = 2;
+}
+
 service OperationService {
   rpc CreateOperation(OperationRequest) returns (OperationResponse) {};
   rpc RetrieveOperation(OperationRequest) returns (OperationResponse) {};
@@ -83,4 +94,5 @@ service OperationService {
   rpc RemoveTrucksOperation(OperationRequest) returns (OperationResponse) {};
   rpc ReassigmentTrucksOperation(OperationReassigmentRequest) returns (OperationReassigmentResponse) {};
   rpc FinalizeOperation(OperationRequest) returns (OperationFinalizeResponse){};
+  rpc MigrateOperation(MigrateOperationRequest) returns (MigrateOperationResponse){};
 }

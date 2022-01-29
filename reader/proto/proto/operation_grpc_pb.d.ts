@@ -22,6 +22,7 @@ interface IOperationServiceService extends grpc.ServiceDefinition<grpc.UntypedSe
     removeTrucksOperation: IOperationServiceService_IRemoveTrucksOperation;
     reassigmentTrucksOperation: IOperationServiceService_IReassigmentTrucksOperation;
     finalizeOperation: IOperationServiceService_IFinalizeOperation;
+    migrateOperation: IOperationServiceService_IMigrateOperation;
 }
 
 interface IOperationServiceService_ICreateOperation extends grpc.MethodDefinition<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse> {
@@ -96,6 +97,15 @@ interface IOperationServiceService_IFinalizeOperation extends grpc.MethodDefinit
     responseSerialize: grpc.serialize<proto_operation_pb.OperationFinalizeResponse>;
     responseDeserialize: grpc.deserialize<proto_operation_pb.OperationFinalizeResponse>;
 }
+interface IOperationServiceService_IMigrateOperation extends grpc.MethodDefinition<proto_operation_pb.MigrateOperationRequest, proto_operation_pb.MigrateOperationResponse> {
+    path: string; // "/pb.OperationService/MigrateOperation"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_operation_pb.MigrateOperationRequest>;
+    requestDeserialize: grpc.deserialize<proto_operation_pb.MigrateOperationRequest>;
+    responseSerialize: grpc.serialize<proto_operation_pb.MigrateOperationResponse>;
+    responseDeserialize: grpc.deserialize<proto_operation_pb.MigrateOperationResponse>;
+}
 
 export const OperationServiceService: IOperationServiceService;
 
@@ -108,6 +118,7 @@ export interface IOperationServiceServer {
     removeTrucksOperation: grpc.handleUnaryCall<proto_operation_pb.OperationRequest, proto_operation_pb.OperationResponse>;
     reassigmentTrucksOperation: grpc.handleUnaryCall<proto_operation_pb.OperationReassigmentRequest, proto_operation_pb.OperationReassigmentResponse>;
     finalizeOperation: grpc.handleUnaryCall<proto_operation_pb.OperationRequest, proto_operation_pb.OperationFinalizeResponse>;
+    migrateOperation: grpc.handleUnaryCall<proto_operation_pb.MigrateOperationRequest, proto_operation_pb.MigrateOperationResponse>;
 }
 
 export interface IOperationServiceClient {
@@ -135,6 +146,9 @@ export interface IOperationServiceClient {
     finalizeOperation(request: proto_operation_pb.OperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
     finalizeOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
     finalizeOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
+    migrateOperation(request: proto_operation_pb.MigrateOperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.MigrateOperationResponse) => void): grpc.ClientUnaryCall;
+    migrateOperation(request: proto_operation_pb.MigrateOperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.MigrateOperationResponse) => void): grpc.ClientUnaryCall;
+    migrateOperation(request: proto_operation_pb.MigrateOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.MigrateOperationResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class OperationServiceClient extends grpc.Client implements IOperationServiceClient {
@@ -163,4 +177,7 @@ export class OperationServiceClient extends grpc.Client implements IOperationSer
     public finalizeOperation(request: proto_operation_pb.OperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
     public finalizeOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
     public finalizeOperation(request: proto_operation_pb.OperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.OperationFinalizeResponse) => void): grpc.ClientUnaryCall;
+    public migrateOperation(request: proto_operation_pb.MigrateOperationRequest, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.MigrateOperationResponse) => void): grpc.ClientUnaryCall;
+    public migrateOperation(request: proto_operation_pb.MigrateOperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.MigrateOperationResponse) => void): grpc.ClientUnaryCall;
+    public migrateOperation(request: proto_operation_pb.MigrateOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_operation_pb.MigrateOperationResponse) => void): grpc.ClientUnaryCall;
 }

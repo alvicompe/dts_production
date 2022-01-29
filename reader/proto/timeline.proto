@@ -42,8 +42,10 @@ message Timeline{
   google.protobuf.Timestamp shift_date = 11;
   Shift shift = 12;
   StateTimeline state_register = 13;
-
+  float adjustment = 14;
+  bool status = 15;
 }
+
 message UnitCurrentTimeline{
   string id = 1;
   string device_id = 2;
@@ -74,11 +76,21 @@ message TimelineFinalizeShiftRequest{
   Shift shift = 2;
 }
 message TimelineResponse{
-  Timeline timeline = 1;
+  bool success = 1;
+  Timeline timeline = 2;
+  repeated ErrorTimeline errors = 3;
 }
+
+message ErrorTimeline {
+  string device_id = 1;
+  string device_alias = 2;
+  string message = 3;
+}
+
 message TimelineListResponse{
   bool success = 1;
   string message = 2;
+  repeated ErrorTimeline errors = 3;
 }
 
 message TimelinesShiftResponse{

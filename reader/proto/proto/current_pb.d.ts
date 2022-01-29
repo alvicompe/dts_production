@@ -21,11 +21,20 @@ export class TruckCurrentState extends jspb.Message {
     getState(): TruckCurrentState.State;
     setState(value: TruckCurrentState.State): TruckCurrentState;
 
+    getBeforeState(): TruckCurrentState.State;
+    setBeforeState(value: TruckCurrentState.State): TruckCurrentState;
+
     getCycleId(): string;
     setCycleId(value: string): TruckCurrentState;
 
     getCycleNumber(): number;
     setCycleNumber(value: number): TruckCurrentState;
+
+
+    hasOldOperation(): boolean;
+    clearOldOperation(): void;
+    getOldOperation(): proto_operation_pb.Operation | undefined;
+    setOldOperation(value?: proto_operation_pb.Operation): TruckCurrentState;
 
 
     hasOperation(): boolean;
@@ -49,8 +58,10 @@ export namespace TruckCurrentState {
         deviceId: string,
         sensor?: proto_sensor_pb.Sensor.AsObject,
         state: TruckCurrentState.State,
+        beforeState: TruckCurrentState.State,
         cycleId: string,
         cycleNumber: number,
+        oldOperation?: proto_operation_pb.Operation.AsObject,
         operation?: proto_operation_pb.Operation.AsObject,
     }
 
@@ -62,6 +73,7 @@ export namespace TruckCurrentState {
     TO_DOWNLOAD = 4,
     WAITING = 5,
     QUEUE = 6,
+    NIL = 7,
     }
 
 }
