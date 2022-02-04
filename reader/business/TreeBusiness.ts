@@ -1,6 +1,6 @@
 import { TreeClient } from "../client/treeClient"
-import { Tree } from "../proto/proto/tree_pb"
 import { envVariables } from "../common/environmentsVariables"
+import { Tree } from "../proto/proto/entities/tree_pb"
 
 export class TreeBusiness {
   private response = {

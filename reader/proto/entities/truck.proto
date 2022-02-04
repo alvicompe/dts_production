@@ -1,0 +1,19 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/contractor.proto";
+import "proto/enums/event_state.enums.proto";
+import "proto/entities/event_state.proto";
+
+message Truck {
+  string id = 1;
+  string device_id = 2;
+  string device_alias = 3;
+  uint32 device_interval = 4;
+  string description = 5;
+  string plate = 6;
+  Contractor contractor = 7;
+  EnumEventState state = 8;
+  EventState event_state = 9;
+}

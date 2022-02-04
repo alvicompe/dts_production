@@ -1,0 +1,27 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/excavator.proto";
+
+service ExcavatorService {
+  rpc CreateExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc RetrieveExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc RetrieveExcavators(ExcavatorRequest) returns(ExcavatorsResponse) {};
+  rpc UpdateExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc DeleteExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+}
+
+// Message
+message ExcavatorRequest {
+  Excavator excavator = 1;
+}
+
+message ExcavatorResponse {
+  Excavator excavator = 1;
+}
+
+message ExcavatorsResponse {
+  repeated Excavator excavators = 1;
+}
+

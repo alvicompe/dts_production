@@ -3,8 +3,8 @@ import {
   AutomaticallyExecuteChangeTreeGeoResponse,
   CreateTreeGeoResponse,
   GeoTreeResponse,
-} from "../proto/proto/geo-reader_pb"
-import { IGeoReaderServiceServer } from "../proto/proto/geo-reader_grpc_pb"
+} from "../proto/proto/services/geo_reader.services_pb"
+import { IGeoReaderServiceServer } from "../proto/proto/services/geo_reader.services_grpc_pb"
 import { GeoReader } from "../business/GeoReader"
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb"
 

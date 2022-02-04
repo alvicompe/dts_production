@@ -1,0 +1,27 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/truck.proto";
+
+service TruckService {
+  rpc CreateTruck(TruckRequest) returns(TruckResponse) {};
+  rpc RetrieveTruck(TruckRequest) returns(TruckResponse) {};
+  rpc RetrieveTrucks(TruckRequest) returns(TrucksResponse) {};
+  rpc UpdateTruck(TruckRequest) returns(TruckResponse) {};
+  rpc DeleteTruck(TruckRequest) returns(TruckResponse) {};
+}
+
+// Messages
+message TruckRequest {
+  Truck truck = 1;
+}
+
+message TruckResponse {
+  Truck truck = 1;
+}
+
+message TrucksResponse {
+  repeated Truck trucks = 1;
+}
+

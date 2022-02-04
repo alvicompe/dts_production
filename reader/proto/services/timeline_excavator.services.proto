@@ -1,0 +1,16 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/services/timeline_truck.services.proto";
+
+service TimelineExcavatorService {
+  rpc RetrieveTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};
+  rpc RetrieveTimelinesShiftExcavator(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
+  rpc CreateTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};
+  rpc UpdateTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};
+  rpc UpdateTimelineExcavatorList(TimelineListRequest) returns (TimelineListResponse) {};
+  rpc UpdateInitialHourmeterTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};
+  rpc FinalizeShiftExcavator(TimelineFinalizeShiftRequest) returns (TimelineListResponse) {};
+  rpc DeleteTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};
+}

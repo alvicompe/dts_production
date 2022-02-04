@@ -1,0 +1,15 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+message User {
+  enum Role {
+    UNKNOWN = 0;
+    ADM = 1;
+    DIS = 2;
+  }
+  string id = 1;
+  Role role = 2;
+  string username = 3;
+  string password = 4;
+}

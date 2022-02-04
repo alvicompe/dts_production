@@ -1,0 +1,26 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/dme.proto";
+
+service DmeService {
+  rpc CreateDme(DmeRequest) returns(DmeResponse);
+  rpc RetrieveDme(DmeRequest) returns(DmeResponse);
+  rpc RetrieveDmes(DmeRequest) returns(DmesResponse);
+  rpc UpdateDme(DmeRequest) returns(DmeResponse);
+  rpc DeleteDme(DmeRequest) returns(DmeResponse);
+}
+
+// Messages
+message DmeRequest {
+  Dme dme = 1;
+}
+
+message DmeResponse {
+  Dme dme = 1;
+}
+
+message DmesResponse {
+  repeated Dme dmes = 1;
+}

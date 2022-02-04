@@ -1,6 +1,6 @@
 import { BuildTree } from "../business/BuildTree"
 import { envVariables } from "../common/environmentsVariables"
-import { MessageError } from "../proto/proto/geo-reader_pb"
+import { MessageError } from "../proto/proto/services/geo_reader.services_pb"
 
 export class ValidationTree {
   private STATE_FOLDER_NAME: { [folderName: string]: number } = {
