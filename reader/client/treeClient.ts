@@ -1,10 +1,10 @@
+import { clienTree } from "./utils"
+import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb"
+import { Tree } from "../proto/proto/entities/tree_pb"
 import {
   CreateTreeRequest,
   RetrieveTreeByIdRequest,
-  Tree,
-} from "../proto/proto/tree_pb"
-import { clienTree } from "./utils"
-import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb"
+} from "../proto/proto/services/tree.services_pb"
 
 export class TreeClient {
   createTree(tree: Tree) {

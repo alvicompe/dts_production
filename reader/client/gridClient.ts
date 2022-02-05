@@ -1,9 +1,9 @@
+import { clientGrid } from "./utils"
+import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb"
 import {
   UpdateGridRequest,
   UpdateGridResponse,
-} from "../proto/proto/grid_pb"
-import { clientGrid } from "./utils"
-import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb"
+} from "../proto/proto/services/grid.services_pb"
 
 export default class GridClient {
   createGrid() {

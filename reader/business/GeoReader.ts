@@ -2,12 +2,12 @@ import { TreeReader } from "../client/treeReader"
 import UploadGeo from "../client/geo"
 import { ValidationTree } from "../client/validationTree"
 import { TreeBusiness } from "./TreeBusiness"
+import { GridBusiness } from "./GridBusiness"
 import {
-  AutomaticallyExecuteChangeTreeGeoResponse,
   ChangesGeoNotificationResponse,
   NotificationDTS,
-} from "../proto/proto/geo-reader_pb"
-import { GridBusiness } from "./GridBusiness"
+  AutomaticallyExecuteChangeTreeGeoResponse,
+} from "../proto/proto/services/geo_reader.services_pb"
 
 export class GeoReader {
   private notificationList = [] as any

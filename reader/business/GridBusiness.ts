@@ -1,10 +1,10 @@
 import { GeoReader } from "./GeoReader"
+import GridClient from "../client/gridClient"
 import {
   GridResponse,
   UpdateGridRequest,
   UpdateGridResponse,
-} from "../proto/proto/grid_pb"
-import GridClient from "../client/gridClient"
+} from "../proto/proto/services/grid.services_pb"
 
 export class GridBusiness {
   async createGrid() {

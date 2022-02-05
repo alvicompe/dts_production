@@ -1,12 +1,12 @@
 import { sendUnaryData, ServerUnaryCall } from "grpc"
-import { IGridServiceServer } from "../proto/proto/grid_grpc_pb"
 import {
   DeleteGridByNameRequest,
   GridResponse,
   UpdateGridResponse,
-} from "../proto/proto/grid_pb"
+} from "../proto/proto/services/grid.services_pb"
 import { Empty } from "google-protobuf/google/protobuf/empty_pb"
 import { GridBusiness } from "../business/GridBusiness"
+import { IGridServiceServer } from "../proto/proto/services/grid.services_grpc_pb"
 
 export class GridServer implements IGridServiceServer {
   async createGrid(

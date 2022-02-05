@@ -2,7 +2,7 @@ import path from "path"
 import { createReadStream, readFile, readFileSync, writeFileSync } from "fs"
 import { envVariables } from "../common/environmentsVariables"
 import { ValidationTree } from "./validationTree"
-import { MessageError } from "../proto/proto/geo-reader_pb"
+import { MessageError } from "../proto/proto/services/geo_reader.services_pb"
 
 const DxfParser = require("dxf-parser")
 const proj4 = require("proj4")

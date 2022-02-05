@@ -1,0 +1,19 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/truck.proto";
+
+message TruckStateMessage {
+  enum State {
+    UNKNOWN_STATE = 0;
+    UPLOAD = 1;
+    DOWNLOAD = 2;
+    TO_UPLOAD = 3;
+    TO_DOWNLOAD = 4;
+    WAITING = 5;
+    QUEUE = 6;
+  }
+  Truck truck_error = 1;
+  State state = 2;
+}

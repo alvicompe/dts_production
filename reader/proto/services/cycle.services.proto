@@ -1,0 +1,27 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/cycle.proto";
+
+service CycleService {
+  rpc CreateCycle(CycleRequest) returns (CycleResponse) {};
+  rpc RetrieveCycle(CycleRequest) returns (CycleResponse) {};
+  rpc RetrieveCycles(CycleRequest) returns (CyclesResponse) {};
+  rpc UpdateCycle(CycleRequest) returns (CycleResponse) {};
+  rpc DeleteCycle(CycleRequest) returns (CycleResponse) {};
+}
+
+// Messages
+message CycleRequest {
+  Cycle cycle = 1;
+}
+
+message CycleResponse {
+  Cycle cycle = 1;
+}
+
+message CyclesResponse {
+  repeated Cycle cycles = 1;
+}
+
