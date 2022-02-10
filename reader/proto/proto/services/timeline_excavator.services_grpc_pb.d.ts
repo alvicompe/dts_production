@@ -14,6 +14,7 @@ interface ITimelineExcavatorServiceService extends grpc.ServiceDefinition<grpc.U
     createTimelineExcavator: ITimelineExcavatorServiceService_ICreateTimelineExcavator;
     updateTimelineExcavator: ITimelineExcavatorServiceService_IUpdateTimelineExcavator;
     updateTimelineExcavatorList: ITimelineExcavatorServiceService_IUpdateTimelineExcavatorList;
+    updateTimelineExcavatorBeforeShiftChange: ITimelineExcavatorServiceService_IUpdateTimelineExcavatorBeforeShiftChange;
     updateInitialHourmeterTimelineExcavator: ITimelineExcavatorServiceService_IUpdateInitialHourmeterTimelineExcavator;
     finalizeShiftExcavator: ITimelineExcavatorServiceService_IFinalizeShiftExcavator;
     deleteTimelineExcavator: ITimelineExcavatorServiceService_IDeleteTimelineExcavator;
@@ -64,6 +65,15 @@ interface ITimelineExcavatorServiceService_IUpdateTimelineExcavatorList extends 
     responseSerialize: grpc.serialize<proto_services_timeline_truck_services_pb.TimelineListResponse>;
     responseDeserialize: grpc.deserialize<proto_services_timeline_truck_services_pb.TimelineListResponse>;
 }
+interface ITimelineExcavatorServiceService_IUpdateTimelineExcavatorBeforeShiftChange extends grpc.MethodDefinition<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, proto_services_timeline_truck_services_pb.TimelineListResponse> {
+    path: string; // "/pb.TimelineExcavatorService/UpdateTimelineExcavatorBeforeShiftChange"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest>;
+    requestDeserialize: grpc.deserialize<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest>;
+    responseSerialize: grpc.serialize<proto_services_timeline_truck_services_pb.TimelineListResponse>;
+    responseDeserialize: grpc.deserialize<proto_services_timeline_truck_services_pb.TimelineListResponse>;
+}
 interface ITimelineExcavatorServiceService_IUpdateInitialHourmeterTimelineExcavator extends grpc.MethodDefinition<proto_services_timeline_truck_services_pb.TimelineRequest, proto_services_timeline_truck_services_pb.TimelineResponse> {
     path: string; // "/pb.TimelineExcavatorService/UpdateInitialHourmeterTimelineExcavator"
     requestStream: false;
@@ -100,6 +110,7 @@ export interface ITimelineExcavatorServiceServer {
     createTimelineExcavator: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineRequest, proto_services_timeline_truck_services_pb.TimelineResponse>;
     updateTimelineExcavator: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineRequest, proto_services_timeline_truck_services_pb.TimelineResponse>;
     updateTimelineExcavatorList: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineListRequest, proto_services_timeline_truck_services_pb.TimelineListResponse>;
+    updateTimelineExcavatorBeforeShiftChange: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, proto_services_timeline_truck_services_pb.TimelineListResponse>;
     updateInitialHourmeterTimelineExcavator: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineRequest, proto_services_timeline_truck_services_pb.TimelineResponse>;
     finalizeShiftExcavator: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, proto_services_timeline_truck_services_pb.TimelineListResponse>;
     deleteTimelineExcavator: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineRequest, proto_services_timeline_truck_services_pb.TimelineResponse>;
@@ -121,6 +132,9 @@ export interface ITimelineExcavatorServiceClient {
     updateTimelineExcavatorList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     updateTimelineExcavatorList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     updateTimelineExcavatorList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineExcavatorBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineExcavatorBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineExcavatorBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     updateInitialHourmeterTimelineExcavator(request: proto_services_timeline_truck_services_pb.TimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     updateInitialHourmeterTimelineExcavator(request: proto_services_timeline_truck_services_pb.TimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     updateInitialHourmeterTimelineExcavator(request: proto_services_timeline_truck_services_pb.TimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
@@ -149,6 +163,9 @@ export class TimelineExcavatorServiceClient extends grpc.Client implements ITime
     public updateTimelineExcavatorList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     public updateTimelineExcavatorList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     public updateTimelineExcavatorList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineExcavatorBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineExcavatorBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineExcavatorBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     public updateInitialHourmeterTimelineExcavator(request: proto_services_timeline_truck_services_pb.TimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     public updateInitialHourmeterTimelineExcavator(request: proto_services_timeline_truck_services_pb.TimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineResponse) => void): grpc.ClientUnaryCall;
     public updateInitialHourmeterTimelineExcavator(request: proto_services_timeline_truck_services_pb.TimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineResponse) => void): grpc.ClientUnaryCall;

@@ -138,6 +138,17 @@ var TimelineExcavatorServiceService = exports.TimelineExcavatorServiceService = 
     responseSerialize: serialize_pb_TimelineListResponse,
     responseDeserialize: deserialize_pb_TimelineListResponse,
   },
+  updateTimelineExcavatorBeforeShiftChange: {
+    path: '/pb.TimelineExcavatorService/UpdateTimelineExcavatorBeforeShiftChange',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest,
+    responseType: proto_services_timeline_truck_services_pb.TimelineListResponse,
+    requestSerialize: serialize_pb_TimelineFinalizeShiftRequest,
+    requestDeserialize: deserialize_pb_TimelineFinalizeShiftRequest,
+    responseSerialize: serialize_pb_TimelineListResponse,
+    responseDeserialize: deserialize_pb_TimelineListResponse,
+  },
   updateInitialHourmeterTimelineExcavator: {
     path: '/pb.TimelineExcavatorService/UpdateInitialHourmeterTimelineExcavator',
     requestStream: false,
