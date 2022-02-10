@@ -6,5 +6,5 @@ WORKDIR /app
 COPY brain .
 EXPOSE 9002
 WORKDIR /app/build
-
+RUN ["chmod", "+x", "/app/build/brain"]
 CMD ["./brain"]

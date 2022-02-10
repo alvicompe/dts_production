@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 // source: proto/entities/contractor.proto
+=======
+<<<<<<< HEAD:reader/proto/proto/commons/error_pb.js
+// source: proto/commons/error.proto
+=======
+// source: proto/entities/contractor.proto
+>>>>>>> staging:reader/proto/proto/entities/contractor_pb.js
+>>>>>>> staging
 /**
  * @fileoverview
  * @enhanceable

@@ -1,36 +1,36 @@
 {
   "development": {
     "dts": {
-      "host": "web.dts.pe",
+      "host": "dts.pe",
       "grpcport": 9000,
       "webport": 5000
     },
     "brain": {
-      "host": "dts.pe",
+      "host": "brain.dts.pe",
       "grpcport": 9002
     },
     "bridge": {
-      "host": "dts.pe",
+      "host": "bridge.dts.pe",
       "grpcport": 9001
     },
     "writer": {
-      "host": "dts.pe",
+      "host": "writer.dts.pe",
       "grpcport": 9003
     },
     "reader": {
-      "host": "dts.pe",
+      "host": "reader.dts.pe",
       "grpcport": 9004
     },
     "mongo": {
-      "host": "192.168.0.20",
+      "host": "52.203.219.40",
       "port": "27017",
-      "user": "user",
-      "password": "pass",
+      "user": "super",
+      "password": "passw0rd",
       "db": "db",
       "ssl": "disable"
     },
     "psql": {
-      "host": "192.168.0.40",
+      "host": "192.168.1.40",
       "port": "5432",
       "user": "postgres",
       "password": "123456",

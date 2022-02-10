@@ -10,6 +10,10 @@ service TimelineExcavatorService {
   rpc CreateTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};
   rpc UpdateTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};
   rpc UpdateTimelineExcavatorList(TimelineListRequest) returns (TimelineListResponse) {};
+<<<<<<< HEAD
+=======
+  rpc UpdateTimelineExcavatorBeforeShiftChange(TimelineFinalizeShiftRequest) returns (TimelineListResponse){};
+>>>>>>> staging
   rpc UpdateInitialHourmeterTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};
   rpc FinalizeShiftExcavator(TimelineFinalizeShiftRequest) returns (TimelineListResponse) {};
   rpc DeleteTimelineExcavator(TimelineRequest) returns (TimelineResponse) {};

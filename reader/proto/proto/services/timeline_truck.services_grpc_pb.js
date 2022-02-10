@@ -89,9 +89,15 @@ function deserialize_pb_TimelinesShiftResponse(buffer_arg) {
 }
 
 
+<<<<<<< HEAD
 var TimelineServiceService = exports.TimelineServiceService = {
   createTimeline: {
     path: '/pb.TimelineService/CreateTimeline',
+=======
+var TimelineTruckServiceService = exports.TimelineTruckServiceService = {
+  retrieveTimelineTruck: {
+    path: '/pb.TimelineTruckService/RetrieveTimelineTruck',
+>>>>>>> staging
     requestStream: false,
     responseStream: false,
     requestType: proto_services_timeline_truck_services_pb.TimelineRequest,
@@ -101,6 +107,7 @@ var TimelineServiceService = exports.TimelineServiceService = {
     responseSerialize: serialize_pb_TimelineResponse,
     responseDeserialize: deserialize_pb_TimelineResponse,
   },
+<<<<<<< HEAD
   retrieveTimeline: {
     path: '/pb.TimelineService/RetrieveTimeline',
     requestStream: false,
@@ -114,6 +121,21 @@ var TimelineServiceService = exports.TimelineServiceService = {
   },
   updateTimeline: {
     path: '/pb.TimelineService/UpdateTimeline',
+=======
+  retrieveTimelinesShiftTruck: {
+    path: '/pb.TimelineTruckService/RetrieveTimelinesShiftTruck',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_timeline_truck_services_pb.TimelinesShiftRequest,
+    responseType: proto_services_timeline_truck_services_pb.TimelinesShiftResponse,
+    requestSerialize: serialize_pb_TimelinesShiftRequest,
+    requestDeserialize: deserialize_pb_TimelinesShiftRequest,
+    responseSerialize: serialize_pb_TimelinesShiftResponse,
+    responseDeserialize: deserialize_pb_TimelinesShiftResponse,
+  },
+  createTimelineTruck: {
+    path: '/pb.TimelineTruckService/CreateTimelineTruck',
+>>>>>>> staging
     requestStream: false,
     responseStream: false,
     requestType: proto_services_timeline_truck_services_pb.TimelineRequest,
@@ -123,8 +145,13 @@ var TimelineServiceService = exports.TimelineServiceService = {
     responseSerialize: serialize_pb_TimelineResponse,
     responseDeserialize: deserialize_pb_TimelineResponse,
   },
+<<<<<<< HEAD
   updateInitialHourmeterTimeline: {
     path: '/pb.TimelineService/UpdateInitialHourmeterTimeline',
+=======
+  updateTimelineTruck: {
+    path: '/pb.TimelineTruckService/UpdateTimelineTruck',
+>>>>>>> staging
     requestStream: false,
     responseStream: false,
     requestType: proto_services_timeline_truck_services_pb.TimelineRequest,
@@ -134,8 +161,13 @@ var TimelineServiceService = exports.TimelineServiceService = {
     responseSerialize: serialize_pb_TimelineResponse,
     responseDeserialize: deserialize_pb_TimelineResponse,
   },
+<<<<<<< HEAD
   deleteTimeline: {
     path: '/pb.TimelineService/DeleteTimeline',
+=======
+  updateInitialHourmeterTimelineTruck: {
+    path: '/pb.TimelineTruckService/UpdateInitialHourmeterTimelineTruck',
+>>>>>>> staging
     requestStream: false,
     responseStream: false,
     requestType: proto_services_timeline_truck_services_pb.TimelineRequest,
@@ -145,6 +177,7 @@ var TimelineServiceService = exports.TimelineServiceService = {
     responseSerialize: serialize_pb_TimelineResponse,
     responseDeserialize: deserialize_pb_TimelineResponse,
   },
+<<<<<<< HEAD
   retrieveTimelinesShift: {
     path: '/pb.TimelineService/RetrieveTimelinesShift',
     requestStream: false,
@@ -158,6 +191,21 @@ var TimelineServiceService = exports.TimelineServiceService = {
   },
   finalizeShift: {
     path: '/pb.TimelineService/FinalizeShift',
+=======
+  updateTimelineTruckList: {
+    path: '/pb.TimelineTruckService/UpdateTimelineTruckList',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_timeline_truck_services_pb.TimelineListRequest,
+    responseType: proto_services_timeline_truck_services_pb.TimelineListResponse,
+    requestSerialize: serialize_pb_TimelineListRequest,
+    requestDeserialize: deserialize_pb_TimelineListRequest,
+    responseSerialize: serialize_pb_TimelineListResponse,
+    responseDeserialize: deserialize_pb_TimelineListResponse,
+  },
+  updateTimelineTruckBeforeShiftChange: {
+    path: '/pb.TimelineTruckService/UpdateTimelineTruckBeforeShiftChange',
+>>>>>>> staging
     requestStream: false,
     responseStream: false,
     requestType: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest,
@@ -167,6 +215,7 @@ var TimelineServiceService = exports.TimelineServiceService = {
     responseSerialize: serialize_pb_TimelineListResponse,
     responseDeserialize: deserialize_pb_TimelineListResponse,
   },
+<<<<<<< HEAD
   updateTimelineTruckList: {
     path: '/pb.TimelineService/UpdateTimelineTruckList',
     requestStream: false,
@@ -181,3 +230,30 @@ var TimelineServiceService = exports.TimelineServiceService = {
 };
 
 exports.TimelineServiceClient = grpc.makeGenericClientConstructor(TimelineServiceService);
+=======
+  finalizeShiftTruck: {
+    path: '/pb.TimelineTruckService/FinalizeShiftTruck',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest,
+    responseType: proto_services_timeline_truck_services_pb.TimelineListResponse,
+    requestSerialize: serialize_pb_TimelineFinalizeShiftRequest,
+    requestDeserialize: deserialize_pb_TimelineFinalizeShiftRequest,
+    responseSerialize: serialize_pb_TimelineListResponse,
+    responseDeserialize: deserialize_pb_TimelineListResponse,
+  },
+  deleteTimelineTruck: {
+    path: '/pb.TimelineTruckService/DeleteTimelineTruck',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_timeline_truck_services_pb.TimelineRequest,
+    responseType: proto_services_timeline_truck_services_pb.TimelineResponse,
+    requestSerialize: serialize_pb_TimelineRequest,
+    requestDeserialize: deserialize_pb_TimelineRequest,
+    responseSerialize: serialize_pb_TimelineResponse,
+    responseDeserialize: deserialize_pb_TimelineResponse,
+  },
+};
+
+exports.TimelineTruckServiceClient = grpc.makeGenericClientConstructor(TimelineTruckServiceService);
+>>>>>>> staging

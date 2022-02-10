@@ -6,5 +6,6 @@ WORKDIR /app
 COPY writer .
 EXPOSE 9003
 WORKDIR /app/build
+RUN ["chmod", "+x", "/app/build/writer"]
 
 CMD ["./writer"]

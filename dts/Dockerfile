@@ -7,5 +7,5 @@ COPY dts .
 EXPOSE 9000
 EXPOSE 5000
 WORKDIR /app/build
-
+RUN ["chmod", "+x", "/app/build/dts"]
 CMD ["./dts"]

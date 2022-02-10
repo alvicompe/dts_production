@@ -1,4 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD:reader/proto/proto/entities/tree_pb.js
 // source: proto/entities/tree.proto
+=======
+// source: proto/entities/unit.proto
+>>>>>>> staging:reader/proto/proto/entities/unit_pb.js
+=======
+// source: proto/entities/tree.proto
+>>>>>>> staging
 /**
  * @fileoverview
  * @enhanceable
