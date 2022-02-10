@@ -3,15 +3,6 @@ package pb;
 option go_package = "../pb";
 
 import "proto/entities/truck.proto";
-<<<<<<< HEAD:reader/proto/services/truck.services.proto
-
-service TruckService {
-  rpc CreateTruck(TruckRequest) returns(TruckResponse) {};
-  rpc RetrieveTruck(TruckRequest) returns(TruckResponse) {};
-  rpc RetrieveTrucks(TruckRequest) returns(TrucksResponse) {};
-  rpc UpdateTruck(TruckRequest) returns(TruckResponse) {};
-  rpc DeleteTruck(TruckRequest) returns(TruckResponse) {};
-=======
 import "google/protobuf/empty.proto";
 
 service TruckService {
@@ -23,7 +14,6 @@ service TruckService {
   rpc UpdateTruck(TruckRequest) returns(TruckResponse) {};
   rpc DeleteTruck(TruckRequest) returns(TruckResponse) {};
   rpc DeleteTruckList(TruckListRequest) returns(TruckListResponse) {};
->>>>>>> staging:reader/proto/truck.proto
 }
 
 // Messages

@@ -138,8 +138,6 @@ var TimelineExcavatorServiceService = exports.TimelineExcavatorServiceService = 
     responseSerialize: serialize_pb_TimelineListResponse,
     responseDeserialize: deserialize_pb_TimelineListResponse,
   },
-<<<<<<< HEAD
-=======
   updateTimelineExcavatorBeforeShiftChange: {
     path: '/pb.TimelineExcavatorService/UpdateTimelineExcavatorBeforeShiftChange',
     requestStream: false,
@@ -151,7 +149,6 @@ var TimelineExcavatorServiceService = exports.TimelineExcavatorServiceService = 
     responseSerialize: serialize_pb_TimelineListResponse,
     responseDeserialize: deserialize_pb_TimelineListResponse,
   },
->>>>>>> staging
   updateInitialHourmeterTimelineExcavator: {
     path: '/pb.TimelineExcavatorService/UpdateInitialHourmeterTimelineExcavator',
     requestStream: false,

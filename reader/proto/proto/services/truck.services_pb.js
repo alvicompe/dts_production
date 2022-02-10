@@ -14,13 +14,10 @@ var global = Function('return this')();
 
 var proto_entities_truck_pb = require('../../proto/entities/truck_pb.js');
 goog.object.extend(proto, proto_entities_truck_pb);
-<<<<<<< HEAD:reader/proto/proto/services/truck.services_pb.js
-=======
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
 goog.exportSymbol('proto.pb.TruckListRequest', null, global);
 goog.exportSymbol('proto.pb.TruckListResponse', null, global);
->>>>>>> staging:reader/proto/proto/truck_pb.js
 goog.exportSymbol('proto.pb.TruckRequest', null, global);
 goog.exportSymbol('proto.pb.TruckResponse', null, global);
 goog.exportSymbol('proto.pb.TrucksResponse', null, global);
@@ -36,8 +33,6 @@ goog.exportSymbol('proto.pb.TrucksResponse', null, global);
  */
 proto.pb.TruckRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-<<<<<<< HEAD:reader/proto/proto/services/truck.services_pb.js
-=======
 };
 goog.inherits(proto.pb.TruckRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -59,7 +54,6 @@ if (goog.DEBUG && !COMPILED) {
  */
 proto.pb.TruckListRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.pb.TruckListRequest.repeatedFields_, null);
->>>>>>> staging:reader/proto/proto/truck_pb.js
 };
 goog.inherits(proto.pb.TruckListRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -150,8 +144,6 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  */
 proto.pb.TruckRequest.prototype.toObject = function(opt_includeInstance) {
   return proto.pb.TruckRequest.toObject(opt_includeInstance, this);
-<<<<<<< HEAD:reader/proto/proto/services/truck.services_pb.js
-=======
 };
 
 
@@ -470,7 +462,6 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  */
 proto.pb.TruckListResponse.prototype.toObject = function(opt_includeInstance) {
   return proto.pb.TruckListResponse.toObject(opt_includeInstance, this);
->>>>>>> staging:reader/proto/proto/truck_pb.js
 };
 
 
@@ -485,12 +476,8 @@ proto.pb.TruckListResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pb.TruckListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-<<<<<<< HEAD:reader/proto/proto/services/truck.services_pb.js
-    truck: (f = msg.getTruck()) && proto_entities_truck_pb.Truck.toObject(includeInstance, f)
-=======
     truckList: jspb.Message.toObjectList(msg.getTruckList(),
     proto_entities_truck_pb.Truck.toObject, includeInstance)
->>>>>>> staging:reader/proto/proto/truck_pb.js
   };
 
   if (includeInstance) {
@@ -530,11 +517,7 @@ proto.pb.TruckListResponse.deserializeBinaryFromReader = function(msg, reader) {
     case 1:
       var value = new proto_entities_truck_pb.Truck;
       reader.readMessage(value,proto_entities_truck_pb.Truck.deserializeBinaryFromReader);
-<<<<<<< HEAD:reader/proto/proto/services/truck.services_pb.js
-      msg.setTruck(value);
-=======
       msg.addTruck(value);
->>>>>>> staging:reader/proto/proto/truck_pb.js
       break;
     default:
       reader.skipField();
@@ -580,15 +563,9 @@ proto.pb.TruckListResponse.serializeBinaryToWriter = function(message, writer) {
  * repeated Truck truck = 1;
  * @return {!Array<!proto.pb.Truck>}
  */
-<<<<<<< HEAD:reader/proto/proto/services/truck.services_pb.js
-proto.pb.TruckRequest.prototype.getTruck = function() {
-  return /** @type{?proto.pb.Truck} */ (
-    jspb.Message.getWrapperField(this, proto_entities_truck_pb.Truck, 1));
-=======
 proto.pb.TruckListResponse.prototype.getTruckList = function() {
   return /** @type{!Array<!proto.pb.Truck>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto_entities_truck_pb.Truck, 1));
->>>>>>> staging:reader/proto/proto/truck_pb.js
 };
 
 

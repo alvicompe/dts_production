@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD:reader/proto/proto/services/sensor.services_pb.js
 // source: proto/services/sensor.services.proto
-=======
-// source: proto/services/source.services.proto
->>>>>>> staging:reader/proto/proto/services/source.services_pb.js
-=======
-// source: proto/services/sensor.services.proto
->>>>>>> staging
 /**
  * @fileoverview
  * @enhanceable

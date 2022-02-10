@@ -10,17 +10,6 @@ import "proto/enums/event.enums.proto";
 import "proto/enums/shift.enums.proto";
 import "google/protobuf/timestamp.proto";
 
-<<<<<<< HEAD
-service TimelineService {
-  rpc CreateTimeline(TimelineRequest) returns (TimelineResponse) {};
-  rpc RetrieveTimeline(TimelineRequest) returns (TimelineResponse) {};
-  rpc UpdateTimeline(TimelineRequest) returns (TimelineResponse) {};
-  rpc UpdateInitialHourmeterTimeline(TimelineRequest) returns (TimelineResponse) {};
-  rpc DeleteTimeline(TimelineRequest) returns (TimelineResponse) {};
-  rpc RetrieveTimelinesShift(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
-  rpc FinalizeShift(TimelineFinalizeShiftRequest) returns (TimelineListResponse) {};
-  rpc UpdateTimelineTruckList(TimelineListRequest) returns (TimelineListResponse) {};
-=======
 service TimelineTruckService {
   rpc RetrieveTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
   rpc RetrieveTimelinesShiftTruck(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
@@ -31,7 +20,6 @@ service TimelineTruckService {
   rpc UpdateTimelineTruckBeforeShiftChange(TimelineFinalizeShiftRequest) returns (TimelineListResponse){};
   rpc FinalizeShiftTruck(TimelineFinalizeShiftRequest) returns (TimelineListResponse) {};
   rpc DeleteTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
->>>>>>> staging
 }
 
 // Messages
