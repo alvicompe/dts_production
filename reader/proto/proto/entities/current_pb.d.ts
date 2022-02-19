@@ -22,9 +22,6 @@ export class TruckCurrentState extends jspb.Message {
     getState(): proto_enums_event_state_enums_pb.EnumEventState;
     setState(value: proto_enums_event_state_enums_pb.EnumEventState): TruckCurrentState;
 
-    getBeforeState(): proto_enums_event_state_enums_pb.EnumEventState;
-    setBeforeState(value: proto_enums_event_state_enums_pb.EnumEventState): TruckCurrentState;
-
     getCycleId(): string;
     setCycleId(value: string): TruckCurrentState;
 
@@ -59,7 +56,6 @@ export namespace TruckCurrentState {
         deviceId: string,
         sensor?: proto_entities_sensor_pb.Sensor.AsObject,
         state: proto_enums_event_state_enums_pb.EnumEventState,
-        beforeState: proto_enums_event_state_enums_pb.EnumEventState,
         cycleId: string,
         cycleNumber: number,
         oldOperation?: proto_entities_operation_pb.Operation.AsObject,

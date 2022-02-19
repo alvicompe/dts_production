@@ -35,12 +35,11 @@ proto.pb.EnumEventState = {
   TO_DOWNLOAD: 15,
   WAITING: 16,
   QUEUE: 17,
-  NIL: 18,
-  CHANGE_OF_SHIFT: 20,
-  LACK_OF_OPERATOR: 21,
-  CLIMATIC_CONDITIONS: 22,
-  FEEDING: 23,
-  BLASTING: 24
+  CHANGE_OF_SHIFT: 18,
+  LACK_OF_OPERATOR: 19,
+  CLIMATIC_CONDITIONS: 20,
+  FEEDING: 21,
+  BLASTING: 22
 };
 
 goog.object.extend(exports, proto.pb);

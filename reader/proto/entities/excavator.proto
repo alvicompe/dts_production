@@ -11,5 +11,6 @@ message Excavator {
   uint32 device_interval = 4;
   string description = 5;
   string plate = 6;
-  Contractor contractor = 7;
+  float hourmeter = 7;
+  Contractor contractor = 8;
 }

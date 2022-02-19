@@ -97,9 +97,8 @@ proto.pb.enums.TruckCurrentState.toObject = function(includeInstance, msg) {
     deviceId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     sensor: (f = msg.getSensor()) && proto_entities_sensor_pb.Sensor.toObject(includeInstance, f),
     state: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    beforeState: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    cycleId: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    cycleNumber: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    cycleId: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    cycleNumber: jspb.Message.getFieldWithDefault(msg, 5, 0),
     oldOperation: (f = msg.getOldOperation()) && proto_entities_operation_pb.Operation.toObject(includeInstance, f),
     operation: (f = msg.getOperation()) && proto_entities_operation_pb.Operation.toObject(includeInstance, f)
   };
@@ -152,23 +151,19 @@ proto.pb.enums.TruckCurrentState.deserializeBinaryFromReader = function(msg, rea
       msg.setState(value);
       break;
     case 4:
-      var value = /** @type {!proto.pb.EnumEventState} */ (reader.readEnum());
-      msg.setBeforeState(value);
-      break;
-    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setCycleId(value);
       break;
-    case 6:
+    case 5:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setCycleNumber(value);
       break;
-    case 7:
+    case 6:
       var value = new proto_entities_operation_pb.Operation;
       reader.readMessage(value,proto_entities_operation_pb.Operation.deserializeBinaryFromReader);
       msg.setOldOperation(value);
       break;
-    case 8:
+    case 7:
       var value = new proto_entities_operation_pb.Operation;
       reader.readMessage(value,proto_entities_operation_pb.Operation.deserializeBinaryFromReader);
       msg.setOperation(value);
@@ -224,31 +219,24 @@ proto.pb.enums.TruckCurrentState.serializeBinaryToWriter = function(message, wri
       f
     );
   }
-  f = message.getBeforeState();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      4,
-      f
-    );
-  }
   f = message.getCycleId();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      4,
       f
     );
   }
   f = message.getCycleNumber();
   if (f !== 0) {
     writer.writeInt64(
-      6,
+      5,
       f
     );
   }
   f = message.getOldOperation();
   if (f != null) {
     writer.writeMessage(
-      7,
+      6,
       f,
       proto_entities_operation_pb.Operation.serializeBinaryToWriter
     );
@@ -256,7 +244,7 @@ proto.pb.enums.TruckCurrentState.serializeBinaryToWriter = function(message, wri
   f = message.getOperation();
   if (f != null) {
     writer.writeMessage(
-      8,
+      7,
       f,
       proto_entities_operation_pb.Operation.serializeBinaryToWriter
     );
@@ -338,29 +326,11 @@ proto.pb.enums.TruckCurrentState.prototype.setState = function(value) {
 
 
 /**
- * optional pb.EnumEventState before_state = 4;
- * @return {!proto.pb.EnumEventState}
- */
-proto.pb.enums.TruckCurrentState.prototype.getBeforeState = function() {
-  return /** @type {!proto.pb.EnumEventState} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
-
-/**
- * @param {!proto.pb.EnumEventState} value
- * @return {!proto.pb.enums.TruckCurrentState} returns this
- */
-proto.pb.enums.TruckCurrentState.prototype.setBeforeState = function(value) {
-  return jspb.Message.setProto3EnumField(this, 4, value);
-};
-
-
-/**
- * optional string cycle_id = 5;
+ * optional string cycle_id = 4;
  * @return {string}
  */
 proto.pb.enums.TruckCurrentState.prototype.getCycleId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
@@ -369,16 +339,16 @@ proto.pb.enums.TruckCurrentState.prototype.getCycleId = function() {
  * @return {!proto.pb.enums.TruckCurrentState} returns this
  */
 proto.pb.enums.TruckCurrentState.prototype.setCycleId = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional int64 cycle_number = 6;
+ * optional int64 cycle_number = 5;
  * @return {number}
  */
 proto.pb.enums.TruckCurrentState.prototype.getCycleNumber = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
@@ -387,17 +357,17 @@ proto.pb.enums.TruckCurrentState.prototype.getCycleNumber = function() {
  * @return {!proto.pb.enums.TruckCurrentState} returns this
  */
 proto.pb.enums.TruckCurrentState.prototype.setCycleNumber = function(value) {
-  return jspb.Message.setProto3IntField(this, 6, value);
+  return jspb.Message.setProto3IntField(this, 5, value);
 };
 
 
 /**
- * optional pb.Operation old_operation = 7;
+ * optional pb.Operation old_operation = 6;
  * @return {?proto.pb.Operation}
  */
 proto.pb.enums.TruckCurrentState.prototype.getOldOperation = function() {
   return /** @type{?proto.pb.Operation} */ (
-    jspb.Message.getWrapperField(this, proto_entities_operation_pb.Operation, 7));
+    jspb.Message.getWrapperField(this, proto_entities_operation_pb.Operation, 6));
 };
 
 
@@ -406,7 +376,7 @@ proto.pb.enums.TruckCurrentState.prototype.getOldOperation = function() {
  * @return {!proto.pb.enums.TruckCurrentState} returns this
 */
 proto.pb.enums.TruckCurrentState.prototype.setOldOperation = function(value) {
-  return jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
@@ -424,17 +394,17 @@ proto.pb.enums.TruckCurrentState.prototype.clearOldOperation = function() {
  * @return {boolean}
  */
 proto.pb.enums.TruckCurrentState.prototype.hasOldOperation = function() {
-  return jspb.Message.getField(this, 7) != null;
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
 /**
- * optional pb.Operation operation = 8;
+ * optional pb.Operation operation = 7;
  * @return {?proto.pb.Operation}
  */
 proto.pb.enums.TruckCurrentState.prototype.getOperation = function() {
   return /** @type{?proto.pb.Operation} */ (
-    jspb.Message.getWrapperField(this, proto_entities_operation_pb.Operation, 8));
+    jspb.Message.getWrapperField(this, proto_entities_operation_pb.Operation, 7));
 };
 
 
@@ -443,7 +413,7 @@ proto.pb.enums.TruckCurrentState.prototype.getOperation = function() {
  * @return {!proto.pb.enums.TruckCurrentState} returns this
 */
 proto.pb.enums.TruckCurrentState.prototype.setOperation = function(value) {
-  return jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 7, value);
 };
 
 
@@ -461,7 +431,7 @@ proto.pb.enums.TruckCurrentState.prototype.clearOperation = function() {
  * @return {boolean}
  */
 proto.pb.enums.TruckCurrentState.prototype.hasOperation = function() {
-  return jspb.Message.getField(this, 8) != null;
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

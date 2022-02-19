@@ -13,7 +13,8 @@ message Truck {
   uint32 device_interval = 4;
   string description = 5;
   string plate = 6;
-  Contractor contractor = 7;
-  EnumEventState state = 8;
-  EventState event_state = 9;
+  float hourmeter = 7;
+  Contractor contractor = 8;
+  EnumEventState state = 9;
+  EventState event_state = 10;
 }

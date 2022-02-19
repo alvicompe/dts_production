@@ -10,11 +10,10 @@ message TruckCurrentState {
   string device_id = 1;
   Sensor sensor = 2;
   EnumEventState state = 3;
-  EnumEventState before_state = 4;
-  string cycle_id = 5;
-  int64 cycle_number = 6;
-  Operation old_operation = 7;
-  Operation operation = 8;
+  string cycle_id = 4;
+  int64 cycle_number = 5;
+  Operation old_operation = 6;
+  Operation operation = 7;
 }
 
 message ExcavatorCurrentState {

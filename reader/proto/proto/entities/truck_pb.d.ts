@@ -28,6 +28,9 @@ export class Truck extends jspb.Message {
     getPlate(): string;
     setPlate(value: string): Truck;
 
+    getHourmeter(): number;
+    setHourmeter(value: number): Truck;
+
 
     hasContractor(): boolean;
     clearContractor(): void;
@@ -62,6 +65,7 @@ export namespace Truck {
         deviceInterval: number,
         description: string,
         plate: string,
+        hourmeter: number,
         contractor?: proto_entities_contractor_pb.Contractor.AsObject,
         state: proto_enums_event_state_enums_pb.EnumEventState,
         eventState?: proto_entities_event_state_pb.EventState.AsObject,

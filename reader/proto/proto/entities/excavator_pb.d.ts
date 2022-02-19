@@ -26,6 +26,9 @@ export class Excavator extends jspb.Message {
     getPlate(): string;
     setPlate(value: string): Excavator;
 
+    getHourmeter(): number;
+    setHourmeter(value: number): Excavator;
+
 
     hasContractor(): boolean;
     clearContractor(): void;
@@ -51,6 +54,7 @@ export namespace Excavator {
         deviceInterval: number,
         description: string,
         plate: string,
+        hourmeter: number,
         contractor?: proto_entities_contractor_pb.Contractor.AsObject,
     }
 }
