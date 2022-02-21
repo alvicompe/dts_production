@@ -78,8 +78,9 @@ proto.pb.Truck.toObject = function(includeInstance, msg) {
     deviceInterval: jspb.Message.getFieldWithDefault(msg, 4, 0),
     description: jspb.Message.getFieldWithDefault(msg, 5, ""),
     plate: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    hourmeter: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
     contractor: (f = msg.getContractor()) && proto_entities_contractor_pb.Contractor.toObject(includeInstance, f),
-    state: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    state: jspb.Message.getFieldWithDefault(msg, 9, 0),
     eventState: (f = msg.getEventState()) && proto_entities_event_state_pb.EventState.toObject(includeInstance, f)
   };
 
@@ -142,15 +143,19 @@ proto.pb.Truck.deserializeBinaryFromReader = function(msg, reader) {
       msg.setPlate(value);
       break;
     case 7:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setHourmeter(value);
+      break;
+    case 8:
       var value = new proto_entities_contractor_pb.Contractor;
       reader.readMessage(value,proto_entities_contractor_pb.Contractor.deserializeBinaryFromReader);
       msg.setContractor(value);
       break;
-    case 8:
+    case 9:
       var value = /** @type {!proto.pb.EnumEventState} */ (reader.readEnum());
       msg.setState(value);
       break;
-    case 9:
+    case 10:
       var value = new proto_entities_event_state_pb.EventState;
       reader.readMessage(value,proto_entities_event_state_pb.EventState.deserializeBinaryFromReader);
       msg.setEventState(value);
@@ -226,10 +231,17 @@ proto.pb.Truck.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getHourmeter();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      7,
+      f
+    );
+  }
   f = message.getContractor();
   if (f != null) {
     writer.writeMessage(
-      7,
+      8,
       f,
       proto_entities_contractor_pb.Contractor.serializeBinaryToWriter
     );
@@ -237,14 +249,14 @@ proto.pb.Truck.serializeBinaryToWriter = function(message, writer) {
   f = message.getState();
   if (f !== 0.0) {
     writer.writeEnum(
-      8,
+      9,
       f
     );
   }
   f = message.getEventState();
   if (f != null) {
     writer.writeMessage(
-      9,
+      10,
       f,
       proto_entities_event_state_pb.EventState.serializeBinaryToWriter
     );
@@ -361,12 +373,30 @@ proto.pb.Truck.prototype.setPlate = function(value) {
 
 
 /**
- * optional Contractor contractor = 7;
+ * optional float hourmeter = 7;
+ * @return {number}
+ */
+proto.pb.Truck.prototype.getHourmeter = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.pb.Truck} returns this
+ */
+proto.pb.Truck.prototype.setHourmeter = function(value) {
+  return jspb.Message.setProto3FloatField(this, 7, value);
+};
+
+
+/**
+ * optional Contractor contractor = 8;
  * @return {?proto.pb.Contractor}
  */
 proto.pb.Truck.prototype.getContractor = function() {
   return /** @type{?proto.pb.Contractor} */ (
-    jspb.Message.getWrapperField(this, proto_entities_contractor_pb.Contractor, 7));
+    jspb.Message.getWrapperField(this, proto_entities_contractor_pb.Contractor, 8));
 };
 
 
@@ -375,7 +405,7 @@ proto.pb.Truck.prototype.getContractor = function() {
  * @return {!proto.pb.Truck} returns this
 */
 proto.pb.Truck.prototype.setContractor = function(value) {
-  return jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
@@ -393,16 +423,16 @@ proto.pb.Truck.prototype.clearContractor = function() {
  * @return {boolean}
  */
 proto.pb.Truck.prototype.hasContractor = function() {
-  return jspb.Message.getField(this, 7) != null;
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
 /**
- * optional EnumEventState state = 8;
+ * optional EnumEventState state = 9;
  * @return {!proto.pb.EnumEventState}
  */
 proto.pb.Truck.prototype.getState = function() {
-  return /** @type {!proto.pb.EnumEventState} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+  return /** @type {!proto.pb.EnumEventState} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
@@ -411,17 +441,17 @@ proto.pb.Truck.prototype.getState = function() {
  * @return {!proto.pb.Truck} returns this
  */
 proto.pb.Truck.prototype.setState = function(value) {
-  return jspb.Message.setProto3EnumField(this, 8, value);
+  return jspb.Message.setProto3EnumField(this, 9, value);
 };
 
 
 /**
- * optional EventState event_state = 9;
+ * optional EventState event_state = 10;
  * @return {?proto.pb.EventState}
  */
 proto.pb.Truck.prototype.getEventState = function() {
   return /** @type{?proto.pb.EventState} */ (
-    jspb.Message.getWrapperField(this, proto_entities_event_state_pb.EventState, 9));
+    jspb.Message.getWrapperField(this, proto_entities_event_state_pb.EventState, 10));
 };
 
 
@@ -430,7 +460,7 @@ proto.pb.Truck.prototype.getEventState = function() {
  * @return {!proto.pb.Truck} returns this
 */
 proto.pb.Truck.prototype.setEventState = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
+  return jspb.Message.setWrapperField(this, 10, value);
 };
 
 
@@ -448,7 +478,7 @@ proto.pb.Truck.prototype.clearEventState = function() {
  * @return {boolean}
  */
 proto.pb.Truck.prototype.hasEventState = function() {
-  return jspb.Message.getField(this, 9) != null;
+  return jspb.Message.getField(this, 10) != null;
 };
 
 

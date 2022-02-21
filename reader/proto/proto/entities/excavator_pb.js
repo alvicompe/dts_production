@@ -74,6 +74,7 @@ proto.pb.Excavator.toObject = function(includeInstance, msg) {
     deviceInterval: jspb.Message.getFieldWithDefault(msg, 4, 0),
     description: jspb.Message.getFieldWithDefault(msg, 5, ""),
     plate: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    hourmeter: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
     contractor: (f = msg.getContractor()) && proto_entities_contractor_pb.Contractor.toObject(includeInstance, f)
   };
 
@@ -136,6 +137,10 @@ proto.pb.Excavator.deserializeBinaryFromReader = function(msg, reader) {
       msg.setPlate(value);
       break;
     case 7:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setHourmeter(value);
+      break;
+    case 8:
       var value = new proto_entities_contractor_pb.Contractor;
       reader.readMessage(value,proto_entities_contractor_pb.Contractor.deserializeBinaryFromReader);
       msg.setContractor(value);
@@ -211,10 +216,17 @@ proto.pb.Excavator.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getHourmeter();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      7,
+      f
+    );
+  }
   f = message.getContractor();
   if (f != null) {
     writer.writeMessage(
-      7,
+      8,
       f,
       proto_entities_contractor_pb.Contractor.serializeBinaryToWriter
     );
@@ -331,12 +343,30 @@ proto.pb.Excavator.prototype.setPlate = function(value) {
 
 
 /**
- * optional Contractor contractor = 7;
+ * optional float hourmeter = 7;
+ * @return {number}
+ */
+proto.pb.Excavator.prototype.getHourmeter = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.pb.Excavator} returns this
+ */
+proto.pb.Excavator.prototype.setHourmeter = function(value) {
+  return jspb.Message.setProto3FloatField(this, 7, value);
+};
+
+
+/**
+ * optional Contractor contractor = 8;
  * @return {?proto.pb.Contractor}
  */
 proto.pb.Excavator.prototype.getContractor = function() {
   return /** @type{?proto.pb.Contractor} */ (
-    jspb.Message.getWrapperField(this, proto_entities_contractor_pb.Contractor, 7));
+    jspb.Message.getWrapperField(this, proto_entities_contractor_pb.Contractor, 8));
 };
 
 
@@ -345,7 +375,7 @@ proto.pb.Excavator.prototype.getContractor = function() {
  * @return {!proto.pb.Excavator} returns this
 */
 proto.pb.Excavator.prototype.setContractor = function(value) {
-  return jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
@@ -363,7 +393,7 @@ proto.pb.Excavator.prototype.clearContractor = function() {
  * @return {boolean}
  */
 proto.pb.Excavator.prototype.hasContractor = function() {
-  return jspb.Message.getField(this, 7) != null;
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
