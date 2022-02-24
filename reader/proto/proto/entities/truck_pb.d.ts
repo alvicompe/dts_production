@@ -8,6 +8,7 @@ import * as jspb from "google-protobuf";
 import * as proto_entities_contractor_pb from "../../proto/entities/contractor_pb";
 import * as proto_enums_event_state_enums_pb from "../../proto/enums/event_state.enums_pb";
 import * as proto_entities_event_state_pb from "../../proto/entities/event_state_pb";
+import * as proto_entities_sensor_pb from "../../proto/entities/sensor_pb";
 
 export class Truck extends jspb.Message { 
     getId(): string;
@@ -47,6 +48,18 @@ export class Truck extends jspb.Message {
     setEventState(value?: proto_entities_event_state_pb.EventState): Truck;
 
 
+    hasSensor(): boolean;
+    clearSensor(): void;
+    getSensor(): proto_entities_sensor_pb.Sensor | undefined;
+    setSensor(value?: proto_entities_sensor_pb.Sensor): Truck;
+
+    getRealInterval(): number;
+    setRealInterval(value: number): Truck;
+
+    getCycleNumber(): number;
+    setCycleNumber(value: number): Truck;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Truck.AsObject;
     static toObject(includeInstance: boolean, msg: Truck): Truck.AsObject;
@@ -69,5 +82,8 @@ export namespace Truck {
         contractor?: proto_entities_contractor_pb.Contractor.AsObject,
         state: proto_enums_event_state_enums_pb.EnumEventState,
         eventState?: proto_entities_event_state_pb.EventState.AsObject,
+        sensor?: proto_entities_sensor_pb.Sensor.AsObject,
+        realInterval: number,
+        cycleNumber: number,
     }
 }

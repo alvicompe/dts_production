@@ -5,6 +5,7 @@ option go_package = "../pb";
 import "proto/entities/contractor.proto";
 import "proto/enums/event_state.enums.proto";
 import "proto/entities/event_state.proto";
+import "proto/entities/sensor.proto";
 
 message Truck {
   string id = 1;
@@ -17,4 +18,7 @@ message Truck {
   Contractor contractor = 8;
   EnumEventState state = 9;
   EventState event_state = 10;
+  Sensor sensor = 11;
+  uint32 real_interval = 12;
+  int64 cycle_number = 13;
 }
