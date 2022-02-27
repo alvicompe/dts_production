@@ -3,6 +3,7 @@ package pb;
 option go_package = "../pb";
 
 import "proto/entities/contractor.proto";
+import "proto/entities/sensor.proto";
 
 message Excavator {
   string id = 1;
@@ -12,5 +13,6 @@ message Excavator {
   string description = 5;
   string plate = 6;
   float hourmeter = 7;
-  Contractor contractor = 8;
+  Contractor contractor = 8;  
+  Sensor sensor = 9;
 }

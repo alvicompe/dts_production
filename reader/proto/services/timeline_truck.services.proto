@@ -17,7 +17,8 @@ service TimelineTruckService {
   rpc UpdateTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
   rpc UpdateInitialHourmeterTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
   rpc UpdateTimelineTruckList(TimelineListRequest) returns (TimelineListResponse) {};
-  rpc UpdateTimelineTruckBeforeShiftChange(TimelineFinalizeShiftRequest) returns (TimelineListResponse){};
+  rpc UpdateTimelineTruckBeforeShiftChange(UnitCurrentTimelineRequest) returns (UnitCurrentTimelineResponse){};
+  rpc UpdateTimelineTruckListBeforeShiftChange(TimelineFinalizeShiftRequest) returns (TimelineListResponse){};
   rpc FinalizeShiftTruck(TimelineFinalizeShiftRequest) returns (TimelineListResponse) {};
   rpc DeleteTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
 }
@@ -64,10 +65,23 @@ message ErrorTimeline {
 message TimelineListResponse{
   bool success = 1;
   string message = 2;
-  repeated ErrorTimeline errors = 3;
+  repeated UnitCurrentTimeline timelines = 3;
+  repeated ErrorTimeline errors = 4;
 }
 
 message TimelinesShiftResponse{
   google.protobuf.Timestamp shift_date = 1;
   repeated  UnitCurrentTimeline current_timeline = 2;
+}
+
+message UnitCurrentTimelineRequest {
+  UnitFinalize truck = 1;
+  UnitCurrentTimeline current_timeline = 2;
+}
+
+message UnitCurrentTimelineResponse {
+  bool success = 1;
+  string message = 2;
+  UnitCurrentTimeline current_timeline = 3;
+  repeated ErrorTimeline errors = 4;
 }

@@ -22,6 +22,7 @@ interface ITimelineTruckServiceService extends grpc.ServiceDefinition<grpc.Untyp
     updateInitialHourmeterTimelineTruck: ITimelineTruckServiceService_IUpdateInitialHourmeterTimelineTruck;
     updateTimelineTruckList: ITimelineTruckServiceService_IUpdateTimelineTruckList;
     updateTimelineTruckBeforeShiftChange: ITimelineTruckServiceService_IUpdateTimelineTruckBeforeShiftChange;
+    updateTimelineTruckListBeforeShiftChange: ITimelineTruckServiceService_IUpdateTimelineTruckListBeforeShiftChange;
     finalizeShiftTruck: ITimelineTruckServiceService_IFinalizeShiftTruck;
     deleteTimelineTruck: ITimelineTruckServiceService_IDeleteTimelineTruck;
 }
@@ -80,8 +81,17 @@ interface ITimelineTruckServiceService_IUpdateTimelineTruckList extends grpc.Met
     responseSerialize: grpc.serialize<proto_services_timeline_truck_services_pb.TimelineListResponse>;
     responseDeserialize: grpc.deserialize<proto_services_timeline_truck_services_pb.TimelineListResponse>;
 }
-interface ITimelineTruckServiceService_IUpdateTimelineTruckBeforeShiftChange extends grpc.MethodDefinition<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, proto_services_timeline_truck_services_pb.TimelineListResponse> {
+interface ITimelineTruckServiceService_IUpdateTimelineTruckBeforeShiftChange extends grpc.MethodDefinition<proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest, proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse> {
     path: string; // "/pb.TimelineTruckService/UpdateTimelineTruckBeforeShiftChange"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest>;
+    requestDeserialize: grpc.deserialize<proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest>;
+    responseSerialize: grpc.serialize<proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse>;
+    responseDeserialize: grpc.deserialize<proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse>;
+}
+interface ITimelineTruckServiceService_IUpdateTimelineTruckListBeforeShiftChange extends grpc.MethodDefinition<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, proto_services_timeline_truck_services_pb.TimelineListResponse> {
+    path: string; // "/pb.TimelineTruckService/UpdateTimelineTruckListBeforeShiftChange"
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest>;
@@ -117,7 +127,8 @@ export interface ITimelineTruckServiceServer {
     updateTimelineTruck: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineRequest, proto_services_timeline_truck_services_pb.TimelineResponse>;
     updateInitialHourmeterTimelineTruck: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineRequest, proto_services_timeline_truck_services_pb.TimelineResponse>;
     updateTimelineTruckList: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineListRequest, proto_services_timeline_truck_services_pb.TimelineListResponse>;
-    updateTimelineTruckBeforeShiftChange: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, proto_services_timeline_truck_services_pb.TimelineListResponse>;
+    updateTimelineTruckBeforeShiftChange: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest, proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse>;
+    updateTimelineTruckListBeforeShiftChange: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, proto_services_timeline_truck_services_pb.TimelineListResponse>;
     finalizeShiftTruck: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, proto_services_timeline_truck_services_pb.TimelineListResponse>;
     deleteTimelineTruck: grpc.handleUnaryCall<proto_services_timeline_truck_services_pb.TimelineRequest, proto_services_timeline_truck_services_pb.TimelineResponse>;
 }
@@ -141,9 +152,12 @@ export interface ITimelineTruckServiceClient {
     updateTimelineTruckList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     updateTimelineTruckList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     updateTimelineTruckList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
-    updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
-    updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
-    updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckListBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckListBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    updateTimelineTruckListBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     finalizeShiftTruck(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     finalizeShiftTruck(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     finalizeShiftTruck(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
@@ -172,9 +186,12 @@ export class TimelineTruckServiceClient extends grpc.Client implements ITimeline
     public updateTimelineTruckList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     public updateTimelineTruckList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     public updateTimelineTruckList(request: proto_services_timeline_truck_services_pb.TimelineListRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
-    public updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
-    public updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
-    public updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckBeforeShiftChange(request: proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckListBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckListBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
+    public updateTimelineTruckListBeforeShiftChange(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     public finalizeShiftTruck(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     public finalizeShiftTruck(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;
     public finalizeShiftTruck(request: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_timeline_truck_services_pb.TimelineListResponse) => void): grpc.ClientUnaryCall;

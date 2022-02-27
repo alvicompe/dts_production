@@ -81,6 +81,28 @@ function deserialize_pb_TimelinesShiftResponse(buffer_arg) {
   return proto_services_timeline_truck_services_pb.TimelinesShiftResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_pb_UnitCurrentTimelineRequest(arg) {
+  if (!(arg instanceof proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest)) {
+    throw new Error('Expected argument of type pb.UnitCurrentTimelineRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_UnitCurrentTimelineRequest(buffer_arg) {
+  return proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_pb_UnitCurrentTimelineResponse(arg) {
+  if (!(arg instanceof proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse)) {
+    throw new Error('Expected argument of type pb.UnitCurrentTimelineResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_UnitCurrentTimelineResponse(buffer_arg) {
+  return proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var TimelineExcavatorServiceService = exports.TimelineExcavatorServiceService = {
   retrieveTimelineExcavator: {
@@ -140,6 +162,17 @@ var TimelineExcavatorServiceService = exports.TimelineExcavatorServiceService = 
   },
   updateTimelineExcavatorBeforeShiftChange: {
     path: '/pb.TimelineExcavatorService/UpdateTimelineExcavatorBeforeShiftChange',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_timeline_truck_services_pb.UnitCurrentTimelineRequest,
+    responseType: proto_services_timeline_truck_services_pb.UnitCurrentTimelineResponse,
+    requestSerialize: serialize_pb_UnitCurrentTimelineRequest,
+    requestDeserialize: deserialize_pb_UnitCurrentTimelineRequest,
+    responseSerialize: serialize_pb_UnitCurrentTimelineResponse,
+    responseDeserialize: deserialize_pb_UnitCurrentTimelineResponse,
+  },
+  updateTimelineExcavatorListBeforeShiftChange: {
+    path: '/pb.TimelineExcavatorService/UpdateTimelineExcavatorListBeforeShiftChange',
     requestStream: false,
     responseStream: false,
     requestType: proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest,

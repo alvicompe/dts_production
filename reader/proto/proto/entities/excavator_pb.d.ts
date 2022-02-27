@@ -6,6 +6,7 @@
 
 import * as jspb from "google-protobuf";
 import * as proto_entities_contractor_pb from "../../proto/entities/contractor_pb";
+import * as proto_entities_sensor_pb from "../../proto/entities/sensor_pb";
 
 export class Excavator extends jspb.Message { 
     getId(): string;
@@ -36,6 +37,12 @@ export class Excavator extends jspb.Message {
     setContractor(value?: proto_entities_contractor_pb.Contractor): Excavator;
 
 
+    hasSensor(): boolean;
+    clearSensor(): void;
+    getSensor(): proto_entities_sensor_pb.Sensor | undefined;
+    setSensor(value?: proto_entities_sensor_pb.Sensor): Excavator;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Excavator.AsObject;
     static toObject(includeInstance: boolean, msg: Excavator): Excavator.AsObject;
@@ -56,5 +63,6 @@ export namespace Excavator {
         plate: string,
         hourmeter: number,
         contractor?: proto_entities_contractor_pb.Contractor.AsObject,
+        sensor?: proto_entities_sensor_pb.Sensor.AsObject,
     }
 }
