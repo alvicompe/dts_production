@@ -41,6 +41,30 @@ export namespace UnitFinalize {
     }
 }
 
+export class CurrentTimelineByTruckRequest extends jspb.Message { 
+
+    hasTruck(): boolean;
+    clearTruck(): void;
+    getTruck(): proto_entities_unit_pb.Unit | undefined;
+    setTruck(value?: proto_entities_unit_pb.Unit): CurrentTimelineByTruckRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CurrentTimelineByTruckRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CurrentTimelineByTruckRequest): CurrentTimelineByTruckRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CurrentTimelineByTruckRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CurrentTimelineByTruckRequest;
+    static deserializeBinaryFromReader(message: CurrentTimelineByTruckRequest, reader: jspb.BinaryReader): CurrentTimelineByTruckRequest;
+}
+
+export namespace CurrentTimelineByTruckRequest {
+    export type AsObject = {
+        truck?: proto_entities_unit_pb.Unit.AsObject,
+    }
+}
+
 export class TimelineRequest extends jspb.Message { 
 
     hasTimeline(): boolean;

@@ -13,6 +13,7 @@ import "google/protobuf/timestamp.proto";
 service TimelineTruckService {
   rpc RetrieveTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
   rpc RetrieveTimelinesShiftTruck(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
+  rpc RetrieveCurrentTimelineByTruck(CurrentTimelineByTruckRequest) returns (TimelineResponse) {};
   rpc CreateTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
   rpc UpdateTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
   rpc UpdateInitialHourmeterTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
@@ -27,6 +28,10 @@ service TimelineTruckService {
 message UnitFinalize{
   Unit truck = 1;
   float hourmeter = 2;
+}
+
+message CurrentTimelineByTruckRequest{
+  Unit truck = 1;
 }
 
 message TimelineRequest{

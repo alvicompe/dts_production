@@ -11,6 +11,17 @@ var proto_enums_event_enums_pb = require('../../proto/enums/event.enums_pb.js');
 var proto_enums_shift_enums_pb = require('../../proto/enums/shift.enums_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
+function serialize_pb_CurrentTimelineByTruckRequest(arg) {
+  if (!(arg instanceof proto_services_timeline_truck_services_pb.CurrentTimelineByTruckRequest)) {
+    throw new Error('Expected argument of type pb.CurrentTimelineByTruckRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_CurrentTimelineByTruckRequest(buffer_arg) {
+  return proto_services_timeline_truck_services_pb.CurrentTimelineByTruckRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_pb_TimelineFinalizeShiftRequest(arg) {
   if (!(arg instanceof proto_services_timeline_truck_services_pb.TimelineFinalizeShiftRequest)) {
     throw new Error('Expected argument of type pb.TimelineFinalizeShiftRequest');
@@ -133,6 +144,17 @@ var TimelineTruckServiceService = exports.TimelineTruckServiceService = {
     requestDeserialize: deserialize_pb_TimelinesShiftRequest,
     responseSerialize: serialize_pb_TimelinesShiftResponse,
     responseDeserialize: deserialize_pb_TimelinesShiftResponse,
+  },
+  retrieveCurrentTimelineByTruck: {
+    path: '/pb.TimelineTruckService/RetrieveCurrentTimelineByTruck',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_timeline_truck_services_pb.CurrentTimelineByTruckRequest,
+    responseType: proto_services_timeline_truck_services_pb.TimelineResponse,
+    requestSerialize: serialize_pb_CurrentTimelineByTruckRequest,
+    requestDeserialize: deserialize_pb_CurrentTimelineByTruckRequest,
+    responseSerialize: serialize_pb_TimelineResponse,
+    responseDeserialize: deserialize_pb_TimelineResponse,
   },
   createTimelineTruck: {
     path: '/pb.TimelineTruckService/CreateTimelineTruck',
