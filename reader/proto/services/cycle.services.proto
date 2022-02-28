@@ -3,9 +3,13 @@ package pb;
 option go_package = "../pb";
 
 import "proto/entities/cycle.proto";
+import "proto/entities/excavator.proto";
+import "google/protobuf/timestamp.proto";
+import "proto/enums/shift.enums.proto";
 
 service CycleService {
   rpc CreateCycle(CycleRequest) returns (CycleResponse) {};
+  rpc RetrieveCycleListByExcavatorByShift(ExcavatorShiftRequest) returns (CyclesResponse) {};
   rpc RetrieveCycle(CycleRequest) returns (CycleResponse) {};
   rpc RetrieveCycles(CycleRequest) returns (CyclesResponse) {};
   rpc UpdateCycle(CycleRequest) returns (CycleResponse) {};
@@ -16,6 +20,11 @@ service CycleService {
 message CycleRequest {
   Cycle cycle = 1;
 }
+message ExcavatorShiftRequest {
+  Excavator excavator = 1;
+  Shift shift = 2;
+  google.protobuf.Timestamp date_shift = 3;
+} 
 
 message CycleResponse {
   Cycle cycle = 1;
