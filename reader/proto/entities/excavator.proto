@@ -5,6 +5,33 @@ option go_package = "../pb";
 import "proto/entities/contractor.proto";
 import "proto/entities/sensor.proto";
 
+import "proto/entities/load.proto";
+message TruckTemporal {
+  string id = 1;
+  string device_id = 2;
+  string device_alias = 3;
+}
+message OperationAssignmentExcavator{
+  enum Shift {
+    UNKNOWN_SHIFT = 0;
+    NIGHT = 1;
+    DAY = 2;
+  }
+  enum State {
+    UNKNOWN_STATE = 0;
+    PENDING = 1;
+    OPENED = 2;
+    CLOSED = 3;
+  }
+
+  string id = 1;
+  Excavator excavator = 2;
+  repeated TruckTemporal truck = 3;
+  Upload upload = 4;
+  Download download = 5;
+  Shift shift = 6;
+  State state = 7;
+}
 message Excavator {
   string id = 1;
   string device_id = 2;
@@ -15,4 +42,5 @@ message Excavator {
   float hourmeter = 7;
   Contractor contractor = 8;  
   Sensor sensor = 9;
+  repeated OperationAssignmentExcavator operation = 10;
 }

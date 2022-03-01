@@ -7,6 +7,106 @@
 import * as jspb from "google-protobuf";
 import * as proto_entities_contractor_pb from "../../proto/entities/contractor_pb";
 import * as proto_entities_sensor_pb from "../../proto/entities/sensor_pb";
+import * as proto_entities_load_pb from "../../proto/entities/load_pb";
+
+export class TruckTemporal extends jspb.Message { 
+    getId(): string;
+    setId(value: string): TruckTemporal;
+
+    getDeviceId(): string;
+    setDeviceId(value: string): TruckTemporal;
+
+    getDeviceAlias(): string;
+    setDeviceAlias(value: string): TruckTemporal;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TruckTemporal.AsObject;
+    static toObject(includeInstance: boolean, msg: TruckTemporal): TruckTemporal.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TruckTemporal, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TruckTemporal;
+    static deserializeBinaryFromReader(message: TruckTemporal, reader: jspb.BinaryReader): TruckTemporal;
+}
+
+export namespace TruckTemporal {
+    export type AsObject = {
+        id: string,
+        deviceId: string,
+        deviceAlias: string,
+    }
+}
+
+export class OperationAssignmentExcavator extends jspb.Message { 
+    getId(): string;
+    setId(value: string): OperationAssignmentExcavator;
+
+
+    hasExcavator(): boolean;
+    clearExcavator(): void;
+    getExcavator(): Excavator | undefined;
+    setExcavator(value?: Excavator): OperationAssignmentExcavator;
+
+    clearTruckList(): void;
+    getTruckList(): Array<TruckTemporal>;
+    setTruckList(value: Array<TruckTemporal>): OperationAssignmentExcavator;
+    addTruck(value?: TruckTemporal, index?: number): TruckTemporal;
+
+
+    hasUpload(): boolean;
+    clearUpload(): void;
+    getUpload(): proto_entities_load_pb.Upload | undefined;
+    setUpload(value?: proto_entities_load_pb.Upload): OperationAssignmentExcavator;
+
+
+    hasDownload(): boolean;
+    clearDownload(): void;
+    getDownload(): proto_entities_load_pb.Download | undefined;
+    setDownload(value?: proto_entities_load_pb.Download): OperationAssignmentExcavator;
+
+    getShift(): OperationAssignmentExcavator.Shift;
+    setShift(value: OperationAssignmentExcavator.Shift): OperationAssignmentExcavator;
+
+    getState(): OperationAssignmentExcavator.State;
+    setState(value: OperationAssignmentExcavator.State): OperationAssignmentExcavator;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): OperationAssignmentExcavator.AsObject;
+    static toObject(includeInstance: boolean, msg: OperationAssignmentExcavator): OperationAssignmentExcavator.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: OperationAssignmentExcavator, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): OperationAssignmentExcavator;
+    static deserializeBinaryFromReader(message: OperationAssignmentExcavator, reader: jspb.BinaryReader): OperationAssignmentExcavator;
+}
+
+export namespace OperationAssignmentExcavator {
+    export type AsObject = {
+        id: string,
+        excavator?: Excavator.AsObject,
+        truckList: Array<TruckTemporal.AsObject>,
+        upload?: proto_entities_load_pb.Upload.AsObject,
+        download?: proto_entities_load_pb.Download.AsObject,
+        shift: OperationAssignmentExcavator.Shift,
+        state: OperationAssignmentExcavator.State,
+    }
+
+    export enum Shift {
+    UNKNOWN_SHIFT = 0,
+    NIGHT = 1,
+    DAY = 2,
+    }
+
+    export enum State {
+    UNKNOWN_STATE = 0,
+    PENDING = 1,
+    OPENED = 2,
+    CLOSED = 3,
+    }
+
+}
 
 export class Excavator extends jspb.Message { 
     getId(): string;
@@ -42,6 +142,11 @@ export class Excavator extends jspb.Message {
     getSensor(): proto_entities_sensor_pb.Sensor | undefined;
     setSensor(value?: proto_entities_sensor_pb.Sensor): Excavator;
 
+    clearOperationList(): void;
+    getOperationList(): Array<OperationAssignmentExcavator>;
+    setOperationList(value: Array<OperationAssignmentExcavator>): Excavator;
+    addOperation(value?: OperationAssignmentExcavator, index?: number): OperationAssignmentExcavator;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Excavator.AsObject;
@@ -64,5 +169,6 @@ export namespace Excavator {
         hourmeter: number,
         contractor?: proto_entities_contractor_pb.Contractor.AsObject,
         sensor?: proto_entities_sensor_pb.Sensor.AsObject,
+        operationList: Array<OperationAssignmentExcavator.AsObject>,
     }
 }
