@@ -40,6 +40,17 @@ var AuthServiceService = exports.AuthServiceService = {
     responseSerialize: serialize_pb_LoginResponse,
     responseDeserialize: deserialize_pb_LoginResponse,
   },
+  refreshToken: {
+    path: '/pb.AuthService/RefreshToken',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_auth_services_pb.LoginRequest,
+    responseType: proto_services_auth_services_pb.LoginResponse,
+    requestSerialize: serialize_pb_LoginRequest,
+    requestDeserialize: deserialize_pb_LoginRequest,
+    responseSerialize: serialize_pb_LoginResponse,
+    responseDeserialize: deserialize_pb_LoginResponse,
+  },
 };
 
 exports.AuthServiceClient = grpc.makeGenericClientConstructor(AuthServiceService);

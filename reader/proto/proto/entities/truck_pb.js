@@ -545,7 +545,8 @@ proto.pb.Truck.toObject = function(includeInstance, msg) {
     realInterval: jspb.Message.getFieldWithDefault(msg, 12, 0),
     cycleNumber: jspb.Message.getFieldWithDefault(msg, 13, 0),
     operationList: jspb.Message.toObjectList(msg.getOperationList(),
-    proto.pb.OperationAssignmentUnit.toObject, includeInstance)
+    proto.pb.OperationAssignmentUnit.toObject, includeInstance),
+    tonne: jspb.Message.getFloatingPointFieldWithDefault(msg, 15, 0.0)
   };
 
   if (includeInstance) {
@@ -641,6 +642,10 @@ proto.pb.Truck.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.pb.OperationAssignmentUnit;
       reader.readMessage(value,proto.pb.OperationAssignmentUnit.deserializeBinaryFromReader);
       msg.addOperation(value);
+      break;
+    case 15:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setTonne(value);
       break;
     default:
       reader.skipField();
@@ -771,6 +776,13 @@ proto.pb.Truck.serializeBinaryToWriter = function(message, writer) {
       14,
       f,
       proto.pb.OperationAssignmentUnit.serializeBinaryToWriter
+    );
+  }
+  f = message.getTonne();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      15,
+      f
     );
   }
 };
@@ -1102,6 +1114,24 @@ proto.pb.Truck.prototype.addOperation = function(opt_value, opt_index) {
  */
 proto.pb.Truck.prototype.clearOperationList = function() {
   return this.setOperationList([]);
+};
+
+
+/**
+ * optional float tonne = 15;
+ * @return {number}
+ */
+proto.pb.Truck.prototype.getTonne = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 15, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.pb.Truck} returns this
+ */
+proto.pb.Truck.prototype.setTonne = function(value) {
+  return jspb.Message.setProto3FloatField(this, 15, value);
 };
 
 

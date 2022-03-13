@@ -136,6 +136,9 @@ export class Truck extends jspb.Message {
     setOperationList(value: Array<OperationAssignmentUnit>): Truck;
     addOperation(value?: OperationAssignmentUnit, index?: number): OperationAssignmentUnit;
 
+    getTonne(): number;
+    setTonne(value: number): Truck;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Truck.AsObject;
@@ -163,5 +166,6 @@ export namespace Truck {
         realInterval: number,
         cycleNumber: number,
         operationList: Array<OperationAssignmentUnit.AsObject>,
+        tonne: number,
     }
 }

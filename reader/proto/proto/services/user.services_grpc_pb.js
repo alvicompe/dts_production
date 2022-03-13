@@ -5,6 +5,17 @@ var grpc = require('grpc');
 var proto_services_user_services_pb = require('../../proto/services/user.services_pb.js');
 var proto_entities_user_pb = require('../../proto/entities/user_pb.js');
 
+function serialize_pb_PasswordRequest(arg) {
+  if (!(arg instanceof proto_services_user_services_pb.PasswordRequest)) {
+    throw new Error('Expected argument of type pb.PasswordRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_PasswordRequest(buffer_arg) {
+  return proto_services_user_services_pb.PasswordRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_pb_UserRequest(arg) {
   if (!(arg instanceof proto_services_user_services_pb.UserRequest)) {
     throw new Error('Expected argument of type pb.UserRequest');
@@ -92,6 +103,17 @@ var UserServiceService = exports.UserServiceService = {
     responseType: proto_services_user_services_pb.UserResponse,
     requestSerialize: serialize_pb_UserRequest,
     requestDeserialize: deserialize_pb_UserRequest,
+    responseSerialize: serialize_pb_UserResponse,
+    responseDeserialize: deserialize_pb_UserResponse,
+  },
+  updatePassword: {
+    path: '/pb.UserService/UpdatePassword',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_user_services_pb.PasswordRequest,
+    responseType: proto_services_user_services_pb.UserResponse,
+    requestSerialize: serialize_pb_PasswordRequest,
+    requestDeserialize: deserialize_pb_PasswordRequest,
     responseSerialize: serialize_pb_UserResponse,
     responseDeserialize: deserialize_pb_UserResponse,
   },

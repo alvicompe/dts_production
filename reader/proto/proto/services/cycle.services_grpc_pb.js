@@ -5,6 +5,7 @@ var grpc = require('grpc');
 var proto_services_cycle_services_pb = require('../../proto/services/cycle.services_pb.js');
 var proto_entities_cycle_pb = require('../../proto/entities/cycle_pb.js');
 var proto_entities_excavator_pb = require('../../proto/entities/excavator_pb.js');
+var proto_entities_truck_pb = require('../../proto/entities/truck_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var proto_enums_shift_enums_pb = require('../../proto/enums/shift.enums_pb.js');
 
@@ -52,6 +53,17 @@ function deserialize_pb_ExcavatorShiftRequest(buffer_arg) {
   return proto_services_cycle_services_pb.ExcavatorShiftRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_pb_TruckShiftRequest(arg) {
+  if (!(arg instanceof proto_services_cycle_services_pb.TruckShiftRequest)) {
+    throw new Error('Expected argument of type pb.TruckShiftRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_TruckShiftRequest(buffer_arg) {
+  return proto_services_cycle_services_pb.TruckShiftRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var CycleServiceService = exports.CycleServiceService = {
   createCycle: {
@@ -73,6 +85,17 @@ var CycleServiceService = exports.CycleServiceService = {
     responseType: proto_services_cycle_services_pb.CyclesResponse,
     requestSerialize: serialize_pb_ExcavatorShiftRequest,
     requestDeserialize: deserialize_pb_ExcavatorShiftRequest,
+    responseSerialize: serialize_pb_CyclesResponse,
+    responseDeserialize: deserialize_pb_CyclesResponse,
+  },
+  retrieveCycleListByTruckByShift: {
+    path: '/pb.CycleService/RetrieveCycleListByTruckByShift',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_cycle_services_pb.TruckShiftRequest,
+    responseType: proto_services_cycle_services_pb.CyclesResponse,
+    requestSerialize: serialize_pb_TruckShiftRequest,
+    requestDeserialize: deserialize_pb_TruckShiftRequest,
     responseSerialize: serialize_pb_CyclesResponse,
     responseDeserialize: deserialize_pb_CyclesResponse,
   },

@@ -8,6 +8,7 @@ import "proto/entities/user.proto";
 
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse) {};
+  rpc RefreshToken(LoginRequest) returns (LoginResponse) {};
 }
 
 // Messages
