@@ -114,7 +114,8 @@ proto.pb.Cycle.toObject = function(includeInstance, msg) {
     excavator: (f = msg.getExcavator()) && proto_entities_excavator_pb.Excavator.toObject(includeInstance, f),
     truckinfoList: jspb.Message.toObjectList(msg.getTruckinfoList(),
     proto_entities_streaming_pb.TruckInfo.toObject, includeInstance),
-    audit: (f = msg.getAudit()) && proto_entities_audit_pb.Audit.toObject(includeInstance, f)
+    audit: (f = msg.getAudit()) && proto_entities_audit_pb.Audit.toObject(includeInstance, f),
+    manual: jspb.Message.getBooleanFieldWithDefault(msg, 24, false)
   };
 
   if (includeInstance) {
@@ -255,6 +256,10 @@ proto.pb.Cycle.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto_entities_audit_pb.Audit;
       reader.readMessage(value,proto_entities_audit_pb.Audit.deserializeBinaryFromReader);
       msg.setAudit(value);
+      break;
+    case 24:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setManual(value);
       break;
     default:
       reader.skipField();
@@ -459,6 +464,13 @@ proto.pb.Cycle.serializeBinaryToWriter = function(message, writer) {
       proto_entities_audit_pb.Audit.serializeBinaryToWriter
     );
   }
+  f = message.getManual();
+  if (f) {
+    writer.writeBool(
+      24,
+      f
+    );
+  }
 };
 
 
@@ -477,7 +489,8 @@ proto.pb.Cycle.State = {
 proto.pb.Cycle.Mode = {
   UNKNOWN_MODE: 0,
   NORMAL: 1,
-  ALTERED: 2
+  ALTERED: 2,
+  MANUAL: 3
 };
 
 /**
@@ -1139,6 +1152,24 @@ proto.pb.Cycle.prototype.clearAudit = function() {
  */
 proto.pb.Cycle.prototype.hasAudit = function() {
   return jspb.Message.getField(this, 23) != null;
+};
+
+
+/**
+ * optional bool Manual = 24;
+ * @return {boolean}
+ */
+proto.pb.Cycle.prototype.getManual = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 24, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.pb.Cycle} returns this
+ */
+proto.pb.Cycle.prototype.setManual = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 24, value);
 };
 
 

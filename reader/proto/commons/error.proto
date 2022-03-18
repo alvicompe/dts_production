@@ -3,7 +3,8 @@ package pb;
 option go_package = "../pb";
 
 message Error {
-    uint32 code = 1;
-    string description = 2;
-    string log = 3;
+  uint32 code = 1;
+  string status = 2;
+  string description = 3;
+  string log = 4;
 }

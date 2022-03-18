@@ -7,12 +7,14 @@
 import * as grpc from "grpc";
 import * as proto_services_excavator_services_pb from "../../proto/services/excavator.services_pb";
 import * as proto_entities_excavator_pb from "../../proto/entities/excavator_pb";
+import * as proto_services_operation_services_pb from "../../proto/services/operation.services_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 
 interface IExcavatorServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     createExcavator: IExcavatorServiceService_ICreateExcavator;
     createExcavatorList: IExcavatorServiceService_ICreateExcavatorList;
     retrieveExcavator: IExcavatorServiceService_IRetrieveExcavator;
+    retrieveCurrentOperation: IExcavatorServiceService_IRetrieveCurrentOperation;
     retrieveExcavators: IExcavatorServiceService_IRetrieveExcavators;
     retrieveExcavatorHyteraList: IExcavatorServiceService_IRetrieveExcavatorHyteraList;
     updateExcavator: IExcavatorServiceService_IUpdateExcavator;
@@ -46,6 +48,15 @@ interface IExcavatorServiceService_IRetrieveExcavator extends grpc.MethodDefinit
     requestDeserialize: grpc.deserialize<proto_services_excavator_services_pb.ExcavatorRequest>;
     responseSerialize: grpc.serialize<proto_services_excavator_services_pb.ExcavatorResponse>;
     responseDeserialize: grpc.deserialize<proto_services_excavator_services_pb.ExcavatorResponse>;
+}
+interface IExcavatorServiceService_IRetrieveCurrentOperation extends grpc.MethodDefinition<proto_services_excavator_services_pb.ExcavatorRequest, proto_services_operation_services_pb.OperationResponse> {
+    path: string; // "/pb.ExcavatorService/RetrieveCurrentOperation"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<proto_services_excavator_services_pb.ExcavatorRequest>;
+    requestDeserialize: grpc.deserialize<proto_services_excavator_services_pb.ExcavatorRequest>;
+    responseSerialize: grpc.serialize<proto_services_operation_services_pb.OperationResponse>;
+    responseDeserialize: grpc.deserialize<proto_services_operation_services_pb.OperationResponse>;
 }
 interface IExcavatorServiceService_IRetrieveExcavators extends grpc.MethodDefinition<proto_services_excavator_services_pb.ExcavatorRequest, proto_services_excavator_services_pb.ExcavatorsResponse> {
     path: string; // "/pb.ExcavatorService/RetrieveExcavators"
@@ -99,6 +110,7 @@ export interface IExcavatorServiceServer {
     createExcavator: grpc.handleUnaryCall<proto_services_excavator_services_pb.ExcavatorRequest, proto_services_excavator_services_pb.ExcavatorResponse>;
     createExcavatorList: grpc.handleUnaryCall<proto_services_excavator_services_pb.ExcavatorListRequest, proto_services_excavator_services_pb.ExcavatorListResponse>;
     retrieveExcavator: grpc.handleUnaryCall<proto_services_excavator_services_pb.ExcavatorRequest, proto_services_excavator_services_pb.ExcavatorResponse>;
+    retrieveCurrentOperation: grpc.handleUnaryCall<proto_services_excavator_services_pb.ExcavatorRequest, proto_services_operation_services_pb.OperationResponse>;
     retrieveExcavators: grpc.handleUnaryCall<proto_services_excavator_services_pb.ExcavatorRequest, proto_services_excavator_services_pb.ExcavatorsResponse>;
     retrieveExcavatorHyteraList: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, proto_services_excavator_services_pb.ExcavatorListResponse>;
     updateExcavator: grpc.handleUnaryCall<proto_services_excavator_services_pb.ExcavatorRequest, proto_services_excavator_services_pb.ExcavatorResponse>;
@@ -116,6 +128,9 @@ export interface IExcavatorServiceClient {
     retrieveExcavator(request: proto_services_excavator_services_pb.ExcavatorRequest, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorResponse) => void): grpc.ClientUnaryCall;
     retrieveExcavator(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorResponse) => void): grpc.ClientUnaryCall;
     retrieveExcavator(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorResponse) => void): grpc.ClientUnaryCall;
+    retrieveCurrentOperation(request: proto_services_excavator_services_pb.ExcavatorRequest, callback: (error: grpc.ServiceError | null, response: proto_services_operation_services_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    retrieveCurrentOperation(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_operation_services_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    retrieveCurrentOperation(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_operation_services_pb.OperationResponse) => void): grpc.ClientUnaryCall;
     retrieveExcavators(request: proto_services_excavator_services_pb.ExcavatorRequest, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorsResponse) => void): grpc.ClientUnaryCall;
     retrieveExcavators(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorsResponse) => void): grpc.ClientUnaryCall;
     retrieveExcavators(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorsResponse) => void): grpc.ClientUnaryCall;
@@ -144,6 +159,9 @@ export class ExcavatorServiceClient extends grpc.Client implements IExcavatorSer
     public retrieveExcavator(request: proto_services_excavator_services_pb.ExcavatorRequest, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorResponse) => void): grpc.ClientUnaryCall;
     public retrieveExcavator(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorResponse) => void): grpc.ClientUnaryCall;
     public retrieveExcavator(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorResponse) => void): grpc.ClientUnaryCall;
+    public retrieveCurrentOperation(request: proto_services_excavator_services_pb.ExcavatorRequest, callback: (error: grpc.ServiceError | null, response: proto_services_operation_services_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    public retrieveCurrentOperation(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_operation_services_pb.OperationResponse) => void): grpc.ClientUnaryCall;
+    public retrieveCurrentOperation(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_operation_services_pb.OperationResponse) => void): grpc.ClientUnaryCall;
     public retrieveExcavators(request: proto_services_excavator_services_pb.ExcavatorRequest, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorsResponse) => void): grpc.ClientUnaryCall;
     public retrieveExcavators(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorsResponse) => void): grpc.ClientUnaryCall;
     public retrieveExcavators(request: proto_services_excavator_services_pb.ExcavatorRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_services_excavator_services_pb.ExcavatorsResponse) => void): grpc.ClientUnaryCall;

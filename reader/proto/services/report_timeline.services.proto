@@ -3,7 +3,6 @@ package pb;
 option go_package = "../pb";
 
 import "proto/services/report.services.proto";
-
 // Services
 service ReportTimelineService {
   rpc kpiDashboard(ReportRequest) returns (kpiDashboardResponse) {};

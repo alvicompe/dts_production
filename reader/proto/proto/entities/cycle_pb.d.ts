@@ -122,6 +122,9 @@ export class Cycle extends jspb.Message {
     getAudit(): proto_entities_audit_pb.Audit | undefined;
     setAudit(value?: proto_entities_audit_pb.Audit): Cycle;
 
+    getManual(): boolean;
+    setManual(value: boolean): Cycle;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Cycle.AsObject;
@@ -158,6 +161,7 @@ export namespace Cycle {
         excavator?: proto_entities_excavator_pb.Excavator.AsObject,
         truckinfoList: Array<proto_entities_streaming_pb.TruckInfo.AsObject>,
         audit?: proto_entities_audit_pb.Audit.AsObject,
+        manual: boolean,
     }
 
     export enum State {
@@ -170,6 +174,7 @@ export namespace Cycle {
     UNKNOWN_MODE = 0,
     NORMAL = 1,
     ALTERED = 2,
+    MANUAL = 3,
     }
 
 }

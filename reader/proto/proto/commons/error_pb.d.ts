@@ -10,6 +10,9 @@ export class Error extends jspb.Message {
     getCode(): number;
     setCode(value: number): Error;
 
+    getStatus(): string;
+    setStatus(value: string): Error;
+
     getDescription(): string;
     setDescription(value: string): Error;
 
@@ -30,6 +33,7 @@ export class Error extends jspb.Message {
 export namespace Error {
     export type AsObject = {
         code: number,
+        status: string,
         description: string,
         log: string,
     }

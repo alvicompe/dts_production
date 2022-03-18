@@ -41,6 +41,30 @@ export namespace UnitFinalize {
     }
 }
 
+export class CurrentTimelineByTruckRequest extends jspb.Message { 
+
+    hasTruck(): boolean;
+    clearTruck(): void;
+    getTruck(): proto_entities_unit_pb.Unit | undefined;
+    setTruck(value?: proto_entities_unit_pb.Unit): CurrentTimelineByTruckRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CurrentTimelineByTruckRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CurrentTimelineByTruckRequest): CurrentTimelineByTruckRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CurrentTimelineByTruckRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CurrentTimelineByTruckRequest;
+    static deserializeBinaryFromReader(message: CurrentTimelineByTruckRequest, reader: jspb.BinaryReader): CurrentTimelineByTruckRequest;
+}
+
+export namespace CurrentTimelineByTruckRequest {
+    export type AsObject = {
+        truck?: proto_entities_unit_pb.Unit.AsObject,
+    }
+}
+
 export class TimelineRequest extends jspb.Message { 
 
     hasTimeline(): boolean;
@@ -231,6 +255,11 @@ export class TimelineListResponse extends jspb.Message {
     getMessage(): string;
     setMessage(value: string): TimelineListResponse;
 
+    clearTimelinesList(): void;
+    getTimelinesList(): Array<proto_entities_unit_current_timeline_pb.UnitCurrentTimeline>;
+    setTimelinesList(value: Array<proto_entities_unit_current_timeline_pb.UnitCurrentTimeline>): TimelineListResponse;
+    addTimelines(value?: proto_entities_unit_current_timeline_pb.UnitCurrentTimeline, index?: number): proto_entities_unit_current_timeline_pb.UnitCurrentTimeline;
+
     clearErrorsList(): void;
     getErrorsList(): Array<ErrorTimeline>;
     setErrorsList(value: Array<ErrorTimeline>): TimelineListResponse;
@@ -251,6 +280,7 @@ export namespace TimelineListResponse {
     export type AsObject = {
         success: boolean,
         message: string,
+        timelinesList: Array<proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.AsObject>,
         errorsList: Array<ErrorTimeline.AsObject>,
     }
 }
@@ -282,5 +312,74 @@ export namespace TimelinesShiftResponse {
     export type AsObject = {
         shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         currentTimelineList: Array<proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.AsObject>,
+    }
+}
+
+export class UnitCurrentTimelineRequest extends jspb.Message { 
+
+    hasTruck(): boolean;
+    clearTruck(): void;
+    getTruck(): UnitFinalize | undefined;
+    setTruck(value?: UnitFinalize): UnitCurrentTimelineRequest;
+
+
+    hasCurrentTimeline(): boolean;
+    clearCurrentTimeline(): void;
+    getCurrentTimeline(): proto_entities_unit_current_timeline_pb.UnitCurrentTimeline | undefined;
+    setCurrentTimeline(value?: proto_entities_unit_current_timeline_pb.UnitCurrentTimeline): UnitCurrentTimelineRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UnitCurrentTimelineRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UnitCurrentTimelineRequest): UnitCurrentTimelineRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UnitCurrentTimelineRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UnitCurrentTimelineRequest;
+    static deserializeBinaryFromReader(message: UnitCurrentTimelineRequest, reader: jspb.BinaryReader): UnitCurrentTimelineRequest;
+}
+
+export namespace UnitCurrentTimelineRequest {
+    export type AsObject = {
+        truck?: UnitFinalize.AsObject,
+        currentTimeline?: proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.AsObject,
+    }
+}
+
+export class UnitCurrentTimelineResponse extends jspb.Message { 
+    getSuccess(): boolean;
+    setSuccess(value: boolean): UnitCurrentTimelineResponse;
+
+    getMessage(): string;
+    setMessage(value: string): UnitCurrentTimelineResponse;
+
+
+    hasCurrentTimeline(): boolean;
+    clearCurrentTimeline(): void;
+    getCurrentTimeline(): proto_entities_unit_current_timeline_pb.UnitCurrentTimeline | undefined;
+    setCurrentTimeline(value?: proto_entities_unit_current_timeline_pb.UnitCurrentTimeline): UnitCurrentTimelineResponse;
+
+    clearErrorsList(): void;
+    getErrorsList(): Array<ErrorTimeline>;
+    setErrorsList(value: Array<ErrorTimeline>): UnitCurrentTimelineResponse;
+    addErrors(value?: ErrorTimeline, index?: number): ErrorTimeline;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UnitCurrentTimelineResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: UnitCurrentTimelineResponse): UnitCurrentTimelineResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UnitCurrentTimelineResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UnitCurrentTimelineResponse;
+    static deserializeBinaryFromReader(message: UnitCurrentTimelineResponse, reader: jspb.BinaryReader): UnitCurrentTimelineResponse;
+}
+
+export namespace UnitCurrentTimelineResponse {
+    export type AsObject = {
+        success: boolean,
+        message: string,
+        currentTimeline?: proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.AsObject,
+        errorsList: Array<ErrorTimeline.AsObject>,
     }
 }

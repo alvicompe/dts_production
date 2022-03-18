@@ -77,3 +77,32 @@ export namespace UsersResponse {
         usersList: Array<proto_entities_user_pb.User.AsObject>,
     }
 }
+
+export class PasswordRequest extends jspb.Message { 
+    getUserId(): string;
+    setUserId(value: string): PasswordRequest;
+
+    getCurrentPassword(): string;
+    setCurrentPassword(value: string): PasswordRequest;
+
+    getNewPassword(): string;
+    setNewPassword(value: string): PasswordRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): PasswordRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: PasswordRequest): PasswordRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: PasswordRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): PasswordRequest;
+    static deserializeBinaryFromReader(message: PasswordRequest, reader: jspb.BinaryReader): PasswordRequest;
+}
+
+export namespace PasswordRequest {
+    export type AsObject = {
+        userId: string,
+        currentPassword: string,
+        newPassword: string,
+    }
+}

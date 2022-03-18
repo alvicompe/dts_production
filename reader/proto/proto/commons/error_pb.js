@@ -67,8 +67,9 @@ proto.pb.Error.prototype.toObject = function(opt_includeInstance) {
 proto.pb.Error.toObject = function(includeInstance, msg) {
   var f, obj = {
     code: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    log: jspb.Message.getFieldWithDefault(msg, 3, "")
+    status: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    log: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -111,9 +112,13 @@ proto.pb.Error.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setDescription(value);
+      msg.setStatus(value);
       break;
     case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setLog(value);
       break;
@@ -153,17 +158,24 @@ proto.pb.Error.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getDescription();
+  f = message.getStatus();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getLog();
+  f = message.getDescription();
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getLog();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -189,10 +201,10 @@ proto.pb.Error.prototype.setCode = function(value) {
 
 
 /**
- * optional string description = 2;
+ * optional string status = 2;
  * @return {string}
  */
-proto.pb.Error.prototype.getDescription = function() {
+proto.pb.Error.prototype.getStatus = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -201,16 +213,16 @@ proto.pb.Error.prototype.getDescription = function() {
  * @param {string} value
  * @return {!proto.pb.Error} returns this
  */
-proto.pb.Error.prototype.setDescription = function(value) {
+proto.pb.Error.prototype.setStatus = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string log = 3;
+ * optional string description = 3;
  * @return {string}
  */
-proto.pb.Error.prototype.getLog = function() {
+proto.pb.Error.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -219,8 +231,26 @@ proto.pb.Error.prototype.getLog = function() {
  * @param {string} value
  * @return {!proto.pb.Error} returns this
  */
-proto.pb.Error.prototype.setLog = function(value) {
+proto.pb.Error.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string log = 4;
+ * @return {string}
+ */
+proto.pb.Error.prototype.getLog = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.pb.Error} returns this
+ */
+proto.pb.Error.prototype.setLog = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
