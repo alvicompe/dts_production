@@ -1,0 +1,44 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/pit.proto";
+import "proto/entities/pad.proto";
+import "proto/entities/stock.proto";
+import "proto/entities/dme.proto";
+import "proto/entities/road.proto";
+
+message Upload {
+  enum Type {
+    UNKNOWN = 0;
+    PIT = 1;
+    PAD = 2;
+    STOCK = 3;
+    DME = 4;
+    ROAD = 5;
+  }
+  Type type = 1;
+  Pit pit = 2;
+  Pad pad = 3;
+  Stock stock = 4;
+  Dme dme = 5;
+  Road road = 6;
+}
+
+message Download {
+  enum Type {
+    UNKNOWN = 0;
+    PIT = 1;
+    PAD = 2;
+    STOCK = 3;
+    DME = 4;
+    ROAD = 5;
+    PAD_DME = 6;
+  }
+  Type type = 1;
+  Pit pit = 2;
+  Pad pad = 3;
+  Stock stock = 4;
+  Dme dme = 5;
+  Road road = 6;
+}

@@ -1,24 +1,52 @@
 import { sendUnaryData, ServerUnaryCall } from "grpc"
-
-import { IGridServiceServer } from "../proto/proto/grid_grpc_pb"
-import { GridRequest, GridResponse } from "../proto/proto/grid_pb"
-import CreateGrid from "../client/grid"
+import {
+  DeleteGridByNameRequest,
+  GridResponse,
+  UpdateGridResponse,
+} from "../proto/proto/services/grid.services_pb"
+import { Empty } from "google-protobuf/google/protobuf/empty_pb"
+import { GridBusiness } from "../business/GridBusiness"
+import { IGridServiceServer } from "../proto/proto/services/grid.services_grpc_pb"
 
 export class GridServer implements IGridServiceServer {
   async createGrid(
-    call: ServerUnaryCall<GridRequest>,
+    call: ServerUnaryCall<Empty>,
     callback: sendUnaryData<GridResponse>
   ) {
-    console.log("call", call)
+    const gridBusiness = new GridBusiness()
+    const response = await gridBusiness.createGrid()
+    response.setDone(response.getDone())
+    callback(null, response)
+  }
 
-    const request = call.request.toObject()
-    console.log("request", request)
-    const response = new GridResponse()
-    if (call.request.getRead()) {
-      const r = await CreateGrid(call.request)
-      console.log("ResponseCreateGrid", r)
-      if (r) response.setDone(true)
-    }
+  async updateGrid(
+    call: ServerUnaryCall<Empty>,
+    callback: sendUnaryData<UpdateGridResponse>
+  ) {
+    const gridBusiness = new GridBusiness()
+    const result = await gridBusiness.updateGrid()
+
+    const response = new UpdateGridResponse()
+    response.setStatus(result.getStatus())
+    response.setMessage(result.getMessage())
+    callback(null, response)
+  }
+
+  deleteGridByName(
+    call: ServerUnaryCall<DeleteGridByNameRequest>,
+    callback: sendUnaryData<GridResponse>
+  ): void {}
+
+  async updateGridWeb(
+    call: ServerUnaryCall<Empty>,
+    callback: sendUnaryData<UpdateGridResponse>
+  ) {
+    const gridBusiness = new GridBusiness()
+    const result = await gridBusiness.updateGrid()
+
+    const response = new UpdateGridResponse()
+    response.setStatus(result.getStatus())
+    response.setMessage(result.getMessage())
     callback(null, response)
   }
 }

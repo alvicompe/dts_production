@@ -1,0 +1,37 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/excavator.proto";
+import "google/protobuf/empty.proto";
+
+service ExcavatorService {
+  rpc CreateExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc CreateExcavatorList(ExcavatorListRequest) returns(ExcavatorListResponse) {};
+  rpc RetrieveExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc RetrieveExcavators(ExcavatorRequest) returns(ExcavatorsResponse) {};  
+  rpc RetrieveExcavatorHyteraList(google.protobuf.Empty) returns(ExcavatorListResponse) {};
+  rpc UpdateExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc DeleteExcavator(ExcavatorRequest) returns(ExcavatorResponse) {};
+  rpc DeleteExcavatorList(ExcavatorListRequest) returns(ExcavatorListResponse) {};
+}
+
+// Message
+message ExcavatorRequest {
+  Excavator excavator = 1;
+}
+
+message ExcavatorResponse {
+  Excavator excavator = 1;
+}
+
+message ExcavatorsResponse {
+  repeated Excavator excavators = 1;
+}
+
+message ExcavatorListRequest {
+  repeated Excavator excavator = 1;
+}
+message ExcavatorListResponse {
+  repeated Excavator excavator = 1;
+}

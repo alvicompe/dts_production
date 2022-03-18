@@ -1,0 +1,16 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/contractor.proto";
+
+message Excavator {
+  string id = 1;
+  string device_id = 2;
+  string device_alias = 3;
+  uint32 device_interval = 4;
+  string description = 5;
+  string plate = 6;
+  float hourmeter = 7;
+  Contractor contractor = 8;
+}

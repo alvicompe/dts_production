@@ -2,7 +2,7 @@ import path from "path"
 import { createReadStream, readFile, readFileSync, writeFileSync } from "fs"
 import { envVariables } from "../common/environmentsVariables"
 import { ValidationTree } from "./validationTree"
-import { MessageError } from "../proto/proto/geo-reader_pb"
+import { MessageError } from "../proto/proto/services/geo_reader.services_pb"
 
 const DxfParser = require("dxf-parser")
 const proj4 = require("proj4")
@@ -98,7 +98,7 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const [name, x, y, z] = files[i].split(/[;,]/)
@@ -118,7 +118,7 @@ export class TreeReader {
           z
         )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
-        polygonPoints.push([longitude, latitude])
+        polygonPoints.push([longitude, latitude, altitude])
       }
       if (groups[currentIndexGroup]["name"] !== name) {
         const okBuildCentroid = this.buildCentroid(
@@ -135,6 +135,7 @@ export class TreeReader {
         }
       }
     }
+    this.buildCentroid(groups[groups.length - 1], polygonPoints, path)
     return groups
   }
 
@@ -146,7 +147,7 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const [name, x, y, z, area, volume, height, level] =
@@ -174,7 +175,7 @@ export class TreeReader {
           z
         )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
-        polygonPoints.push([longitude, latitude])
+        polygonPoints.push([longitude, latitude, altitude])
       }
       if (groups[currentIndexGroup]["name"] !== name) {
         const okBuildCentroid = this.buildCentroid(
@@ -198,6 +199,7 @@ export class TreeReader {
         }
       }
     }
+    this.buildCentroid(groups[groups.length - 1], polygonPoints, path)
     return groups
   }
 
@@ -209,7 +211,7 @@ export class TreeReader {
     let polygonPoints = []
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       let [name, x, y, z, area, volume, height, level] = files[i].split(/[;,]/)
@@ -240,7 +242,7 @@ export class TreeReader {
           z
         )
         groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
-        polygonPoints.push([longitude, latitude])
+        polygonPoints.push([longitude, latitude, altitude])
       }
 
       if (groups[currentIndexGroup]["name"] !== name) {
@@ -265,6 +267,7 @@ export class TreeReader {
         }
       }
     }
+    this.buildCentroid(groups[groups.length - 1], polygonPoints, path)
     return groups
   }
 
@@ -275,7 +278,7 @@ export class TreeReader {
     let currentIndexGroup = 0
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const [name, x, y, z] = files[i].split(/[;,]/)
@@ -311,7 +314,7 @@ export class TreeReader {
     const materials = [] as any
 
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const [type, description, crs, orezone, law, thins, cf, place] =
@@ -337,8 +340,16 @@ export class TreeReader {
         const polygons = [] as any
         let polygonPoints = [] as any
         const entities = dxf.entities
+
         for (let i = 0; i < entities.length; i++) {
           const polygon = {} as any
+
+          const hasLine = JSON.stringify(
+            entities[i].extendedData.customStrings
+          ).indexOf("LINE digitising")
+          if (hasLine !== -1) {
+            continue
+          }
 
           polygon.name = entities[i].extendedData.customStrings[0].split("=")[1]
           polygon.project_name = projectName
@@ -352,7 +363,7 @@ export class TreeReader {
               v.z
             )
             polygon.point.push({ longitude, latitude, altitude })
-            polygonPoints.push([longitude, latitude])
+            polygonPoints.push([longitude, latitude, altitude])
           })
           polygon.altitude = polygon.point[0].altitude
 
@@ -395,7 +406,7 @@ export class TreeReader {
     let files = await this.formattedFile(path, 2)
     const polygons = [] as any
     for (let i = 0; i < files.length; i++) {
-      if (files[i] === "") {
+      if (files[i].trim() === "") {
         continue
       }
       const colSplit = files[i].split(/[;,]/)
@@ -568,6 +579,11 @@ export class TreeReader {
     if (polygonPoints.length >= 4) {
       if (polygonPoints[0] !== polygonPoints[polygonPoints.length - 1]) {
         polygonPoints.push(polygonPoints[0])
+        group.point.push({
+          longitude: polygonPoints[0][0],
+          latitude: polygonPoints[0][1],
+          altitude: polygonPoints[0][2],
+        })
       }
     } else if (polygonPoints.length === 3) {
       if (polygonPoints[0] !== polygonPoints[polygonPoints.length - 1]) {
@@ -575,6 +591,11 @@ export class TreeReader {
         return false
       } else {
         polygonPoints.push(polygonPoints[0])
+        group.point.push({
+          longitude: polygonPoints[0][0],
+          latitude: polygonPoints[0][1],
+          altitude: polygonPoints[0][2],
+        })
       }
     } else {
       this.setErrResponse(path, "build centroid")
@@ -583,6 +604,7 @@ export class TreeReader {
 
     const turfPolygon = turf.polygon([polygonPoints])
     const centroid = turf.centerOfMass(turfPolygon)
+
     group.altitude = group.point[0].altitude
     group.centroid = {
       longitude: centroid.geometry.coordinates[0],

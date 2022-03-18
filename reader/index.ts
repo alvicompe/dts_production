@@ -2,9 +2,9 @@ import { KeyCertPair, Server, ServerCredentials } from "grpc"
 import { GridServer } from "./service/Grid"
 import { readFileSync } from "fs"
 import path from "path"
-import { GridServiceService } from "./proto/proto/grid_grpc_pb"
 import { GeoReaderServer } from "./service/GeoReader"
-import { GeoReaderServiceService } from "./proto/proto/geo-reader_grpc_pb"
+import { GridServiceService } from "./proto/proto/services/grid.services_grpc_pb"
+import { GeoReaderServiceService } from "./proto/proto/services/geo_reader.services_grpc_pb"
 
 // const p = path.join(__dirname, "cert", "server.crt")
 const rootCert = readFileSync(path.join(__dirname, "cert", "server.crt"))
