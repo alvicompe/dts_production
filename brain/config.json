@@ -22,7 +22,7 @@
       "grpcport": 9004
     },
     "mongo": {
-      "host": "52.203.219.40",
+      "host": "192.168.1.57",
       "port": "27017",
       "user": "super",
       "password": "passw0rd",

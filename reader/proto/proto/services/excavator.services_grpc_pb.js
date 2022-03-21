@@ -4,6 +4,7 @@
 var grpc = require('grpc');
 var proto_services_excavator_services_pb = require('../../proto/services/excavator.services_pb.js');
 var proto_entities_excavator_pb = require('../../proto/entities/excavator_pb.js');
+var proto_services_operation_services_pb = require('../../proto/services/operation.services_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 
 function serialize_google_protobuf_Empty(arg) {
@@ -72,6 +73,17 @@ function deserialize_pb_ExcavatorsResponse(buffer_arg) {
   return proto_services_excavator_services_pb.ExcavatorsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_pb_OperationResponse(arg) {
+  if (!(arg instanceof proto_services_operation_services_pb.OperationResponse)) {
+    throw new Error('Expected argument of type pb.OperationResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_pb_OperationResponse(buffer_arg) {
+  return proto_services_operation_services_pb.OperationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var ExcavatorServiceService = exports.ExcavatorServiceService = {
   createExcavator: {
@@ -106,6 +118,17 @@ var ExcavatorServiceService = exports.ExcavatorServiceService = {
     requestDeserialize: deserialize_pb_ExcavatorRequest,
     responseSerialize: serialize_pb_ExcavatorResponse,
     responseDeserialize: deserialize_pb_ExcavatorResponse,
+  },
+  retrieveCurrentOperation: {
+    path: '/pb.ExcavatorService/RetrieveCurrentOperation',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_excavator_services_pb.ExcavatorRequest,
+    responseType: proto_services_operation_services_pb.OperationResponse,
+    requestSerialize: serialize_pb_ExcavatorRequest,
+    requestDeserialize: deserialize_pb_ExcavatorRequest,
+    responseSerialize: serialize_pb_OperationResponse,
+    responseDeserialize: deserialize_pb_OperationResponse,
   },
   retrieveExcavators: {
     path: '/pb.ExcavatorService/RetrieveExcavators',

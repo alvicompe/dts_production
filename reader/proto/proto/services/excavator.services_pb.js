@@ -14,6 +14,8 @@ var global = Function('return this')();
 
 var proto_entities_excavator_pb = require('../../proto/entities/excavator_pb.js');
 goog.object.extend(proto, proto_entities_excavator_pb);
+var proto_services_operation_services_pb = require('../../proto/services/operation.services_pb.js');
+goog.object.extend(proto, proto_services_operation_services_pb);
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
 goog.exportSymbol('proto.pb.ExcavatorListRequest', null, global);

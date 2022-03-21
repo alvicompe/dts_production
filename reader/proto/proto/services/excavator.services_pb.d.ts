@@ -6,6 +6,7 @@
 
 import * as jspb from "google-protobuf";
 import * as proto_entities_excavator_pb from "../../proto/entities/excavator_pb";
+import * as proto_services_operation_services_pb from "../../proto/services/operation.services_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 
 export class ExcavatorRequest extends jspb.Message { 

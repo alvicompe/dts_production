@@ -6,6 +6,10 @@
 
 import * as jspb from "google-protobuf";
 import * as proto_entities_cycle_pb from "../../proto/entities/cycle_pb";
+import * as proto_entities_excavator_pb from "../../proto/entities/excavator_pb";
+import * as proto_entities_truck_pb from "../../proto/entities/truck_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
 
 export class CycleRequest extends jspb.Message { 
 
@@ -28,6 +32,76 @@ export class CycleRequest extends jspb.Message {
 export namespace CycleRequest {
     export type AsObject = {
         cycle?: proto_entities_cycle_pb.Cycle.AsObject,
+    }
+}
+
+export class ExcavatorShiftRequest extends jspb.Message { 
+
+    hasExcavator(): boolean;
+    clearExcavator(): void;
+    getExcavator(): proto_entities_excavator_pb.Excavator | undefined;
+    setExcavator(value?: proto_entities_excavator_pb.Excavator): ExcavatorShiftRequest;
+
+    getShift(): proto_enums_shift_enums_pb.Shift;
+    setShift(value: proto_enums_shift_enums_pb.Shift): ExcavatorShiftRequest;
+
+
+    hasDateShift(): boolean;
+    clearDateShift(): void;
+    getDateShift(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setDateShift(value?: google_protobuf_timestamp_pb.Timestamp): ExcavatorShiftRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ExcavatorShiftRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ExcavatorShiftRequest): ExcavatorShiftRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ExcavatorShiftRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ExcavatorShiftRequest;
+    static deserializeBinaryFromReader(message: ExcavatorShiftRequest, reader: jspb.BinaryReader): ExcavatorShiftRequest;
+}
+
+export namespace ExcavatorShiftRequest {
+    export type AsObject = {
+        excavator?: proto_entities_excavator_pb.Excavator.AsObject,
+        shift: proto_enums_shift_enums_pb.Shift,
+        dateShift?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+}
+
+export class TruckShiftRequest extends jspb.Message { 
+
+    hasTruck(): boolean;
+    clearTruck(): void;
+    getTruck(): proto_entities_truck_pb.Truck | undefined;
+    setTruck(value?: proto_entities_truck_pb.Truck): TruckShiftRequest;
+
+    getShift(): proto_enums_shift_enums_pb.Shift;
+    setShift(value: proto_enums_shift_enums_pb.Shift): TruckShiftRequest;
+
+
+    hasDateShift(): boolean;
+    clearDateShift(): void;
+    getDateShift(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setDateShift(value?: google_protobuf_timestamp_pb.Timestamp): TruckShiftRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TruckShiftRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: TruckShiftRequest): TruckShiftRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TruckShiftRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TruckShiftRequest;
+    static deserializeBinaryFromReader(message: TruckShiftRequest, reader: jspb.BinaryReader): TruckShiftRequest;
+}
+
+export namespace TruckShiftRequest {
+    export type AsObject = {
+        truck?: proto_entities_truck_pb.Truck.AsObject,
+        shift: proto_enums_shift_enums_pb.Shift,
+        dateShift?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 }
 

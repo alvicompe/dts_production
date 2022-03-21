@@ -26,7 +26,7 @@ services:
     environment:
       - TZ=America/Lima
     extra_hosts:
-      - "dts.pe:192.168.0.20"
+      - "dts.pe:192.168.1.57"
       - "bridge.dts.pe:0.0.0.0"
   writer:
     build:
@@ -35,7 +35,7 @@ services:
     network_mode: bridge
     container_name: writer_dts
     ports:
-      - "9003:9003"
+      - "9003:9003" 
     #restart: always
     depends_on:
       - mongo
@@ -58,7 +58,7 @@ services:
     environment:
       - TZ=America/Lima
     extra_hosts:
-      - "dts.pe:192.168.0.20"
+      - "dts.pe:192.168.1.57"
       - "brain.dts.pe:0.0.0.0"
   dts:
     build:
@@ -75,5 +75,5 @@ services:
     environment:
       - TZ=America/Lima
     extra_hosts:
-      - "dts.pe:192.168.0.20"
+      - "dts.pe:192.168.1.57"
       - "web.dts.pe:0.0.0.0"
