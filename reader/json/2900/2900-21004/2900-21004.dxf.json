@@ -1,0 +1,966 @@
+{
+   "header": {
+      "$ACADVER": "AC1021",
+      "$ACADMAINTVER": 25,
+      "$DWGCODEPAGE": "ANSI_1252",
+      "$COMMENTS": "Created by VULCAN",
+      "$LASTSAVEDBY": "jorge.alvarado",
+      "$INSBASE": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$EXTMIN": {
+         "x": 100000000000000000000,
+         "y": 100000000000000000000,
+         "z": 100000000000000000000
+      },
+      "$EXTMAX": {
+         "x": -100000000000000000000,
+         "y": -100000000000000000000,
+         "z": -100000000000000000000
+      },
+      "$LIMMIN": {
+         "x": 0,
+         "y": 0
+      },
+      "$LIMMAX": {
+         "x": 12,
+         "y": 9
+      },
+      "$ORTHOMODE": 0,
+      "$REGENMODE": 1,
+      "$FILLMODE": 1,
+      "$QTEXTMODE": 0,
+      "$MIRRTEXT": 1,
+      "$LTSCALE": 1,
+      "$ATTMODE": 1,
+      "$TEXTSIZE": 0.2,
+      "$TRACEWID": 0.05,
+      "$TEXTSTYLE": "Standard",
+      "$CLAYER": "0",
+      "$CELTYPE": "ByLayer",
+      "$CECOLOR": 256,
+      "$CELTSCALE": 1,
+      "$DISPSILH": 0,
+      "$DIMSCALE": 1,
+      "$DIMASZ": 0.18,
+      "$DIMEXO": 0.0625,
+      "$DIMDLI": 0.38,
+      "$DIMRND": 0,
+      "$DIMDLE": 0,
+      "$DIMEXE": 0.18,
+      "$DIMTP": 0,
+      "$DIMTM": 0,
+      "$DIMTXT": 0.18,
+      "$DIMCEN": 0.09,
+      "$DIMTSZ": 0,
+      "$DIMTOL": 0,
+      "$DIMLIM": 0,
+      "$DIMTIH": 1,
+      "$DIMTOH": 1,
+      "$DIMSE1": 0,
+      "$DIMSE2": 0,
+      "$DIMTAD": 0,
+      "$DIMZIN": 0,
+      "$DIMBLK": "",
+      "$DIMASO": 1,
+      "$DIMSHO": 1,
+      "$DIMPOST": "",
+      "$DIMAPOST": "",
+      "$DIMALT": 0,
+      "$DIMALTD": 2,
+      "$DIMALTF": 25.4,
+      "$DIMLFAC": 1,
+      "$DIMTOFL": 0,
+      "$DIMTVP": 0,
+      "$DIMTIX": 0,
+      "$DIMSOXD": 0,
+      "$DIMSAH": 0,
+      "$DIMBLK1": "",
+      "$DIMBLK2": "",
+      "$DIMSTYLE": "Standard",
+      "$DIMCLRD": 0,
+      "$DIMCLRE": 0,
+      "$DIMCLRT": 0,
+      "$DIMTFAC": 1,
+      "$DIMGAP": 0.09,
+      "$DIMJUST": 0,
+      "$DIMSD1": 0,
+      "$DIMSD2": 0,
+      "$DIMTOLJ": 1,
+      "$DIMTZIN": 0,
+      "$DIMALTZ": 0,
+      "$DIMALTTZ": 0,
+      "$DIMUPT": 0,
+      "$DIMDEC": 4,
+      "$DIMTDEC": 4,
+      "$DIMALTU": 2,
+      "$DIMALTTD": 2,
+      "$DIMTXSTY": "Standard",
+      "$DIMAUNIT": 0,
+      "$DIMADEC": 0,
+      "$DIMALTRND": 0,
+      "$DIMAZIN": 0,
+      "$DIMDSEP": 46,
+      "$DIMATFIT": 3,
+      "$DIMFRAC": 0,
+      "$DIMLDRBLK": "",
+      "$DIMLUNIT": 2,
+      "$DIMLWD": -2,
+      "$DIMLWE": -2,
+      "$DIMTMOVE": 0,
+      "$DIMFXL": 1,
+      "$DIMFXLON": 0,
+      "$DIMJOGANG": 0.7853981633974483,
+      "$DIMTFILL": 0,
+      "$DIMTFILLCLR": 0,
+      "$DIMARCSYM": 0,
+      "$DIMLTYPE": "",
+      "$DIMLTEX1": "",
+      "$DIMLTEX2": "",
+      "$LUNITS": 2,
+      "$LUPREC": 4,
+      "$SKETCHINC": 0.1,
+      "$FILLETRAD": 0.5,
+      "$AUNITS": 0,
+      "$AUPREC": 0,
+      "$MENU": ".",
+      "$ELEVATION": 0,
+      "$PELEVATION": 0,
+      "$THICKNESS": 0,
+      "$LIMCHECK": 0,
+      "$CHAMFERA": 0,
+      "$CHAMFERB": 0,
+      "$CHAMFERC": 0,
+      "$CHAMFERD": 0,
+      "$SKPOLY": 0,
+      "$TDCREATE": 2459222.74999463,
+      "$TDUCREATE": 2459222.958327963,
+      "$TDUPDATE": 2459222.749994803,
+      "$TDUUPDATE": 2459222.958328137,
+      "$TDINDWG": 1.16e-8,
+      "$TDUSRTIMER": 1.16e-8,
+      "$USRTIMER": 1,
+      "$ANGBASE": 0,
+      "$ANGDIR": 0,
+      "$PDMODE": 0,
+      "$PDSIZE": 0,
+      "$PLINEWID": 0,
+      "$SPLFRAME": 0,
+      "$SPLINETYPE": 6,
+      "$SPLINESEGS": 8,
+      "$HANDSEED": "D3",
+      "$SURFTAB1": 6,
+      "$SURFTAB2": 6,
+      "$SURFTYPE": 6,
+      "$SURFU": 6,
+      "$SURFV": 6,
+      "$UCSBASE": "",
+      "$UCSNAME": "",
+      "$UCSORG": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$UCSXDIR": {
+         "x": 1,
+         "y": 0,
+         "z": 0
+      },
+      "$UCSYDIR": {
+         "x": 0,
+         "y": 1,
+         "z": 0
+      },
+      "$UCSORTHOREF": "",
+      "$UCSORTHOVIEW": 0,
+      "$UCSORGTOP": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$UCSORGBOTTOM": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$UCSORGLEFT": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$UCSORGRIGHT": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$UCSORGFRONT": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$UCSORGBACK": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$PUCSBASE": "",
+      "$PUCSNAME": "",
+      "$PUCSORG": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$PUCSXDIR": {
+         "x": 1,
+         "y": 0,
+         "z": 0
+      },
+      "$PUCSYDIR": {
+         "x": 0,
+         "y": 1,
+         "z": 0
+      },
+      "$PUCSORTHOREF": "",
+      "$PUCSORTHOVIEW": 0,
+      "$PUCSORGTOP": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$PUCSORGBOTTOM": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$PUCSORGLEFT": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$PUCSORGRIGHT": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$PUCSORGFRONT": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$PUCSORGBACK": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$USERI1": 0,
+      "$USERI2": 0,
+      "$USERI3": 0,
+      "$USERI4": 0,
+      "$USERI5": 0,
+      "$USERR1": 0,
+      "$USERR2": 0,
+      "$USERR3": 0,
+      "$USERR4": 0,
+      "$USERR5": 0,
+      "$WORLDVIEW": 1,
+      "$SHADEDGE": 3,
+      "$SHADEDIF": 70,
+      "$TILEMODE": 1,
+      "$MAXACTVP": 64,
+      "$PINSBASE": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$PLIMCHECK": 0,
+      "$PEXTMIN": {
+         "x": 100000000000000000000,
+         "y": 100000000000000000000,
+         "z": 100000000000000000000
+      },
+      "$PEXTMAX": {
+         "x": -100000000000000000000,
+         "y": -100000000000000000000,
+         "z": -100000000000000000000
+      },
+      "$PLIMMIN": {
+         "x": 0,
+         "y": 0
+      },
+      "$PLIMMAX": {
+         "x": 12,
+         "y": 9
+      },
+      "$UNITMODE": 0,
+      "$VISRETAIN": 1,
+      "$PLINEGEN": 0,
+      "$PSLTSCALE": 1,
+      "$TREEDEPTH": 3020,
+      "$CMLSTYLE": "Standard",
+      "$CMLJUST": 0,
+      "$CMLSCALE": 1,
+      "$PROXYGRAPHICS": 1,
+      "$MEASUREMENT": 0,
+      "$CELWEIGHT": -1,
+      "$ENDCAPS": 0,
+      "$JOINSTYLE": 0,
+      "$LWDISPLAY": true,
+      "$INSUNITS": 6,
+      "$HYPERLINKBASE": "",
+      "$STYLESHEET": "",
+      "$XEDIT": true,
+      "$CEPSNTYPE": 0,
+      "$PSTYLEMODE": true,
+      "$FINGERPRINTGUID": "{1c81423e-987b-4f44-841c-5b0e690f3bf9}",
+      "$VERSIONGUID": "{FAEB1C32-E019-11D5-929B-00C0DF256EC4}",
+      "$EXTNAMES": true,
+      "$PSVPSCALE": 0,
+      "$OLESTARTUP": false,
+      "$SORTENTS": 127,
+      "$INDEXCTL": 0,
+      "$HIDETEXT": 1,
+      "$XCLIPFRAME": false,
+      "$HALOGAP": 0,
+      "$OBSCOLOR": 257,
+      "$OBSLTYPE": 0,
+      "$INTERSECTIONDISPLAY": 0,
+      "$INTERSECTIONCOLOR": 257,
+      "$DIMASSOC": 2,
+      "$PROJECTNAME": "",
+      "$CAMERADISPLAY": false,
+      "$LENSLENGTH": 50,
+      "$CAMERAHEIGHT": 0,
+      "$STEPSPERSEC": 2,
+      "$STEPSIZE": 6,
+      "$3DDWFPREC": 2,
+      "$PSOLWIDTH": 0.25,
+      "$PSOLHEIGHT": 4,
+      "$LOFTANG1": 1.570796326794897,
+      "$LOFTANG2": 1.570796326794897,
+      "$LOFTMAG1": 0,
+      "$LOFTMAG2": 0,
+      "$LOFTPARAM": 7,
+      "$LOFTNORMALS": 1,
+      "$LATITUDE": 37.795,
+      "$LONGITUDE": -122.394,
+      "$NORTHDIRECTION": 0,
+      "$TIMEZONE": -8000,
+      "$LIGHTGLYPHDISPLAY": 1,
+      "$TILEMODELIGHTSYNCH": 1,
+      "$CMATERIAL": "44",
+      "$SOLIDHIST": 0,
+      "$SHOWHIST": 1,
+      "$DWFFRAME": 2,
+      "$DGNFRAME": 2,
+      "$REALWORLDSCALE": true,
+      "$INTERFERECOLOR": 256,
+      "$CSHADOW": 0,
+      "$SHADOWPLANELOCATION": 0
+   },
+   "tables": {
+      "viewPort": {
+         "handle": "8",
+         "ownerHandle": "0",
+         "viewPorts": [
+            {
+               "ownerHandle": "8",
+               "name": "*Active",
+               "lowerLeftCorner": {
+                  "x": 0,
+                  "y": 0
+               },
+               "upperRightCorner": {
+                  "x": 1,
+                  "y": 1
+               },
+               "center": {
+                  "x": 10.42990654205607,
+                  "y": 4.5
+               },
+               "snapBasePoint": {
+                  "x": 0,
+                  "y": 0
+               },
+               "snapSpacing": {
+                  "x": 0.5,
+                  "y": 0.5
+               },
+               "gridSpacing": {
+                  "x": 0.5,
+                  "y": 0.5
+               },
+               "viewDirectionFromTarget": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 1
+               },
+               "viewTarget": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+               },
+               "lensLength": 50,
+               "frontClippingPlane": 0,
+               "backClippingPlane": 0,
+               "snapRotationAngle": 0,
+               "viewTwistAngle": 0,
+               "renderMode": 0,
+               "ucsOrigin": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+               },
+               "ucsXAxis": {
+                  "x": 1,
+                  "y": 0,
+                  "z": 0
+               },
+               "ucsYAxis": {
+                  "x": 0,
+                  "y": 1,
+                  "z": 0
+               },
+               "orthographicType": 0,
+               "defaultLightingOn": true,
+               "ambientColor": 250
+            }
+         ]
+      },
+      "lineType": {
+         "handle": "5",
+         "ownerHandle": "0",
+         "lineTypes": {
+            "ByBlock": {
+               "name": "ByBlock",
+               "description": "",
+               "patternLength": 0
+            },
+            "ByLayer": {
+               "name": "ByLayer",
+               "description": "",
+               "patternLength": 0
+            },
+            "Continuous": {
+               "name": "Continuous",
+               "description": "Solid line",
+               "patternLength": 0
+            },
+            "VULCAN_LINE_TYPE_1": {
+               "name": "VULCAN_LINE_TYPE_1",
+               "description": "Vulcan line type 1 _ _ _ _ _ _ _ _ _ _ _ _",
+               "pattern": [
+                  0.504611,
+                  -1.51383
+               ],
+               "patternLength": 2.018441
+            },
+            "VULCAN_LINE_TYPE_2": {
+               "name": "VULCAN_LINE_TYPE_2",
+               "description": "Vulcan line type 2 _ _  _ _  _ _  _ _  _ _",
+               "pattern": [
+                  0.672815,
+                  -0.437329,
+                  0.672815,
+                  -1.68204
+               ],
+               "patternLength": 3.464999
+            },
+            "VULCAN_LINE_TYPE_3": {
+               "name": "VULCAN_LINE_TYPE_3",
+               "description": "Vulcan line type 3 __ ___ _ _  __ ___ _ _",
+               "pattern": [
+                  0.672815,
+                  -0.336407,
+                  1.34563,
+                  -0.336407,
+                  0.336407,
+                  -0.336407,
+                  0.336407,
+                  -1.34563
+               ],
+               "patternLength": 5.04611
+            },
+            "VULCAN_LINE_TYPE_4": {
+               "name": "VULCAN_LINE_TYPE_4",
+               "description": "Vulcan line type 4 _ _ _ _ _ _ _ _ _ _ _ _",
+               "pattern": [
+                  0.336407,
+                  -0.336407
+               ],
+               "patternLength": 0.672814
+            },
+            "VULCAN_LINE_TYPE_5": {
+               "name": "VULCAN_LINE_TYPE_5",
+               "description": "Vulcan line type 5 _ _ _ _ _ _ _ _ _ _ _ _",
+               "pattern": [
+                  0.588713,
+                  -0.588713
+               ],
+               "patternLength": 1.177426
+            },
+            "VULCAN_LINE_TYPE_6": {
+               "name": "VULCAN_LINE_TYPE_6",
+               "description": "Vulcan line type 6 __ __ ___ __ __ ___ __",
+               "pattern": [
+                  1.51383,
+                  -0.622353,
+                  0.756916,
+                  -0.622353
+               ],
+               "patternLength": 3.515452
+            },
+            "VULCAN_LINE_TYPE_7": {
+               "name": "VULCAN_LINE_TYPE_7",
+               "description": "Vulcan line type 7 _  _   _  _   _  _   _",
+               "pattern": [
+                  0.504611,
+                  -0.756916,
+                  0.504611,
+                  -1.68204
+               ],
+               "patternLength": 3.448178
+            }
+         }
+      },
+      "layer": {
+         "handle": "2",
+         "ownerHandle": "0",
+         "layers": {
+            "0": {
+               "name": "0",
+               "frozen": false,
+               "visible": true,
+               "colorIndex": 7,
+               "color": 16777215
+            },
+            "2900-21004": {
+               "name": "2900-21004",
+               "frozen": false,
+               "visible": true,
+               "colorIndex": 1,
+               "color": 16711680
+            }
+         }
+      }
+   },
+   "blocks": {
+      "*Model_Space": {
+         "handle": "20",
+         "ownerHandle": "1F",
+         "layer": "0",
+         "name": "*Model_Space",
+         "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+         },
+         "name2": "*Model_Space",
+         "xrefPath": ""
+      },
+      "*Paper_Space": {
+         "handle": "1C",
+         "ownerHandle": "1B",
+         "paperSpace": true,
+         "layer": "0",
+         "name": "*Paper_Space",
+         "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+         },
+         "name2": "*Paper_Space",
+         "xrefPath": ""
+      },
+      "*Paper_Space0": {
+         "handle": "24",
+         "ownerHandle": "23",
+         "layer": "0",
+         "name": "*Paper_Space0",
+         "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+         },
+         "name2": "*Paper_Space0",
+         "xrefPath": ""
+      }
+   },
+   "entities": [
+      {
+         "type": "POLYLINE",
+         "vertices": [
+            {
+               "type": "VERTEX",
+               "handle": "78",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "lineweight": 53,
+               "x": 807443.807346344,
+               "y": 9157413.656021118,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "79",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807455.5992279053,
+               "y": 9157408.166725159,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "7A",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807464.8010215759,
+               "y": 9157414.683013916,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "7B",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807470.3546513864,
+               "y": 9157410.658648035,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "7C",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807475.0500545502,
+               "y": 9157415.727867126,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "7D",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807518.9332942963,
+               "y": 9157450.582878113,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "7E",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807541.6599082947,
+               "y": 9157459.83423996,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "7F",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807536.6222763062,
+               "y": 9157497.946830273,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "80",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807503.7091956139,
+               "y": 9157503.62639308,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "81",
+               "ownerHandle": "77",
+               "layer": "2900-21004",
+               "colorIndex": 254,
+               "color": 13421772,
+               "x": 807428.2436549936,
+               "y": 9157430.436935838,
+               "z": 2900
+            }
+         ],
+         "handle": "77",
+         "ownerHandle": "1F",
+         "layer": "2900-21004",
+         "colorIndex": 254,
+         "color": 13421772,
+         "lineweight": 53,
+         "shape": true,
+         "includesCurveFitVertices": false,
+         "includesSplineFitVertices": false,
+         "is3dPolyline": false,
+         "is3dPolygonMesh": false,
+         "is3dPolygonMeshClosed": false,
+         "isPolyfaceMesh": false,
+         "hasContinuousLinetypePattern": false,
+         "extendedData": {
+            "applicationName": "MAPTEK_VULCAN",
+            "customStrings": [
+               "VulcanName=C",
+               "VulcanGroup=",
+               "VulcanFeature=",
+               "VulcanValue=2000.0",
+               "VulcanDescription=",
+               "VulcanPrimitive=",
+               "VulcanLine=30",
+               "VulcanPattern=0"
+            ]
+         }
+      },
+      {
+         "type": "POLYLINE",
+         "vertices": [
+            {
+               "type": "VERTEX",
+               "handle": "84",
+               "ownerHandle": "83",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "lineweight": 53,
+               "x": 807421.9375508382,
+               "y": 9157424.281207167,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "85",
+               "ownerHandle": "83",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807456.4816060618,
+               "y": 9157395.6811256,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "86",
+               "ownerHandle": "83",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807470.3546513864,
+               "y": 9157410.658648035,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "87",
+               "ownerHandle": "83",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807464.8010215759,
+               "y": 9157414.683013916,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "88",
+               "ownerHandle": "83",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807455.5992279053,
+               "y": 9157408.166725159,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "89",
+               "ownerHandle": "83",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807443.807346344,
+               "y": 9157413.656021118,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "8A",
+               "ownerHandle": "83",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807428.2436549936,
+               "y": 9157430.436935838,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "8B",
+               "ownerHandle": "83",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807421.8964923063,
+               "y": 9157424.281207167,
+               "z": 2900
+            }
+         ],
+         "handle": "83",
+         "ownerHandle": "1F",
+         "layer": "2900-21004",
+         "colorIndex": 40,
+         "color": 16759552,
+         "lineweight": 53,
+         "shape": true,
+         "includesCurveFitVertices": false,
+         "includesSplineFitVertices": false,
+         "is3dPolyline": false,
+         "is3dPolygonMesh": false,
+         "is3dPolygonMeshClosed": false,
+         "isPolyfaceMesh": false,
+         "hasContinuousLinetypePattern": false,
+         "extendedData": {
+            "applicationName": "MAPTEK_VULCAN",
+            "customStrings": [
+               "VulcanName=B",
+               "VulcanGroup=",
+               "VulcanFeature=",
+               "VulcanValue=2000.0",
+               "VulcanDescription=",
+               "VulcanPrimitive=",
+               "VulcanLine=30",
+               "VulcanPattern=0"
+            ]
+         }
+      },
+      {
+         "type": "POLYLINE",
+         "vertices": [
+            {
+               "type": "VERTEX",
+               "handle": "8E",
+               "ownerHandle": "8D",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "lineweight": 53,
+               "x": 807456.4816060618,
+               "y": 9157395.6811256,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "8F",
+               "ownerHandle": "8D",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807448.7355624412,
+               "y": 9157387.318394896,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "90",
+               "ownerHandle": "8D",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807419.301513672,
+               "y": 9157416.492004395,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "91",
+               "ownerHandle": "8D",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807417.3032791553,
+               "y": 9157419.826527921,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "92",
+               "ownerHandle": "8D",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807421.8964923063,
+               "y": 9157424.281207167,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "93",
+               "ownerHandle": "8D",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807421.9375508382,
+               "y": 9157424.281207167,
+               "z": 2900
+            },
+            {
+               "type": "VERTEX",
+               "handle": "94",
+               "ownerHandle": "8D",
+               "layer": "2900-21004",
+               "colorIndex": 40,
+               "color": 16759552,
+               "x": 807433.3026453285,
+               "y": 9157414.871697271,
+               "z": 2900
+            }
+         ],
+         "handle": "8D",
+         "ownerHandle": "1F",
+         "layer": "2900-21004",
+         "colorIndex": 40,
+         "color": 16759552,
+         "lineweight": 53,
+         "shape": true,
+         "includesCurveFitVertices": false,
+         "includesSplineFitVertices": false,
+         "is3dPolyline": false,
+         "is3dPolygonMesh": false,
+         "is3dPolygonMeshClosed": false,
+         "isPolyfaceMesh": false,
+         "hasContinuousLinetypePattern": false,
+         "extendedData": {
+            "applicationName": "MAPTEK_VULCAN",
+            "customStrings": [
+               "VulcanName=A",
+               "VulcanGroup=",
+               "VulcanFeature=",
+               "VulcanValue=2000.0",
+               "VulcanDescription=",
+               "VulcanPrimitive=",
+               "VulcanLine=30",
+               "VulcanPattern=0"
+            ]
+         }
+      }
+   ]
+}

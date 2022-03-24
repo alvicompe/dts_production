@@ -1,0 +1,9 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+message Unit {
+  string device_id = 2;
+  string device_alias = 3;
+}
+

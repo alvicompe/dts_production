@@ -1,0 +1,11 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+enum EnumEvent {
+  UNKNOWN_STATE_EVENT = 0;
+  MAINTENANCE = 1;
+  NO_OPERATIONAL = 2;
+  OPERATIONAL_DELAY = 3;
+  OPERATIONAL = 4;
+}

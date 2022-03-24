@@ -1,0 +1,25 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/point.proto";
+
+message Cell {
+  enum State {
+    UNKNOWN = 0;
+    ACTIVE = 1;
+    WAITING = 2;
+    FINISHED = 3;
+  }
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  repeated Point point = 4;
+  Point centroid = 5;
+  double height = 6;
+  uint32 color = 7;
+  double altitude = 8;
+  double area = 9;
+  double volume = 10;
+  State state = 11;
+}

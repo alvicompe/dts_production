@@ -1,0 +1,17 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/sensor.proto";
+import "proto/enums/event_state.enums.proto";
+
+message TruckStatus {
+  string id = 1;
+  string device_id = 2;
+  string device_alias = 3;
+  string cycle_id = 4;
+  string operation_id = 5;
+  int32 cycle_number = 6;
+  EnumEventState state = 7;
+  Sensor sensor = 8;
+}
