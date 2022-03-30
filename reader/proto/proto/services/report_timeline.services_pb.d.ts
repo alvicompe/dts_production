@@ -6,6 +6,9 @@
 
 import * as jspb from "google-protobuf";
 import * as proto_services_report_services_pb from "../../proto/services/report.services_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
+import * as proto_enums_asset_type_enums_pb from "../../proto/enums/asset_type.enums_pb";
 
 export class kpiDashboardResponse extends jspb.Message { 
     getStatus(): boolean;
@@ -120,5 +123,37 @@ export namespace KpiUnit {
         todayMechanicalAvailability: number,
         todayUtilization: number,
         todayProductivity: number,
+    }
+}
+
+export class DownloadTimelineRequest extends jspb.Message { 
+
+    hasShiftDate(): boolean;
+    clearShiftDate(): void;
+    getShiftDate(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setShiftDate(value?: google_protobuf_timestamp_pb.Timestamp): DownloadTimelineRequest;
+
+    getShift(): proto_enums_shift_enums_pb.Shift;
+    setShift(value: proto_enums_shift_enums_pb.Shift): DownloadTimelineRequest;
+
+    getAssetType(): proto_enums_asset_type_enums_pb.EnumAssetType;
+    setAssetType(value: proto_enums_asset_type_enums_pb.EnumAssetType): DownloadTimelineRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DownloadTimelineRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DownloadTimelineRequest): DownloadTimelineRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DownloadTimelineRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DownloadTimelineRequest;
+    static deserializeBinaryFromReader(message: DownloadTimelineRequest, reader: jspb.BinaryReader): DownloadTimelineRequest;
+}
+
+export namespace DownloadTimelineRequest {
+    export type AsObject = {
+        shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        shift: proto_enums_shift_enums_pb.Shift,
+        assetType: proto_enums_asset_type_enums_pb.EnumAssetType,
     }
 }

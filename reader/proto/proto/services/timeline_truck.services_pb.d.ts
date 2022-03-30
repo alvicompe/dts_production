@@ -168,6 +168,12 @@ export class TimelineFinalizeShiftRequest extends jspb.Message {
     setShift(value: proto_enums_shift_enums_pb.Shift): TimelineFinalizeShiftRequest;
 
 
+    hasShiftDate(): boolean;
+    clearShiftDate(): void;
+    getShiftDate(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setShiftDate(value?: google_protobuf_timestamp_pb.Timestamp): TimelineFinalizeShiftRequest;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): TimelineFinalizeShiftRequest.AsObject;
     static toObject(includeInstance: boolean, msg: TimelineFinalizeShiftRequest): TimelineFinalizeShiftRequest.AsObject;
@@ -182,6 +188,7 @@ export namespace TimelineFinalizeShiftRequest {
     export type AsObject = {
         truckList: Array<UnitFinalize.AsObject>,
         shift: proto_enums_shift_enums_pb.Shift,
+        shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 }
 

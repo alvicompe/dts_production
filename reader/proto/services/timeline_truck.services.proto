@@ -53,6 +53,7 @@ message TimelinesShiftRequest{
 message TimelineFinalizeShiftRequest{
   repeated UnitFinalize truck = 1;
   Shift shift = 2;
+  google.protobuf.Timestamp shift_date = 7;
 }
 
 message TimelineResponse{

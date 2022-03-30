@@ -5,9 +5,12 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as proto_entities_timeline_pb from "../../proto/entities/timeline_pb";
 import * as proto_entities_event_state_pb from "../../proto/entities/event_state_pb";
 import * as proto_enums_event_enums_pb from "../../proto/enums/event.enums_pb";
+import * as proto_enums_asset_type_enums_pb from "../../proto/enums/asset_type.enums_pb";
+import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
 
 export class UnitCurrentTimeline extends jspb.Message { 
     getId(): string;
@@ -34,10 +37,22 @@ export class UnitCurrentTimeline extends jspb.Message {
     getEventState(): proto_entities_event_state_pb.EventState | undefined;
     setEventState(value?: proto_entities_event_state_pb.EventState): UnitCurrentTimeline;
 
-    clearHystoryShiftList(): void;
-    getHystoryShiftList(): Array<proto_entities_timeline_pb.Timeline>;
-    setHystoryShiftList(value: Array<proto_entities_timeline_pb.Timeline>): UnitCurrentTimeline;
-    addHystoryShift(value?: proto_entities_timeline_pb.Timeline, index?: number): proto_entities_timeline_pb.Timeline;
+
+    hasShiftDate(): boolean;
+    clearShiftDate(): void;
+    getShiftDate(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setShiftDate(value?: google_protobuf_timestamp_pb.Timestamp): UnitCurrentTimeline;
+
+    getAssetType(): proto_enums_asset_type_enums_pb.EnumAssetType;
+    setAssetType(value: proto_enums_asset_type_enums_pb.EnumAssetType): UnitCurrentTimeline;
+
+    clearHistoryShiftList(): void;
+    getHistoryShiftList(): Array<proto_entities_timeline_pb.Timeline>;
+    setHistoryShiftList(value: Array<proto_entities_timeline_pb.Timeline>): UnitCurrentTimeline;
+    addHistoryShift(value?: proto_entities_timeline_pb.Timeline, index?: number): proto_entities_timeline_pb.Timeline;
+
+    getShift(): proto_enums_shift_enums_pb.Shift;
+    setShift(value: proto_enums_shift_enums_pb.Shift): UnitCurrentTimeline;
 
 
     serializeBinary(): Uint8Array;
@@ -58,6 +73,9 @@ export namespace UnitCurrentTimeline {
         currentTimeline?: proto_entities_timeline_pb.Timeline.AsObject,
         state: proto_enums_event_enums_pb.EnumEvent,
         eventState?: proto_entities_event_state_pb.EventState.AsObject,
-        hystoryShiftList: Array<proto_entities_timeline_pb.Timeline.AsObject>,
+        shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        assetType: proto_enums_asset_type_enums_pb.EnumAssetType,
+        historyShiftList: Array<proto_entities_timeline_pb.Timeline.AsObject>,
+        shift: proto_enums_shift_enums_pb.Shift,
     }
 }

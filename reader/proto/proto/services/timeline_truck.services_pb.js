@@ -1283,7 +1283,8 @@ proto.pb.TimelineFinalizeShiftRequest.toObject = function(includeInstance, msg) 
   var f, obj = {
     truckList: jspb.Message.toObjectList(msg.getTruckList(),
     proto.pb.UnitFinalize.toObject, includeInstance),
-    shift: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    shift: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    shiftDate: (f = msg.getShiftDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1329,6 +1330,11 @@ proto.pb.TimelineFinalizeShiftRequest.deserializeBinaryFromReader = function(msg
       var value = /** @type {!proto.pb.Shift} */ (reader.readEnum());
       msg.setShift(value);
       break;
+    case 7:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setShiftDate(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1371,6 +1377,14 @@ proto.pb.TimelineFinalizeShiftRequest.serializeBinaryToWriter = function(message
     writer.writeEnum(
       2,
       f
+    );
+  }
+  f = message.getShiftDate();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -1429,6 +1443,43 @@ proto.pb.TimelineFinalizeShiftRequest.prototype.getShift = function() {
  */
 proto.pb.TimelineFinalizeShiftRequest.prototype.setShift = function(value) {
   return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp shift_date = 7;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.pb.TimelineFinalizeShiftRequest.prototype.getShiftDate = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.pb.TimelineFinalizeShiftRequest} returns this
+*/
+proto.pb.TimelineFinalizeShiftRequest.prototype.setShiftDate = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.TimelineFinalizeShiftRequest} returns this
+ */
+proto.pb.TimelineFinalizeShiftRequest.prototype.clearShiftDate = function() {
+  return this.setShiftDate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.TimelineFinalizeShiftRequest.prototype.hasShiftDate = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

@@ -2,9 +2,12 @@ syntax = "proto3";
 package pb;
 option go_package = "../pb";
 
+import "google/protobuf/timestamp.proto";
 import "proto/entities/timeline.proto";
 import "proto/entities/event_state.proto";
 import "proto/enums/event.enums.proto";
+import "proto/enums/asset_type.enums.proto";
+import "proto/enums/shift.enums.proto";
 
 message UnitCurrentTimeline{
   string id = 1;
@@ -13,5 +16,8 @@ message UnitCurrentTimeline{
   Timeline current_timeline = 4;
   EnumEvent state = 5;
   EventState event_state = 6;
-  repeated Timeline hystory_shift = 7;
+  google.protobuf.Timestamp shift_date = 7;
+  EnumAssetType asset_type = 9;
+  repeated Timeline history_shift = 10;
+  Shift shift = 14;
 }

@@ -20,6 +20,8 @@ var proto_enums_shift_enums_pb = require('../../proto/enums/shift.enums_pb.js');
 goog.object.extend(proto, proto_enums_shift_enums_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
+var proto_enums_asset_type_enums_pb = require('../../proto/enums/asset_type.enums_pb.js');
+goog.object.extend(proto, proto_enums_asset_type_enums_pb);
 goog.exportSymbol('proto.pb.Timeline', null, global);
 goog.exportSymbol('proto.pb.Timeline.StateTimeline', null, global);
 /**
@@ -91,7 +93,8 @@ proto.pb.Timeline.toObject = function(includeInstance, msg) {
     shift: jspb.Message.getFieldWithDefault(msg, 14, 0),
     stateRegister: jspb.Message.getFieldWithDefault(msg, 15, 0),
     adjustment: jspb.Message.getFloatingPointFieldWithDefault(msg, 16, 0.0),
-    status: jspb.Message.getBooleanFieldWithDefault(msg, 17, false)
+    status: jspb.Message.getBooleanFieldWithDefault(msg, 17, false),
+    assetType: jspb.Message.getFieldWithDefault(msg, 18, 0)
   };
 
   if (includeInstance) {
@@ -200,6 +203,10 @@ proto.pb.Timeline.deserializeBinaryFromReader = function(msg, reader) {
     case 17:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setStatus(value);
+      break;
+    case 18:
+      var value = /** @type {!proto.pb.EnumAssetType} */ (reader.readEnum());
+      msg.setAssetType(value);
       break;
     default:
       reader.skipField();
@@ -351,6 +358,13 @@ proto.pb.Timeline.serializeBinaryToWriter = function(message, writer) {
   if (f) {
     writer.writeBool(
       17,
+      f
+    );
+  }
+  f = message.getAssetType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      18,
       f
     );
   }
@@ -764,6 +778,24 @@ proto.pb.Timeline.prototype.getStatus = function() {
  */
 proto.pb.Timeline.prototype.setStatus = function(value) {
   return jspb.Message.setProto3BooleanField(this, 17, value);
+};
+
+
+/**
+ * optional EnumAssetType asset_type = 18;
+ * @return {!proto.pb.EnumAssetType}
+ */
+proto.pb.Timeline.prototype.getAssetType = function() {
+  return /** @type {!proto.pb.EnumAssetType} */ (jspb.Message.getFieldWithDefault(this, 18, 0));
+};
+
+
+/**
+ * @param {!proto.pb.EnumAssetType} value
+ * @return {!proto.pb.Timeline} returns this
+ */
+proto.pb.Timeline.prototype.setAssetType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 18, value);
 };
 
 
