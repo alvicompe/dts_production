@@ -13,6 +13,7 @@ import * as proto_entities_unit_current_timeline_pb from "../../proto/entities/u
 import * as proto_enums_event_enums_pb from "../../proto/enums/event.enums_pb";
 import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as proto_enums_asset_type_enums_pb from "../../proto/enums/asset_type.enums_pb";
 
 interface ITimelineTruckServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     retrieveTimelineTruck: ITimelineTruckServiceService_IRetrieveTimelineTruck;

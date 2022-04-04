@@ -10,6 +10,7 @@ var proto_entities_unit_current_timeline_pb = require('../../proto/entities/unit
 var proto_enums_event_enums_pb = require('../../proto/enums/event.enums_pb.js');
 var proto_enums_shift_enums_pb = require('../../proto/enums/shift.enums_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+var proto_enums_asset_type_enums_pb = require('../../proto/enums/asset_type.enums_pb.js');
 
 function serialize_pb_CurrentTimelineByTruckRequest(arg) {
   if (!(arg instanceof proto_services_timeline_truck_services_pb.CurrentTimelineByTruckRequest)) {

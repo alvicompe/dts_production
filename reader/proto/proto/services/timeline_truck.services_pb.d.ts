@@ -12,6 +12,7 @@ import * as proto_entities_unit_current_timeline_pb from "../../proto/entities/u
 import * as proto_enums_event_enums_pb from "../../proto/enums/event.enums_pb";
 import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as proto_enums_asset_type_enums_pb from "../../proto/enums/asset_type.enums_pb";
 
 export class UnitFinalize extends jspb.Message { 
 
@@ -89,6 +90,31 @@ export namespace TimelineRequest {
     }
 }
 
+export class Asset extends jspb.Message { 
+    getDeviceId(): string;
+    setDeviceId(value: string): Asset;
+
+    getAssetType(): proto_enums_asset_type_enums_pb.EnumAssetType;
+    setAssetType(value: proto_enums_asset_type_enums_pb.EnumAssetType): Asset;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Asset.AsObject;
+    static toObject(includeInstance: boolean, msg: Asset): Asset.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: Asset, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Asset;
+    static deserializeBinaryFromReader(message: Asset, reader: jspb.BinaryReader): Asset;
+}
+
+export namespace Asset {
+    export type AsObject = {
+        deviceId: string,
+        assetType: proto_enums_asset_type_enums_pb.EnumAssetType,
+    }
+}
+
 export class TimelineListRequest extends jspb.Message { 
     clearTruckList(): void;
     getTruckList(): Array<string>;
@@ -110,6 +136,11 @@ export class TimelineListRequest extends jspb.Message {
     getInitialTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
     setInitialTime(value?: google_protobuf_timestamp_pb.Timestamp): TimelineListRequest;
 
+    clearAssetsList(): void;
+    getAssetsList(): Array<Asset>;
+    setAssetsList(value: Array<Asset>): TimelineListRequest;
+    addAssets(value?: Asset, index?: number): Asset;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): TimelineListRequest.AsObject;
@@ -127,6 +158,7 @@ export namespace TimelineListRequest {
         initialState: proto_enums_event_enums_pb.EnumEvent,
         initialEventState?: proto_entities_event_state_pb.EventState.AsObject,
         initialTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        assetsList: Array<Asset.AsObject>,
     }
 }
 
