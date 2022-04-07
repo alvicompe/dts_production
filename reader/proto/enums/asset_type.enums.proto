@@ -3,8 +3,15 @@ package pb;
 option go_package = "../pb";
 
 enum EnumAssetType {
-  ALL = 0;
+  UNKNOWN_ASSET_TYPE = 0;
   TRUCK = 1;
   EXCAVATOR = 2;
-  OTHERS = 3;
+  FRONT_LOADER = 3;
+  DRILLER = 4;
+  CRAWLER_TRACTOR = 5;
+  GRADER = 6;
+  ROLLER = 7;
+  BACKHOE = 8;
+  CRANE_TRUCK = 9;
+  WATER_CISTERN = 10;
 }
