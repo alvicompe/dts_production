@@ -9,6 +9,17 @@ import "proto/enums/event.enums.proto";
 import "proto/enums/asset_type.enums.proto";
 import "proto/enums/shift.enums.proto";
 
+message CurrentShift {
+  enum State{
+    IN_PROGRESS = 0;
+    CLOSED = 1;
+  }
+  string id = 1;
+  google.protobuf.Timestamp shift_date = 2;
+  Shift shift = 3;
+  State state = 4;
+}
+
 message UnitCurrentTimeline{
   string id = 1;
   string device_id = 2;
