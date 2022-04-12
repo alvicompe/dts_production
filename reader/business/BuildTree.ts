@@ -7,7 +7,7 @@ export class BuildTree {
       `./${pathRoot}/`,
       {
         extensions: /\.csv$|\.dxf/,
-        exclude: /\w.*[-_][a-qA-Qs-zS-Z][_]?[a-zA-Z]?.csv$|\w.*[rR][_].csv$/, // View course Regex
+        exclude: /\w.*[-_][a-qA-Qs-zS-Z][_]?[a-zA-Z]?.csv$|\w.*[rR][_].csv$/,
         attributes: ["type", "extension", "ctime", "birthtime", "mtime"],
         normalizePath: true,
       },

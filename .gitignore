@@ -4,3 +4,6 @@ data/**
 .DS_Store
 logger.log
 mongo
+config.json
+.env
+reader/proto/proto/**

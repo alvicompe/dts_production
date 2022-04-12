@@ -45,5 +45,4 @@ message Truck {
   int64 cycle_number = 13;
   repeated OperationAssignmentUnit operation =14;
   float tonne = 15;
-
 }

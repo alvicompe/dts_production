@@ -148,10 +148,10 @@ export class ValidationTree {
     let countDXF: number = 0
 
     directory.children.forEach((children: any) => {
-      if (children.path.search(/\.dxf$/) != -1) {
+      if (children.path.toLowerCase().search(/\.dxf$/) != -1) {
         countDXF += 1
       }
-      if (children.path.search(/\.csv$/) != -1) {
+      if (children.path.toLowerCase().search(/\.csv$/) != -1) {
         countCSV += 1
       }
 

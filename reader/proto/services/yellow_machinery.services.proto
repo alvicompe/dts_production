@@ -1,0 +1,26 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/yellow_machinery.proto";
+
+service YellowMachineryService {
+  rpc CreateYellowMachinery(YellowMachineryRequest) returns(YellowMachineryResponse) {};
+  rpc RetrieveYellowMachinery(YellowMachineryRequest) returns(YellowMachineryResponse) {};
+  rpc ListYellowMachinery(YellowMachineryRequest) returns(ListYellowMachineryResponse) {};
+  rpc UpdateYellowMachinery(YellowMachineryRequest) returns(YellowMachineryResponse) {};
+  rpc DeleteYellowMachinery(YellowMachineryRequest) returns(YellowMachineryResponse) {};
+}
+
+// Messages
+message YellowMachineryRequest {
+  YellowMachinery yellow_machinery = 1;
+}
+
+message YellowMachineryResponse {
+  YellowMachinery yellow_machinery = 1;
+}
+
+message ListYellowMachineryResponse {
+  repeated YellowMachinery yellow_machinery = 1;
+}
