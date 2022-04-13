@@ -25,7 +25,6 @@ export class GridBusiness {
     const response = new UpdateGridResponse()
     const { status, firstLoad, pathChange } =
       await geoReader.checkChangeGeoGrid()
-
     if (!status) {
       response.setStatus(false)
       response.setMessage("Error when reading files")
