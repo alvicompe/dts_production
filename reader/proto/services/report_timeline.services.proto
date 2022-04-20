@@ -17,7 +17,8 @@ service ReportTimelineService {
 message kpiDashboardResponse {
   bool status = 1;
   string message = 2;
-  KpiIndicator  kpiIndicators = 3;
+  KpiIndicator  day = 3;
+  KpiIndicator night = 4;
 }
 
 message KpiIndicator {
