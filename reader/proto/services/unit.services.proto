@@ -1,0 +1,16 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/unit.proto";
+import "google/protobuf/empty.proto";
+
+service UnitInMantoService {
+  rpc RetrieveUnitMantoList(google.protobuf.Empty) returns(UnitMantoListResponse) {};
+}
+
+// Messages
+message UnitMantoListResponse {
+  repeated UnitInMantoGPS truck = 1;
+}
+

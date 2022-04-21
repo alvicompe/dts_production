@@ -17,7 +17,7 @@ service TimelineTruckService {
   rpc RetrieveCurrentTimelineByTruck(CurrentTimelineByTruckRequest) returns (TimelineResponse) {};
   rpc CreateTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
   rpc UpdateTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
-  rpc UpdateInitialHourmeterTimelineTruck(TimelineRequest) returns (TimelineResponse) {};
+  rpc UpdateInitialHourmeterTimelineTruck(TimelineRequest) returns (UnitCurrentTimelineResponse) {};
   rpc UpdateTimelineTruckList(TimelineListRequest) returns (TimelineListResponse) {};
   rpc UpdateTimelineTruckBeforeShiftChange(UnitCurrentTimelineRequest) returns (UnitCurrentTimelineResponse){};
   rpc UpdateTimelineTruckListBeforeShiftChange(TimelineFinalizeShiftRequest) returns (TimelineListResponse){};
