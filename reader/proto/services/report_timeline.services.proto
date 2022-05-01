@@ -10,14 +10,16 @@ import "proto/enums/asset_type.enums.proto";
 // Services
 service ReportTimelineService {
   rpc kpiDashboard(ReportRequest) returns (kpiDashboardResponse) {};
-  rpc TimelineByShift(DownloadTimelineRequest) returns (DownloadResponse) {};
+  rpc ResumeTimelineByShift(DownloadTimelineRequest) returns (DownloadResponse) {};
+  rpc HistoryTimelineByShift(DownloadTimelineRequest) returns (DownloadResponse) {};
 }
 
 // Messages
 message kpiDashboardResponse {
   bool status = 1;
   string message = 2;
-  KpiIndicator  kpiIndicators = 3;
+  KpiIndicator  day = 3;
+  KpiIndicator night = 4;
 }
 
 message KpiIndicator {

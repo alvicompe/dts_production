@@ -15,6 +15,7 @@ import "proto/entities/excavator.proto";
 import "proto/entities/truck.proto";
 import "proto/entities/load.proto";
 import "proto/enums/event_state.enums.proto";
+import "proto/entities/event_state.proto";
 
 message OperationAssignment{
   enum Shift {
@@ -45,14 +46,15 @@ message TruckInfo {
   int64 cycle_number = 4;
   Sensor sensor = 5;
   EnumEventState state = 6;
-  Geofence geofence = 7;
-  Road road = 8;
-  repeated Point segment = 9;
-  Pit pit = 10;
-  Pad pad = 11;
-  Stock stock = 12;
-  Dme dme = 13;
-  repeated OperationAssignment operation = 14;
+  EventState event_state = 7;
+  Geofence geofence = 8;
+  Road road = 9;
+  repeated Point segment = 10;
+  Pit pit = 11;
+  Pad pad = 12;
+  Stock stock = 13;
+  Dme dme = 14;
+  repeated OperationAssignment operation = 15;
 }
 
 message ExcavatorInfo {
@@ -64,4 +66,12 @@ message ExcavatorInfo {
   Geofence geofence = 6;
   Pit pit = 7;
   repeated OperationAssignment operation = 8;
+}
+
+message Socket{
+  oneof socket_of{
+    BasicSensor basic_sensor = 1;
+    TruckInfo truck_info = 2;
+    ExcavatorInfo excavator_info = 3;
+  }
 }
