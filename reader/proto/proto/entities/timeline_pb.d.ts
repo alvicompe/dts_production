@@ -9,6 +9,7 @@ import * as proto_entities_event_state_pb from "../../proto/entities/event_state
 import * as proto_enums_event_enums_pb from "../../proto/enums/event.enums_pb";
 import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as proto_enums_asset_type_enums_pb from "../../proto/enums/asset_type.enums_pb";
 
 export class Timeline extends jspb.Message { 
     getId(): string;
@@ -77,6 +78,9 @@ export class Timeline extends jspb.Message {
     getStatus(): boolean;
     setStatus(value: boolean): Timeline;
 
+    getAssetType(): proto_enums_asset_type_enums_pb.EnumAssetType;
+    setAssetType(value: proto_enums_asset_type_enums_pb.EnumAssetType): Timeline;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Timeline.AsObject;
@@ -107,6 +111,7 @@ export namespace Timeline {
         stateRegister: Timeline.StateTimeline,
         adjustment: number,
         status: boolean,
+        assetType: proto_enums_asset_type_enums_pb.EnumAssetType,
     }
 
     export enum StateTimeline {

@@ -1,0 +1,24 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "google/protobuf/timestamp.proto";
+import "proto/enums/shift.enums.proto";
+import "proto/enums/asset_type.enums.proto";
+import "proto/entities/history_timeline.proto";
+
+// Services
+service HistoryTimelineService {
+  rpc FilterHistoryTimeline(FilterHistoryTimelineRequest) returns (ListHistoryTimelineResponse) {};
+}
+
+// Messages
+message FilterHistoryTimelineRequest {
+  google.protobuf.Timestamp shift_date = 1;
+  Shift shift = 2;
+  EnumAssetType asset_type = 3;
+}
+
+message ListHistoryTimelineResponse {
+  repeated HistoryTimeline history_timelines = 1;
+}

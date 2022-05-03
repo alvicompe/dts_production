@@ -274,8 +274,7 @@ export class TreeReader {
   private async getRoad(path: any) {
     const files = await this.formattedFile(path)
     let groups = [] as any
-
-    let currentIndexGroup = 0
+    let currentIndex = 0
 
     for (let i = 0; i < files.length; i++) {
       if (files[i].trim() === "") {
@@ -287,26 +286,67 @@ export class TreeReader {
         break
       }
 
-      if (groups.length === 0) {
-        groups.push({ name, point: [] })
-        currentIndexGroup = groups.length - 1
-      }
-
-      if (groups[currentIndexGroup]["name"] === name) {
-        const { longitude, latitude, altitude } = TreeReader.transformUTM(
-          x,
-          y,
-          z
-        )
-        groups[currentIndexGroup].point.push({ longitude, latitude, altitude })
-      }
-
-      if (groups[currentIndexGroup]["name"] !== name) {
-        groups.push({ name, point: [] })
-        currentIndexGroup = groups.length - 1
+      if (groups[currentIndex] && groups[currentIndex]["name"] === name) {
+        TreeReader.addPoint(x, y, z, groups, currentIndex)
+        if (i === files.length - 1) {
+          try {
+            groups[currentIndex]["buffer"] = TreeReader.buildBuffer(
+              groups[currentIndex]["point"]
+            )
+          } catch (e) {
+            this.setErrResponse(path, e)
+          }
+        }
+      } else {
+        groups.push({ name, point: [], buffer: [] })
+        currentIndex = groups.length - 1
+        TreeReader.addPoint(x, y, z, groups, currentIndex)
+        if (groups[currentIndex - 1]) {
+          try {
+            groups[currentIndex - 1]["buffer"] = TreeReader.buildBuffer(
+              groups[currentIndex - 1]["point"]
+            )
+          } catch (e) {
+            this.setErrResponse(path, e)
+          }
+        }
       }
     }
     return groups
+  }
+
+  private static addPoint(
+    x: string,
+    y: string,
+    z: string,
+    groups: any,
+    currentIndex: number
+  ) {
+    const { longitude, latitude, altitude } = TreeReader.transformUTM(x, y, z)
+    groups[currentIndex]["point"].push({
+      longitude,
+      latitude,
+      altitude,
+    })
+  }
+
+  private static buildBuffer(points: any) {
+    let segments = [] as any
+    for (let i = 0; i < points.length; i++) {
+      segments.push([points[i]["longitude"], points[i]["latitude"]])
+    }
+    try {
+      let line = turf.lineString(segments)
+      let buffer = turf.buffer(line.geometry, 4, { units: "meters" })
+      let resultBuffer = [] as any
+      for (let i = 0; i < buffer.geometry.coordinates[0].length; i++) {
+        const [longitude, latitude] = buffer.geometry.coordinates[0][i]
+        resultBuffer.push({ longitude, latitude })
+      }
+      return resultBuffer
+    } catch (e) {
+      throw new Error("Missing point to create segment road")
+    }
   }
 
   private async getMaterial(path: any) {

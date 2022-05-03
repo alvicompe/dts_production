@@ -147,11 +147,6 @@ export class OperationFinalizeResponse extends jspb.Message {
     getOperation(): proto_entities_operation_pb.Operation | undefined;
     setOperation(value?: proto_entities_operation_pb.Operation): OperationFinalizeResponse;
 
-    clearTruckErrorList(): void;
-    getTruckErrorList(): Array<proto_entities_truck_state_message_pb.TruckStateMessage>;
-    setTruckErrorList(value: Array<proto_entities_truck_state_message_pb.TruckStateMessage>): OperationFinalizeResponse;
-    addTruckError(value?: proto_entities_truck_state_message_pb.TruckStateMessage, index?: number): proto_entities_truck_state_message_pb.TruckStateMessage;
-
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): OperationFinalizeResponse.AsObject;
@@ -166,7 +161,6 @@ export class OperationFinalizeResponse extends jspb.Message {
 export namespace OperationFinalizeResponse {
     export type AsObject = {
         operation?: proto_entities_operation_pb.Operation.AsObject,
-        truckErrorList: Array<proto_entities_truck_state_message_pb.TruckStateMessage.AsObject>,
     }
 }
 

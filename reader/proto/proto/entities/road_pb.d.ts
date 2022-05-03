@@ -25,6 +25,11 @@ export class Road extends jspb.Message {
     setPointList(value: Array<proto_entities_point_pb.Point>): Road;
     addPoint(value?: proto_entities_point_pb.Point, index?: number): proto_entities_point_pb.Point;
 
+    clearBufferList(): void;
+    getBufferList(): Array<proto_entities_point_pb.Point>;
+    setBufferList(value: Array<proto_entities_point_pb.Point>): Road;
+    addBuffer(value?: proto_entities_point_pb.Point, index?: number): proto_entities_point_pb.Point;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Road.AsObject;
@@ -43,6 +48,7 @@ export namespace Road {
         description: string,
         color: number,
         pointList: Array<proto_entities_point_pb.Point.AsObject>,
+        bufferList: Array<proto_entities_point_pb.Point.AsObject>,
     }
 
     export enum State {

@@ -142,7 +142,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.pb.OperationFinalizeResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.pb.OperationFinalizeResponse.repeatedFields_, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.pb.OperationFinalizeResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1079,13 +1079,6 @@ proto.pb.OperationReassigmentResponse.prototype.clearTruckErrorList = function()
 
 
 
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.pb.OperationFinalizeResponse.repeatedFields_ = [2];
-
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1117,9 +1110,7 @@ proto.pb.OperationFinalizeResponse.prototype.toObject = function(opt_includeInst
  */
 proto.pb.OperationFinalizeResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    operation: (f = msg.getOperation()) && proto_entities_operation_pb.Operation.toObject(includeInstance, f),
-    truckErrorList: jspb.Message.toObjectList(msg.getTruckErrorList(),
-    proto_entities_truck_state_message_pb.TruckStateMessage.toObject, includeInstance)
+    operation: (f = msg.getOperation()) && proto_entities_operation_pb.Operation.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1161,11 +1152,6 @@ proto.pb.OperationFinalizeResponse.deserializeBinaryFromReader = function(msg, r
       reader.readMessage(value,proto_entities_operation_pb.Operation.deserializeBinaryFromReader);
       msg.setOperation(value);
       break;
-    case 2:
-      var value = new proto_entities_truck_state_message_pb.TruckStateMessage;
-      reader.readMessage(value,proto_entities_truck_state_message_pb.TruckStateMessage.deserializeBinaryFromReader);
-      msg.addTruckError(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1201,14 +1187,6 @@ proto.pb.OperationFinalizeResponse.serializeBinaryToWriter = function(message, w
       1,
       f,
       proto_entities_operation_pb.Operation.serializeBinaryToWriter
-    );
-  }
-  f = message.getTruckErrorList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      2,
-      f,
-      proto_entities_truck_state_message_pb.TruckStateMessage.serializeBinaryToWriter
     );
   }
 };
@@ -1248,44 +1226,6 @@ proto.pb.OperationFinalizeResponse.prototype.clearOperation = function() {
  */
 proto.pb.OperationFinalizeResponse.prototype.hasOperation = function() {
   return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * repeated TruckStateMessage truck_error = 2;
- * @return {!Array<!proto.pb.TruckStateMessage>}
- */
-proto.pb.OperationFinalizeResponse.prototype.getTruckErrorList = function() {
-  return /** @type{!Array<!proto.pb.TruckStateMessage>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto_entities_truck_state_message_pb.TruckStateMessage, 2));
-};
-
-
-/**
- * @param {!Array<!proto.pb.TruckStateMessage>} value
- * @return {!proto.pb.OperationFinalizeResponse} returns this
-*/
-proto.pb.OperationFinalizeResponse.prototype.setTruckErrorList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 2, value);
-};
-
-
-/**
- * @param {!proto.pb.TruckStateMessage=} opt_value
- * @param {number=} opt_index
- * @return {!proto.pb.TruckStateMessage}
- */
-proto.pb.OperationFinalizeResponse.prototype.addTruckError = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.pb.TruckStateMessage, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.pb.OperationFinalizeResponse} returns this
- */
-proto.pb.OperationFinalizeResponse.prototype.clearTruckErrorList = function() {
-  return this.setTruckErrorList([]);
 };
 
 

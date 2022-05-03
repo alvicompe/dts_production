@@ -5,7 +5,25 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
+import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as proto_entities_streaming_pb from "../../proto/entities/streaming_pb";
+
+export class TruckInfoRequest extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TruckInfoRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: TruckInfoRequest): TruckInfoRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TruckInfoRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TruckInfoRequest;
+    static deserializeBinaryFromReader(message: TruckInfoRequest, reader: jspb.BinaryReader): TruckInfoRequest;
+}
+
+export namespace TruckInfoRequest {
+    export type AsObject = {
+    }
+}
 
 export class TruckInfoResponse extends jspb.Message { 
 
@@ -69,22 +87,5 @@ export class ExcavatorInfoResponse extends jspb.Message {
 export namespace ExcavatorInfoResponse {
     export type AsObject = {
         info?: proto_entities_streaming_pb.ExcavatorInfo.AsObject,
-    }
-}
-
-export class TruckInfoRequest extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): TruckInfoRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: TruckInfoRequest): TruckInfoRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: TruckInfoRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): TruckInfoRequest;
-    static deserializeBinaryFromReader(message: TruckInfoRequest, reader: jspb.BinaryReader): TruckInfoRequest;
-}
-
-export namespace TruckInfoRequest {
-    export type AsObject = {
     }
 }

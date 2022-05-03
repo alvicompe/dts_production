@@ -43,7 +43,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.pb.Road.repeatedFields_ = [5];
+proto.pb.Road.repeatedFields_ = [5,6];
 
 
 
@@ -81,6 +81,8 @@ proto.pb.Road.toObject = function(includeInstance, msg) {
     description: jspb.Message.getFieldWithDefault(msg, 3, ""),
     color: jspb.Message.getFieldWithDefault(msg, 4, 0),
     pointList: jspb.Message.toObjectList(msg.getPointList(),
+    proto_entities_point_pb.Point.toObject, includeInstance),
+    bufferList: jspb.Message.toObjectList(msg.getBufferList(),
     proto_entities_point_pb.Point.toObject, includeInstance)
   };
 
@@ -138,6 +140,11 @@ proto.pb.Road.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto_entities_point_pb.Point;
       reader.readMessage(value,proto_entities_point_pb.Point.deserializeBinaryFromReader);
       msg.addPoint(value);
+      break;
+    case 6:
+      var value = new proto_entities_point_pb.Point;
+      reader.readMessage(value,proto_entities_point_pb.Point.deserializeBinaryFromReader);
+      msg.addBuffer(value);
       break;
     default:
       reader.skipField();
@@ -200,6 +207,14 @@ proto.pb.Road.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       5,
+      f,
+      proto_entities_point_pb.Point.serializeBinaryToWriter
+    );
+  }
+  f = message.getBufferList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      6,
       f,
       proto_entities_point_pb.Point.serializeBinaryToWriter
     );
@@ -321,6 +336,44 @@ proto.pb.Road.prototype.addPoint = function(opt_value, opt_index) {
  */
 proto.pb.Road.prototype.clearPointList = function() {
   return this.setPointList([]);
+};
+
+
+/**
+ * repeated Point buffer = 6;
+ * @return {!Array<!proto.pb.Point>}
+ */
+proto.pb.Road.prototype.getBufferList = function() {
+  return /** @type{!Array<!proto.pb.Point>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto_entities_point_pb.Point, 6));
+};
+
+
+/**
+ * @param {!Array<!proto.pb.Point>} value
+ * @return {!proto.pb.Road} returns this
+*/
+proto.pb.Road.prototype.setBufferList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 6, value);
+};
+
+
+/**
+ * @param {!proto.pb.Point=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.pb.Point}
+ */
+proto.pb.Road.prototype.addBuffer = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.pb.Point, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.pb.Road} returns this
+ */
+proto.pb.Road.prototype.clearBufferList = function() {
+  return this.setBufferList([]);
 };
 
 

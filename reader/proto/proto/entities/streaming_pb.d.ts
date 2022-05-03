@@ -17,6 +17,7 @@ import * as proto_entities_excavator_pb from "../../proto/entities/excavator_pb"
 import * as proto_entities_truck_pb from "../../proto/entities/truck_pb";
 import * as proto_entities_load_pb from "../../proto/entities/load_pb";
 import * as proto_enums_event_state_enums_pb from "../../proto/enums/event_state.enums_pb";
+import * as proto_entities_event_state_pb from "../../proto/entities/event_state_pb";
 
 export class OperationAssignment extends jspb.Message { 
     getId(): string;
@@ -111,6 +112,12 @@ export class TruckInfo extends jspb.Message {
     setState(value: proto_enums_event_state_enums_pb.EnumEventState): TruckInfo;
 
 
+    hasEventState(): boolean;
+    clearEventState(): void;
+    getEventState(): proto_entities_event_state_pb.EventState | undefined;
+    setEventState(value?: proto_entities_event_state_pb.EventState): TruckInfo;
+
+
     hasGeofence(): boolean;
     clearGeofence(): void;
     getGeofence(): proto_entities_geofence_pb.Geofence | undefined;
@@ -175,6 +182,7 @@ export namespace TruckInfo {
         cycleNumber: number,
         sensor?: proto_entities_sensor_pb.Sensor.AsObject,
         state: proto_enums_event_state_enums_pb.EnumEventState,
+        eventState?: proto_entities_event_state_pb.EventState.AsObject,
         geofence?: proto_entities_geofence_pb.Geofence.AsObject,
         road?: proto_entities_road_pb.Road.AsObject,
         segmentList: Array<proto_entities_point_pb.Point.AsObject>,
@@ -244,4 +252,56 @@ export namespace ExcavatorInfo {
         pit?: proto_entities_pit_pb.Pit.AsObject,
         operationList: Array<OperationAssignment.AsObject>,
     }
+}
+
+export class Socket extends jspb.Message { 
+
+    hasBasicSensor(): boolean;
+    clearBasicSensor(): void;
+    getBasicSensor(): proto_entities_sensor_pb.BasicSensor | undefined;
+    setBasicSensor(value?: proto_entities_sensor_pb.BasicSensor): Socket;
+
+
+    hasTruckInfo(): boolean;
+    clearTruckInfo(): void;
+    getTruckInfo(): TruckInfo | undefined;
+    setTruckInfo(value?: TruckInfo): Socket;
+
+
+    hasExcavatorInfo(): boolean;
+    clearExcavatorInfo(): void;
+    getExcavatorInfo(): ExcavatorInfo | undefined;
+    setExcavatorInfo(value?: ExcavatorInfo): Socket;
+
+
+    getSocketOfCase(): Socket.SocketOfCase;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Socket.AsObject;
+    static toObject(includeInstance: boolean, msg: Socket): Socket.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: Socket, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Socket;
+    static deserializeBinaryFromReader(message: Socket, reader: jspb.BinaryReader): Socket;
+}
+
+export namespace Socket {
+    export type AsObject = {
+        basicSensor?: proto_entities_sensor_pb.BasicSensor.AsObject,
+        truckInfo?: TruckInfo.AsObject,
+        excavatorInfo?: ExcavatorInfo.AsObject,
+    }
+
+    export enum SocketOfCase {
+        SOCKET_OF_NOT_SET = 0,
+    
+    BASIC_SENSOR = 1,
+
+    TRUCK_INFO = 2,
+
+    EXCAVATOR_INFO = 3,
+
+    }
+
 }

@@ -43,7 +43,6 @@ message OperationReassigmentResponse {
 
 message OperationFinalizeResponse{
   Operation operation = 1;
-  repeated TruckStateMessage truck_error = 2;
 }
 
 // MigrateOperation

@@ -1,9 +1,18 @@
 syntax = "proto3";
 package pb;
 option go_package = "../pb";
+import "proto/enums/asset_type.enums.proto";
+import "proto/entities/sensor.proto";
+import "google/protobuf/timestamp.proto";
 
 message Unit {
   string device_id = 2;
   string device_alias = 3;
 }
 
+message UnitInMantoGPS{
+  Unit  unit = 1;
+  EnumAssetType type = 2;
+  google.protobuf.Timestamp start_datetime = 3;
+  Sensor start_sensor = 4;
+}

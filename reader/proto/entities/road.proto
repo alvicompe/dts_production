@@ -13,4 +13,5 @@ message Road {
   string description = 3;
   uint32 color = 4;
   repeated Point point = 5;
+  repeated Point buffer = 6;
 }
