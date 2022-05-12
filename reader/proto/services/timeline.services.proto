@@ -93,6 +93,7 @@ message TimelinesShiftResponse{
   google.protobuf.Timestamp shift_date = 1;
   repeated  UnitCurrentTimeline current_timeline = 2;
   State state_shift = 3;
+  EnumGuard guard = 4;
 }
 
 message UnitCurrentTimelineRequest {
