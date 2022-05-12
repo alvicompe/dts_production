@@ -3,6 +3,7 @@ package pb;
 option go_package = "../pb";
 
 import "proto/enums/role.enums.proto";
+import "proto/enums/guard_enums.proto";
 
 message User {
   string id = 1;
@@ -14,4 +15,5 @@ message User {
   string first_name = 7;
   string last_name = 9;
   bool is_active = 10;
+  EnumGuard guard = 11;
 }
