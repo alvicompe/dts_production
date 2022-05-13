@@ -1,0 +1,28 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/pad.proto";
+
+service PadService {
+  rpc CreatePad(PadRequest) returns(PadResponse);
+  rpc RetrievePad(PadRequest) returns(PadResponse);
+  rpc RetrievePads(PadRequest) returns(PadsResponse);
+  rpc UpdatePad(PadRequest) returns(PadResponse);
+  rpc DeletePad(PadRequest) returns(PadResponse);
+}
+
+// Messages
+message PadRequest {
+  Pad pad = 1;
+}
+
+message PadResponse {
+  Pad pad = 1;
+}
+
+message PadsResponse {
+  repeated Pad pads = 1;
+}
+
+

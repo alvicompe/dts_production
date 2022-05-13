@@ -1,0 +1,32 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/contractor.proto";
+
+service ContractorService {
+  rpc CreateContractor(ContractorRequest) returns(ContractorResponse);
+  rpc RetrieveContractor(ContractorRequest) returns(ContractorResponse);
+  rpc RetrieveContractors(ContractorRequest) returns(ContractorsResponse);
+  rpc UpdateContractor(ContractorRequest) returns(ContractorResponse);
+  rpc DeleteContractor(ContractorRequest) returns(ContractorResponse);
+}
+
+// Messages
+message ContractorRequest {
+  Contractor contractor = 1;
+}
+
+message ContractorResponse {
+  Contractor contractor = 1;
+}
+
+message ContractorsResponse {
+  repeated Contractor contractors = 1;
+}
+
+
+
+
+
+

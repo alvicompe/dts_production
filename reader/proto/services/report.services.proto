@@ -1,0 +1,40 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/report.proto";
+import "proto/entities/truck.proto";
+import "proto/enums/shift.enums.proto";
+import "google/protobuf/timestamp.proto";
+
+service ReportService {
+  rpc RetrievePerformancePerHourReport(ReportRequest) returns (ReportPerformancePerHourResponse) {};
+  rpc DownloadReport(DownloadRequest) returns (DownloadResponse) {};
+}
+
+// Messages
+message ReportRequest {
+  google.protobuf.Timestamp date_start = 1;
+  google.protobuf.Timestamp date_end = 2;
+}
+
+message DownloadRequest {
+  google.protobuf.Timestamp date_start = 1;
+  google.protobuf.Timestamp date_end = 2;
+  Shift shift = 3;
+  bool all_truck = 4;
+  repeated Truck truck = 5;
+}
+
+message ReportPerformancePerHourResponse {
+  bool status = 1;
+  string message = 2;
+  ReportPerformancePerHour day = 3;
+  ReportPerformancePerHour night = 4;
+}
+
+message DownloadResponse {
+  string file_name = 1;
+  bool success = 2;
+  bytes file = 3;
+}

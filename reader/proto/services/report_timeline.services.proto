@@ -1,0 +1,44 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/services/report.services.proto";
+import "google/protobuf/timestamp.proto";
+import "proto/enums/shift.enums.proto";
+import "proto/enums/asset_type.enums.proto";
+
+// Services
+service ReportTimelineService {
+  rpc kpiDashboard(ReportRequest) returns (kpiDashboardResponse) {};
+  rpc ResumeTimelineByShift(DownloadTimelineRequest) returns (DownloadResponse) {};
+  rpc HistoryTimelineByShift(DownloadTimelineRequest) returns (DownloadResponse) {};
+}
+
+// Messages
+message kpiDashboardResponse {
+  bool status = 1;
+  string message = 2;
+  KpiIndicator  day = 3;
+  KpiIndicator night = 4;
+}
+
+message KpiIndicator {
+  KpiUnit load = 1;
+  KpiUnit haulage = 2;
+}
+
+message KpiUnit {
+  repeated string label_days_report = 1;
+  repeated float mechanical_availability = 2;
+  repeated float utilization = 3;
+  repeated float productivity = 4;
+  float today_mechanical_availability = 5;
+  float today_utilization = 6;
+  float today_productivity = 7;
+}
+
+message DownloadTimelineRequest {
+  google.protobuf.Timestamp shift_date = 1;
+  Shift shift = 2;
+  EnumAssetType asset_type = 3;
+}

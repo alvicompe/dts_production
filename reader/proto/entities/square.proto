@@ -1,0 +1,25 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/point.proto";
+import "proto/entities/geofence.proto";
+import "proto/entities/road.proto";
+import "proto/entities/pit.proto";
+import "proto/entities/pad.proto";
+import "proto/entities/stock.proto";
+import "proto/entities/dme.proto";
+
+message Square {
+  string id = 1;
+  string name = 2;
+  double altitude = 3;
+  repeated Point segment = 4;
+  repeated Point point = 5;
+  repeated Geofence geofence = 6;
+  repeated Road road = 7;
+  repeated Pit pit = 8;
+  repeated Pad pad = 9;
+  repeated Stock stock = 10;
+  repeated Dme dme = 11;
+}

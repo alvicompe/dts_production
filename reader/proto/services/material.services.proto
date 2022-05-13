@@ -1,0 +1,26 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/material.proto";
+
+service MaterialService {
+  rpc CreateMaterial(MaterialRequest) returns (MaterialResponse) {};
+  rpc RetrieveMaterial(MaterialRequest) returns (MaterialResponse) {};
+  rpc RetrieveMaterials(MaterialRequest) returns (MaterialsResponse) {};
+  rpc UpdateMaterial(MaterialRequest) returns (MaterialResponse) {};
+  rpc DeleteMaterial(MaterialRequest) returns (MaterialResponse) {};
+}
+
+// Messages
+message MaterialRequest {
+  Material material = 1;
+}
+
+message MaterialResponse {
+  Material material = 1;
+}
+
+message MaterialsResponse {
+  repeated Material materials = 1;
+}

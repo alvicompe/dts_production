@@ -1,0 +1,42 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/cell.proto";
+import "proto/enums/type_download.enums.proto";
+
+service CellService {
+  rpc CreateCell(CellRequest) returns(CellResponse);
+  rpc RetrieveCell(CellRequest) returns(CellResponse);
+  rpc RetrieveCells(CellRequest) returns(CellsResponse);
+  rpc UpdateCell(CellUpdateRequest) returns(CellResponse);
+  rpc DeleteCell(CellRequest) returns(CellResponse);
+  rpc FinalizeCellList(CellListRequest) returns (CellListResponse);
+}
+
+// Messages
+message CellListRequest {
+  repeated Cell cell = 1;
+  TypeDownload type = 2;
+}
+
+message CellRequest {
+  Cell cell = 1;
+}
+message CellUpdateRequest {
+  Cell cell = 1;
+  TypeDownload type = 2;
+}
+
+message CellResponse {
+  Cell cell = 1;
+}
+
+message CellsResponse {
+  repeated Cell cells = 1;
+}
+
+message CellListResponse {
+  bool done = 1;
+  string message = 2;
+}

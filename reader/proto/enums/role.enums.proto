@@ -1,0 +1,9 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+enum Role {
+  UNKNOWN_ROLE = 0;
+  ADMIN = 1;
+  DISPATCH = 2;
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+import "proto/entities/event.proto";
+import "google/protobuf/empty.proto";
+
+service EventService {
+  rpc RetrieveEvent(EventRequest) returns (EventResponse) {};
+  rpc RetrieveEvents(google.protobuf.Empty) returns (ListEventResponse) {};
+  rpc CreateEvent(EventRequest) returns (EventResponse) {};
+  rpc UpdateEvent(EventRequest) returns (EventResponse) {};
+  rpc DeleteEvent(EventRequest) returns (EventResponse) {};
+}
+
+//Messages
+message EventRequest {
+  Event event = 1;
+}
+
+message ListEventResponse {
+  bool state = 1;
+  repeated Event events = 2;
+}
+
+message EventResponse {
+  bool state = 1;
+  Event event = 2;
+}

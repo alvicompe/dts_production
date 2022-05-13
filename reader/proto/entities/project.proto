@@ -1,0 +1,12 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/polygon.proto";
+
+message Project {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  repeated Polygon polygon = 4;
+}

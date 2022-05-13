@@ -1,0 +1,109 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/unit.proto";
+import "proto/entities/timeline.proto";
+import "proto/entities/event_state.proto";
+import "proto/entities/unit_current_timeline.proto";
+import "proto/enums/event.enums.proto";
+import "proto/enums/shift.enums.proto";
+import "google/protobuf/timestamp.proto";
+import "proto/enums/asset_type.enums.proto";
+import "proto/enums/guard_enums.proto";
+
+service TimelineService {
+  rpc RetrieveTimeline(TimelineRequest) returns (TimelineResponse) {};
+  rpc RetrieveTimelinesShift(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
+  rpc StartShiftTimeline(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
+  rpc RetrieveCurrentTimelineByTruck(CurrentTimelineByTruckRequest) returns (TimelineResponse) {};
+  rpc CreateTimeline(TimelineRequest) returns (TimelineResponse) {};
+  rpc UpdateTimeline(TimelineRequest) returns (TimelineResponse) {};
+  rpc UpdateInitialHourmeterTimeline(TimelineRequest) returns (UnitCurrentTimelineResponse) {};
+  rpc UpdateTimelineBeforeShiftChange(UnitCurrentTimelineRequest) returns (UnitCurrentTimelineResponse){};
+  rpc UpdateTimelineList(TimelineListRequest) returns (TimelineListResponse) {};
+  rpc FinalizeShift(TimelineFinalizeShiftRequest) returns (TimelineListResponse) {};
+  rpc DeleteTimeline(TimelineRequest) returns (TimelineResponse) {};
+}
+
+// Messages
+message UnitFinalize{
+  Unit truck = 1;
+  float hourmeter = 2;
+}
+
+message CurrentTimelineByTruckRequest{
+  Unit truck = 1;
+}
+
+message TimelineRequest{
+  Timeline timeline = 1;
+}
+
+message Asset {
+  string device_id = 1;
+  EnumAssetType asset_type = 2;
+}
+
+message TimelineListRequest{
+  repeated string truck = 1;
+  EnumEvent initial_state = 2;
+  EventState initial_event_state = 3;
+  google.protobuf.Timestamp initial_time = 4;
+  repeated Asset assets = 5;
+}
+
+message TimelinesShiftRequest{
+  google.protobuf.Timestamp shift_date = 1;
+  Shift shift = 2;
+  EnumGuard guard = 3;
+  EnumAssetType asset_type = 4;
+}
+
+message TimelineFinalizeShiftRequest{
+  repeated UnitFinalize truck = 1;
+  Shift shift = 2;
+  google.protobuf.Timestamp shift_date = 7;
+}
+
+message TimelineResponse{
+  bool success = 1;
+  Timeline timeline = 2;
+  repeated ErrorTimeline errors = 3;
+}
+
+message ErrorTimeline {
+  string device_id = 1;
+  string device_alias = 2;
+  string message = 3;
+}
+
+message TimelineListResponse{
+  bool success = 1;
+  string message = 2;
+  repeated UnitCurrentTimeline timelines = 3;
+  repeated ErrorTimeline errors = 4;
+}
+
+message TimelinesShiftResponse{
+  enum State{
+    IN_PROGRESS = 0;
+    CLOSED = 1;
+  }
+  google.protobuf.Timestamp shift_date = 1;
+  repeated  UnitCurrentTimeline current_timeline = 2;
+  State state_shift = 3;
+  EnumGuard guard = 4;
+}
+
+message UnitCurrentTimelineRequest {
+  UnitFinalize truck = 1;
+  UnitCurrentTimeline current_timeline = 2;
+}
+
+message UnitCurrentTimelineResponse {
+  bool success = 1;
+  string message = 2;
+  UnitCurrentTimeline current_timeline = 3;
+  repeated ErrorTimeline errors = 4;
+}

@@ -1,0 +1,27 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/road.proto";
+
+service RoadService {
+  rpc CreateRoad(RoadRequest) returns (RoadResponse) {};
+  rpc RetrieveRoad(RoadRequest) returns (RoadResponse) {};
+  rpc RetrieveRoads(RoadRequest) returns (RoadsResponse) {};
+  rpc UpdateRoad(RoadRequest) returns (RoadResponse) {};
+  rpc DeleteRoad(RoadRequest) returns (RoadResponse) {};
+}
+
+// Messages
+message RoadRequest {
+  Road road = 1;
+}
+
+message RoadResponse {
+  Road road = 1;
+}
+
+message RoadsResponse {
+  repeated Road roads = 1;
+}
+
