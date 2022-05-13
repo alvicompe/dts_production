@@ -6,7 +6,7 @@ var proto_services_history_timeline_services_pb = require('../../proto/services/
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var proto_enums_shift_enums_pb = require('../../proto/enums/shift.enums_pb.js');
 var proto_enums_asset_type_enums_pb = require('../../proto/enums/asset_type.enums_pb.js');
-var proto_entities_history_timeline_pb = require('../../proto/entities/history_timeline_pb.js');
+var proto_services_timeline_services_pb = require('../../proto/services/timeline.services_pb.js');
 
 function serialize_pb_FilterHistoryTimelineRequest(arg) {
   if (!(arg instanceof proto_services_history_timeline_services_pb.FilterHistoryTimelineRequest)) {
@@ -19,15 +19,15 @@ function deserialize_pb_FilterHistoryTimelineRequest(buffer_arg) {
   return proto_services_history_timeline_services_pb.FilterHistoryTimelineRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_pb_ListHistoryTimelineResponse(arg) {
-  if (!(arg instanceof proto_services_history_timeline_services_pb.ListHistoryTimelineResponse)) {
-    throw new Error('Expected argument of type pb.ListHistoryTimelineResponse');
+function serialize_pb_TimelinesShiftResponse(arg) {
+  if (!(arg instanceof proto_services_timeline_services_pb.TimelinesShiftResponse)) {
+    throw new Error('Expected argument of type pb.TimelinesShiftResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_pb_ListHistoryTimelineResponse(buffer_arg) {
-  return proto_services_history_timeline_services_pb.ListHistoryTimelineResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_pb_TimelinesShiftResponse(buffer_arg) {
+  return proto_services_timeline_services_pb.TimelinesShiftResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -38,11 +38,11 @@ var HistoryTimelineServiceService = exports.HistoryTimelineServiceService = {
     requestStream: false,
     responseStream: false,
     requestType: proto_services_history_timeline_services_pb.FilterHistoryTimelineRequest,
-    responseType: proto_services_history_timeline_services_pb.ListHistoryTimelineResponse,
+    responseType: proto_services_timeline_services_pb.TimelinesShiftResponse,
     requestSerialize: serialize_pb_FilterHistoryTimelineRequest,
     requestDeserialize: deserialize_pb_FilterHistoryTimelineRequest,
-    responseSerialize: serialize_pb_ListHistoryTimelineResponse,
-    responseDeserialize: deserialize_pb_ListHistoryTimelineResponse,
+    responseSerialize: serialize_pb_TimelinesShiftResponse,
+    responseDeserialize: deserialize_pb_TimelinesShiftResponse,
   },
 };
 

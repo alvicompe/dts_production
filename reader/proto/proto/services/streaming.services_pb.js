@@ -12,8 +12,6 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
-goog.object.extend(proto, google_protobuf_empty_pb);
 var proto_entities_streaming_pb = require('../../proto/entities/streaming_pb.js');
 goog.object.extend(proto, proto_entities_streaming_pb);
 goog.exportSymbol('proto.pb.ExcavatorInfoRequest', null, global);

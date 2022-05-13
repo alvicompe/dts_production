@@ -5,11 +5,11 @@ option go_package = "../pb";
 import "google/protobuf/timestamp.proto";
 import "proto/enums/shift.enums.proto";
 import "proto/enums/asset_type.enums.proto";
-import "proto/entities/history_timeline.proto";
+import "proto/services/timeline.services.proto";
 
 // Services
 service HistoryTimelineService {
-  rpc FilterHistoryTimeline(FilterHistoryTimelineRequest) returns (ListHistoryTimelineResponse) {};
+  rpc FilterHistoryTimeline(FilterHistoryTimelineRequest) returns (TimelinesShiftResponse) {};
 }
 
 // Messages
@@ -17,8 +17,4 @@ message FilterHistoryTimelineRequest {
   google.protobuf.Timestamp shift_date = 1;
   Shift shift = 2;
   EnumAssetType asset_type = 3;
-}
-
-message ListHistoryTimelineResponse {
-  repeated HistoryTimeline history_timelines = 1;
 }

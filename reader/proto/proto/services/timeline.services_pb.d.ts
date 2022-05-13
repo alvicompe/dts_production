@@ -13,6 +13,7 @@ import * as proto_enums_event_enums_pb from "../../proto/enums/event.enums_pb";
 import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as proto_enums_asset_type_enums_pb from "../../proto/enums/asset_type.enums_pb";
+import * as proto_enums_guard_enums_pb from "../../proto/enums/guard_enums_pb";
 
 export class UnitFinalize extends jspb.Message { 
 
@@ -172,6 +173,12 @@ export class TimelinesShiftRequest extends jspb.Message {
     getShift(): proto_enums_shift_enums_pb.Shift;
     setShift(value: proto_enums_shift_enums_pb.Shift): TimelinesShiftRequest;
 
+    getGuard(): proto_enums_guard_enums_pb.EnumGuard;
+    setGuard(value: proto_enums_guard_enums_pb.EnumGuard): TimelinesShiftRequest;
+
+    getAssetType(): proto_enums_asset_type_enums_pb.EnumAssetType;
+    setAssetType(value: proto_enums_asset_type_enums_pb.EnumAssetType): TimelinesShiftRequest;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): TimelinesShiftRequest.AsObject;
@@ -187,6 +194,8 @@ export namespace TimelinesShiftRequest {
     export type AsObject = {
         shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         shift: proto_enums_shift_enums_pb.Shift,
+        guard: proto_enums_guard_enums_pb.EnumGuard,
+        assetType: proto_enums_asset_type_enums_pb.EnumAssetType,
     }
 }
 
@@ -336,6 +345,12 @@ export class TimelinesShiftResponse extends jspb.Message {
     setCurrentTimelineList(value: Array<proto_entities_unit_current_timeline_pb.UnitCurrentTimeline>): TimelinesShiftResponse;
     addCurrentTimeline(value?: proto_entities_unit_current_timeline_pb.UnitCurrentTimeline, index?: number): proto_entities_unit_current_timeline_pb.UnitCurrentTimeline;
 
+    getStateShift(): TimelinesShiftResponse.State;
+    setStateShift(value: TimelinesShiftResponse.State): TimelinesShiftResponse;
+
+    getGuard(): proto_enums_guard_enums_pb.EnumGuard;
+    setGuard(value: proto_enums_guard_enums_pb.EnumGuard): TimelinesShiftResponse;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): TimelinesShiftResponse.AsObject;
@@ -351,7 +366,15 @@ export namespace TimelinesShiftResponse {
     export type AsObject = {
         shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         currentTimelineList: Array<proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.AsObject>,
+        stateShift: TimelinesShiftResponse.State,
+        guard: proto_enums_guard_enums_pb.EnumGuard,
     }
+
+    export enum State {
+    IN_PROGRESS = 0,
+    CLOSED = 1,
+    }
+
 }
 
 export class UnitCurrentTimelineRequest extends jspb.Message { 

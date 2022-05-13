@@ -28,6 +28,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var proto_enums_asset_type_enums_pb = require('../../proto/enums/asset_type.enums_pb.js');
 goog.object.extend(proto, proto_enums_asset_type_enums_pb);
+var proto_enums_guard_enums_pb = require('../../proto/enums/guard_enums_pb.js');
+goog.object.extend(proto, proto_enums_guard_enums_pb);
 goog.exportSymbol('proto.pb.Asset', null, global);
 goog.exportSymbol('proto.pb.CurrentTimelineByTruckRequest', null, global);
 goog.exportSymbol('proto.pb.ErrorTimeline', null, global);
@@ -38,6 +40,7 @@ goog.exportSymbol('proto.pb.TimelineRequest', null, global);
 goog.exportSymbol('proto.pb.TimelineResponse', null, global);
 goog.exportSymbol('proto.pb.TimelinesShiftRequest', null, global);
 goog.exportSymbol('proto.pb.TimelinesShiftResponse', null, global);
+goog.exportSymbol('proto.pb.TimelinesShiftResponse.State', null, global);
 goog.exportSymbol('proto.pb.UnitCurrentTimelineRequest', null, global);
 goog.exportSymbol('proto.pb.UnitCurrentTimelineResponse', null, global);
 goog.exportSymbol('proto.pb.UnitFinalize', null, global);
@@ -1331,7 +1334,9 @@ proto.pb.TimelinesShiftRequest.prototype.toObject = function(opt_includeInstance
 proto.pb.TimelinesShiftRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     shiftDate: (f = msg.getShiftDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    shift: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    shift: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    guard: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    assetType: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -1377,6 +1382,14 @@ proto.pb.TimelinesShiftRequest.deserializeBinaryFromReader = function(msg, reade
       var value = /** @type {!proto.pb.Shift} */ (reader.readEnum());
       msg.setShift(value);
       break;
+    case 3:
+      var value = /** @type {!proto.pb.EnumGuard} */ (reader.readEnum());
+      msg.setGuard(value);
+      break;
+    case 4:
+      var value = /** @type {!proto.pb.EnumAssetType} */ (reader.readEnum());
+      msg.setAssetType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1418,6 +1431,20 @@ proto.pb.TimelinesShiftRequest.serializeBinaryToWriter = function(message, write
   if (f !== 0.0) {
     writer.writeEnum(
       2,
+      f
+    );
+  }
+  f = message.getGuard();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
+  f = message.getAssetType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      4,
       f
     );
   }
@@ -1476,6 +1503,42 @@ proto.pb.TimelinesShiftRequest.prototype.getShift = function() {
  */
 proto.pb.TimelinesShiftRequest.prototype.setShift = function(value) {
   return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional EnumGuard guard = 3;
+ * @return {!proto.pb.EnumGuard}
+ */
+proto.pb.TimelinesShiftRequest.prototype.getGuard = function() {
+  return /** @type {!proto.pb.EnumGuard} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {!proto.pb.EnumGuard} value
+ * @return {!proto.pb.TimelinesShiftRequest} returns this
+ */
+proto.pb.TimelinesShiftRequest.prototype.setGuard = function(value) {
+  return jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * optional EnumAssetType asset_type = 4;
+ * @return {!proto.pb.EnumAssetType}
+ */
+proto.pb.TimelinesShiftRequest.prototype.getAssetType = function() {
+  return /** @type {!proto.pb.EnumAssetType} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {!proto.pb.EnumAssetType} value
+ * @return {!proto.pb.TimelinesShiftRequest} returns this
+ */
+proto.pb.TimelinesShiftRequest.prototype.setAssetType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 4, value);
 };
 
 
@@ -2465,7 +2528,9 @@ proto.pb.TimelinesShiftResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     shiftDate: (f = msg.getShiftDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     currentTimelineList: jspb.Message.toObjectList(msg.getCurrentTimelineList(),
-    proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.toObject, includeInstance)
+    proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.toObject, includeInstance),
+    stateShift: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    guard: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -2512,6 +2577,14 @@ proto.pb.TimelinesShiftResponse.deserializeBinaryFromReader = function(msg, read
       reader.readMessage(value,proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.deserializeBinaryFromReader);
       msg.addCurrentTimeline(value);
       break;
+    case 3:
+      var value = /** @type {!proto.pb.TimelinesShiftResponse.State} */ (reader.readEnum());
+      msg.setStateShift(value);
+      break;
+    case 4:
+      var value = /** @type {!proto.pb.EnumGuard} */ (reader.readEnum());
+      msg.setGuard(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2557,8 +2630,30 @@ proto.pb.TimelinesShiftResponse.serializeBinaryToWriter = function(message, writ
       proto_entities_unit_current_timeline_pb.UnitCurrentTimeline.serializeBinaryToWriter
     );
   }
+  f = message.getStateShift();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
+  f = message.getGuard();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      4,
+      f
+    );
+  }
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.pb.TimelinesShiftResponse.State = {
+  IN_PROGRESS: 0,
+  CLOSED: 1
+};
 
 /**
  * optional google.protobuf.Timestamp shift_date = 1;
@@ -2632,6 +2727,42 @@ proto.pb.TimelinesShiftResponse.prototype.addCurrentTimeline = function(opt_valu
  */
 proto.pb.TimelinesShiftResponse.prototype.clearCurrentTimelineList = function() {
   return this.setCurrentTimelineList([]);
+};
+
+
+/**
+ * optional State state_shift = 3;
+ * @return {!proto.pb.TimelinesShiftResponse.State}
+ */
+proto.pb.TimelinesShiftResponse.prototype.getStateShift = function() {
+  return /** @type {!proto.pb.TimelinesShiftResponse.State} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {!proto.pb.TimelinesShiftResponse.State} value
+ * @return {!proto.pb.TimelinesShiftResponse} returns this
+ */
+proto.pb.TimelinesShiftResponse.prototype.setStateShift = function(value) {
+  return jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * optional EnumGuard guard = 4;
+ * @return {!proto.pb.EnumGuard}
+ */
+proto.pb.TimelinesShiftResponse.prototype.getGuard = function() {
+  return /** @type {!proto.pb.EnumGuard} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {!proto.pb.EnumGuard} value
+ * @return {!proto.pb.TimelinesShiftResponse} returns this
+ */
+proto.pb.TimelinesShiftResponse.prototype.setGuard = function(value) {
+  return jspb.Message.setProto3EnumField(this, 4, value);
 };
 
 

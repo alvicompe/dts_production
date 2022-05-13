@@ -2,7 +2,6 @@ syntax = "proto3";
 package pb;
 option go_package = "../pb";
 
-import "google/protobuf/empty.proto";
 import "proto/entities/streaming.proto";
 
 // Service truck
@@ -13,14 +12,6 @@ service TruckInfoService {
 // Service excavator
 service ExcavatorInfoService {
   rpc ServerStream(ExcavatorInfoRequest) returns(stream ExcavatorInfoResponse) {};
-}
-
-// Service Socket Stream
-service SocketStreamService {
-  rpc SocketStream(google.protobuf.Empty) returns(stream Socket) {};
-
-  rpc TruckInfoStream(google.protobuf.Empty) returns(stream TruckInfo) {};
-  rpc ExcavatorInfoStream(google.protobuf.Empty) returns(stream ExcavatorInfo) {};
 }
 
 // Messages

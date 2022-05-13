@@ -24,6 +24,10 @@ var proto_enums_asset_type_enums_pb = require('../../proto/enums/asset_type.enum
 goog.object.extend(proto, proto_enums_asset_type_enums_pb);
 var proto_enums_shift_enums_pb = require('../../proto/enums/shift.enums_pb.js');
 goog.object.extend(proto, proto_enums_shift_enums_pb);
+var proto_enums_guard_enums_pb = require('../../proto/enums/guard_enums_pb.js');
+goog.object.extend(proto, proto_enums_guard_enums_pb);
+var proto_entities_user_pb = require('../../proto/entities/user_pb.js');
+goog.object.extend(proto, proto_entities_user_pb);
 goog.exportSymbol('proto.pb.CurrentShift', null, global);
 goog.exportSymbol('proto.pb.CurrentShift.State', null, global);
 goog.exportSymbol('proto.pb.UnitCurrentTimeline', null, global);
@@ -104,7 +108,8 @@ proto.pb.CurrentShift.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     shiftDate: (f = msg.getShiftDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     shift: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    state: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    state: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    guard: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -157,6 +162,10 @@ proto.pb.CurrentShift.deserializeBinaryFromReader = function(msg, reader) {
     case 4:
       var value = /** @type {!proto.pb.CurrentShift.State} */ (reader.readEnum());
       msg.setState(value);
+      break;
+    case 5:
+      var value = /** @type {!proto.pb.EnumGuard} */ (reader.readEnum());
+      msg.setGuard(value);
       break;
     default:
       reader.skipField();
@@ -213,6 +222,13 @@ proto.pb.CurrentShift.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0.0) {
     writer.writeEnum(
       4,
+      f
+    );
+  }
+  f = message.getGuard();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      5,
       f
     );
   }
@@ -318,6 +334,24 @@ proto.pb.CurrentShift.prototype.setState = function(value) {
 };
 
 
+/**
+ * optional EnumGuard guard = 5;
+ * @return {!proto.pb.EnumGuard}
+ */
+proto.pb.CurrentShift.prototype.getGuard = function() {
+  return /** @type {!proto.pb.EnumGuard} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {!proto.pb.EnumGuard} value
+ * @return {!proto.pb.CurrentShift} returns this
+ */
+proto.pb.CurrentShift.prototype.setGuard = function(value) {
+  return jspb.Message.setProto3EnumField(this, 5, value);
+};
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -367,7 +401,10 @@ proto.pb.UnitCurrentTimeline.toObject = function(includeInstance, msg) {
     assetType: jspb.Message.getFieldWithDefault(msg, 9, 0),
     historyShiftList: jspb.Message.toObjectList(msg.getHistoryShiftList(),
     proto_entities_timeline_pb.Timeline.toObject, includeInstance),
-    shift: jspb.Message.getFieldWithDefault(msg, 14, 0)
+    shift: jspb.Message.getFieldWithDefault(msg, 14, 0),
+    guard: jspb.Message.getFieldWithDefault(msg, 19, 0),
+    userId: jspb.Message.getFieldWithDefault(msg, 20, ""),
+    user: (f = msg.getUser()) && proto_entities_user_pb.User.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -447,6 +484,19 @@ proto.pb.UnitCurrentTimeline.deserializeBinaryFromReader = function(msg, reader)
     case 14:
       var value = /** @type {!proto.pb.Shift} */ (reader.readEnum());
       msg.setShift(value);
+      break;
+    case 19:
+      var value = /** @type {!proto.pb.EnumGuard} */ (reader.readEnum());
+      msg.setGuard(value);
+      break;
+    case 20:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUserId(value);
+      break;
+    case 21:
+      var value = new proto_entities_user_pb.User;
+      reader.readMessage(value,proto_entities_user_pb.User.deserializeBinaryFromReader);
+      msg.setUser(value);
       break;
     default:
       reader.skipField();
@@ -549,6 +599,28 @@ proto.pb.UnitCurrentTimeline.serializeBinaryToWriter = function(message, writer)
     writer.writeEnum(
       14,
       f
+    );
+  }
+  f = message.getGuard();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      19,
+      f
+    );
+  }
+  f = message.getUserId();
+  if (f.length > 0) {
+    writer.writeString(
+      20,
+      f
+    );
+  }
+  f = message.getUser();
+  if (f != null) {
+    writer.writeMessage(
+      21,
+      f,
+      proto_entities_user_pb.User.serializeBinaryToWriter
     );
   }
 };
@@ -808,6 +880,79 @@ proto.pb.UnitCurrentTimeline.prototype.getShift = function() {
  */
 proto.pb.UnitCurrentTimeline.prototype.setShift = function(value) {
   return jspb.Message.setProto3EnumField(this, 14, value);
+};
+
+
+/**
+ * optional EnumGuard guard = 19;
+ * @return {!proto.pb.EnumGuard}
+ */
+proto.pb.UnitCurrentTimeline.prototype.getGuard = function() {
+  return /** @type {!proto.pb.EnumGuard} */ (jspb.Message.getFieldWithDefault(this, 19, 0));
+};
+
+
+/**
+ * @param {!proto.pb.EnumGuard} value
+ * @return {!proto.pb.UnitCurrentTimeline} returns this
+ */
+proto.pb.UnitCurrentTimeline.prototype.setGuard = function(value) {
+  return jspb.Message.setProto3EnumField(this, 19, value);
+};
+
+
+/**
+ * optional string user_id = 20;
+ * @return {string}
+ */
+proto.pb.UnitCurrentTimeline.prototype.getUserId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 20, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.pb.UnitCurrentTimeline} returns this
+ */
+proto.pb.UnitCurrentTimeline.prototype.setUserId = function(value) {
+  return jspb.Message.setProto3StringField(this, 20, value);
+};
+
+
+/**
+ * optional User user = 21;
+ * @return {?proto.pb.User}
+ */
+proto.pb.UnitCurrentTimeline.prototype.getUser = function() {
+  return /** @type{?proto.pb.User} */ (
+    jspb.Message.getWrapperField(this, proto_entities_user_pb.User, 21));
+};
+
+
+/**
+ * @param {?proto.pb.User|undefined} value
+ * @return {!proto.pb.UnitCurrentTimeline} returns this
+*/
+proto.pb.UnitCurrentTimeline.prototype.setUser = function(value) {
+  return jspb.Message.setWrapperField(this, 21, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.UnitCurrentTimeline} returns this
+ */
+proto.pb.UnitCurrentTimeline.prototype.clearUser = function() {
+  return this.setUser(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.UnitCurrentTimeline.prototype.hasUser = function() {
+  return jspb.Message.getField(this, 21) != null;
 };
 
 

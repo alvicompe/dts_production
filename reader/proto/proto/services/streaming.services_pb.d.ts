@@ -5,7 +5,6 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
-import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as proto_entities_streaming_pb from "../../proto/entities/streaming_pb";
 
 export class TruckInfoRequest extends jspb.Message { 

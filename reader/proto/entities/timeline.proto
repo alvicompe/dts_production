@@ -7,6 +7,8 @@ import "proto/enums/event.enums.proto";
 import "proto/enums/shift.enums.proto";
 import "google/protobuf/timestamp.proto";
 import "proto/enums/asset_type.enums.proto";
+import "proto/enums/guard_enums.proto";
+import "proto/entities/user.proto";
 
 message Timeline{
   enum StateTimeline{
@@ -32,4 +34,7 @@ message Timeline{
   float adjustment = 16;
   bool status = 17;
   EnumAssetType asset_type = 18;
+  EnumGuard guard = 19;
+  string user_id = 20;
+  User user = 21;
 }

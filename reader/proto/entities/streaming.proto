@@ -67,11 +67,3 @@ message ExcavatorInfo {
   Pit pit = 7;
   repeated OperationAssignment operation = 8;
 }
-
-message Socket{
-  oneof socket_of{
-    BasicSensor basic_sensor = 1;
-    TruckInfo truck_info = 2;
-    ExcavatorInfo excavator_info = 3;
-  }
-}

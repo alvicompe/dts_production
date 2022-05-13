@@ -11,6 +11,8 @@ import * as proto_entities_event_state_pb from "../../proto/entities/event_state
 import * as proto_enums_event_enums_pb from "../../proto/enums/event.enums_pb";
 import * as proto_enums_asset_type_enums_pb from "../../proto/enums/asset_type.enums_pb";
 import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
+import * as proto_enums_guard_enums_pb from "../../proto/enums/guard_enums_pb";
+import * as proto_entities_user_pb from "../../proto/entities/user_pb";
 
 export class CurrentShift extends jspb.Message { 
     getId(): string;
@@ -27,6 +29,9 @@ export class CurrentShift extends jspb.Message {
 
     getState(): CurrentShift.State;
     setState(value: CurrentShift.State): CurrentShift;
+
+    getGuard(): proto_enums_guard_enums_pb.EnumGuard;
+    setGuard(value: proto_enums_guard_enums_pb.EnumGuard): CurrentShift;
 
 
     serializeBinary(): Uint8Array;
@@ -45,6 +50,7 @@ export namespace CurrentShift {
         shiftDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         shift: proto_enums_shift_enums_pb.Shift,
         state: CurrentShift.State,
+        guard: proto_enums_guard_enums_pb.EnumGuard,
     }
 
     export enum State {
@@ -96,6 +102,18 @@ export class UnitCurrentTimeline extends jspb.Message {
     getShift(): proto_enums_shift_enums_pb.Shift;
     setShift(value: proto_enums_shift_enums_pb.Shift): UnitCurrentTimeline;
 
+    getGuard(): proto_enums_guard_enums_pb.EnumGuard;
+    setGuard(value: proto_enums_guard_enums_pb.EnumGuard): UnitCurrentTimeline;
+
+    getUserId(): string;
+    setUserId(value: string): UnitCurrentTimeline;
+
+
+    hasUser(): boolean;
+    clearUser(): void;
+    getUser(): proto_entities_user_pb.User | undefined;
+    setUser(value?: proto_entities_user_pb.User): UnitCurrentTimeline;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UnitCurrentTimeline.AsObject;
@@ -119,5 +137,8 @@ export namespace UnitCurrentTimeline {
         assetType: proto_enums_asset_type_enums_pb.EnumAssetType,
         historyShiftList: Array<proto_entities_timeline_pb.Timeline.AsObject>,
         shift: proto_enums_shift_enums_pb.Shift,
+        guard: proto_enums_guard_enums_pb.EnumGuard,
+        userId: string,
+        user?: proto_entities_user_pb.User.AsObject,
     }
 }

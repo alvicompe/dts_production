@@ -10,6 +10,8 @@ import * as proto_enums_event_enums_pb from "../../proto/enums/event.enums_pb";
 import * as proto_enums_shift_enums_pb from "../../proto/enums/shift.enums_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as proto_enums_asset_type_enums_pb from "../../proto/enums/asset_type.enums_pb";
+import * as proto_enums_guard_enums_pb from "../../proto/enums/guard_enums_pb";
+import * as proto_entities_user_pb from "../../proto/entities/user_pb";
 
 export class Timeline extends jspb.Message { 
     getId(): string;
@@ -81,6 +83,18 @@ export class Timeline extends jspb.Message {
     getAssetType(): proto_enums_asset_type_enums_pb.EnumAssetType;
     setAssetType(value: proto_enums_asset_type_enums_pb.EnumAssetType): Timeline;
 
+    getGuard(): proto_enums_guard_enums_pb.EnumGuard;
+    setGuard(value: proto_enums_guard_enums_pb.EnumGuard): Timeline;
+
+    getUserId(): string;
+    setUserId(value: string): Timeline;
+
+
+    hasUser(): boolean;
+    clearUser(): void;
+    getUser(): proto_entities_user_pb.User | undefined;
+    setUser(value?: proto_entities_user_pb.User): Timeline;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Timeline.AsObject;
@@ -112,6 +126,9 @@ export namespace Timeline {
         adjustment: number,
         status: boolean,
         assetType: proto_enums_asset_type_enums_pb.EnumAssetType,
+        guard: proto_enums_guard_enums_pb.EnumGuard,
+        userId: string,
+        user?: proto_entities_user_pb.User.AsObject,
     }
 
     export enum StateTimeline {

@@ -6,6 +6,7 @@
 
 import * as jspb from "google-protobuf";
 import * as proto_enums_role_enums_pb from "../../proto/enums/role.enums_pb";
+import * as proto_enums_guard_enums_pb from "../../proto/enums/guard_enums_pb";
 
 export class User extends jspb.Message { 
     getId(): string;
@@ -35,6 +36,9 @@ export class User extends jspb.Message {
     getIsActive(): boolean;
     setIsActive(value: boolean): User;
 
+    getGuard(): proto_enums_guard_enums_pb.EnumGuard;
+    setGuard(value: proto_enums_guard_enums_pb.EnumGuard): User;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): User.AsObject;
@@ -57,5 +61,6 @@ export namespace User {
         firstName: string,
         lastName: string,
         isActive: boolean,
+        guard: proto_enums_guard_enums_pb.EnumGuard,
     }
 }

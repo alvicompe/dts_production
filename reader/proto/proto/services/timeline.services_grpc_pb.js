@@ -11,6 +11,7 @@ var proto_enums_event_enums_pb = require('../../proto/enums/event.enums_pb.js');
 var proto_enums_shift_enums_pb = require('../../proto/enums/shift.enums_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var proto_enums_asset_type_enums_pb = require('../../proto/enums/asset_type.enums_pb.js');
+var proto_enums_guard_enums_pb = require('../../proto/enums/guard_enums_pb.js');
 
 function serialize_pb_CurrentTimelineByTruckRequest(arg) {
   if (!(arg instanceof proto_services_timeline_services_pb.CurrentTimelineByTruckRequest)) {
@@ -137,6 +138,17 @@ var TimelineServiceService = exports.TimelineServiceService = {
   },
   retrieveTimelinesShift: {
     path: '/pb.TimelineService/RetrieveTimelinesShift',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_services_timeline_services_pb.TimelinesShiftRequest,
+    responseType: proto_services_timeline_services_pb.TimelinesShiftResponse,
+    requestSerialize: serialize_pb_TimelinesShiftRequest,
+    requestDeserialize: deserialize_pb_TimelinesShiftRequest,
+    responseSerialize: serialize_pb_TimelinesShiftResponse,
+    responseDeserialize: deserialize_pb_TimelinesShiftResponse,
+  },
+  startShiftTimeline: {
+    path: '/pb.TimelineService/StartShiftTimeline',
     requestStream: false,
     responseStream: false,
     requestType: proto_services_timeline_services_pb.TimelinesShiftRequest,

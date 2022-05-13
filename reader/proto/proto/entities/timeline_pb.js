@@ -22,6 +22,10 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var proto_enums_asset_type_enums_pb = require('../../proto/enums/asset_type.enums_pb.js');
 goog.object.extend(proto, proto_enums_asset_type_enums_pb);
+var proto_enums_guard_enums_pb = require('../../proto/enums/guard_enums_pb.js');
+goog.object.extend(proto, proto_enums_guard_enums_pb);
+var proto_entities_user_pb = require('../../proto/entities/user_pb.js');
+goog.object.extend(proto, proto_entities_user_pb);
 goog.exportSymbol('proto.pb.Timeline', null, global);
 goog.exportSymbol('proto.pb.Timeline.StateTimeline', null, global);
 /**
@@ -94,7 +98,10 @@ proto.pb.Timeline.toObject = function(includeInstance, msg) {
     stateRegister: jspb.Message.getFieldWithDefault(msg, 15, 0),
     adjustment: jspb.Message.getFloatingPointFieldWithDefault(msg, 16, 0.0),
     status: jspb.Message.getBooleanFieldWithDefault(msg, 17, false),
-    assetType: jspb.Message.getFieldWithDefault(msg, 18, 0)
+    assetType: jspb.Message.getFieldWithDefault(msg, 18, 0),
+    guard: jspb.Message.getFieldWithDefault(msg, 19, 0),
+    userId: jspb.Message.getFieldWithDefault(msg, 20, ""),
+    user: (f = msg.getUser()) && proto_entities_user_pb.User.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -207,6 +214,19 @@ proto.pb.Timeline.deserializeBinaryFromReader = function(msg, reader) {
     case 18:
       var value = /** @type {!proto.pb.EnumAssetType} */ (reader.readEnum());
       msg.setAssetType(value);
+      break;
+    case 19:
+      var value = /** @type {!proto.pb.EnumGuard} */ (reader.readEnum());
+      msg.setGuard(value);
+      break;
+    case 20:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUserId(value);
+      break;
+    case 21:
+      var value = new proto_entities_user_pb.User;
+      reader.readMessage(value,proto_entities_user_pb.User.deserializeBinaryFromReader);
+      msg.setUser(value);
       break;
     default:
       reader.skipField();
@@ -366,6 +386,28 @@ proto.pb.Timeline.serializeBinaryToWriter = function(message, writer) {
     writer.writeEnum(
       18,
       f
+    );
+  }
+  f = message.getGuard();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      19,
+      f
+    );
+  }
+  f = message.getUserId();
+  if (f.length > 0) {
+    writer.writeString(
+      20,
+      f
+    );
+  }
+  f = message.getUser();
+  if (f != null) {
+    writer.writeMessage(
+      21,
+      f,
+      proto_entities_user_pb.User.serializeBinaryToWriter
     );
   }
 };
@@ -796,6 +838,79 @@ proto.pb.Timeline.prototype.getAssetType = function() {
  */
 proto.pb.Timeline.prototype.setAssetType = function(value) {
   return jspb.Message.setProto3EnumField(this, 18, value);
+};
+
+
+/**
+ * optional EnumGuard guard = 19;
+ * @return {!proto.pb.EnumGuard}
+ */
+proto.pb.Timeline.prototype.getGuard = function() {
+  return /** @type {!proto.pb.EnumGuard} */ (jspb.Message.getFieldWithDefault(this, 19, 0));
+};
+
+
+/**
+ * @param {!proto.pb.EnumGuard} value
+ * @return {!proto.pb.Timeline} returns this
+ */
+proto.pb.Timeline.prototype.setGuard = function(value) {
+  return jspb.Message.setProto3EnumField(this, 19, value);
+};
+
+
+/**
+ * optional string user_id = 20;
+ * @return {string}
+ */
+proto.pb.Timeline.prototype.getUserId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 20, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.pb.Timeline} returns this
+ */
+proto.pb.Timeline.prototype.setUserId = function(value) {
+  return jspb.Message.setProto3StringField(this, 20, value);
+};
+
+
+/**
+ * optional User user = 21;
+ * @return {?proto.pb.User}
+ */
+proto.pb.Timeline.prototype.getUser = function() {
+  return /** @type{?proto.pb.User} */ (
+    jspb.Message.getWrapperField(this, proto_entities_user_pb.User, 21));
+};
+
+
+/**
+ * @param {?proto.pb.User|undefined} value
+ * @return {!proto.pb.Timeline} returns this
+*/
+proto.pb.Timeline.prototype.setUser = function(value) {
+  return jspb.Message.setWrapperField(this, 21, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.pb.Timeline} returns this
+ */
+proto.pb.Timeline.prototype.clearUser = function() {
+  return this.setUser(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.pb.Timeline.prototype.hasUser = function() {
+  return jspb.Message.getField(this, 21) != null;
 };
 
 
