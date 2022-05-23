@@ -1,4 +1,9 @@
-make.exe --dry-run --always-make --keep-going --print-directory
-"make.exe" no se reconoce como un comando interno o externo,
-programa o archivo por lotes ejecutable.
-
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/edgarmejiav/Documentos/dts_production'
+git checkout staging
+git pull
+git add .
+git commit -m "autocommit"
+git push -u origin staging
+make: Leaving directory '/home/edgarmejiav/Documentos/dts_production'
+ 
