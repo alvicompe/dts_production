@@ -10,10 +10,12 @@ import "proto/enums/event.enums.proto";
 import "proto/enums/shift.enums.proto";
 import "google/protobuf/timestamp.proto";
 import "proto/enums/asset_type.enums.proto";
+import "proto/enums/guard_enums.proto";
 
 service TimelineService {
   rpc RetrieveTimeline(TimelineRequest) returns (TimelineResponse) {};
   rpc RetrieveTimelinesShift(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
+  rpc StartShiftTimeline(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
   rpc RetrieveCurrentTimelineByTruck(CurrentTimelineByTruckRequest) returns (TimelineResponse) {};
   rpc CreateTimeline(TimelineRequest) returns (TimelineResponse) {};
   rpc UpdateTimeline(TimelineRequest) returns (TimelineResponse) {};
@@ -54,6 +56,8 @@ message TimelineListRequest{
 message TimelinesShiftRequest{
   google.protobuf.Timestamp shift_date = 1;
   Shift shift = 2;
+  EnumGuard guard = 3;
+  EnumAssetType asset_type = 4;
 }
 
 message TimelineFinalizeShiftRequest{
@@ -82,8 +86,14 @@ message TimelineListResponse{
 }
 
 message TimelinesShiftResponse{
+  enum State{
+    IN_PROGRESS = 0;
+    CLOSED = 1;
+  }
   google.protobuf.Timestamp shift_date = 1;
   repeated  UnitCurrentTimeline current_timeline = 2;
+  State state_shift = 3;
+  EnumGuard guard = 4;
 }
 
 message UnitCurrentTimelineRequest {
