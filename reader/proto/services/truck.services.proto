@@ -1,0 +1,36 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/truck.proto";
+import "google/protobuf/empty.proto";
+
+service TruckService {
+  rpc CreateTruck(TruckRequest) returns(TruckResponse) {};
+  rpc CreateTruckList(TruckListRequest) returns(TruckListResponse) {};
+  rpc RetrieveTruck(TruckRequest) returns(TruckResponse) {};
+  rpc RetrieveTruckHyteraList(google.protobuf.Empty) returns(TruckListResponse) {};
+  rpc RetrieveTrucks(TruckRequest) returns(TrucksResponse) {};
+  rpc UpdateTruck(TruckRequest) returns(TruckResponse) {};
+  rpc DeleteTruck(TruckRequest) returns(TruckResponse) {};
+  rpc DeleteTruckList(TruckListRequest) returns(TruckListResponse) {};
+}
+
+// Messages
+message TruckRequest {
+  Truck truck = 1;
+}
+message TruckListRequest {
+  repeated Truck truck = 1;
+}
+message TruckListResponse {
+  repeated Truck truck = 1;
+}
+message TruckResponse {
+  Truck truck = 1;
+}
+
+message TrucksResponse {
+  repeated Truck trucks = 1;
+}
+

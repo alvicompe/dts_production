@@ -1,0 +1,27 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/stock.proto";
+
+service StockService {
+  rpc CreateStock(StockRequest) returns(StockResponse);
+  rpc RetrieveStock(StockRequest) returns(StockResponse);
+  rpc RetrieveStocks(StockRequest) returns(StocksResponse);
+  rpc UpdateStock(StockRequest) returns(StockResponse);
+  rpc DeleteStock(StockRequest) returns(StockResponse);
+}
+
+// Messages
+message StockRequest {
+  Stock stock = 1;
+}
+
+message StockResponse {
+  Stock stock = 1;
+}
+
+message StocksResponse {
+  repeated Stock stocks = 1;
+}
+

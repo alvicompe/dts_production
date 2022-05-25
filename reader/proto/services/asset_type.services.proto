@@ -1,0 +1,26 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/asset_type.proto";
+
+service AssetTypeService {
+  rpc CreateAssetType(AssetTypeRequest) returns(AssetTypeResponse) {};
+  rpc RetrieveAssetType(AssetTypeRequest) returns(AssetTypeResponse) {};
+  rpc RetrieveAssetTypes(AssetTypeRequest) returns(AssetTypesResponse) {};
+  rpc UpdateAssetType(AssetTypeRequest) returns(AssetTypeResponse) {};
+  rpc DeleteAssetType(AssetTypeRequest) returns(AssetTypeResponse) {};
+}
+
+// Messages
+message AssetTypeRequest {
+  AssetType asset_type = 1;
+}
+
+message AssetTypeResponse {
+  AssetType asset_type = 1;
+}
+
+message AssetTypesResponse {
+  repeated AssetType asset_types = 1;
+}

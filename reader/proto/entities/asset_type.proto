@@ -1,0 +1,11 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/enums/asset_type.enums.proto";
+
+message AssetType {
+  string id = 1;
+  string name = 2;
+  EnumAssetType enum_asset_type = 3;
+}
