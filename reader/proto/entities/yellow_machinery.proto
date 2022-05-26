@@ -1,0 +1,18 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/asset_type.proto";
+import "proto/enums/asset_type.enums.proto";
+
+message YellowMachinery {
+  string id = 1;
+  string device_id = 2;
+  string device_alias = 3;
+  uint32 device_interval = 4;
+  string description = 5;
+  string plate = 6;
+  float hourmeter = 7;
+  AssetType asset_type = 8;
+  EnumAssetType enum_asset_type = 9;
+}

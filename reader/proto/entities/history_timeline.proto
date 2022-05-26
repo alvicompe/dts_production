@@ -1,0 +1,19 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "google/protobuf/timestamp.proto";
+import "proto/entities/timeline.proto";
+import "proto/enums/shift.enums.proto";
+import "proto/enums/asset_type.enums.proto";
+
+message HistoryTimeline{
+  string id = 1;
+  string device_id = 2;
+  string device_alias = 3;
+  string current_timeline_id = 4;
+  Shift shift = 5;
+  google.protobuf.Timestamp shift_date = 6;
+  EnumAssetType asset_type = 7;
+  repeated Timeline history_shift = 8;
+}

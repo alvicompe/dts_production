@@ -1,0 +1,28 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "proto/entities/pit.proto";
+
+service PitService {
+  rpc CreatePit(PitRequest) returns(PitResponse);
+  rpc RetrievePit(PitRequest) returns(PitResponse);
+  rpc RetrievePits(PitRequest) returns(PitsResponse);
+  rpc UpdatePit(PitRequest) returns(PitResponse);
+  rpc DeletePit(PitRequest) returns(PitResponse);
+}
+
+// Messages
+message PitRequest {
+  Pit pit = 1;
+}
+
+message PitResponse {
+  Pit pit = 1;
+}
+
+message PitsResponse {
+  repeated Pit pits = 1;
+}
+
+

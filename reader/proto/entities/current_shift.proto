@@ -1,0 +1,19 @@
+syntax = "proto3";
+package pb;
+option go_package = "../pb";
+
+import "google/protobuf/timestamp.proto";
+import "proto/enums/shift.enums.proto";
+import "proto/enums/guard_enums.proto";
+
+message CurrentShift {
+  enum State{
+    IN_PROGRESS = 0;
+    CLOSED = 1;
+  }
+  string id = 1;
+  google.protobuf.Timestamp shift_date = 2;
+  Shift shift = 3;
+  State state = 4;
+  EnumGuard guard = 5;
+}
