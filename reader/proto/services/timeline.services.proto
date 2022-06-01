@@ -68,21 +68,14 @@ message TimelineFinalizeShiftRequest{
 
 message TimelineResponse{
   bool success = 1;
-  Timeline timeline = 2;
-  repeated ErrorTimeline errors = 3;
-}
-
-message ErrorTimeline {
-  string device_id = 1;
-  string device_alias = 2;
-  string message = 3;
+  string message = 2;
+  Timeline timeline = 3;
 }
 
 message TimelineListResponse{
   bool success = 1;
   string message = 2;
   repeated UnitCurrentTimeline timelines = 3;
-  repeated ErrorTimeline errors = 4;
 }
 
 message TimelinesShiftResponse{
@@ -90,10 +83,12 @@ message TimelinesShiftResponse{
     IN_PROGRESS = 0;
     CLOSED = 1;
   }
-  google.protobuf.Timestamp shift_date = 1;
-  repeated  UnitCurrentTimeline current_timeline = 2;
-  State state_shift = 3;
-  EnumGuard guard = 4;
+  bool success = 1;
+  string message = 2;
+  google.protobuf.Timestamp shift_date = 3;
+  repeated  UnitCurrentTimeline current_timeline = 4;
+  State state_shift = 5;
+  EnumGuard guard = 6;
 }
 
 message UnitCurrentTimelineRequest {
@@ -105,5 +100,4 @@ message UnitCurrentTimelineResponse {
   bool success = 1;
   string message = 2;
   UnitCurrentTimeline current_timeline = 3;
-  repeated ErrorTimeline errors = 4;
 }
