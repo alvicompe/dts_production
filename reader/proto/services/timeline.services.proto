@@ -17,13 +17,13 @@ service TimelineService {
   rpc RetrieveTimelinesShift(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
   rpc StartShiftTimeline(TimelinesShiftRequest) returns (TimelinesShiftResponse) {};
   rpc RetrieveCurrentTimelineByTruck(CurrentTimelineByTruckRequest) returns (TimelineResponse) {};
-  rpc CreateTimeline(TimelineRequest) returns (TimelineResponse) {};
-  rpc UpdateTimeline(TimelineRequest) returns (TimelineResponse) {};
+  rpc CreateTimeline(TimelineRequest) returns (UnitCurrentTimelineResponse) {};
+  rpc UpdateTimeline(TimelineRequest) returns (UnitCurrentTimelineResponse) {};
   rpc UpdateInitialHourmeterTimeline(TimelineRequest) returns (UnitCurrentTimelineResponse) {};
   rpc UpdateTimelineBeforeShiftChange(UnitCurrentTimelineRequest) returns (UnitCurrentTimelineResponse){};
   rpc UpdateTimelineList(TimelineListRequest) returns (TimelineListResponse) {};
   rpc FinalizeShift(TimelineFinalizeShiftRequest) returns (TimelineListResponse) {};
-  rpc DeleteTimeline(TimelineRequest) returns (TimelineResponse) {};
+  rpc DeleteTimeline(TimelineRequest) returns (UnitCurrentTimelineResponse) {};
 }
 
 // Messages
