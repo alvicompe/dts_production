@@ -29,9 +29,13 @@ message FilterCurrentShiftRequest {
 }
 
 message CurrentShiftResponse {
-  CurrentShift current_shift = 1;
+  bool success = 1;
+  string message = 2;
+  CurrentShift current_shift = 3;
 }
 
 message CurrentShiftsResponse {
-  repeated CurrentShift current_shift = 1;
+  bool success = 1;
+  string message = 2;
+  repeated CurrentShift current_shift = 3;
 }
