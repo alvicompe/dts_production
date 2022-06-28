@@ -23,8 +23,9 @@ message kpiDashboardResponse {
 }
 
 message KpiIndicator {
-  KpiUnit load = 1;
-  KpiUnit haulage = 2;
+  KpiUnit excavator = 1;
+  KpiUnit truck = 2;
+  KpiUnit YellowMachinery = 3;
 }
 
 message KpiUnit {
