@@ -3,6 +3,7 @@ package pb;
 option go_package = "../pb";
 
 import "proto/entities/streaming.proto";
+import "proto/entities/unit_current_timeline.proto";
 
 // Service truck
 service TruckInfoService {
@@ -14,7 +15,17 @@ service ExcavatorInfoService {
   rpc ServerStream(ExcavatorInfoRequest) returns(stream ExcavatorInfoResponse) {};
 }
 
+// Service unit
+service UnitInfoService {
+  rpc ServerStream(UnitInfoRequest) returns(stream UnitInfoResponse){};
+}
+
 // Messages
+message UnitInfoRequest{}
+message UnitInfoResponse{
+  UnitCurrentTimeline info = 1;
+}
+
 message TruckInfoRequest{}
 message TruckInfoResponse{
   TruckInfo info = 1;
